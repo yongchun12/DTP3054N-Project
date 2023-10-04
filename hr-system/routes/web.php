@@ -18,11 +18,14 @@ use App\Http\Controllers\Backend\DashboardController;
 #Login Page
 Route::get('/', [AuthController::class, 'index']);
 
+#Login Post
+Route::post('login_post', [AuthController::class, 'login_post']);
+
 #Forget Password Page
 Route::get('forget_password', [AuthController::class, 'forget_password']);
 
-#Login Post
-Route::post('login_post', [AuthController::class, 'login_post']);
+#FOrget Password Post
+Route::post('forget-password/post', [AuthController::class, 'forget_password_post']);
 
 #Logout
 Route::group(['middleware' => 'admin'], function (){

@@ -39,8 +39,13 @@
                         <div class="col-md-6 col-lg-7 d-flex">
                             <div class="card-body p-3 p-lg-5 text-black">
 
+                                <!--Redirect from alert_message.blade.php-->
+                                @include('alert_message')
+
                                 <!--Action in this form section-->
-                                <form action="login.php" method="post">
+                                <form action="{{ url('forget-password/post') }}" method="post">
+
+                                    {{ csrf_field() }}
 
                                     <!--Logo-->
                                     <div class="mb-4">
@@ -54,10 +59,10 @@
                                         <input type="email" name="email" class="form-control form-control-lg" />
                                     </div>
 
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control form-control-lg"/>
-                                    </div>
+<!--                                    <div class="form-outline mb-4">-->
+<!--                                        <label class="form-label">Password</label>-->
+<!--                                        <input type="password" name="password" class="form-control form-control-lg"/>-->
+<!--                                    </div>-->
 
                                     <!--Need to type:submit to submit this form to server-->
                                     <div class="pt-1 mb-3 d-grid">

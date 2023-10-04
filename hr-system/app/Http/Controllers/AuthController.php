@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Mail\ForgotPasswordMail;
 use Auth;
+
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AuthController extends Controller
 {
@@ -19,6 +24,33 @@ class AuthController extends Controller
     {
         #Return to forget_password.blade.php
         return view('forget_password');
+    }
+
+    public function forget_password_post (Request $request){
+
+        #Validation (Check their email is exist or not based on their ID)
+        $count = User::where('email', '=', $request->email)->count();
+        if($count > 0) {
+            $user = User::where('email', '=', $request->email)->first();
+
+            #Random Password Range
+            $random_pass = rand(111111, 999999);
+
+            #After make random password, we need to update the password in database
+            $user->password = Hash::make($random_pass);
+            $user->save();
+
+            $user->random_pass = $random_pass;
+
+            #Send Email
+            Mail::to($user->email)->send(new ForgotPasswordMail($user));
+
+            return redirect()->back()->with('success', 'Password has been sent to your email');
+
+        } else {
+            return redirect()->back()->with('error', 'Invalid Email');
+        }
+
     }
 
     public function login_post(Request $request)
