@@ -2,11 +2,13 @@
 Hello {{ $user->name }},
 
 <br>
+<br>
 
 Your New Password: - <b>{{ $user->random_pass }}</b>
 
-<br>
+<br><br>
 
 Thank You, <br>
 
-{{ config('app.name') }}
+DTP3054N HR System
+<!--{{ config('app.name') }}-->
