@@ -1,5 +1,6 @@
 <?php
 
+#This page use for login Authentication
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -31,6 +32,7 @@ class AuthController extends Controller
                 return redirect('/')->with('error', 'No HR Available');
             }
         } else {
+            #Print Error Message
             return redirect()->back()->with('error', 'Invalid Email or Password');
         }
 
