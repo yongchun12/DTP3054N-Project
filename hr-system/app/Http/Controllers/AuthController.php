@@ -31,7 +31,7 @@ class AuthController extends Controller
                 return redirect('/')->with('error', 'No HR Available');
             }
         } else {
-            return redirect('/')->back()->with('error', 'Invalid Email or Password');
+            return redirect()->back()->with('error', 'Invalid Email or Password');
         }
 
     }
