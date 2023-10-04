@@ -45,6 +45,7 @@
                                 <!--Action in this form section-->
                                 <form action="{{  url('login_post') }}" method="post">
 
+                                    <!--Cross Site Request Forgery (CSRF) Protection-->
                                     {{ csrf_field() }}
 
                                     <!--Logo-->
