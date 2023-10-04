@@ -20,7 +20,8 @@ class ForgotPasswordMail extends Mailable{
     public function build()
     {
         #markdown is the template of the email
-       return $this->markdown('emails.forget_password')->subject(config('app.name'). ', Forgot Password');
+        #config('app.name') is the name of the app - Laravel
+       return $this->markdown('emails.forget_password')->subject('DPT3054N HR System Forgot Password');
     }
 
 }
