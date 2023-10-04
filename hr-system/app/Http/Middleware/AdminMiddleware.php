@@ -16,6 +16,7 @@ class AdminMiddleware {
                 return $next($request);
 
             } else {
+                #If wrong user then logout
                 Auth::logout();
                 return redirect(url('/'));
             }

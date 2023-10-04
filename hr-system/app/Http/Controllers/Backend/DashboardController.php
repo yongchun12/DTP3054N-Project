@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller {
 
     public function dashboard(Request $request) {
+        #dashboard will redirect to where or what message
         echo "Login Success";
     }
 
