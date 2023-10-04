@@ -22,6 +22,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+
+            #For Role
+            $table->tinyInteger('is_role')->default(1)->comment('0: Employee, 1: HR');
             $table->timestamps();
         });
     }

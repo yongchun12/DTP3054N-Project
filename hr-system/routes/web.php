@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,18 @@ use App\Http\Controllers\AuthController;
 |
 */
 
+#Login Page
 Route::get('/', [AuthController::class, 'index']);
+
+#Forget Password Page
+Route::get('forget_password', [AuthController::class, 'forget_password']);
+
+#Login Post
+Route::post('login_post', [AuthController::class, 'login_post']);
+
+#Logout
+Route::group(['middleware' => 'admin'], function (){
+
+    Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+
+});

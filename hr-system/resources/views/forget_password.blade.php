@@ -39,45 +39,34 @@
                         <div class="col-md-6 col-lg-7 d-flex">
                             <div class="card-body p-3 p-lg-5 text-black">
 
-                                <!--Redirect from alert_message.blade.php-->
-                                @include('alert_message')
-
                                 <!--Action in this form section-->
-                                <form action="{{  url('login_post') }}" method="post">
-
-                                    {{ csrf_field() }}
+                                <form action="login.php" method="post">
 
                                     <!--Logo-->
                                     <div class="mb-4">
                                         <img src="../img/Project%20Logo.png" alt="Logo" width="100" height="100">
                                     </div>
 
-                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Forget Password</h5>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label">Email address</label>
                                         <input type="email" name="email" class="form-control form-control-lg" />
                                     </div>
 
-                                    <!--Error message (Email)-->
-                                    <span style="color: red">{{ $errors->first('email') }}</span>
-
                                     <div class="form-outline mb-4">
                                         <label class="form-label">Password</label>
                                         <input type="password" name="password" class="form-control form-control-lg"/>
                                     </div>
 
-                                    <!--Error message (Password)-->
-                                    <span style="color: red">{{ $errors->first('password') }}</span>
-
                                     <!--Need to type:submit to submit this form to server-->
                                     <div class="pt-1 mb-3 d-grid">
-                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Forgot Password</button>
                                     </div>
 
                                 </form>
 
-                                <a class="small text-muted" href={{ url('forget_password') }}>Forgot password?</a>
+                                <a class="small text-muted" href={{ url('/') }}>Back to Login?</a>
                                 </form>
 
                             </div>
