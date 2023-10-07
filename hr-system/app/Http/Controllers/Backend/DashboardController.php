@@ -8,7 +8,8 @@ class DashboardController extends Controller {
 
     public function dashboard(Request $request) {
         #dashboard will redirect to where or what message
-        echo "Login Success";
+//        echo "Login Success";
+        return view('admin.dashboard');
     }
 
 }
