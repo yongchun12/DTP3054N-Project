@@ -56,7 +56,8 @@
                      with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href=" {{ url('admin/dashboard') }} " class="nav-link active">
+                    <a href=" {{ url('admin/dashboard') }} " class="nav-link
+                    @if(Request::segment(2) == 'dashboard') active @endif">
                         <i class="nav-icon fa fa-home"></i>
                         <p>
                             Dashboard
@@ -65,7 +66,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href=" {{ url('admin/employees') }} " class="nav-link">
+                    <a href=" {{ url('admin/employees') }} " class="nav-link
+                    @if(Request::segment(2) == 'employees') active @endif">
                         <i class="nav-icon fa fa-users"></i>
                         <p>
                             Employees

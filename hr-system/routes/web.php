@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\EmployeesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use App\Http\Controllers\Backend\DashboardController;
 |
 */
 
+#Depends on what you want to show for the link
 #Login Page
 Route::get('/', [AuthController::class, 'index']);
 
@@ -32,6 +34,21 @@ Route::group(['middleware' => 'admin'], function (){
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
 
+    Route::get('admin/employees', [EmployeesController::class, 'index']);
+
+    #Create Employee
+    Route::get('admin/employees/create', [EmployeesController::class, 'create']);
+    Route::post('admin/employees/create', [EmployeesController::class, 'create_post']);
+
+    #View Employee
+    Route::get('admin/employees/view/{id}', [EmployeesController::class, 'view']);
+
+    #Edit Employee
+    Route::get('admin/employees/edit/{id}', [EmployeesController::class, 'edit']);
+    Route::post('admin/employees/edit/{id}', [EmployeesController::class, 'edit_update']);
+
+    #Delete Employee
+    Route::get('admin/employees/delete/{id}', [EmployeesController::class, 'delete']);
 });
 
 #Logout
