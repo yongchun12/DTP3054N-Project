@@ -27,9 +27,12 @@ Route::get('forget_password', [AuthController::class, 'forget_password']);
 #FOrget Password Post
 Route::post('forget-password/post', [AuthController::class, 'forget_password_post']);
 
-#Logout
+#Login
 Route::group(['middleware' => 'admin'], function (){
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
 
 });
+
+#Logout
+Route::get('logout', [AuthController::class, 'logout']);
