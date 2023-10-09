@@ -14,7 +14,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item">Employees</li>
+                            <li class="breadcrumb-item"><a href="{{ url('admin/employees') }}">Employees</a></li>
                             <!--Edit Breadcrumb Name-->
                             <li class="breadcrumb-item active"><a href="#">Create Employees</a></li>
                         </ol>

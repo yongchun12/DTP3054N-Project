@@ -14,7 +14,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item">Employees</li>
+                            <li class="breadcrumb-item"><a href="{{ url('admin/employees') }}">Employees</a></li>
                             <!--Edit Breadcrumb Name-->
                             <li class="breadcrumb-item active"><a href="#">View</a></li>
                         </ol>
@@ -41,7 +41,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">ID</label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 col-form-label">
                                             {{ $getRecord->id }}
                                         </div>
                                     </div>
@@ -50,7 +50,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">First Name</label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 col-form-label">
                                             {{ $getRecord->name }}
                                         </div>
 
@@ -60,7 +60,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Last Name</label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 col-form-label">
                                             {{ $getRecord->last_name }}
                                         </div>
 
@@ -70,7 +70,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Email</label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 col-form-label">
                                             {{ $getRecord->email }}
                                         </div>
 
@@ -80,7 +80,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Phone Number</label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 col-form-label">
                                             {{ $getRecord->phone_number }}
                                         </div>
 
@@ -90,28 +90,34 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Hire Date</label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 col-form-label">
                                             <!--Change Date Format-->
                                             {{ date('d-F-Y', strtotime($getRecord->hire_date)) }}
                                         </div>
 
                                     </div>
 
-{{--                                    <!--Position-->--}}
-{{--                                    <div class="form-group row">--}}
-{{--                                        <label class="col-sm-2 col-form-label">Position</label>--}}
+                                    <!--Position-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Position</label>
 
-{{--                                        <div class="col-sm-10">--}}
+                                        <div class="col-sm-10 col-form-label">
 {{--                                            {{ $getRecord->job_id }}--}}
-{{--                                        </div>--}}
+                                            <!--If job id = 1 then will show what-->
+                                            @if($getRecord->job_id == 1)
+                                                Web Developer
+                                            @elseif($getRecord->job_id == 2)
+                                                Accountant
+                                            @endif
+                                        </div>
 
-{{--                                    </div>--}}
+                                    </div>
 
                                     <!--Salary-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Salary</label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 col-form-label">
                                             {{ $getRecord->salary }}
                                         </div>
 
@@ -121,37 +127,46 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Commission</label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 col-form-label">
                                             {{ $getRecord->commission }}
                                         </div>
 
                                     </div>
 
-{{--                                    <!--Manager ID-->--}}
-{{--                                    <div class="form-group row">--}}
-{{--                                        <label class="col-sm-2 col-form-label">Manager Name</label>--}}
+                                    <!--Manager ID-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Manager Name</label>
 
-{{--                                        <div class="col-sm-10">--}}
-{{--                                            {{ $getRecord->manager_id }}--}}
-{{--                                        </div>--}}
+                                        <div class="col-sm-10 col-form-label">
+                                            @if($getRecord->manager_id == 1)
+                                                Yong Chun
+                                            @elseif($getRecord->manager_id == 2)
+                                                Chee Yi
+                                            @endif
+                                        </div>
 
-{{--                                    </div>--}}
+                                    </div>
 
-{{--                                    <!--Department ID-->--}}
-{{--                                    <div class="form-group row">--}}
-{{--                                        <label class="col-sm-2 col-form-label">Department</label>--}}
+                                    <!--Department ID-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Department</label>
 
-{{--                                        <div class="col-sm-10">--}}
+                                        <div class="col-sm-10 col-form-label">
 {{--                                            {{ $getRecord->department_id }}--}}
-{{--                                        </div>--}}
+                                            @if($getRecord->department_id == 1)
+                                                Project Department
+                                            @elseif($getRecord->department_id == 2)
+                                                Finance Department
+                                            @endif
+                                        </div>
 
-{{--                                    </div>--}}
+                                    </div>
 
                                     <!--Role Access-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Role</label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 col-form-label">
                                             {{ !empty($getRecord->is_role) ? 'HR' : 'Employee'}}
                                         </div>
 
@@ -161,8 +176,8 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Created Date</label>
 
-                                        <div class="col-sm-10">
-                                            {{ date('d-F-Y H:i A', strtotime($getRecord->created_at)) }}
+                                        <div class="col-sm-10 col-form-label">
+                                            {{ date('d-F-Y h:i A', strtotime($getRecord->created_at)) }}
                                         </div>
 
                                     </div>
@@ -171,8 +186,8 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Last Updated</label>
 
-                                        <div class="col-sm-10">
-                                            {{ date('d-F-Y H:i A', strtotime($getRecord->updated_at)) }}
+                                        <div class="col-sm-10 col-form-label">
+                                            {{ date('d-F-Y h:i A', strtotime($getRecord->updated_at)) }}
                                         </div>
 
                                     </div>
