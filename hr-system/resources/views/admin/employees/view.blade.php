@@ -76,6 +76,18 @@
 
                                     </div>
 
+{{--                                    <!--Password-->--}}
+{{--                                    <div class="form-group row">--}}
+{{--                                        <label class="col-sm-2 col-form-label">Password</label>--}}
+
+{{--                                        <div class="col-sm-10 col-form-label">--}}
+{{--                                            {{ $getRecord->password }}--}}
+{{--                                            <!--How to change from Hash Key to Plain Text-->--}}
+{{--                                            {{ Crypt::decryptString($getRecord->password) }}--}}
+{{--                                        </div>--}}
+
+{{--                                    </div>--}}
+
                                     <!--Phone Number-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Phone Number</label>
