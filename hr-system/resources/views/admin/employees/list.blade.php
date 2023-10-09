@@ -64,11 +64,11 @@
                                         </div>
 
                                         <!--Search Button-->
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-2">
                                             <button class="btn btn-primary" type="submit" style="margin-top: 30px">
                                                 Search
                                             </button>
-                                            <a href="{{ url('admin/employees') }}" class="btn btn-success" style="margin-top: 30px">
+                                            <a href="{{ url('admin/employees') }}" class="btn btn-secondary" style="margin-top: 30px">
                                                 Reset
                                             </a>
                                         </div>
@@ -116,8 +116,8 @@
 
                                             <td>
                                                 <!--The Dot is for the link to check which id-->
-                                                <a href="{{ url('admin/employees/view/' .$value->id) }}" class="btn btn-info">View</a>
-                                                <a href="{{ url('admin/employees/edit/' .$value->id) }}" class="btn btn-primary">Edit</a>
+                                                <a href="{{ url('admin/employees/view/' .$value->id) }}" class="btn btn-primary">View</a>
+                                                <a href="{{ url('admin/employees/edit/' .$value->id) }}" class="btn btn-secondary">Edit</a>
                                                 <a href="{{ url('admin/employees/delete/' .$value->id) }}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>

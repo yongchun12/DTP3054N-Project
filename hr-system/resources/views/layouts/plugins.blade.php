@@ -30,7 +30,8 @@
     <link rel="stylesheet" href="{{ asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ asset('backend/plugins/daterangepicker/daterangepicker.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('backend/plugins/daterangepicker/daterangepicker.css') }}">--}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">
@@ -55,7 +56,11 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
+{{--<script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>--}}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+<!--Moment.js-->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 
 <!-- jQuery UI 1.11.4 -->
 <script src="{{ asset('backend/plugins/jquery-ui/jquery-ui.min.js') }}'"></script>
@@ -82,8 +87,9 @@
 <script src="{{ asset('backend/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
 
 <!-- daterangepicker -->
-<script src="{{ asset('backend/plugins/moment/moment.min.js') }}"></script>
-<script src="{{ asset('backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
+{{--<script src="{{ asset('backend/plugins/moment/moment.min.js') }}"></script>--}}
+{{--<script src="{{ asset('backend/plugins/daterangepicker/daterangepicker.js') }}"></script>--}}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>

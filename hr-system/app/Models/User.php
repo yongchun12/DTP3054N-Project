@@ -79,6 +79,7 @@ class User extends Authenticatable
 
             $return = $return
                 ->orderBy('id', 'desc')
+                //show one page list how many data can show
                 ->paginate(10);
 
         return $return;
