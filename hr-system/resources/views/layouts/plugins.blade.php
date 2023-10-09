@@ -15,7 +15,10 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">--}}
+
+    <!--Bootstrap CDN Link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
@@ -31,6 +34,8 @@
 
     <!-- Daterange picker -->
 {{--    <link rel="stylesheet" href="{{ asset('backend/plugins/daterangepicker/daterangepicker.css') }}">--}}
+
+    <!-- Daterange picker CDN Link -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <!-- summernote -->
@@ -57,10 +62,12 @@
 
 <!-- jQuery -->
 {{--<script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>--}}
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 
-<!--Moment.js-->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<!--jQuery CDN Link-->
+<script type="text/javascript" src="{{ asset('https://cdn.jsdelivr.net/jquery/latest/jquery.min.js') }}"></script>
+
+<!--Moment.js CDN Link-->
+<script type="text/javascript" src="{{ asset('https://cdn.jsdelivr.net/momentjs/latest/moment.min.js') }}"></script>
 
 <!-- jQuery UI 1.11.4 -->
 <script src="{{ asset('backend/plugins/jquery-ui/jquery-ui.min.js') }}'"></script>
@@ -88,11 +95,16 @@
 
 <!-- daterangepicker -->
 {{--<script src="{{ asset('backend/plugins/moment/moment.min.js') }}"></script>--}}
-{{--<script src="{{ asset('backend/plugins/daterangepicker/daterangepicker.js') }}"></script>--}}
+{{--<script src="{{ asset('backend/plugins/daterangepicker/daterangepicker.js') }}"></script>--}}\
+
+<!--Daterangepicker CDN Link-->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="{{ asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+{{--<script src="{{ asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>--}}
+
+<!--BootStrap CDN Link Javascript-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 <!-- Summernote -->
 <script src="{{ asset('backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
