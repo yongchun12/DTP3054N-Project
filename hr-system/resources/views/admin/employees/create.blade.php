@@ -107,7 +107,7 @@
                                     <div class="col-sm-10">
                                         <input type="number" value="{{ old('phone_number') }}" name="phone_number" class="form-control" placeholder="Enter Phone Number">
                                         <span style="color: red">
-                                            <!--Validation that if got same email-->
+                                            <!--Validation that if got same phone number-->
                                             {{ $errors->first('phone_number') }}
                                         </span>
                                     </div>
@@ -223,6 +223,7 @@
 
                             </div>
                         </form>
+
                         </div>
                     </div>
                 </div>

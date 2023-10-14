@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployeesController;
+use App\Http\Controllers\Backend\PayrollController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,10 @@ use App\Http\Controllers\Backend\EmployeesController;
 */
 
 #Depends on what you want to show for the link
+#get is used to show the page and also get the input, post is used to submit the form to database to verification
+
 #Login Page
 Route::get('/', [AuthController::class, 'index']);
-
-#Login Post
 Route::post('login_post', [AuthController::class, 'login_post']);
 
 #Forget Password Page
@@ -34,6 +35,7 @@ Route::group(['middleware' => 'admin'], function (){
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
 
+    #Employees List
     Route::get('admin/employees', [EmployeesController::class, 'index']);
 
     #Create Employee
@@ -49,6 +51,17 @@ Route::group(['middleware' => 'admin'], function (){
 
     #Delete Employee
     Route::get('admin/employees/delete/{id}', [EmployeesController::class, 'delete']);
+
+    #Payroll List
+    Route::get('admin/payroll', [PayrollController::class, 'index']);
+
+    #Create Payroll Record
+    Route::get('admin/payroll/create', [PayrollController::class, 'create']);
+    Route::post('admin/payroll/create', [PayrollController::class, 'create_post']);
+
+    #View Payroll Record
+    Route::get('admin/payroll/view/{id}', [PayrollController::class, 'view']);
+
 });
 
 #Logout

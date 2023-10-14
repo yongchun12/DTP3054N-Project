@@ -10,11 +10,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">View Employees</h1>
+                        <h1 class="m-0">View Record</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('admin/employees') }}">Employees</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('admin/payroll') }}"> Payroll Record </a></li>
                             <!--Edit Breadcrumb Name-->
                             <li class="breadcrumb-item active"><a href="#">View</a></li>
                         </ol>
@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                         <div class="card card-info">
                             <div class="card-header">
-                                <h3 class="card-title">View Employees</h3>
+                                <h3 class="card-title">View Record</h3>
                             </div>
 
                             <form class="form-horizontal" method="post" enctype="multipart/form-data">
@@ -39,149 +39,145 @@
 
                                     <!--ID-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">ID</label>
+                                        <label class="col-sm-2 col-form-label">ID
+                                            <span style="color: red">*</span>
+                                        </label>
 
                                         <div class="col-sm-10 col-form-label">
                                             {{ $getRecord->id }}
                                         </div>
                                     </div>
 
-                                    <!--First Name-->
+                                    <!--Employee Name-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">First Name</label>
+                                        <label class="col-sm-2 col-form-label">Employee Name
+                                            <span style="color: red">*</span>
+                                        </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->name }}
+                                            {{ !empty($getRecord->get_employee_name->name) ? $getRecord->get_employee_name->name : '' }}
                                         </div>
-
                                     </div>
 
-                                    <!--Last Name-->
+                                    <!--Number of Day Work-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Last Name</label>
+                                        <label class="col-sm-2 col-form-label">Number of Day Work
+                                            <span style="color: red">*</span>
+                                        </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->last_name }}
+                                            {{ $getRecord->number_of_day_work }}
                                         </div>
-
                                     </div>
 
-                                    <!--Email-->
+                                    <!--Bonus-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Email</label>
+                                        <label class="col-sm-2 col-form-label">Bonus
+                                            <span style="color: red">*</span>
+                                        </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->email }}
+                                            {{ $getRecord->bonus }}
                                         </div>
-
                                     </div>
 
-{{--                                    <!--Password-->--}}
-{{--                                    <div class="form-group row">--}}
-{{--                                        <label class="col-sm-2 col-form-label">Password</label>--}}
-
-{{--                                        <div class="col-sm-10 col-form-label">--}}
-{{--                                            {{ $getRecord->password }}--}}
-{{--                                            <!--How to change from Hash Key to Plain Text-->--}}
-{{--                                            {{ Crypt::decryptString($getRecord->password) }}--}}
-{{--                                        </div>--}}
-
-{{--                                    </div>--}}
-
-                                    <!--Phone Number-->
+                                    <!--Overtime-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Phone Number</label>
+                                        <label class="col-sm-2 col-form-label">Overtime
+                                            <span style="color: red">*</span>
+                                        </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->phone_number }}
+                                            {{ $getRecord->overtime }}
                                         </div>
-
                                     </div>
 
-                                    <!--Hire Date-->
+                                    <!--Gross Salary-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Hire Date</label>
+                                        <label class="col-sm-2 col-form-label">Gross Salary
+                                            <span style="color: red">*</span>
+                                        </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            <!--Change Date Format-->
-                                            {{ date('d-F-Y', strtotime($getRecord->hire_date)) }}
+                                            {{ $getRecord->gross_salary }}
                                         </div>
-
                                     </div>
 
-                                    <!--Position-->
+                                    <!--Cash Advance-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Position</label>
+                                        <label class="col-sm-2 col-form-label">Cash Advance
+                                            <span style="color: red">*</span>
+                                        </label>
 
                                         <div class="col-sm-10 col-form-label">
-{{--                                            {{ $getRecord->job_id }}--}}
-                                            <!--If job id = 1 then will show what-->
-                                            @if($getRecord->job_id == 1)
-                                                Web Developer
-                                            @elseif($getRecord->job_id == 2)
-                                                Accountant
-                                            @endif
+                                            {{ $getRecord->cash_advance }}
                                         </div>
-
                                     </div>
 
-                                    <!--Salary-->
+                                    <!--Late Hours-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Salary</label>
+                                        <label class="col-sm-2 col-form-label">Late Hours
+                                            <span style="color: red">*</span>
+                                        </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->salary }}
+                                            {{ $getRecord->late_hours }}
                                         </div>
-
                                     </div>
 
-                                    <!--Commission-->
+                                    <!--Absent Days-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Commission</label>
+                                        <label class="col-sm-2 col-form-label">Absent Days
+                                            <span style="color: red">*</span>
+                                        </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->commission }}
+                                            {{ $getRecord->absent_days }}
                                         </div>
-
                                     </div>
 
-                                    <!--Manager ID-->
+                                    <!--Medical Allowance-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Manager Name</label>
+                                        <label class="col-sm-2 col-form-label">Medical Allowance
+                                            <span style="color: red">*</span>
+                                        </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            @if($getRecord->manager_id == 1)
-                                                Yong Chun
-                                            @elseif($getRecord->manager_id == 2)
-                                                Chee Yi
-                                            @endif
+                                            {{ $getRecord->philhealth }}
                                         </div>
-
                                     </div>
 
-                                    <!--Department ID-->
+                                    <!--Total Deduction-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Department</label>
+                                        <label class="col-sm-2 col-form-label">Total Deduction
+                                            <span style="color: red">*</span>
+                                        </label>
 
                                         <div class="col-sm-10 col-form-label">
-{{--                                            {{ $getRecord->department_id }}--}}
-                                            @if($getRecord->department_id == 1)
-                                                Project Department
-                                            @elseif($getRecord->department_id == 2)
-                                                Finance Department
-                                            @endif
+                                            {{ $getRecord->total_deductions }}
                                         </div>
-
                                     </div>
 
-                                    <!--Role Access-->
+                                    <!--Net Pay-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Role</label>
+                                        <label class="col-sm-2 col-form-label">Net Pay
+                                            <span style="color: red">*</span>
+                                        </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ !empty($getRecord->is_role) ? 'HR' : 'Employee'}}
+                                            {{ $getRecord->netpay }}
                                         </div>
+                                    </div>
 
+                                    <!--Payroll Monthly-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Monthly Allowance
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            {{ $getRecord->payroll_monthly }}
+                                        </div>
                                     </div>
 
                                     <!--Created Date-->
@@ -208,15 +204,15 @@
 
                                 <!--Card Footer-->
                                 <div class="card-footer">
-                                    <a href=" {{ url('admin/employees') }} " class="btn btn-default">Back</a>
+                                    <a href=" {{ url('admin/payroll') }} " class="btn btn-default">Back</a>
                                 </div>
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-    </div>
-    </section>
+        </section>
 
 
         <!-- /.content -->

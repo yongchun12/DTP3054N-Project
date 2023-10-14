@@ -52,13 +52,14 @@ class User extends Authenticatable
 //
 //        return $return;
 
+        #Search Function
         $return = self::select('users.*');
 
             //search box start
                 if(!empty(Request::get('id')))
                 {
                     //Like SQL Command where id = the id in search input
-                    $return = $return->where('id', '=', Request::get('id'));
+                    $return = $return->where('id', ',=', Request::get('id'));
                 }
 
                 if(!empty(Request::get('name')))
