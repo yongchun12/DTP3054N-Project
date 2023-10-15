@@ -105,6 +105,11 @@ class PayrollController extends Controller
         return redirect()->back()->with('error', 'Payroll Record has been deleted successfully!');
     }
 
+    public function salary_pdf()
+    {
+        return view('admin.payroll.salaryview');
+    }
+
 }
 
 ?>

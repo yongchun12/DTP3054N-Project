@@ -76,6 +76,9 @@ Route::group(['middleware' => 'admin'], function (){
     #Excel Export
     Route::get('admin/payroll_export', [PayrollController::class, 'payroll_export']);
 
+    #PDF Export
+    Route::get('admin/payroll/pdf/{id}', [PayrollController::class, 'salary_pdf']);
+
 });
 
 Route::group(['middleware' => 'employee'], function (){
