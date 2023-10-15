@@ -35,6 +35,7 @@ Route::group(['middleware' => 'admin'], function (){
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
 
+    #Employees Page
     #Employees List
     Route::get('admin/employees', [EmployeesController::class, 'index']);
 
@@ -52,6 +53,9 @@ Route::group(['middleware' => 'admin'], function (){
     #Delete Employee
     Route::get('admin/employees/delete/{id}', [EmployeesController::class, 'delete']);
 
+    //-------------------
+
+    #Payroll Page
     #Payroll List
     Route::get('admin/payroll', [PayrollController::class, 'index']);
 
@@ -62,6 +66,20 @@ Route::group(['middleware' => 'admin'], function (){
     #View Payroll Record
     Route::get('admin/payroll/view/{id}', [PayrollController::class, 'view']);
 
+    #Edit Payroll Record
+    Route::get('admin/payroll/edit/{id}', [PayrollController::class, 'edit']);
+    Route::post('admin/payroll/edit/{id}', [PayrollController::class, 'edit_update']);
+
+    #Delete Payroll Record
+    Route::get('admin/payroll/delete/{id}', [PayrollController::class, 'delete']);
+
+    #Excel Export
+    Route::get('admin/payroll_export', [PayrollController::class, 'payroll_export']);
+
+});
+
+Route::group(['middleware' => 'employee'], function (){
+    Route::get('employee/dashboard', [DashboardController::class, 'dashboard']);
 });
 
 #Logout

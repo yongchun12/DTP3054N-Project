@@ -57,6 +57,9 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
 
+                <!--Admin Dashboard-->
+                @if(Auth::user()->is_role == '1')
+
                 <li class="nav-item">
                     <a href=" {{ url('admin/dashboard') }} " class="nav-link
                     @if(Request::segment(2) == 'dashboard') active @endif">
@@ -124,6 +127,23 @@
 {{--                    </a>--}}
 {{--                </li>--}}
 
+                @endif
+
+                <!--Employee Dashboard-->
+                @if(Auth::user()->is_role == '0')
+
+                    <li class="nav-item">
+                        <a href=" {{ url('employee/dashboard') }} " class="nav-link
+                    @if(Request::segment(2) == 'dashboard') active @endif">
+                            <i class="nav-icon fa fa-home"></i>
+                            <!--Segment means the link director if (1) it will active by /admin link if (2) will detect dashboard-->
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+
+                @endif
 
             </ul>
         </nav>

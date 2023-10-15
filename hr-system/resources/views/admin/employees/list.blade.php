@@ -65,7 +65,7 @@
 
                                         <!--Search Button-->
                                         <div class="form-group col-md-2">
-                                            <button class="btn btn-primary" type="submit" style="margin-top: 30px">
+                                            <button class="btn btn-primary" type="submit" style="margin-top: 32px">
                                                 Search
                                             </button>
                                             <a href="{{ url('admin/employees') }}" class="btn btn-secondary" style="margin-top: 30px">

@@ -58,9 +58,13 @@ class AuthController extends Controller
         #Validation
         if(Auth::attempt(['email' => $request -> email, 'password' => $request -> password], true)) {
 
+            #Check the user is HR or not
+            // 1 = HR, 0 = Employee
             if(Auth::User()->is_role == '1'){
                 return redirect()->intended('admin/dashboard');
-            }else{
+            }else if (Auth::User()->is_role == '0'){
+                return redirect()->intended('employee/dashboard');
+            } else {
                 return redirect('/')->with('error', 'No HR Available');
             }
         } else {

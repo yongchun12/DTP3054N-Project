@@ -55,6 +55,7 @@
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
+                                            <!--If getRecord from the id is found then print the name if not then leave it out -->
                                             {{ !empty($getRecord->get_employee_name->name) ? $getRecord->get_employee_name->name : '' }}
                                         </div>
                                     </div>
