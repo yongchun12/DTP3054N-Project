@@ -75,8 +75,9 @@
                                         <span style="color: red">*</span>
                                     </label>
 
-                                    <div class="col-sm-10">
-                                        <input type="email" value="{{ old('email') }}" name="email" class="form-control" placeholder="Enter Email" required>
+                                    <div class="col-sm-10 input-group">
+                                        <input type="text" value="{{ old('email') }}" name="email" class="form-control" aria-describedby="domain" placeholder="Enter Username" required>
+                                        <span class="input-group-text" id="domain" >@hr-system.com</span>
                                         <span style="color: red">
                                             <!--Validation that if got same email-->
                                             {{ $errors->first('email') }}
@@ -233,5 +234,9 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    <script>
+
+    </script>
 
 @endsection

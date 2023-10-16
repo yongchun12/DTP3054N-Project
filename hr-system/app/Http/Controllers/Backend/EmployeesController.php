@@ -45,7 +45,7 @@ class EmployeesController extends Controller
         $user = new User;
         $user->name = trim($request->name);
         $user->last_name = trim($request->last_name);
-        $user->email = trim($request->email);
+        $user->email = trim($request->email.'@hr-system.com');
 
         #Hash the password from normal key to encrypted key
         $user->password = bcrypt(trim($request->password));

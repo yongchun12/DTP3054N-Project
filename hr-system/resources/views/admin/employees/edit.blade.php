@@ -85,7 +85,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="email" value="{{ $getRecord->email }}" name="email" class="form-control" placeholder="Enter Email" required>
+                                            <input type="email" value="{{ $getRecord->email }}" name="email" class="form-control" placeholder="Enter Email" pattern="^[a-zA-Z0-9]+@hr-system\.[a-zA-z]+$" required >
                                             <span style="color: red">
                                             <!--Validation that if got same email-->
                                             {{ $errors->first('email') }}
