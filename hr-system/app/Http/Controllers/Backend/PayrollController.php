@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\PayrollModel;
 use App\Models\User;
 
-use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PayrollExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PayrollController extends Controller
 {
@@ -105,9 +105,11 @@ class PayrollController extends Controller
         return redirect()->back()->with('error', 'Payroll Record has been deleted successfully!');
     }
 
-    public function salary_pdf()
+    public function salary_pdf($id, Request $request)
     {
-        return view('admin.payroll.salaryview');
+        $data['getEmployee'] = User::where('is_role', '=', 0)->get();
+        $data['getRecord'] = PayrollModel::find($id);
+        return view('admin.payroll.salaryview', $data);
     }
 
 }

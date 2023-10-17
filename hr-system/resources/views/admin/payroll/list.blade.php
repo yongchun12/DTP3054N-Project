@@ -128,6 +128,8 @@
 
                                                     <a href="{{ url('admin/payroll/delete/'.$value->id) }}" onclick="return confirm('Are you sure want to delete?')"
                                                        class="btn btn-danger">Delete</a>
+
+                                                    <a href="{{ url('admin/payroll/pdf/'.$value->id) }}" class="btn btn-primary">Export PDF</a>
                                                 </td>
                                             </tr>
                                         @endforeach

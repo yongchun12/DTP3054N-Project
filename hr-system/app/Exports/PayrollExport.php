@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Exports;
+
+use Request;
+use App\Models\PayrollModel;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use MaatWebsite\Excel\Concerns\ShouldAutoSize;
 use MaatWebsite\Excel\Concerns\WithMapping;
 use MaatWebsite\Excel\Concerns\WithHeadings;
-use Request;
-use App\Models\PayrollModel;
 
-class PayrollExport implements FromCollection, ShouldAutoSize, WithMapping, WithHeadings
-{
+class PayrollExport implements FromCollection, ShouldAutoSize, WithMapping, WithHeadings{
+
     public function collection()
     {
         $request = Request::all();

@@ -180,17 +180,23 @@
     <div class="row">
         <div class="col-md-12">
             <div class="text-center lh-1 mb-2">
-                <h6 class="fw-bold">Payslip</h6> <span class="fw-normal">Payment slip for the month of June 2021</span>
+                <h6 class="fw-bold">Payslip</h6> <span class="fw-normal">Payment slip for the month of {{ \Carbon\Carbon::now()->format('M') }} {{ \Carbon\Carbon::now()->format('Y') }}</span>
             </div>
-            <div class="d-flex justify-content-end"> <span>Working Branch:ROHINI</span> </div>
+
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-6">
-                            <div> <span class="fw-bolder">EMP Code</span> <small class="ms-3">39124</small> </div>
+                            <div> <span class="fw-bolder">Employee Code: {{ $getRecord->employee_id }}</span></div>
                         </div>
                         <div class="col-md-6">
-                            <div> <span class="fw-bolder">EMP Name</span> <small class="ms-3">Ashok</small> </div>
+                            <div> <span class="fw-bolder">Employee Name: </span> <small class="ms-3">
+                                    <!--Need to use foreach to check the value-->
+                                    @foreach($getEmployee as $value_employee)
+                                        {{ ($value_employee->id == $getRecord->employee_id) ? ($value_employee->name) : '' }}
+                                    @endforeach
+                                </small>
+                            </div>
                         </div>
                     </div>
                     <div class="row">

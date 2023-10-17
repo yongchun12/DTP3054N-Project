@@ -26,11 +26,9 @@ Route::post('login_post', [AuthController::class, 'login_post']);
 
 #Forget Password Page
 Route::get('forget_password', [AuthController::class, 'forget_password']);
-
-#FOrget Password Post
 Route::post('forget-password/post', [AuthController::class, 'forget_password_post']);
 
-#Login
+#For Admin Site
 Route::group(['middleware' => 'admin'], function (){
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
@@ -81,6 +79,7 @@ Route::group(['middleware' => 'admin'], function (){
 
 });
 
+#Employee Page
 Route::group(['middleware' => 'employee'], function (){
     Route::get('employee/dashboard', [DashboardController::class, 'dashboard']);
 });
