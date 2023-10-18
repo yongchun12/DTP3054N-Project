@@ -60,7 +60,7 @@ class User extends Authenticatable
                 if(!empty(Request::get('id')))
                 {
                     //Like SQL Command where id = the id in search input
-                    $return = $return->where('staff_id', 'like', '%' .Request::get('id'). '%');
+                    $return = $return->where('staff_id', 'like', '%' .Request::get('staff_id'). '%');
                 }
 
                 if(!empty(Request::get('name')))

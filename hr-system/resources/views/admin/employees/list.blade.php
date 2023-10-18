@@ -42,7 +42,7 @@
                                         <!--ID-->
                                         <div class="form-group col-md-1">
                                             <label>Staff ID</label>
-                                            <input type="text" value="{{ Request()->staff_id }}" name="id" class="form-control" placeholder="Staff ID">
+                                            <input type="text" value="{{ Request()->staff_id }}" name="staff_id" class="form-control" placeholder="Staff ID">
                                         </div>
 
                                         <!--First Name-->
