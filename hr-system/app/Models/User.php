@@ -57,7 +57,7 @@ class User extends Authenticatable
         $return = self::select('users.*');
 
             //search box start
-                if(!empty(Request::get('id')))
+                if(!empty(Request::get('staff_id')))
                 {
                     //Like SQL Command where id = the id in search input
                     $return = $return->where('staff_id', 'like', '%' .Request::get('staff_id'). '%');

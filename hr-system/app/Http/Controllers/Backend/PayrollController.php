@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PayrollModel;
 use App\Models\User;
+use Auth;
 
+use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PayrollController extends Controller
@@ -41,16 +43,14 @@ class PayrollController extends Controller
         $user = new PayrollModel;
 
         $user->employee_id          = trim($request->employee_id);
+        $user->gross_salary         = trim($request->gross_salary);
         $user->number_of_day_work   = trim($request->number_of_day_work);
         $user->bonus                = trim($request->bonus);
-        $user->overtime             = trim($request->overtime);
-        $user->gross_salary         = trim($request->gross_salary);
-        $user->cash_advance         = trim($request->cash_advance);
-        $user->late_hours           = trim($request->late_hours);
+        $user->overtime_hours       = trim($request->overtime_hours);
         $user->absent_days          = trim($request->absent_days);
-        $user->philhealth           = trim($request->philhealth);
+        $user->medical_allowance    = trim($request->medical_allowance);
+        $user->other_allowance      = trim($request->other_allowance);
         $user->total_deductions     = trim($request->total_deductions);
-        $user->netpay               = trim($request->netpay);
         $user->payroll_monthly      = trim($request->payroll_monthly);
 
         $user->save();
@@ -86,16 +86,14 @@ class PayrollController extends Controller
         $user = PayrollModel::find($id);
 
         $user->employee_id          = trim($request->employee_id);
+        $user->gross_salary         = trim($request->gross_salary);
         $user->number_of_day_work   = trim($request->number_of_day_work);
         $user->bonus                = trim($request->bonus);
-        $user->overtime             = trim($request->overtime);
-        $user->gross_salary         = trim($request->gross_salary);
-        $user->cash_advance         = trim($request->cash_advance);
-        $user->late_hours           = trim($request->late_hours);
+        $user->overtime_hours       = trim($request->overtime_hours);
         $user->absent_days          = trim($request->absent_days);
-        $user->philhealth           = trim($request->philhealth);
+        $user->medical_allowance    = trim($request->medical_allowance);
+        $user->other_allowance      = trim($request->other_allowance);
         $user->total_deductions     = trim($request->total_deductions);
-        $user->netpay               = trim($request->netpay);
         $user->payroll_monthly      = trim($request->payroll_monthly);
 
         $user->save();
@@ -117,4 +115,28 @@ class PayrollController extends Controller
         return view('admin.payroll.salaryview', $data);
     }
 
+    public function index_employeeSite(Request $request)
+    {
+        $data['getRecord'] = PayrollModel::getRecord();
+
+        #Auth::user()->id is check for the current section of the user
+        $payrolls = PayrollModel::where('employee_id', '=', Auth::user()->id)
+            ->select('payroll.*')
+            ->get();
+
+        return view('employee.payroll.list', $data, compact('payrolls'));
+    }
+
+    public function view_employeeSite($id){
+        #get the record by id
+        $data['getRecord'] = PayrollModel::find($id);
+        return view('employee.payroll.view', $data);
+    }
+
+    public function salary_pdf_EmployeeSite($id, Request $request)
+    {
+        $data['getEmployee'] = User::where('is_role', '=', 0)->get();
+        $data['getRecord'] = PayrollModel::find($id);
+        return view('admin.payroll.salaryview', $data);
+    }
 }

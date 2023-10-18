@@ -155,7 +155,17 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href=" {{ url('admin/leave') }} " class="nav-link"
+                        <a href=" {{ url('employee/payroll') }} " class="nav-link
+                    @if(Request::segment(2) == 'payroll') active @endif">
+                            <i class="nav-icon fa fa-money-bill"></i>
+                            <p>
+                                Payroll
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href=" {{ url('employee/leave') }} " class="nav-link"
                            @if(Request::segment(2) == 'payroll') active @endif">
                         <i class="nav-icon fa fa-calendar-alt"></i>
                         <p>

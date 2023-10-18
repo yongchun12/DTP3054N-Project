@@ -61,6 +61,21 @@
 
                                     </div>
 
+                                    <!--Gross Salary-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Gross Salary
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" value="{{ old('gross_salary') }}" name="gross_salary"
+                                                   class="form-control" required placeholder="Enter Gross Salary" id="gross_salary">
+                                        </div>
+
+                                    </div>
+
                                     <!--Number of Day Work-->
                                     <div class="form-group row">
 
@@ -71,7 +86,7 @@
 
                                         <div class="col-sm-10">
                                                 <input type="number" value="{{ old('number_of_day_work') }}" name="number_of_day_work"
-                                                       class="form-control" required placeholder="Enter Number of Day Work">
+                                                       class="form-control" required placeholder="Enter Number of Day Work" id="num_work">
                                         </div>
 
                                     </div>
@@ -86,67 +101,22 @@
 
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ old('bonus') }}" name="bonus"
-                                                   class="form-control" required placeholder="Enter Bonus">
+                                                   class="form-control" required placeholder="Enter Bonus" id="bonus">
                                         </div>
 
                                     </div>
 
-                                    <!--Overtime-->
+                                    <!--Overtime Hours-->
                                     <div class="form-group row">
 
-                                        <label class="col-sm-2 col-form-label">Overtime
+                                        <label class="col-sm-2 col-form-label">Overtime Hours
                                             <!--Required-->
                                             <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('overtime') }}" name="overtime"
-                                                   class="form-control" required placeholder="Enter Overtime">
-                                        </div>
-
-                                    </div>
-
-                                    <!--Gross Salary-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Gross Salary
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="number" value="{{ old('gross_salary') }}" name="gross_salary"
-                                                   class="form-control" required placeholder="Enter Gross Salary">
-                                        </div>
-
-                                    </div>
-
-                                    <!--Cash Advance-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Cash Advance
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="number" value="{{ old('cash_advance') }}" name="cash_advance"
-                                                   class="form-control" required placeholder="Enter Cash Advance">
-                                        </div>
-
-                                    </div>
-
-                                    <!--Late Hours-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Late Hours
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="number" value="{{ old('late_hours') }}" name="late_hours"
-                                                   class="form-control" required placeholder="Enter Late Hours">
+                                            <input type="number" value="{{ old('overtime_hours') }}" name="overtime_hours"
+                                                   class="form-control" required placeholder="Enter Overtime" id="overtime">
                                         </div>
 
                                     </div>
@@ -161,25 +131,10 @@
 
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ old('absent_days') }}" name="absent_days"
-                                                   class="form-control" required placeholder="Enter Absent Days">
+                                                   class="form-control" required placeholder="Enter Late Hours" id="absent_days">
                                         </div>
 
                                     </div>
-
-{{--                                    <!--SSS Contribution-->--}}
-{{--                                    <div class="form-group row">--}}
-
-{{--                                        <label class="col-sm-2 col-form-label">SSS contribution--}}
-{{--                                            <!--Required-->--}}
-{{--                                            <span style="color: red">*</span>--}}
-{{--                                        </label>--}}
-
-{{--                                        <div class="col-sm-10">--}}
-{{--                                            <input type="text" value="{{ old('sss_contribution') }}" name="sss_contribution"--}}
-{{--                                                   class="form-control" required placeholder="Enter SSS Contribution">--}}
-{{--                                        </div>--}}
-
-{{--                                    </div>--}}
 
                                     <!--Health Medicare Allowance-->
                                     <div class="form-group row">
@@ -190,8 +145,23 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ old('philhealth') }}" name="philhealth"
-                                                   class="form-control" required placeholder="Enter Medicare Allowance">
+                                            <input type="text" value="{{ old('medical_allowance') }}" name="medical_allowance"
+                                                   class="form-control" required placeholder="Enter Medicare Allowance" id="medical_allowance">
+                                        </div>
+
+                                    </div>
+
+                                    <!--Other Allowance-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Other Allowance
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" value="{{ old('other_allowance') }}" name="other_allowance"
+                                                   class="form-control" required placeholder="Enter Other Allowance" id="other_allowance">
                                         </div>
 
                                     </div>
@@ -206,22 +176,7 @@
 
                                         <div class="col-sm-10">
                                             <input type="text" value="{{ old('total_deductions') }}" name="total_deductions"
-                                                   class="form-control" required placeholder="Enter Total Deductions">
-                                        </div>
-
-                                    </div>
-
-                                    <!--Net Pay-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Net Pay
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="text" value="{{ old('netpay') }}" name="netpay"
-                                                   class="form-control" required placeholder="Enter Net Pay">
+                                                   class="form-control" required placeholder="Enter Total Deductions" id="total_deductions">
                                         </div>
 
                                     </div>
@@ -236,10 +191,36 @@
 
                                         <div class="col-sm-10">
                                             <input type="text" value="{{ old('payroll_monthly') }}" name="payroll_monthly"
-                                                   class="form-control" required placeholder="Enter Payroll Monthly">
+                                                   id="payroll_monthly" class="form-control" required placeholder="Enter Total Salary">
                                         </div>
 
                                     </div>
+
+{{--                                    <script>--}}
+
+{{--                                        function payroll_montly() {--}}
+
+{{--                                            let default_workingdays = 22;--}}
+{{--                                            let work_hours = 8;--}}
+
+{{--                                            payroll_monthly = document.getElementById('payroll_monthly').value;--}}
+
+{{--                                            gross_salary = document.getElementById('gross_salary').value;--}}
+{{--                                            num_work = document.getElementById('num_work').value;--}}
+{{--                                            bonus = document.getElementById('bonus').value;--}}
+{{--                                            overtime = document.getElementById('overtime').value;--}}
+{{--                                            absent_days = document.getElementById('absent_days').value;--}}
+{{--                                            medical_allowance = document.getElementById('medical_allowance').value;--}}
+{{--                                            other_allowance = document.getElementById('other_allowance').value;--}}
+{{--                                            total_deductions = document.getElementById('total_deductions').value;--}}
+
+{{--                                            payroll_monthly = (((gross_salary / default_workingdays) * num_work) - absent_days) +--}}
+{{--                                                bonus + (((gross_salary/default_workingdays) / work_hours) * overtime)--}}
+{{--                                                + other_allowance + medical_allowance ;--}}
+
+{{--                                        }--}}
+{{--                                        --}}
+{{--                                    </script>--}}
 
                                     <!--Card Footer-->
                                     <div class="card-footer">

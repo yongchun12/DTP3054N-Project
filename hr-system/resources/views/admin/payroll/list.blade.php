@@ -94,6 +94,7 @@
                                                 <th>Number of Day Work</th>
                                                 <th>Bonus</th>
                                                 <th>Overtime</th>
+                                                <th>Month / Year</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -110,7 +111,7 @@
                                             @php
                                                 $totalNumberofDayWork = $totalNumberofDayWork+$value->number_of_day_work;
                                                 $totalBonus = $totalBonus+$value->bonus;
-                                                $totalOvertime = $totalOvertime+$value->overtime
+                                                $totalOvertime = $totalOvertime+$value->overtime_hours
                                             @endphp
 
                                             <tr>
@@ -118,7 +119,8 @@
                                                 <td>{{ !empty($value->name) ? $value->name : '' }}</td>
                                                 <td>{{ $value->number_of_day_work }}</td>
                                                 <td>{{ $value->bonus }}</td>
-                                                <td>{{ $value->overtime }}</td>
+                                                <td>{{ $value->overtime_hours }}</td>
+                                                <td>{{ date('F Y', strtotime($value->created_at)) }}</td>
                                                 <td>
                                                     <a href="{{ url('admin/payroll/view/'.$value->id) }}"
                                                        class="btn btn-primary">View</a>
@@ -148,6 +150,7 @@
                                             <td>
                                                 {{ $totalOvertime }}
                                             </td>
+                                            <td></td>
                                             <td></td>
                                         </tr>
 

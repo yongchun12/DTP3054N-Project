@@ -41,6 +41,9 @@
     <!--AdminLTE CSS CDN Link (Include with BootStrap)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
 
+    <!--Website Icon-->
+    <link rel="icon" href="{{ asset('img/Project Logo.png/') }}">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

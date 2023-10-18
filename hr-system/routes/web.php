@@ -84,6 +84,16 @@ Route::group(['middleware' => 'admin'], function (){
 //-------------------For Employee Site-------------------//
 Route::group(['middleware' => 'employee'], function (){
     Route::get('employee/dashboard', [DashboardController::class, 'dashboard']);
+
+    //-------------------Employee Payroll-------------------//
+    #Employee Payroll List
+    Route::get('employee/payroll', [PayrollController::class, 'index_employeeSite']);
+
+    #View Payroll Record
+    Route::get('employee/payroll/view/{id}', [PayrollController::class, 'view_employeeSite']);
+
+    #PDF Export
+    Route::get('employee/payroll/pdf/{id}', [PayrollController::class, 'salary_pdf_EmployeeSite']);
 });
 
 //-------------------Logout-------------------//

@@ -14,7 +14,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('admin/payroll') }}"> Payroll Record </a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('employee/payroll') }}"> Payroll Record </a></li>
                             <!--Edit Breadcrumb Name-->
                             <li class="breadcrumb-item active"><a href="#">View</a></li>
                         </ol>
@@ -172,7 +172,7 @@
 
                                 <!--Card Footer-->
                                 <div class="card-footer">
-                                    <a href=" {{ url('admin/payroll') }} " class="btn btn-default">Back</a>
+                                    <a href=" {{ url('employee/payroll') }} " class="btn btn-default">Back</a>
                                 </div>
 
                             </form>

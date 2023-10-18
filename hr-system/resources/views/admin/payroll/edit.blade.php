@@ -64,6 +64,21 @@
 
                                     </div>
 
+                                    <!--Gross Salary-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Gross Salary
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" value="{{ $getRecord->gross_salary }}" name="gross_salary"
+                                                   class="form-control" required placeholder="Enter Gross Salary" id="gross_salary">
+                                        </div>
+
+                                    </div>
+
                                     <!--Number of Day Work-->
                                     <div class="form-group row">
 
@@ -74,7 +89,7 @@
 
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ $getRecord->number_of_day_work }}" name="number_of_day_work"
-                                                   class="form-control" required placeholder="Enter Number of Day Work">
+                                                   class="form-control" required placeholder="Enter Number of Day Work" id="num_work">
                                         </div>
 
                                     </div>
@@ -89,67 +104,22 @@
 
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ $getRecord->bonus }}" name="bonus"
-                                                   class="form-control" required placeholder="Enter Bonus">
+                                                   class="form-control" required placeholder="Enter Bonus" id="bonus">
                                         </div>
 
                                     </div>
 
-                                    <!--Overtime-->
+                                    <!--Overtime Hours-->
                                     <div class="form-group row">
 
-                                        <label class="col-sm-2 col-form-label">Overtime
+                                        <label class="col-sm-2 col-form-label">Overtime Hours
                                             <!--Required-->
                                             <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->overtime }}" name="overtime"
-                                                   class="form-control" required placeholder="Enter Overtime">
-                                        </div>
-
-                                    </div>
-
-                                    <!--Gross Salary-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Gross Salary
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->gross_salary }}" name="gross_salary"
-                                                   class="form-control" required placeholder="Enter Gross Salary">
-                                        </div>
-
-                                    </div>
-
-                                    <!--Cash Advance-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Cash Advance
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->cash_advance }}" name="cash_advance"
-                                                   class="form-control" required placeholder="Enter Cash Advance">
-                                        </div>
-
-                                    </div>
-
-                                    <!--Late Hours-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Late Hours
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->late_hours }}" name="late_hours"
-                                                   class="form-control" required placeholder="Enter Late Hours">
+                                            <input type="number" value="{{ $getRecord->overtime_hours  }}" name="overtime_hours"
+                                                   class="form-control" required placeholder="Enter Overtime" id="overtime">
                                         </div>
 
                                     </div>
@@ -164,25 +134,10 @@
 
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ $getRecord->absent_days }}" name="absent_days"
-                                                   class="form-control" required placeholder="Enter Absent Days">
+                                                   class="form-control" required placeholder="Enter Late Hours" id="absent_days">
                                         </div>
 
                                     </div>
-
-                                    {{--                                    <!--SSS Contribution-->--}}
-                                    {{--                                    <div class="form-group row">--}}
-
-                                    {{--                                        <label class="col-sm-2 col-form-label">SSS contribution--}}
-                                    {{--                                            <!--Required-->--}}
-                                    {{--                                            <span style="color: red">*</span>--}}
-                                    {{--                                        </label>--}}
-
-                                    {{--                                        <div class="col-sm-10">--}}
-                                    {{--                                            <input type="text" value="{{ old('sss_contribution') }}" name="sss_contribution"--}}
-                                    {{--                                                   class="form-control" required placeholder="Enter SSS Contribution">--}}
-                                    {{--                                        </div>--}}
-
-                                    {{--                                    </div>--}}
 
                                     <!--Health Medicare Allowance-->
                                     <div class="form-group row">
@@ -193,8 +148,23 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ $getRecord->philhealth }}" name="philhealth"
-                                                   class="form-control" required placeholder="Enter Medicare Allowance">
+                                            <input type="text" value="{{ $getRecord->medical_allowance }}" name="medical_allowance"
+                                                   class="form-control" required placeholder="Enter Medicare Allowance" id="medical_allowance">
+                                        </div>
+
+                                    </div>
+
+                                    <!--Other Allowance-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Other Allowance
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" value="{{ $getRecord->other_allowance }}" name="other_allowance"
+                                                   class="form-control" required placeholder="Enter Other Allowance" id="other_allowance">
                                         </div>
 
                                     </div>
@@ -209,22 +179,7 @@
 
                                         <div class="col-sm-10">
                                             <input type="text" value="{{ $getRecord->total_deductions }}" name="total_deductions"
-                                                   class="form-control" required placeholder="Enter Total Deductions">
-                                        </div>
-
-                                    </div>
-
-                                    <!--Net Pay-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Net Pay
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="text" value="{{ $getRecord->netpay }}" name="netpay"
-                                                   class="form-control" required placeholder="Enter Net Pay">
+                                                   class="form-control" required placeholder="Enter Total Deductions" id="total_deductions">
                                         </div>
 
                                     </div>
