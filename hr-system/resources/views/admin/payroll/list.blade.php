@@ -106,7 +106,7 @@
                                             $totalOvertime = 0;
                                         @endphp
 
-                                        @foreach($getRecord as $value)
+                                        @foreach($payrolls as $value)
                                             @php
                                                 $totalNumberofDayWork = $totalNumberofDayWork+$value->number_of_day_work;
                                                 $totalBonus = $totalBonus+$value->bonus;
