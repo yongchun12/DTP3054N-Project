@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class PayrollsExport implements FromCollection, WithHeadings, WithMapping, ShouldAutoSize
+class PayrollExport implements FromCollection, WithHeadings, WithMapping, ShouldAutoSize
 {
     /**
      * @return \Illuminate\Support\Collection
