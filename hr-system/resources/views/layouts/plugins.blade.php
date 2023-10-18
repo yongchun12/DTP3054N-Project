@@ -38,7 +38,7 @@
     <!--Bootstrap CDN Link-->
 {{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">--}}
 
-    <!--AdminLTE CSS CDN Link-->
+    <!--AdminLTE CSS CDN Link (Include with BootStrap)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
 
 </head>
@@ -104,7 +104,7 @@
 <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
 
 <!--CDN Link JavaScript-->
-<!--AdminLTE CDN Link JavaScript-->
+<!--AdminLTE CDN Link JavaScript (Include with BootStrap)-->
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 
 <!--JQuery-->
