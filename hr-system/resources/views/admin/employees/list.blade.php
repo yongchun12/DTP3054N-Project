@@ -41,8 +41,8 @@
                                         <!--Search-->
                                         <!--ID-->
                                         <div class="form-group col-md-1">
-                                            <label>ID</label>
-                                            <input type="text" value="{{ Request()->id }}" name="id" class="form-control" placeholder="ID">
+                                            <label>Staff ID</label>
+                                            <input type="text" value="{{ Request()->staff_id }}" name="id" class="form-control" placeholder="Staff ID">
                                         </div>
 
                                         <!--First Name-->
