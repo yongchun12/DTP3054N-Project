@@ -2,33 +2,37 @@
 
 namespace App\Exports;
 
-use Request;
 use App\Models\PayrollModel;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use MaatWebsite\Excel\Concerns\ShouldAutoSize;
-use MaatWebsite\Excel\Concerns\WithMapping;
-use MaatWebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 
-class PayrollExport implements FromCollection, ShouldAutoSize, WithMapping, WithHeadings{
-
+class PayrollsExport implements FromCollection, WithHeadings, WithMapping, ShouldAutoSize
+{
+    /**
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
-        $request = Request::all();
-        return PayrollModel::getRecord($request);
+        $payrolls = PayrollModel::leftJoin('users', 'payroll.employee_id', 'users.id')
+            ->select('payroll.*', 'users.name as employee_name')
+            ->get();
+
+        return $payrolls;
     }
 
     protected $index = 0;
 
-    public function map($user):array
+    public function map($user): array
     {
+        $created_at = \Carbon\Carbon::parse($user->created_at)->format('d-F-Y h:i A');
+        $updated_at = \Carbon\Carbon::parse($user->updated_at)->format('d-F-Y h:i A');
 
-        $createdAt = date('d-F-Y h:i A', strtotime($user->created_at));
-        $updatedAt = date('d-F-Y h:i A', strtotime($user->updated_at));
-
-        return[
+        return [
             ++$this->index,
             $user->id,
-            $user->name,
+            $user->employee_name,
             $user->number_of_day_work,
             $user->bonus,
             $user->overtime,
@@ -40,34 +44,30 @@ class PayrollExport implements FromCollection, ShouldAutoSize, WithMapping, With
             $user->total_deductions,
             $user->netpay,
             $user->payroll_monthly,
-            $createdAt,
-            $updatedAt
+            $created_at,
+            $updated_at,
         ];
     }
 
-    public function headings():array
+    public function headings(): array
     {
-        return[
-            'S.No',
-            'Table ID',
-            'Employee Name',
-            'Number of Day Work',
-            'Bonus',
-            'Overtime',
-            'Gross Salary',
-            'Cash Advance',
-            'Late Hours',
-            'Absent Days',
-            'Medical Allowance',
-            'Total Deductions',
-            'Netpay',
-            'Payroll Monthly',
-            'Created At',
-            'Last Updated',
+        return [
+            "S.No",
+            "Table ID",
+            "Employee Name",
+            "Number of Day Work",
+            "Bonus",
+            "Overtime",
+            "Gross Salary",
+            "Cash Advance",
+            "Late Hours",
+            "Absent Days",
+            "Philhealth",
+            "Total Deductions",
+            "Netpay",
+            "Payroll Monthly",
+            "Created At",
+            "Updated At",
         ];
-
     }
-
 }
-
-?>

@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+use App\Exports\PayrollExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PayrollModel;
 use App\Models\User;
 
-use App\Exports\PayrollExport;
-use App\Exports\PayrollsExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PayrollController extends Controller
@@ -25,7 +24,7 @@ class PayrollController extends Controller
 
     public function payroll_export(Request $request)
     {
-        return Excel::download(new PayrollsExport, 'Payroll.xlsx');
+        return Excel::download(new PayrollExport, 'Payroll.xlsx');
     }
 
     public function create(Request $request)
