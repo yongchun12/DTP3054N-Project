@@ -76,7 +76,7 @@
                                     </label>
 
                                     <div class="col-sm-10 input-group">
-                                        <input type="text" value="{{ old('email') }}" name="email" class="form-control" aria-describedby="domain" placeholder="Enter Username" required>
+                                        <input type="text" value="{{ old('email') }}" name="email" class="form-control" aria-describedby="domain" placeholder="Enter Username" pattern="[a-zA-Z0-9]+" required>
                                         <span class="input-group-text" id="domain" >@hr-system.com</span>
                                         <span style="color: red">
                                             <!--Validation that if got same email-->
@@ -85,7 +85,6 @@
                                     </div>
 
                                 </div>
-
                                 <!--Password-->
                                 <div class="form-group row">
 

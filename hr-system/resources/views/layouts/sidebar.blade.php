@@ -72,7 +72,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href=" {{ url('admin/employees') }} " class="nav-link"
+                    <a href=" {{ url('admin/employees') }} " class="nav-link
                     @if(Request::segment(2) == 'employees') active @endif">
                         <i class="nav-icon fa fa-users"></i>
                         <p>
@@ -82,7 +82,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href=" {{ url('admin/payroll') }} " class="nav-link"
+                    <a href=" {{ url('admin/payroll') }} " class="nav-link
                     @if(Request::segment(2) == 'payroll') active @endif">
                         <i class="nav-icon fa fa-money-bill"></i>
                         <p>
@@ -90,6 +90,17 @@
                         </p>
                     </a>
                 </li>
+
+                    <li class="nav-item">
+                        <a href=" {{ url('admin/leave') }} " class="nav-link
+                           @if(Request::segment(2) == 'leave') active @endif">
+                        <i class="nav-icon fa fa-calendar-alt"></i>
+                        <p>
+                            Leave
+                        </p>
+                        </a>
+                    </li>
+
 
 {{--                <li class="nav-item">--}}
 {{--                    <a href=" {{ url('admin/departments') }} " class="nav-link">--}}
@@ -140,6 +151,16 @@
                             <p>
                                 Dashboard
                             </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href=" {{ url('admin/leave') }} " class="nav-link"
+                           @if(Request::segment(2) == 'payroll') active @endif">
+                        <i class="nav-icon fa fa-calendar-alt"></i>
+                        <p>
+                            Leave
+                        </p>
                         </a>
                     </li>
 

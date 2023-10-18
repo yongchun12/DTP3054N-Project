@@ -180,47 +180,53 @@
     <div class="row">
         <div class="col-md-12">
             <div class="text-center lh-1 mb-2">
-                <h6 class="fw-bold">Payslip</h6> <span class="fw-normal">Payment slip for the month of {{ \Carbon\Carbon::now()->format('M') }} {{ \Carbon\Carbon::now()->format('Y') }}</span>
+                <h1 class="fw-bold">Payslip</h1> <span class="fw-normal">Payment slip for the month of {{ \Carbon\Carbon::now()->format('M') }} {{ \Carbon\Carbon::now()->format('Y') }}</span>
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
+
                     <div class="row">
+                        <!--Staff ID-->
                         <div class="col-md-6">
                             <div> <span class="fw-bolder">Employee Code: {{ $getRecord->employee_id }}</span></div>
                         </div>
+
+                        <!--Employee Name-->
                         <div class="col-md-6">
-                            <div> <span class="fw-bolder">Employee Name: </span> <small class="ms-3">
+                            <div> <span class="fw-bolder">Employee Name:
                                     <!--Need to use foreach to check the value-->
                                     @foreach($getEmployee as $value_employee)
                                         {{ ($value_employee->id == $getRecord->employee_id) ? ($value_employee->name) : '' }}
                                     @endforeach
-                                </small>
+                                    @foreach($getEmployee as $value_employee)
+                                        {{ ($value_employee->id == $getRecord->employee_id) ? ($value_employee->last_name) : '' }}
+                                    @endforeach
+                                </span>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6">
-                            <div> <span class="fw-bolder">PF No.</span> <small class="ms-3">101523065714</small> </div>
+                            <div>
+                                <span class="fw-bolder">Phone Number:
+                                    @foreach($getEmployee as $value_employee)
+                                        {{ ($value_employee->id == $getRecord->employee_id) ? ($value_employee->phone_number) : '' }}
+                                    @endforeach
+                                </span>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <div> <span class="fw-bolder">NOD</span> <small class="ms-3">28</small> </div>
+                            <div> <span class="fw-bolder">Hire Date: </span> <small class="ms-3">28</small> </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div> <span class="fw-bolder">ESI No.</span> <small class="ms-3"></small> </div>
+                            <div> <span class="fw-bolder">Position: </span> <small class="ms-3"></small> </div>
                         </div>
                         <div class="col-md-6">
-                            <div> <span class="fw-bolder">Mode of Pay</span> <small class="ms-3">SBI</small> </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div> <span class="fw-bolder">Designation</span> <small class="ms-3">Marketing Staff (MK)</small> </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div> <span class="fw-bolder">Ac No.</span> <small class="ms-3">*******0701</small> </div>
+                            <div> <span class="fw-bolder">Department: </span> <small class="ms-3">SBI</small> </div>
                         </div>
                     </div>
                 </div>
@@ -235,78 +241,51 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <th scope="row">Basic</th>
-                        <td>16250.00</td>
-                        <td>PF</td>
-                        <td>1800.00</td>
+                        <th scope="row">Basic Salary</th>
+                        <td>
+                            RM
+                            @foreach($getEmployee as $value_employee)
+                                {{ ($value_employee->id == $getRecord->employee_id) ? ($value_employee->salary) : '' }}
+                            @endforeach
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row">DA</th>
-                        <td>550.00</td>
-                        <td>ESI</td>
-                        <td>142.00</td>
+                        <th scope="row">Number of Working Days</th>
+                        <td>22</td>
+                        <td>Unpaid Leave (3 days)</td>
+                        <td>4</td>
                     </tr>
                     <tr>
-                        <th scope="row">HRA</th>
-                        <td>1650.00 </td>
-                        <td>TDS</td>
-                        <td>0.00</td>
+                        <th scope="row">Overtime Hours</th>
+                        <td>10 hours </td>
+                        <td>EPF</td>
+                        <td>11% = </td>
                     </tr>
                     <tr>
-                        <th scope="row">WA</th>
+                        <th scope="row">Medical Allowance</th>
                         <td>120.00 </td>
-                        <td>LOP</td>
+                        <td>Socso</td>
                         <td>0.00</td>
                     </tr>
                     <tr>
-                        <th scope="row">CA</th>
+                        <th scope="row">Other Allowance</th>
                         <td>0.00 </td>
-                        <td>PT</td>
+                        <td>PCB Tax</td>
                         <td>0.00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">CCA</th>
-                        <td>0.00 </td>
-                        <td>SPL. Deduction</td>
-                        <td>500.00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">MA</th>
-                        <td>3000.00</td>
-                        <td>EWF</td>
-                        <td>0.00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Sales Incentive</th>
-                        <td>0.00</td>
-                        <td>CD</td>
-                        <td>0.00</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Leave Encashment</th>
-                        <td>0.00</td>
-                        <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Holiday Wages</th>
-                        <td>500.00</td>
-                        <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Special Allowance</th>
-                        <td>100.00</td>
-                        <td colspan="2"></td>
                     </tr>
                     <tr>
                         <th scope="row">Bonus</th>
-                        <td>1400.00</td>
-                        <td colspan="2"></td>
+                        <td>0.00 </td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <th scope="row">Individual Incentive</th>
-                        <td>2400.00</td>
-                        <td colspan="2"></td>
+                        <th scope="row">Commission</th>
+                        <td>0.00 </td>
+                        <td></td>
+                        <td></td>
                     </tr>
+
                     <tr class="border-top">
                         <th scope="row">Total Earning</th>
                         <td>25970.00</td>
@@ -316,14 +295,12 @@
                     </tbody>
                 </table>
             </div>
-            <div class="row">
-                <div class="col-md-4"> <br> <span class="fw-bold">Net Pay : 24528.00</span> </div>
-                <div class="border col-md-8">
-                    <div class="d-flex flex-column"> <span>In Words</span> <span>Twenty Five thousand nine hundred seventy only</span> </div>
-                </div>
-            </div>
-            <div class="d-flex justify-content-end">
-                <div class="d-flex flex-column mt-2"> <span class="fw-bolder">For Kalyan Jewellers</span> <span class="mt-4">Authorised Signatory</span> </div>
+
+            <br>
+
+            <div class="d-flex justify-content-between">
+                <span class="fw-bold">Net Pay : 24528.00</span>
+                <span class="fw-bold">For HR System Authorised Signature</span>
             </div>
         </div>
     </div>

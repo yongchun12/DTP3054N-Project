@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployeesController;
 use App\Http\Controllers\Backend\PayrollController;
+use App\Http\Controllers\Backend\LeaveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,20 +21,20 @@ use App\Http\Controllers\Backend\PayrollController;
 #Depends on what you want to show for the link
 #get is used to show the page and also get the input, post is used to submit the form to database to verification
 
-#Login Page
+//-------------------Login-------------------//
 Route::get('/', [AuthController::class, 'index']);
 Route::post('login_post', [AuthController::class, 'login_post']);
 
-#Forget Password Page
+//-------------------Forget Password-------------------//
 Route::get('forget_password', [AuthController::class, 'forget_password']);
 Route::post('forget-password/post', [AuthController::class, 'forget_password_post']);
 
-#For Admin Site
+//-------------------For Admin Site-------------------//
 Route::group(['middleware' => 'admin'], function (){
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
 
-    #Employees Page
+    //-------------------Employees-------------------//
     #Employees List
     Route::get('admin/employees', [EmployeesController::class, 'index']);
 
@@ -51,9 +52,7 @@ Route::group(['middleware' => 'admin'], function (){
     #Delete Employee
     Route::get('admin/employees/delete/{id}', [EmployeesController::class, 'delete']);
 
-    //-------------------
-
-    #Payroll Page
+    //-------------------Payroll-------------------//
     #Payroll List
     Route::get('admin/payroll', [PayrollController::class, 'index']);
 
@@ -77,12 +76,15 @@ Route::group(['middleware' => 'admin'], function (){
     #PDF Export
     Route::get('admin/payroll/pdf/{id}', [PayrollController::class, 'salary_pdf']);
 
+    //-------------------Leave-------------------//
+    Route::get('admin/leave', [LeaveController::class, 'index']);
+
 });
 
-#Employee Page
+//-------------------For Employee Site-------------------//
 Route::group(['middleware' => 'employee'], function (){
     Route::get('employee/dashboard', [DashboardController::class, 'dashboard']);
 });
 
-#Logout
+//-------------------Logout-------------------//
 Route::get('logout', [AuthController::class, 'logout']);
