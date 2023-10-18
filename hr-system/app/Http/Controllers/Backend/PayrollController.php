@@ -7,6 +7,7 @@ use App\Models\PayrollModel;
 use App\Models\User;
 
 use App\Exports\PayrollExport;
+use App\Exports\PayrollsExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PayrollController extends Controller
@@ -14,12 +15,17 @@ class PayrollController extends Controller
     public function index(Request $request)
     {
         $data['getRecord'] = PayrollModel::getRecord();
-        return view('admin.payroll.list', $data);
+
+        $payrolls = PayrollModel::leftJoin('users', 'payroll.employee_id', 'users.id')
+            ->select('payroll.*', 'users.name')
+            ->get();
+
+        return view('admin.payroll.list', $data, compact('payrolls'));
     }
 
     public function payroll_export(Request $request)
     {
-        return Excel::download(new PayrollExport, 'Payroll.xlsx');
+        return Excel::download(new PayrollsExport, 'Payroll.xlsx');
     }
 
     public function create(Request $request)
@@ -113,5 +119,3 @@ class PayrollController extends Controller
     }
 
 }
-
-?>
