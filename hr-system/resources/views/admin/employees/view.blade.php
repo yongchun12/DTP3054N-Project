@@ -37,12 +37,12 @@
 
                                 <div class="card-body">
 
-                                    <!--ID-->
+                                    <!--Staff ID-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">ID</label>
+                                        <label class="col-sm-2 col-form-label">Staff ID</label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->id }}
+                                            {{ $getRecord->staff_id }}
                                         </div>
                                     </div>
 

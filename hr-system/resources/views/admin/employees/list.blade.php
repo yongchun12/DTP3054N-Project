@@ -94,7 +94,7 @@
                                     <thead>
                                     <!--tr is Table Row-->
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Staff ID</th>
                                             <th>First Name</th>
                                             <th>Last Name</th>
                                             <th>Email</th>
@@ -106,7 +106,7 @@
                                     <tbody>
                                     @forelse($getRecord as $value)
                                         <tr>
-                                            <td>{{ $value->id }}</td>
+                                            <td>{{ $value->staff_id }}</td>
                                             <td>{{ $value->name }}</td>
                                             <td>{{ $value->last_name }}</td>
                                             <td>{{ $value->email }}</td>

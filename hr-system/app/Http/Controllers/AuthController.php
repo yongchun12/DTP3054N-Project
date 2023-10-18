@@ -34,7 +34,7 @@ class AuthController extends Controller
             $user = User::where('email', '=', $request->email)->first();
 
             #Random Password Range
-            $random_pass = rand(111111, 999999);
+            $random_pass = rand(11111111, 99999999);
 
             #After make random password, we need to update the password in database
             $user->password = Hash::make($random_pass);

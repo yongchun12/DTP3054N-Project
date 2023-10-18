@@ -43,8 +43,8 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">ID</label>
 
-                                        <div class="col-sm-10">
-                                            {{ $getRecord->id }}
+                                        <div class="col-sm-10 col-form-label">
+                                            {{ $getRecord->staff_id }}
                                         </div>
                                     </div>
 
@@ -137,10 +137,10 @@
 
                                     </div>
 
-                                    <!--Job ID-->
+                                    <!--Position-->
                                     <div class="form-group row">
 
-                                        <label class="col-sm-2 col-form-label">Job ID</label>
+                                        <label class="col-sm-2 col-form-label">Position</label>
 
                                         <div class="col-sm-10">
                                             <select class="form-control" name="job_id">

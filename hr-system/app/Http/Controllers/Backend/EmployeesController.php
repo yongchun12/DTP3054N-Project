@@ -31,8 +31,10 @@ class EmployeesController extends Controller
 //        dd($request->all());
 
         $user = request()->validate([
+            'staff_id' => 'required|unique:users',
             'name' => 'required',
             'email' => 'required|unique:users',
+            'phone_number' => 'required|unique:users',
             'password' => 'required',
             'hire_date' => 'required',
             'job_id' => 'required',
@@ -43,6 +45,7 @@ class EmployeesController extends Controller
         ]);
 
         $user = new User;
+        $user->staff_id = trim('EMP-'.$request->staff_id);
         $user->name = trim($request->name);
         $user->last_name = trim($request->last_name);
         $user->email = trim($request->email.'@hr-system.com');
@@ -81,6 +84,7 @@ class EmployeesController extends Controller
     {
         $user = request()->validate([
            'email' => 'required|unique:users,email,'.$id,
+            'phone_number' => 'required|unique:users,phone_number,'.$id,
         ]);
 
         $user = User::find($id);

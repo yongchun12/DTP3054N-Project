@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
+
             $table->id();
-            $table->string('staff_id');
+            $table->string('staff_id')->unique();
             #First Name
             $table->string('name');
             $table->string('last_name');
@@ -22,13 +23,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone_number', 255)->unique();
 
-            $table->date('hire_date')->nullable();
-            $table->string('job_id')->nullable();
+            $table->date('hire_date');
+            $table->string('job_id');
 
-            $table->double('salary')->nullable();
-            $table->string('commission')->nullable();
-            $table->string('manager_id')->nullable();
-            $table->string('department_id')->nullable();
+            $table->double('salary');
+            $table->double('commission')->default(0)->nullable();
+            $table->integer('manager_id');
+            $table->integer('department_id');
 
             #nullable() method is used to allow null values for the column
             $table->timestamp('email_verified_at')->nullable();
@@ -38,6 +39,20 @@ return new class extends Migration
             #For Role
             $table->tinyInteger('is_role')->default(1)->comment('0: Employee, 1: HR');
             $table->timestamps();
+
+//            DB::table('users')->insert([
+//                'staff_id' => 'EMP-0001',
+//                'name' => 'Admin',
+//                'last_name' => 'Admin',
+//                'email' => 'admin@hr-system.com',
+//                'phone_number' => '01231231',
+//                'hire_date' => '2021-10-11',
+//                'job_id' => '1',
+//                'salary' => '1000',
+//                'manager_id' => '1',
+//                'department_id' => '1',
+//                'password' => Hash::make('12345678')
+//            ]);
         });
     }
 

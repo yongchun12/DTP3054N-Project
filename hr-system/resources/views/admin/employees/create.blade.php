@@ -41,6 +41,22 @@
 
                                 <!-- If want add column then copy this-->
                                 <!-- "name" should put the column name-->
+
+                                <!--First Name-->
+                                <div class="form-group row">
+
+                                    <label class="col-sm-2 col-form-label">Staff ID
+                                        <!--Required-->
+                                        <span style="color: red">*</span>
+                                    </label>
+
+                                    <div class="col-sm-10">
+                                        <!--value: old is validation for check the type of the input-->
+                                        <input type="number" value="{{ old('staff_id') }}" name="staff_id" class="form-control" required placeholder="Enter Staff ID">
+                                    </div>
+
+                                </div>
+
                                 <!--First Name-->
                                 <div class="form-group row">
 
