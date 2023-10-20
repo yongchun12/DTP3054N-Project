@@ -10,9 +10,21 @@ class Leave extends Model
 {
     use HasFactory;
 
-    protected $table = 'leave';
+    protected $fillable = 'leave';
 
-    static public function getLeaveRecord()
+    static public function getPendingLeaveRecord()
+    {
+        $return = self::select('leave.*', 'users.name')
+            #Join the table from users ID and Leave Table (employee ID)
+            ->join('users', 'users.id', '=', 'leave.employee_id')
+            ->where('leave.leave_status', '=', 0)
+            ->orderBy('leave.id', 'desc')
+            ->paginate(10);
+
+        return $return;
+    }
+
+    static public function getAllRecord()
     {
         $return = self::select('leave.*', 'users.name')
             #Join the table from users ID and Leave Table (employee ID)

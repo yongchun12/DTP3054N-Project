@@ -33,10 +33,13 @@
                                 <h3 class="panel-title" style="text-align:center;">Pending Requests</h3>
                                 <br>
 
-                                @foreach ($leave as $data)
-                                    <div class="card text-white bg-dark mb-3">
-                                        <div class="card-header bg-dark ">
-                                            <strong>{{$data->date_of_leave}} {{$data->name}}</strong>
+                                <!--Alert Message-->
+                                @include('layouts.alert_message')
+
+                                @foreach ($getLeaveRecord as $data)
+                                    <div class="card mb-3">
+                                        <div class="card-header">
+                                            <strong>{{$data->date_of_leave}} | {{$data->name}}</strong>
                                             <i class="float-right" style="font-size:85%;">Request sent on :- {{$data->created_at}}</i>
                                         </div>
                                         <div class="card-body">
@@ -51,7 +54,7 @@
                                             </h5>
                                             <p class="card-text">{{$data->description}}</p>
 
-                                            <a style="margin-left:10px;" class="btn btn-danger float-right " href="/decline-request/{{$data->id}}">Decline</a>
+                                            <a style="margin-left:10px;" class="btn btn-danger float-right" href="{{ url('admin/leave/reject/'.$data->id) }}">Decline</a>
                                             <a class="btn btn-primary float-right" href="{{ url('admin/leave/approve/'.$data->id) }}">Accept</a>
 
                                         </div>
