@@ -88,6 +88,9 @@ Route::group(['middleware' => 'admin'], function (){
 
     #Leave Request Approve
     Route::get('admin/leave/approve/{id}', [LeaveController::class, 'approve_leave']);
+
+    #Leave Request Reject
+    Route::get('admin/leave/reject/{id}', [LeaveController::class, 'reject_leave']);
 });
 
 //-------------------For Employee Site-------------------//
