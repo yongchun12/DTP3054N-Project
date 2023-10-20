@@ -93,7 +93,7 @@
                                             @elseif($value_employee->job_id == 2)
                                                 Accountant
                                             @endif
-                                        @endif($value_employee->id == $getRecord->employee_id)
+                                        @endif
                                     @endforeach
                                 </span>
                             </div>
@@ -110,7 +110,7 @@
                                             @elseif($value_employee->department_id == 2)
                                                 Finance Department
                                             @endif
-                                        @endif($value_employee->id == $getRecord->employee_id)
+                                        @endif
                                     @endforeach
                                 </span>
                             </div>

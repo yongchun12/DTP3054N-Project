@@ -101,7 +101,6 @@
                         </a>
                     </li>
 
-
 {{--                <li class="nav-item">--}}
 {{--                    <a href=" {{ url('admin/departments') }} " class="nav-link">--}}
 {{--                        <i class="nav-icon fa fa-building"></i>--}}
@@ -165,8 +164,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href=" {{ url('employee/leave') }} " class="nav-link"
-                           @if(Request::segment(2) == 'payroll') active @endif">
+                        <a href=" {{ url('employee/leave') }} " class="nav-link
+                           @if(Request::segment(2) == 'leave') active @endif">
                         <i class="nav-icon fa fa-calendar-alt"></i>
                         <p>
                             Leave

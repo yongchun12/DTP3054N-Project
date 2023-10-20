@@ -45,6 +45,7 @@ class EmployeesController extends Controller
         ]);
 
         $user = new User;
+
         $user->staff_id = trim('EMP-'.$request->staff_id);
         $user->name = trim($request->name);
         $user->last_name = trim($request->last_name);

@@ -133,7 +133,7 @@ class PayrollController extends Controller
         return view('employee.payroll.view', $data);
     }
 
-    public function salary_pdf_EmployeeSite($id, Request $request)
+    public function salary_pdf_employeeSite($id, Request $request)
     {
         $data['getEmployee'] = User::where('is_role', '=', 0)->get();
         $data['getRecord'] = PayrollModel::find($id);

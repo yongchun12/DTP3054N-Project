@@ -18,8 +18,14 @@ use App\Http\Controllers\Backend\LeaveController;
 |
 */
 
-#Depends on what you want to show for the link
-#get is used to show the page and also get the input, post is used to submit the form to database to verification
+//Depends on what you want to show for the link
+
+// Get: getting all the data from the database (showing the data)
+// get is used to show the page and also get the input
+
+// Post: submitting the data to the database (inserting the data)
+// post is used to submit the form to database to verification
+// (only for the form that need to fill in with the tag <form>)
 
 //-------------------Login-------------------//
 Route::get('/', [AuthController::class, 'index']);
@@ -77,8 +83,11 @@ Route::group(['middleware' => 'admin'], function (){
     Route::get('admin/payroll/pdf/{id}', [PayrollController::class, 'salary_pdf']);
 
     //-------------------Leave-------------------//
-    Route::get('admin/leave', [LeaveController::class, 'index']);
+    #Pending Request
+    Route::get('admin/leave', [LeaveController::class, 'dashboard_Admin']);
 
+    #Leave Request Approve
+    Route::get('admin/leave/approve/{id}', [LeaveController::class, 'approve_leave']);
 });
 
 //-------------------For Employee Site-------------------//
@@ -93,7 +102,15 @@ Route::group(['middleware' => 'employee'], function (){
     Route::get('employee/payroll/view/{id}', [PayrollController::class, 'view_employeeSite']);
 
     #PDF Export
-    Route::get('employee/payroll/pdf/{id}', [PayrollController::class, 'salary_pdf_EmployeeSite']);
+    Route::get('employee/payroll/pdf/{id}', [PayrollController::class, 'salary_pdf_employeeSite']);
+
+    //-------------------Employee Leave-------------------//
+    #Employee Leave List
+    Route::get('employee/leave', [LeaveController::class, 'index_employeeSite']);
+
+    #Create Leave Request
+    Route::get('employee/leave/create', [LeaveController::class, 'create_employeeSite']);
+    Route::post('employee/leave/create', [LeaveController::class, 'create_post_employeeSite']);
 });
 
 //-------------------Logout-------------------//

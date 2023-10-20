@@ -65,7 +65,7 @@ class AuthController extends Controller
             }else if (Auth::User()->is_role == '0'){
                 return redirect()->intended('employee/dashboard');
             } else {
-                return redirect('/')->with('error', 'No HR Available');
+                return redirect('/')->with('error', 'This User is not available');
             }
         } else {
             #Print Error Message
