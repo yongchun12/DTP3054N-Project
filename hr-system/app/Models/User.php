@@ -80,7 +80,7 @@ class User extends Authenticatable
             //search box end
 
             $return = $return
-                ->orderBy('id', 'desc')
+                ->orderBy('id', 'asc')
                 //show one page list how many data can show
                 ->paginate(10);
 

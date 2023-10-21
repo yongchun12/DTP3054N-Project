@@ -27,9 +27,9 @@ class LeaveController extends Controller
     //Approve Leave
     public function approve_leave($id, Request $request)
     {
-        $data['getLeaveRecord'] = Leave::where('id', '=', $id)->get();
+        $data = Leave::find($id);
 
-        $data->leave_status = '1';
+        $data->leave_status = trim('1');
 
         $data->save();
 
@@ -46,7 +46,7 @@ class LeaveController extends Controller
 
     public function reject_leave($id, Request $request)
     {
-        $data['getLeaveRecord'] = Leave::where('id', '=', $id)->get();
+        $data = Leave::find($id);
 
         $data->leave_status = trim(2);
 
