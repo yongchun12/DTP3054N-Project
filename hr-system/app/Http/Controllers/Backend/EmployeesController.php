@@ -30,6 +30,7 @@ class EmployeesController extends Controller
 //        #Show the details of the form
 //        dd($request->all());
 
+        //Valiadation
         $user = request()->validate([
             'staff_id' => 'required|unique:users',
             'name' => 'required',
@@ -38,29 +39,44 @@ class EmployeesController extends Controller
             'password' => 'required',
             'hire_date' => 'required',
             'job_id' => 'required',
-            'salary' => 'required',
-            'commission' => 'required',
             'manager_id' => 'required',
             'department_id' => 'required',
+            'category_employee' => 'required',
+            'bank_acc' => 'required|unique:users',
+            'bank_name' => 'required',
+            'epf_no' => 'required|unique:users',
+            'pcb_no' => 'required|unique:users',
+            'ic_no' => 'required|unique:users',
         ]);
 
         $user = new User;
 
-        $user->staff_id = trim('EMP-'.$request->staff_id);
-        $user->name = trim($request->name);
-        $user->last_name = trim($request->last_name);
-        $user->email = trim($request->email.'@hr-system.com');
+        $user->staff_id             = trim('EMP-'.$request->staff_id);
+        $user->name                 = trim($request->name);
+        $user->last_name            = trim($request->last_name);
+        $user->email                = trim($request->email.'@hr-system.com');
 
         #Hash the password from normal key to encrypted key
-        $user->password = bcrypt(trim($request->password));
-        $user->phone_number = trim($request->phone_number);
-        $user->hire_date = trim($request->hire_date);
-        $user->job_id = trim($request->job_id);
-        $user->salary = trim($request->salary);
-        $user->commission = trim($request->commission);
-        $user->manager_id = trim($request->manager_id);
-        $user->department_id = trim($request->department_id);
-        $user->is_role = 0; // 0 - Employee, 1 - HR
+        $user->password             = bcrypt(trim($request->password));
+
+        //Employee Details
+        $user->phone_number         = trim($request->phone_number);
+        $user->hire_date            = trim($request->hire_date);
+        $user->job_id               = trim($request->job_id);
+        $user->manager_id           = trim($request->manager_id);
+        $user->department_id        = trim($request->department_id);
+
+        //New Column
+        $user->category_employee    = trim($request->category_employee);
+        $user->bank_acc             = trim($request->bank_acc);
+        $user->bank_name            = trim($request->bank_name);
+        $user->epf_no               = trim($request->epf_no);
+        $user->pcb_no               = trim($request->pcb_no);
+        $user->ic_no                = trim($request->ic_no);
+
+        //Default Value (Role)
+        $user->is_role          = 0; // 0 - Employee, 1 - HR
+
         $user->save();
 
         return redirect('admin/employees')->with('success', 'Employee created successfully.');
@@ -83,26 +99,48 @@ class EmployeesController extends Controller
 
     public function edit_update($id, Request $request)
     {
+//        $user = request()->validate([
+//           'email' => 'required|unique:users,email,'.$id,
+//            'phone_number' => 'required|unique:users,phone_number,'.$id,
+//        ]);
+
+        //Valiadation
         $user = request()->validate([
            'email' => 'required|unique:users,email,'.$id,
             'phone_number' => 'required|unique:users,phone_number,'.$id,
+            'bank_acc' => 'required|unique:users,bank_acc,'.$id,
+            'epf_no' => 'required|unique:users,epf_no,'.$id,
+            'pcb_no' => 'required|unique:users,pcb_no,'.$id,
+            'ic_no' => 'required|unique:users,ic_no,'.$id,
         ]);
 
         $user = User::find($id);
-        $user->name = trim($request->name);
-        $user->last_name = trim($request->last_name);
-        $user->email = trim($request->email);
+
+        $user->name                 = trim($request->name);
+        $user->last_name            = trim($request->last_name);
+        $user->email                = trim($request->email);
 
 //        #Hash the password from normal key to encrypted key
-//        $user->password = bcrypt(trim($request->password));
-        $user->phone_number = trim($request->phone_number);
-        $user->hire_date = trim($request->hire_date);
-        $user->job_id = trim($request->job_id);
-        $user->salary = trim($request->salary);
-        $user->commission = trim($request->commission);
-        $user->manager_id = trim($request->manager_id);
-        $user->department_id = trim($request->department_id);
-        $user->is_role = 0; // 0 - Employee, 1 - HR
+//        $user->password             = bcrypt(trim($request->password));
+
+        //Employee Details
+        $user->phone_number         = trim($request->phone_number);
+        $user->hire_date            = trim($request->hire_date);
+        $user->job_id               = trim($request->job_id);
+        $user->manager_id           = trim($request->manager_id);
+        $user->department_id        = trim($request->department_id);
+
+        //New Column
+        $user->category_employee    = trim($request->category_employee);
+        $user->bank_acc             = trim($request->bank_acc);
+        $user->bank_name            = trim($request->bank_name);
+        $user->epf_no               = trim($request->epf_no);
+        $user->pcb_no               = trim($request->pcb_no);
+        $user->ic_no                = trim($request->ic_no);
+
+        //Default Value (Role)
+        $user->is_role              = 0; // 0 - Employee, 1 - HR
+
         $user->save();
 
         return redirect('admin/employees')->with('success', 'Employee details update successfully.');

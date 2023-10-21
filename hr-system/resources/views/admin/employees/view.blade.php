@@ -37,6 +37,14 @@
 
                                 <div class="card-body">
 
+                                    <!-- Note:
+                                    - This View doesnt show:
+                                    1. id (Not Staff ID)
+                                    2. password
+                                    3. email_verified_at
+                                    4. remember_token
+                                    -->
+
                                     <!--Staff ID-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Staff ID</label>
@@ -109,7 +117,7 @@
 
                                     </div>
 
-                                    <!--Position-->
+                                    <!--Position / Job ID-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Position</label>
 
@@ -125,27 +133,7 @@
 
                                     </div>
 
-                                    <!--Salary-->
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Salary</label>
-
-                                        <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->salary }}
-                                        </div>
-
-                                    </div>
-
-                                    <!--Commission-->
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Commission</label>
-
-                                        <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->commission }}
-                                        </div>
-
-                                    </div>
-
-                                    <!--Manager ID-->
+                                    <!--Manager ID / Manager Name-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Manager Name</label>
 
@@ -159,7 +147,7 @@
 
                                     </div>
 
-                                    <!--Department ID-->
+                                    <!--Department ID / Department Name-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Department</label>
 
@@ -170,6 +158,74 @@
                                             @elseif($getRecord->department_id == 2)
                                                 Finance Department
                                             @endif
+                                        </div>
+
+                                    </div>
+
+                                    <!--Employee Category (Full Time, Part Time etc)-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Employee Category</label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            @if($getRecord->category_employee == 0)
+                                                Full Time
+                                            @elseif($getRecord->category_employee == 1)
+                                                Part Time
+                                            @elseif($getRecord->category_employee == 2)
+                                                Contract
+                                            @elseif($getRecord->category_employee == 3)
+                                                Temporary
+                                            @endif
+                                        </div>
+
+                                    </div>
+
+                                    <!--Bank Account-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Bank Account</label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            {{ $getRecord->bank_acc }}
+                                        </div>
+
+                                    </div>
+
+                                    <!--Bank Name-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Bank Name</label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            {{ $getRecord->bank_name }}
+                                        </div>
+
+                                    </div>
+
+                                    <!--EPF No-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">EPF Number</label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            {{ $getRecord->epf_no }}
+                                        </div>
+
+                                    </div>
+
+                                    <!--PCB No-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">PCB Number</label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            {{ $getRecord->pcb_no }}
+                                        </div>
+
+                                    </div>
+
+                                    <!--IC Number-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">IC Number</label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            {{ $getRecord->ic_no }}
                                         </div>
 
                                     </div>

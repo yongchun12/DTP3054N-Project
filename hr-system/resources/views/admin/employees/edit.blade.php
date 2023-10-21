@@ -116,7 +116,7 @@
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ $getRecord->phone_number }}" name="phone_number" class="form-control" placeholder="Enter Phone Number">
                                             <span style="color: red">
-                                            <!--Validation that if got same email-->
+                                            <!--Validation that if got same phone number-->
                                             {{ $errors->first('phone_number') }}
                                         </span>
                                         </div>
@@ -148,42 +148,6 @@
                                                 <option {{ ($getRecord->job_id == 1) ? 'selected' : '' }} value="1">Web Developer</option>
                                                 <option {{ ($getRecord->job_id == 2) ? 'selected' : '' }} value="2">Accountant</option>
                                             </select>
-                                        </div>
-
-                                    </div>
-
-                                    <!--Salary-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Salary
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->salary }}" name="salary" class="form-control" placeholder="Enter Salary" required>
-                                            <span style="color: red">
-                                            <!--Validation that if got same email-->
-                                            {{ $errors->first('salary') }}
-                                        </span>
-                                        </div>
-
-                                    </div>
-
-                                    <!--Commission-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Commission
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->commission }}" name="commission" class="form-control" placeholder="Enter Commission" required>
-                                            <span style="color: red">
-                                            <!--Validation that if got same email-->
-                                            {{ $errors->first('commission') }}
-                                        </span>
                                         </div>
 
                                     </div>
@@ -220,6 +184,104 @@
                                                 <option {{ ($getRecord->department_id == 1) ? 'selected' : '' }} value="1">Project Department</option>
                                                 <option {{ ($getRecord->department_id == 2) ? 'selected' : '' }} value="2">Finance Department</option>
                                             </select>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Employee Category-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Category
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <select class="form-control" name="category_employee">
+                                                <option value="">Select Category</option>
+                                                <option {{ ($getRecord->category_employee == 0) ? 'selected' : '' }} value="0">
+                                                    Full Time
+                                                </option>
+                                                <option {{ ($getRecord->category_employee == 1) ? 'selected' : '' }} value="1">
+                                                    Part Time
+                                                </option>
+                                                <option {{ ($getRecord->category_employee == 2) ? 'selected' : '' }} value="2">
+                                                    Contract
+                                                </option>
+                                                <option {{ ($getRecord->category_employee == 3) ? 'selected' : '' }} value="3">
+                                                    Temporary
+                                                </option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Bank Name-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Bank Name
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" value="{{ $getRecord->bank_name }}" name="bank_name" class="form-control" placeholder="Enter Bank Name" required>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Bank Account-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Bank Account
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" value="{{ $getRecord->bank_acc }}" name="bank_acc" class="form-control" placeholder="Enter Bank Account" required>
+                                        </div>
+
+                                    </div>
+
+                                    <!--EPF Number-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">EPF Number
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" value="{{ $getRecord->epf_no }}" name="epf_no" class="form-control" placeholder="Enter EPF Number" required>
+                                        </div>
+
+                                    </div>
+
+                                    <!--PCB Number-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">PCB Number
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" value="{{ $getRecord->pcb_no }}" name="pcb_no" class="form-control" placeholder="Enter EPF Number" required>
+                                        </div>
+
+                                    </div>
+
+                                    <!--IC Number-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">IC Number
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" value="{{ $getRecord->ic_no }}" name="ic_no" class="form-control" placeholder="Enter EPF Number" required>
                                         </div>
 
                                     </div>

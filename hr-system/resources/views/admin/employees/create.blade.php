@@ -52,7 +52,7 @@
 
                                     <div class="col-sm-10">
                                         <!--value: old is validation for check the type of the input-->
-                                        <input type="number" value="{{ old('staff_id') }}" name="staff_id" class="form-control" required placeholder="Enter Staff ID">
+                                        <input type="number" value="{{ old('staff_id') }}" name="staff_id" class="form-control" required placeholder="Enter Staff ID" max="9999">
                                     </div>
 
                                 </div>
@@ -144,7 +144,7 @@
 
                                 </div>
 
-                                <!--Job ID-->
+                                <!--Job ID / Position-->
                                 <div class="form-group row">
 
                                     <label class="col-sm-2 col-form-label">Job ID</label>
@@ -159,43 +159,7 @@
 
                                 </div>
 
-                                <!--Salary-->
-                                <div class="form-group row">
-
-                                    <label class="col-sm-2 col-form-label">Salary
-                                        <!--Required-->
-                                        <span style="color: red">*</span>
-                                    </label>
-
-                                    <div class="col-sm-10">
-                                        <input type="number" value="{{ old('salary') }}" name="salary" class="form-control" placeholder="Enter Salary" required>
-                                        <span style="color: red">
-                                            <!--Validation that if got same email-->
-                                            {{ $errors->first('salary') }}
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                                <!--Commission-->
-                                <div class="form-group row">
-
-                                    <label class="col-sm-2 col-form-label">Commission
-                                        <!--Required-->
-                                        <span style="color: red">*</span>
-                                    </label>
-
-                                    <div class="col-sm-10">
-                                        <input type="number" value="{{ old('commission') }}" name="commission" class="form-control" placeholder="Enter Commission" required>
-                                        <span style="color: red">
-                                            <!--Validation that if got same email-->
-                                            {{ $errors->first('commission') }}
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                                <!--Manager ID-->
+                                <!--Manager ID / Manager Name-->
                                 <div class="form-group row">
 
                                     <label class="col-sm-2 col-form-label">Manager Name
@@ -213,7 +177,7 @@
 
                                 </div>
 
-                                <!--Department ID-->
+                                <!--Department ID / Department Name-->
                                 <div class="form-group row">
 
                                     <label class="col-sm-2 col-form-label">Department
@@ -227,6 +191,112 @@
                                             <option value="1">Project Department</option>
                                             <option value="2">Finance Department</option>
                                         </select>
+                                    </div>
+
+                                </div>
+
+                                <!--Employee Category-->
+                                <div class="form-group row">
+
+                                    <label class="col-sm-2 col-form-label">Category
+                                        <!--Required-->
+                                        <span style="color: red">*</span>
+                                    </label>
+
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="category_employee">
+                                            <option value="">Select Category</option>
+                                            <option value="0">Full Time</option>
+                                            <option value="1">Part Time</option>
+                                            <option value="2">Contract</option>
+                                            <option value="3">Temporary</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <!--Bank Name-->
+                                <div class="form-group row">
+
+                                    <label class="col-sm-2 col-form-label">Bank Name
+                                        <!--Required-->
+                                        <span style="color: red">*</span>
+                                    </label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" value="{{ old('bank_name') }}" name="bank_name" class="form-control" placeholder="Enter Bank Name" required>
+                                    </div>
+
+                                </div>
+
+                                <!--Bank Account-->
+                                <div class="form-group row">
+
+                                    <label class="col-sm-2 col-form-label">Bank Account
+                                        <!--Required-->
+                                        <span style="color: red">*</span>
+                                    </label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" value="{{ old('bank_acc') }}" name="bank_acc" class="form-control" placeholder="Enter Bank Account" required>
+                                        <span style="color: red">
+                                            <!--Validation that if got same phone number-->
+                                            {{ $errors->first('bank_acc') }}
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                                <!--EPF Number-->
+                                <div class="form-group row">
+
+                                    <label class="col-sm-2 col-form-label">EPF Number
+                                        <!--Required-->
+                                        <span style="color: red">*</span>
+                                    </label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" value="{{ old('epf_no') }}" name="epf_no" class="form-control" placeholder="Enter EPF Number" required>
+                                        <span style="color: red">
+                                            <!--Validation that if got same phone number-->
+                                            {{ $errors->first('epf_no') }}
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                                <!--PCB Number-->
+                                <div class="form-group row">
+
+                                    <label class="col-sm-2 col-form-label">PCB Number
+                                        <!--Required-->
+                                        <span style="color: red">*</span>
+                                    </label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" value="{{ old('pcb_no') }}" name="pcb_no" class="form-control" placeholder="Enter EPF Number" required>
+                                        <span style="color: red">
+                                            <!--Validation that if got same phone number-->
+                                            {{ $errors->first('pcb_no') }}
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                                <!--IC Number-->
+                                <div class="form-group row">
+
+                                    <label class="col-sm-2 col-form-label">IC Number
+                                        <!--Required-->
+                                        <span style="color: red">*</span>
+                                    </label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" value="{{ old('ic_no') }}" name="ic_no" class="form-control" placeholder="Enter EPF Number" required>
+                                        <span style="color: red">
+                                            <!--Validation that if got same phone number-->
+                                            {{ $errors->first('ic_no') }}
+                                        </span>
                                     </div>
 
                                 </div>
