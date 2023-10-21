@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HR System | Dashboard</title>
 
-    <!--External CSS File-->
+    <!--Website Icon-->
+    <link rel="icon" href="{{ asset('img/Project Logo.png/') }}">
+
+    <!--/--------------External CSS File----------------/-->
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
-
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+{{--    <!-- Font Awesome -->--}}
+{{--    <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">--}}
 
 {{--    <!-- iCheck -->--}}
 {{--    <link rel="stylesheet" href="{{ asset('backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">--}}
@@ -21,28 +24,29 @@
 {{--    <!-- JQVMap -->--}}
 {{--    <link rel="stylesheet" href="{{ asset('backend/plugins/jqvmap/jqvmap.min.css') }}">--}}
 
-    <!--/--------------Must Link----------------/-->
+    {{--    <!-- Daterange picker -->--}}
+    {{--    <link rel="stylesheet" href="{{ asset('backend/plugins/daterangepicker/daterangepicker.css') }}">--}}
+
+    {{--    <!-- Tempusdominus Bootstrap 4-->--}}
+    {{--    <link rel="stylesheet" href="{{ asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">--}}
+
+    {{--    <!-- summernote -->--}}
+    {{--    <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">--}}
+
+    <!--/--------------Must Link (With Folder)----------------/-->
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
-{{--    <!-- Daterange picker -->--}}
-{{--    <link rel="stylesheet" href="{{ asset('backend/plugins/daterangepicker/daterangepicker.css') }}">--}}
-
-{{--    <!-- Tempusdominus Bootstrap 4-->--}}
-{{--    <link rel="stylesheet" href="{{ asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">--}}
-
-{{--    <!-- summernote -->--}}
-{{--    <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">--}}
-
-    <!--CSS CDN Link-->
-    <!--Bootstrap CDN Link-->
-{{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">--}}
+    <!--/--------------CSS CDN Link----------------/-->
 
     <!--AdminLTE CSS CDN Link (Include with BootStrap)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
 
-    <!--Website Icon-->
-    <link rel="icon" href="{{ asset('img/Project Logo.png/') }}">
+    <!--Font Awesome Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!--Bootstrap CDN Link-->
+    {{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">--}}
 
 </head>
 
@@ -106,7 +110,7 @@
 <!-- jQuery -->
 <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
 
-<!--CDN Link JavaScript-->
+<!--/----------------CDN Link Javascript----------------/-->
 <!--AdminLTE CDN Link JavaScript (Include with BootStrap)-->
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 
