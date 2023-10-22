@@ -131,7 +131,7 @@
 
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ old('absent_days') }}" name="absent_days"
-                                                   class="form-control" required placeholder="Enter Late Hours" id="absent_days">
+                                                   class="form-control" required placeholder="Enter Absent Days" id="absent_days">
                                         </div>
 
                                     </div>

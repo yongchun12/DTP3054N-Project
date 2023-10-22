@@ -111,8 +111,12 @@
 <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
 
 <!--/----------------CDN Link Javascript----------------/-->
+
 <!--AdminLTE CDN Link JavaScript (Include with BootStrap)-->
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+
+<!--HTML to PDF-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
 
 <!--JQuery-->
 {{--<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>--}}
