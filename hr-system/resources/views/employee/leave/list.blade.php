@@ -46,7 +46,8 @@
                                     <thead>
                                     <!--tr is Table Row-->
                                     <tr>
-                                        <th>Date of Leave</th>
+                                        <th>From</th>
+                                        <th>To</th>
                                         <th>Leave Category</th>
                                         <th>Status</th>
                                         <th>Created At</th>
@@ -57,7 +58,8 @@
                                     <tbody>
                                     @forelse($getOwnLeaveRecord as $data)
                                         <tr>
-                                            <td>{{ date('d-m-Y', strtotime($data->date_of_leave)) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($data->from_leaveDate)) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($data->to_leaveDate)) }}</td>
                                             <td>
                                                 @if($data->type_of_leave == 0)
                                                     Unpaid Leave

@@ -63,11 +63,16 @@
                                         </div>
                                     </div>
 
-                                    <!--Date of Leave-->
+                                    <!--Durations of Leave-->
                                     <div class="form-group row">
-                                        <label for="date_of_leave" class="col-sm-2 col-form-label">Date of Leave</label>
-                                        <div class="col-sm-10">
-                                            <input type="date" value="{{ old('date_of_leave') }}" class="form-control" id="date_of_leave" name="date_of_leave" required>
+                                        <label for="date_of_leave" class="col-sm-2 col-form-label">From Date</label>
+                                        <div class="col-sm-4">
+                                            <input type="date" value="{{ old('from_leaveDate') }}" class="form-control" id="from_leaveDate" name="from_leaveDate" required>
+                                        </div>
+
+                                        <label for="date_of_leave" class="col-sm-2 col-form-label" style="text-align: center">To Date: </label>
+                                        <div class="col-sm-4">
+                                            <input type="date" value="{{ old('to_leaveDate') }}" class="form-control" id="to_leaveDate" name="to_leaveDate" required>
                                         </div>
                                     </div>
 

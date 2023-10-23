@@ -39,8 +39,13 @@
                                 @foreach ($getLeaveRecord as $data)
                                     <div class="card mb-3">
                                         <div class="card-header">
-                                            <strong>{{$data->date_of_leave}} | {{$data->name}}</strong>
-                                            <i class="float-right" style="font-size:85%;">Request sent on : {{ date('d-F-Y h:i A', strtotime($data->created_at)) }}</i>
+                                            <strong>
+                                                {{ date('d-m-Y', strtotime($data->from_leaveDate)) }}
+                                                To
+                                                {{ date('d-m-Y', strtotime($data->to_leaveDate)) }}
+                                                | {{$data->name}}
+                                            </strong>
+                                            <i class="float-right" style="font-size:85%;">Request sent on : {{ date('h:i A d-F-Y', strtotime($data->created_at)) }}</i>
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title">

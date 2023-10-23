@@ -19,14 +19,11 @@ return new class extends Migration
             $table->string('description', 5000);
             $table->string('leave_status')->comment('0 - Pending, 1 - Approved, 2 - Rejected');
 
-            //Can Delete
-            $table->date('date_of_leave');
-
             //Edited
             // - Change date_of_leave to from_leave Date
             // - Add column (to_leaveDate)
-//            $table->date('from_leaveDate');
-//            $table->date('to_leaveDate');
+            $table->date('from_leaveDate');
+            $table->date('to_leaveDate');
 
             //Included Created and Latest updated time
             $table->timestamps();

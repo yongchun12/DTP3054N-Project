@@ -88,7 +88,8 @@ class LeaveController extends Controller
         $leave = request()->validate([
             'type_of_leave' => 'required',
             'description' => 'required',
-            'date_of_leave' => 'required',
+            'from_leaveDate' => 'required',
+            'to_leaveDate' => 'required',
         ]);
 
         $leave = new Leave;
@@ -97,7 +98,8 @@ class LeaveController extends Controller
         $leave->type_of_leave   = trim($request->type_of_leave);
         $leave->description     = trim($request->description);
         $leave->leave_status    = trim(0);
-        $leave->date_of_leave   = trim($request->date_of_leave);
+        $leave->from_leaveDate  = trim($request->from_leaveDate);
+        $leave->to_leaveDate    = trim($request->to_leaveDate);
 
         $leave->save();
 
