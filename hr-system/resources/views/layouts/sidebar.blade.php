@@ -44,7 +44,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ asset('') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -92,12 +92,22 @@
                 </li>
 
                     <li class="nav-item">
-                        <a href=" {{ url('admin/leave') }} " class="nav-link
-                           @if(Request::segment(2) == 'leave') active @endif">
+                        <a href=" {{ url('admin/leave/pending') }} " class="nav-link
+                           @if(Request::segment(3) == 'pending') active @endif">
                         <i class="nav-icon fa fa-calendar-alt"></i>
                         <p>
                             Leave
                         </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href=" {{ url('admin/leave/history') }} " class="nav-link
+                           @if(Request::segment(3) == 'history') active @endif">
+                            <i class="nav-icon fa fa-calendar-alt"></i>
+                            <p>
+                                Leave History
+                            </p>
                         </a>
                     </li>
 
