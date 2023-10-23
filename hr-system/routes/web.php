@@ -84,7 +84,10 @@ Route::group(['middleware' => 'admin'], function (){
 
     //-------------------Leave-------------------//
     #Pending Request
-    Route::get('admin/leave', [LeaveController::class, 'dashboard_Admin']);
+    Route::get('admin/leave/pending', [LeaveController::class, 'dashboard_Admin']);
+
+    #Leave History for all Employees
+    Route::get('admin/leave/history', [LeaveController::class, 'admin_leaveHistory']);
 
     #Leave Request Approve
     Route::get('admin/leave/approve/{id}', [LeaveController::class, 'approve_leave']);
