@@ -1,4 +1,4 @@
-<!--Leave Request-->
+<!--Table List Employees-->
 @extends('layouts.plugins')
 
 @section('content')
@@ -10,30 +10,20 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Leave</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6" style="text-align: right">
-
-                        <!--Add Leave Request-->
-                        <a href=" {{ url('employee/leave/create') }} " class="btn btn-primary"> Add Leave Request</a>
-
+                        <h1>Leave History</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
 
-        <!--Leave Request List-->
+        <!--Leave History List-->
         <section class="content">
             <div class="container-fluid">
 
                 <div class="row">
-                    <section class="col-md-12">
+                    <section class="col-lg-12">
 
-                        <!--Alert Message-->
-                        @include('layouts.alert_message')
-
-                        <!--Table-->
                         <div class="card">
                             <!--Title-->
                             <div class="card-header">
@@ -46,6 +36,8 @@
                                     <thead>
                                     <!--tr is Table Row-->
                                     <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
                                         <th>Date of Leave</th>
                                         <th>Leave Category</th>
                                         <th>Status</th>
@@ -55,9 +47,11 @@
                                     </thead>
 
                                     <tbody>
-                                    @forelse($getOwnLeaveRecord as $data)
+                                    @forelse($getHistory as $data)
                                         <tr>
-                                            <td>{{ date('d-m-Y', strtotime($data->date_of_leave)) }}</td>
+                                            <td>{{ $data->id }}</td>
+                                            <td>{{ $data->name }}</td>
+                                            <td>{{ $data->date_of_leave }}</td>
                                             <td>
                                                 @if($data->type_of_leave == 0)
                                                     Unpaid Leave
@@ -89,7 +83,7 @@
                                 </table>
 
                                 <div style="padding: 10px; float: right;">
-                                    {!! $getOwnLeaveRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
+                                    {!! $getHistory->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
                                 </div>
 
                             </div>
@@ -100,6 +94,7 @@
 
             </div>
         </section>
+
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

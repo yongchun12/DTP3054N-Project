@@ -40,7 +40,7 @@
                                     <div class="card mb-3">
                                         <div class="card-header">
                                             <strong>{{$data->date_of_leave}} | {{$data->name}}</strong>
-                                            <i class="float-right" style="font-size:85%;">Request sent on :- {{$data->created_at}}</i>
+                                            <i class="float-right" style="font-size:85%;">Request sent on : {{ date('d-F-Y h:i A', strtotime($data->created_at)) }}</i>
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title">

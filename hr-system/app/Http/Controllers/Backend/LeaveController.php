@@ -24,6 +24,12 @@ class LeaveController extends Controller
 
     }
 
+    public function admin_leaveHistory(Request $request)
+    {
+        $data['getHistory'] = Leave::adminGetHistory();
+        return view('admin.leave.history', $data);
+    }
+
     //Approve Leave
     public function approve_leave($id, Request $request)
     {
@@ -66,7 +72,8 @@ class LeaveController extends Controller
     //-------------------For Employee Site-------------------//
     public function index_employeeSite()
     {
-        return view('employee.leave.list');
+        $data['getOwnLeaveRecord'] = Leave::employeeGetHistory();
+        return view('employee.leave.list', $data);
     }
 
     public function create_employeeSite()
