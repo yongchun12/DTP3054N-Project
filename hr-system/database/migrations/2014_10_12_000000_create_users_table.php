@@ -15,6 +15,10 @@ return new class extends Migration
 
             $table->id();
             $table->string('staff_id')->unique();
+
+            //Auto Increment of Staff Id
+//            $table->integer('staff_id')->autoIncrement()->unique();
+
             #First Name
             $table->string('name');
             $table->string('last_name');
