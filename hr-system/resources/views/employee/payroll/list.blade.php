@@ -49,7 +49,7 @@
 
                                     <!--Content-->
                                     <tbody>
-                                    @foreach($payrolls as $value)
+                                    @forelse($payrolls as $value)
                                         <tr>
                                             <td>{{ date('F Y', strtotime($value->created_at)) }}</td>
                                             <td>{{ $value->number_of_day_work }}</td>
@@ -62,14 +62,19 @@
                                                 <a href="{{ url('employee/payroll/pdf/'.$value->id) }}" class="btn btn-primary">Export PDF</a>
                                             </td>
                                         </tr>
-                                        @endforeach
+
+                                        @empty
+                                            <tr>
+                                                <td colspan="100%" style="text-align: center">No Data</td>
+                                            </tr>
+                                        @endforelse
 
                                     </tbody>
 
                                 </table>
 
                                 <div style="padding: 10px; float: right;">
-                                    {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
+                                    {!! $payrolls->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
                                 </div>
 
                             </div>
