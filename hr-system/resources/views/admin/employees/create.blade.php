@@ -101,6 +101,7 @@
                                     </div>
 
                                 </div>
+
                                 <!--Password-->
                                 <div class="form-group row">
 
@@ -126,6 +127,17 @@
                                             <!--Validation that if got same phone number-->
                                             {{ $errors->first('phone_number') }}
                                         </span>
+                                    </div>
+
+                                </div>
+
+                                <!--Profile Picture-->
+                                <div class="form-group row">
+
+                                    <label class="col-sm-2 col-form-label">Profile Picture</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="file" name="profile_picture" class="form-control">
                                     </div>
 
                                 </div>

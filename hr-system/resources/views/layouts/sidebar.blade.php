@@ -43,9 +43,14 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+
+            <!--Profile Picture-->
             <div class="image">
-                <img src="{{ asset('') }}" class="img-circle elevation-2" alt="User Image">
+                @if(Auth::user()->profile_picture)
+                        <img src="{{ asset('img/profile_picture/'.Auth::user()->profile_picture) }}" class="img-circle elevation-2" alt="User Image">
+                @endif
             </div>
+
             <div class="info">
                 <a href="#" class="d-block">{{ Auth::user()->name }}</a>
             </div>
@@ -107,6 +112,16 @@
                             <i class="nav-icon fa fa-calendar-alt"></i>
                             <p>
                                 Leave History
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href=" {{ url('admin/my_account') }} " class="nav-link
+                    @if(Request::segment(2) == 'my_account') active @endif">
+                            <i class="nav-icon fa fa-cog"></i>
+                            <p>
+                                My Account
                             </p>
                         </a>
                     </li>

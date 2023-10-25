@@ -95,6 +95,7 @@
                                     <!--tr is Table Row-->
                                         <tr>
                                             <th>Staff ID</th>
+                                            <th>Profile Picture</th>
                                             <th>First Name</th>
                                             <th>Last Name</th>
                                             <th>Email</th>
@@ -106,15 +107,25 @@
                                     <tbody>
                                     @forelse($getRecord as $value)
                                         <tr>
-                                            <td>{{ $value->staff_id }}</td>
-                                            <td>{{ $value->name }}</td>
-                                            <td>{{ $value->last_name }}</td>
-                                            <td>{{ $value->email }}</td>
+                                            <td style="vertical-align: middle;">{{ $value->staff_id }}</td>
+
+                                            <!--Profile Picture-->
+                                            <td>
+                                                @if(!empty($value->profile_picture))
+                                                    @if(file_exists(public_path('img/profile_picture/'.$value->profile_picture)))
+                                                        <img src="{{ asset('img/profile_picture/'.$value->profile_picture) }}" width="50px" height="50px" style="vertical-align: middle;">
+                                                    @endif
+                                                @endif
+                                            </td>
+
+                                            <td style="vertical-align: middle;">{{ $value->name }}</td>
+                                            <td style="vertical-align: middle;">{{ $value->last_name }}</td>
+                                            <td style="vertical-align: middle;">{{ $value->email }}</td>
 
                                             <!--If is_role is not empty, define is HR or Employee-->
-                                            <td>{{ !empty($value->is_role) ? 'HR' : 'Employee' }}</td>
+                                            <td style="vertical-align: middle;">{{ !empty($value->is_role) ? 'HR' : 'Employee' }}</td>
 
-                                            <td>
+                                            <td style="vertical-align: middle;">
                                                 <!--The Dot is for the link to check which id-->
                                                 <a href="{{ url('admin/employees/view/' .$value->id) }}" class="btn btn-primary">View</a>
                                                 <a href="{{ url('admin/employees/edit/' .$value->id) }}" class="btn btn-secondary">Edit</a>

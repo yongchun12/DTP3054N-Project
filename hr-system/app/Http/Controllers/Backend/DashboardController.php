@@ -11,7 +11,7 @@ class DashboardController extends Controller {
     public function dashboard(Request $request) {
 
         if(Auth::user()->is_role == 1){
-            #dashboard will redirect to where or what message
+            #dashboard will redirect to what page or what message
             return view('admin.dashboard');
         }else if (Auth::user()->is_role == 0){
             return view('employee.dashboard');

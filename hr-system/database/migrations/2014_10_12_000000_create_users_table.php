@@ -13,24 +13,36 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
 
+            //Employee ID / Users ID
             $table->id();
             $table->string('staff_id')->unique();
 
             //Auto Increment of Staff Id
 //            $table->integer('staff_id')->autoIncrement()->unique();
 
-            #First Name
+            //Name
             $table->string('name');
             $table->string('last_name');
 
             #unique() method is used to avoid same data in the list of row or column
+            //Important Details
             $table->string('email')->unique();
+
+            //Profile Picture
+            $table->string('profile_picture', 255)->nullable();
+
             $table->string('password');
             $table->string('phone_number')->unique();
 
             $table->date('hire_date');
+
+            //Job ID (Position ID)
             $table->string('job_id');
+
+            //Manager ID
             $table->integer('manager_id');
+
+            //Department ID
             $table->integer('department_id');
             $table->string('category_employee')->comment('0:Full Time, 1:Part Time, 2:Contract, 3:Temporary');
 
@@ -41,7 +53,7 @@ return new class extends Migration
             $table->string('pcb_no')->unique();
             $table->string('ic_no')->unique();
 
-            #For Role
+            //For Role to identified which of this user need to redirect to specific dashboard
             $table->tinyInteger('is_role')->default(1)->comment('0: Employee, 1: HR');
 
             #nullable() method is used to allow null values for the column

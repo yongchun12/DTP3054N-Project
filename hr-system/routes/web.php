@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployeesController;
 use App\Http\Controllers\Backend\PayrollController;
 use App\Http\Controllers\Backend\LeaveController;
+use App\Http\Controllers\Backend\MyAccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +95,13 @@ Route::group(['middleware' => 'admin'], function (){
 
     #Leave Request Reject
     Route::get('admin/leave/reject/{id}', [LeaveController::class, 'reject_leave']);
+
+    //-------------------My Account-------------------//
+    #My Account
+    Route::get('admin/my_account', [MyAccountController::class, 'admin_myAccount']);
+
+    #Update My Account
+    Route::post('admin/my_account/update', [MyAccountController::class, 'update_admin_myAccount']);
 });
 
 //-------------------For Employee Site-------------------//

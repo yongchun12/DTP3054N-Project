@@ -123,6 +123,26 @@
 
                                     </div>
 
+                                    <!--Profile Picture-->
+                                    <div class="form-group row">
+
+                                        <label for="formFile" class="col-sm-2 col-form-label">Profile Picture</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="file" name="profile_picture" class="form-control" id="formFile">
+
+                                            <br>
+
+                                            @if(!empty($getRecord->profile_picture))
+                                                @if(file_exists(public_path('img/profile_picture/'.$getRecord->profile_picture)))
+                                                    <img src="{{ asset('img/profile_picture/'.$getRecord->profile_picture) }}" width="50px" height="50px" style="vertical-align: middle;">
+                                                @endif
+                                            @endif
+
+                                        </div>
+
+                                    </div>
+
                                     <!--Hire Date-->
                                     <div class="form-group row">
 

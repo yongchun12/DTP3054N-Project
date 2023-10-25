@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Str;
+use File;
 
 class EmployeesController extends Controller
 {
@@ -55,6 +57,20 @@ class EmployeesController extends Controller
         $user->name                 = trim($request->name);
         $user->last_name            = trim($request->last_name);
         $user->email                = trim($request->email.'@hr-system.com');
+
+        #Profile Picture
+        if(!empty($request->file('profile_picture'))){
+            //Get the file from the form with the name
+            $file               = $request->file('profile_picture');
+
+            //Random String
+            $randomStr          = Str::random(30);
+            $filename           = $randomStr.'.'.$file->getClientOriginalExtension();
+
+            //public_path() is to get the path from the public folder
+            $file->move(public_path('img/profile_picture'), $filename);
+            $user->profile_picture = $filename;
+        }
 
         #Hash the password from normal key to encrypted key
         $user->password             = bcrypt(trim($request->password));
@@ -122,6 +138,25 @@ class EmployeesController extends Controller
 
 //        #Hash the password from normal key to encrypted key
 //        $user->password             = bcrypt(trim($request->password));
+
+        #Profile Picture
+        if(!empty($request->file('profile_picture'))){
+
+            if (!empty($user->profile_picture) && file_exists(public_path('img/profile_picture/'.$user->profile_picture))) {
+                unlink(public_path('img/profile_picture/'.$user->profile_picture));
+            }
+
+            //Get the file from the form with the name
+            $file               = $request->file('profile_picture');
+
+            //Random String
+            $randomStr          = Str::random(30);
+            $filename           = $randomStr.'.'.$file->getClientOriginalExtension();
+
+            //public_path() is to get the path from the public folder
+            $file->move(public_path('img/profile_picture'), $filename);
+            $user->profile_picture = $filename;
+        }
 
         //Employee Details
         $user->phone_number         = trim($request->phone_number);
