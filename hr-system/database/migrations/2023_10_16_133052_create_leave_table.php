@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('leave', function (Blueprint $table) {
 
+            //Leave ID
             $table->id();
+
+            //Employee ID / Users ID
             $table->integer('employee_id')->nullable();
             $table->string('type_of_leave')->comment('0 - Unpaid Leave, 1 - Normal Leave, 2 - Medical Leave');
             $table->string('description', 5000);

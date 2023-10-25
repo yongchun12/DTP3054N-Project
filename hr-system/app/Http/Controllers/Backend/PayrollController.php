@@ -123,7 +123,8 @@ class PayrollController extends Controller
         #Auth::user()->id is check for the current section of the user
         $payrolls = PayrollModel::where('employee_id', '=', Auth::user()->id)
             ->select('payroll.*')
-            ->get();
+            //If got paginate, then no need to use get() to get the data
+            ->paginate(10);
 
         return view('employee.payroll.list', $data, compact('payrolls'));
     }

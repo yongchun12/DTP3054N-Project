@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('payroll', function (Blueprint $table) {
 
+            //Payroll ID
             $table->id();
+
+            //Employee ID / Users ID
             $table->string('employee_id');
 
             //The amount of money an employee receives from a company before any deductions
@@ -39,9 +42,11 @@ return new class extends Migration
             $table->double('other_allowance')->nullable();
 
             //Take from the absent days
+            //Retrieve from the create payroll page (Need Calculation)
             $table->double('total_deductions');
 
             //Total Salary
+            //Retrieve from the create payroll page (Need Calculation)
             $table->double('payroll_monthly');
 
             #Create created_at and updated_at column
