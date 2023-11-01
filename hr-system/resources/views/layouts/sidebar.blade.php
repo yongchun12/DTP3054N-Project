@@ -117,6 +117,16 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href=" {{ url('admin/forum') }} " class="nav-link
+                           @if(Request::segment(2) == 'forum') active @endif">
+                            <i class="nav-icon fa fa-comment"></i>
+                            <p>
+                                Forum
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href=" {{ url('admin/my_account') }} " class="nav-link
                     @if(Request::segment(2) == 'my_account') active @endif">
                             <i class="nav-icon fa fa-cog"></i>
@@ -195,6 +205,16 @@
                         <p>
                             Leave
                         </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href=" {{ url('employee/my_account') }} " class="nav-link
+                    @if(Request::segment(2) == 'my_account') active @endif">
+                            <i class="nav-icon fa fa-cog"></i>
+                            <p>
+                                My Account
+                            </p>
                         </a>
                     </li>
 

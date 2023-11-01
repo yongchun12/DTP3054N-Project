@@ -71,7 +71,7 @@
 
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ old('gross_salary') }}" name="gross_salary"
-                                                   class="form-control" required placeholder="Enter Gross Salary" id="gross_salary">
+                                                   class="form-control" required placeholder="Enter Gross Salary" id="gross_salary" oninput="calculateDeduction(); calculateAllowance();">
                                         </div>
 
                                     </div>
@@ -86,37 +86,7 @@
 
                                         <div class="col-sm-10">
                                                 <input type="number" value="{{ old('number_of_day_work') }}" name="number_of_day_work"
-                                                       class="form-control" required placeholder="Enter Number of Day Work" id="num_work">
-                                        </div>
-
-                                    </div>
-
-                                    <!--Bonus-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Bonus
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="number" value="{{ old('bonus') }}" name="bonus"
-                                                   class="form-control" required placeholder="Enter Bonus" id="bonus">
-                                        </div>
-
-                                    </div>
-
-                                    <!--Overtime Hours-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Overtime Hours
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="number" value="{{ old('overtime_hours') }}" name="overtime_hours"
-                                                   class="form-control" required placeholder="Enter Overtime" id="overtime">
+                                                       class="form-control" required placeholder="Default 22 Days" id="num_work" readonly>
                                         </div>
 
                                     </div>
@@ -131,7 +101,37 @@
 
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ old('absent_days') }}" name="absent_days"
-                                                   class="form-control" required placeholder="Enter Absent Days" id="absent_days">
+                                                   class="form-control" required placeholder="Enter Absent Days" id="absent_days" max="22" oninput="calculateDeduction()">
+                                        </div>
+
+                                    </div>
+
+                                    <!--Overtime Hours-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Overtime Hours
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" value="{{ old('overtime_hours') }}" name="overtime_hours"
+                                                   class="form-control" required placeholder="Enter Overtime" id="overtime" oninput="calculateAllowance()">
+                                        </div>
+
+                                    </div>
+
+                                    <!--Bonus-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Bonus
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" value="{{ old('bonus') }}" name="bonus"
+                                                   class="form-control" required placeholder="Enter Bonus" id="bonus" oninput="calculateAllowance()">
                                         </div>
 
                                     </div>
@@ -145,7 +145,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ old('medical_allowance') }}" name="medical_allowance"
+                                            <input type="number" value="{{ old('medical_allowance') }}" name="medical_allowance"
                                                    class="form-control" required placeholder="Enter Medicare Allowance" id="medical_allowance">
                                         </div>
 
@@ -160,8 +160,50 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ old('other_allowance') }}" name="other_allowance"
+                                            <input type="number" value="{{ old('other_allowance') }}" name="other_allowance"
                                                    class="form-control" required placeholder="Enter Other Allowance" id="other_allowance">
+                                        </div>
+
+                                    </div>
+
+                                    <!--Total Allowance-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Total Allowance
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" id="total_allowance" placeholder="Total Allowance" readonly>
+                                        </div>
+
+                                    </div>
+
+                                    <!--EPF-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">EPF
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" id="epf" placeholder="EPF Rate = 11%" readonly>
+                                        </div>
+
+                                    </div>
+
+                                    <!--PCB-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">PCB
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" id="pcb" placeholder="PCB Rate = 2%" readonly>
                                         </div>
 
                                     </div>
@@ -175,8 +217,8 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ old('total_deductions') }}" name="total_deductions"
-                                                   class="form-control" required placeholder="Enter Total Deductions" id="total_deductions">
+                                            <input type="number" value="{{ old('total_deductions') }}" name="total_deductions"
+                                                   class="form-control" required placeholder="Enter Total Deductions" id="total_deductions" readonly>
                                         </div>
 
                                     </div>
@@ -184,43 +226,77 @@
                                     <!--Payroll Monthly-->
                                     <div class="form-group row">
 
-                                        <label class="col-sm-2 col-form-label">Payroll Monthly
+                                        <label class="col-sm-2 col-form-label">Net Pay
                                             <!--Required-->
                                             <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10">
                                             <input type="text" value="{{ old('payroll_monthly') }}" name="payroll_monthly"
-                                                   id="payroll_monthly" class="form-control" required placeholder="Enter Total Salary">
+                                                   id="payroll_monthly" class="form-control" required placeholder="Enter Total Salary" readonly>
                                         </div>
 
                                     </div>
 
-{{--                                    <script>--}}
+                                    <script>
 
-{{--                                        function payroll_montly() {--}}
+                                        function calculateDeduction() {
 
-{{--                                            let default_workingdays = 22;--}}
-{{--                                            let work_hours = 8;--}}
+                                            var gross_salary = document.getElementById('gross_salary').value;
 
-{{--                                            payroll_monthly = document.getElementById('payroll_monthly').value;--}}
+                                            //Calculate Days Work and Leave
+                                            let default_dayswork = 22;
 
-{{--                                            gross_salary = document.getElementById('gross_salary').value;--}}
-{{--                                            num_work = document.getElementById('num_work').value;--}}
-{{--                                            bonus = document.getElementById('bonus').value;--}}
-{{--                                            overtime = document.getElementById('overtime').value;--}}
-{{--                                            absent_days = document.getElementById('absent_days').value;--}}
-{{--                                            medical_allowance = document.getElementById('medical_allowance').value;--}}
-{{--                                            other_allowance = document.getElementById('other_allowance').value;--}}
-{{--                                            total_deductions = document.getElementById('total_deductions').value;--}}
+                                            absent_days = document.getElementById('absent_days').value;
 
-{{--                                            payroll_monthly = (((gross_salary / default_workingdays) * num_work) - absent_days) +--}}
-{{--                                                bonus + (((gross_salary/default_workingdays) / work_hours) * overtime)--}}
-{{--                                                + other_allowance + medical_allowance ;--}}
+                                            document.getElementById('num_work').value = default_dayswork - absent_days;
 
-{{--                                        }--}}
-{{--                                        --}}
-{{--                                    </script>--}}
+                                            //Calculate EPF
+                                            let epf_rate = 0.11;
+                                            var epf = gross_salary * epf_rate;
+
+                                            document.getElementById('epf').value = "RM " + epf.toFixed(2);
+
+                                            //Calculate PCB
+                                            let pcb_rate = 0.02;
+                                            var pcb = gross_salary * pcb_rate;
+
+                                            document.getElementById('pcb').value = "RM " + pcb.toFixed(2);
+
+                                            //Calculate Total Deduction
+                                            var total_deduction = epf + pcb + (gross_salary / default_dayswork) * absent_days;
+                                            document.getElementById('total_deductions').value = total_deduction.toFixed(2);
+                                        }
+
+                                        function calculateAllowance() {
+
+                                            let default_dayswork = 22;
+                                            var gross_salary = document.getElementById('gross_salary').value;
+
+                                            var bonus = document.getElementById('bonus').value;
+                                            var medicare_allowance = document.getElementById('medical_allowance').value;
+                                            var other_allowance = document.getElementById('other_allowance').value;
+
+                                            //Calculate Overtime Hours
+                                            var total_overtime = ((gross_salary / default_dayswork / 8) * document.getElementById('overtime').value);
+
+                                            //How many days did the employee work
+                                            var days_salary = (gross_salary / default_dayswork) * document.getElementById('num_work').value;
+
+                                            //Calculate Total Earning
+                                            var total_earning = total_overtime + days_salary + bonus + medicare_allowance + other_allowance;
+
+                                            document.getElementById('total_allowance').value = total_earning.toFixed(2);
+                                        }
+
+                                        function TotalSalary() {
+                                            //Calculate Payroll Monthly
+                                            var payroll_monthly = total_earning - total_deduction;
+
+                                            document.getElementById('payroll_monthly').value = payroll_monthly.toFixed(2);
+                                        }
+
+                                    </script>
 
                                     <!--Card Footer-->
                                     <div class="card-footer">
@@ -229,7 +305,6 @@
                                     </div>
 
                                 </div>
-
                             </form>
 
                         </div>

@@ -7,7 +7,11 @@
     $default_dayswork = 22;
 
     $number_of_day_work = ($basic_salary / $default_dayswork) * $getRecord->number_of_day_work;
+
+    //Default Value
     $over_time = ($basic_salary / $default_dayswork / 8) * $getRecord->overtime_hours;
+
+    //Rm500 per year
     $medical_allowance = $getRecord->medical_allowance;
     $other_allowance = $getRecord->other_allowance;
     $bonus = $getRecord->bonus;

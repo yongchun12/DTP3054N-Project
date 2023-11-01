@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployeesController;
-use App\Http\Controllers\Backend\PayrollController;
+use App\Http\Controllers\Backend\ForumController;
 use App\Http\Controllers\Backend\LeaveController;
 use App\Http\Controllers\Backend\MyAccountController;
+use App\Http\Controllers\Backend\PayrollController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +20,21 @@ use App\Http\Controllers\Backend\MyAccountController;
 |
 */
 
-//Depends on what you want to show for the link
+/*
 
-// Get: getting all the data from the database (showing the data)
-// get is used to show the page and also get the input
+- Depends on what you want to show for the link
 
-// Post: submitting the data to the database (inserting the data)
-// post is used to submit the form to database to verification
-// (only for the form that need to fill in with the tag <form>)
+- Get: getting all the data from the database (showing the data)
+- get is used to show the page and also get the input
+
+- Post: submitting the data to the database (inserting the data)
+- post is used to submit the form to database to verification
+- (only for the form that need to fill in with the tag <form>)
+
+Note:
+- Get and Post de url should be the same
+
+*/
 
 //-------------------Login-------------------//
 Route::get('/', [AuthController::class, 'index']);
@@ -96,6 +104,23 @@ Route::group(['middleware' => 'admin'], function (){
     #Leave Request Reject
     Route::get('admin/leave/reject/{id}', [LeaveController::class, 'reject_leave']);
 
+    //-------------------Forum-------------------//
+    #Forum List
+    Route::get('admin/forum', [ForumController::class, 'admin_postsList']);
+
+    #Forum Create / Post Create
+    Route::get('admin/forum/posts/create', [ForumController::class, 'posts_create']);
+    Route::post('admin/forum/posts/create', [ForumController::class, 'postsCreate_post']);
+
+    #View Topic
+    Route::get('admin/forum/view/{id}', [ForumController::class, 'admin_topicView']);
+
+    #Reply Create
+    Route::post('admin/forum/view/{id}', [ForumController::class, 'reply_create']);
+
+    #Forum Delete
+    Route::get('admin/forum/delete/{id}', [ForumController::class, 'delete']);
+
     //-------------------My Account-------------------//
     #My Account
     Route::get('admin/my_account', [MyAccountController::class, 'admin_myAccount']);
@@ -125,6 +150,13 @@ Route::group(['middleware' => 'employee'], function (){
     #Create Leave Request
     Route::get('employee/leave/create', [LeaveController::class, 'create_employeeSite']);
     Route::post('employee/leave/create', [LeaveController::class, 'create_post_employeeSite']);
+
+    //-------------------My Account-------------------//
+    #My Account
+    Route::get('employee/my_account', [MyAccountController::class, 'employee_myAccount']);
+
+    #Update My Account
+    Route::post('employee/my_account/update', [MyAccountController::class, 'update_employee_myAccount']);
 });
 
 //-------------------Logout-------------------//

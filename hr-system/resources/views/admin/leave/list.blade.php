@@ -36,7 +36,7 @@
                                 <!--Alert Message-->
                                 @include('layouts.alert_message')
 
-                                @foreach ($getLeaveRecord as $data)
+                                @forelse ($getLeaveRecord as $data)
                                     <div class="card mb-3">
                                         <div class="card-header">
                                             <strong>
@@ -65,9 +65,12 @@
                                         </div>
                                     </div>
 
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="100%" style="text-align: center">No Pending Request</td>
+                                    </tr>
 
-
+                                @endforelse
 
                             </div>
                         </div>

@@ -40,9 +40,9 @@
                             <div class="card-body">
 
                                 <!-- If want add column then copy this-->
-                                <!-- "name" should put the column name-->
+                                <!-- "name" should put the table column name-->
 
-                                <!--First Name-->
+                                <!--Staff ID-->
                                 <div class="form-group row">
 
                                     <label class="col-sm-2 col-form-label">Staff ID

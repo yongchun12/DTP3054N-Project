@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             //Employee ID / Users ID
-            $table->integer('employee_id')->nullable();
+            $table->integer('employee_id');
             $table->string('type_of_leave')->comment('0 - Unpaid Leave, 1 - Normal Leave, 2 - Medical Leave');
             $table->string('description', 5000);
             $table->string('leave_status')->comment('0 - Pending, 1 - Approved, 2 - Rejected');
