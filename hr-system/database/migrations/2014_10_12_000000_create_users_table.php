@@ -44,6 +44,10 @@ return new class extends Migration
 
             //Department ID
             $table->integer('department_id');
+
+            //Address
+            $table->string('address', 1000);
+
             $table->string('category_employee')->comment('0:Full Time, 1:Part Time, 2:Contract, 3:Temporary');
 
             //Details of Employee

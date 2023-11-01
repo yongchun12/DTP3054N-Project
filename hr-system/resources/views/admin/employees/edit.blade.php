@@ -123,6 +123,19 @@
 
                                     </div>
 
+                                    <!--Address-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Address</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" value="{{ $getRecord->address }}" name="address" class="form-control" placeholder="Enter Address">
+                                            <span style="color: red">
+                                        </span>
+                                        </div>
+
+                                    </div>
+
                                     <!--Profile Picture-->
                                     <div class="form-group row">
 
@@ -245,7 +258,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ $getRecord->bank_name }}" name="bank_name" class="form-control" placeholder="Enter Bank Name" required>
+                                            <input type="text" value="Maybank" name="bank_name" class="form-control" readonly>
                                         </div>
 
                                     </div>

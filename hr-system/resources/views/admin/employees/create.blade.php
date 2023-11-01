@@ -131,6 +131,19 @@
 
                                 </div>
 
+                                <!--Address-->
+                                <div class="form-group row">
+
+                                    <label class="col-sm-2 col-form-label">Address</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" value="{{ old('address') }}" name="address" class="form-control" placeholder="Enter Address">
+                                        <span style="color: red">
+                                        </span>
+                                    </div>
+
+                                </div>
+
                                 <!--Profile Picture-->
                                 <div class="form-group row">
 
@@ -159,7 +172,7 @@
                                 <!--Job ID / Position-->
                                 <div class="form-group row">
 
-                                    <label class="col-sm-2 col-form-label">Job ID</label>
+                                    <label class="col-sm-2 col-form-label">Position</label>
 
                                     <div class="col-sm-10">
                                         <select class="form-control" name="job_id">
@@ -236,7 +249,7 @@
                                     </label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" value="{{ old('bank_name') }}" name="bank_name" class="form-control" placeholder="Enter Bank Name" required>
+                                        <input type="text" value="Maybank" name="bank_name" class="form-control" readonly>
                                     </div>
 
                                 </div>

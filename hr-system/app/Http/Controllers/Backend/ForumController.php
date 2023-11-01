@@ -80,4 +80,73 @@ class ForumController extends Controller
         return redirect()->back()->with('error', 'Forum Delete Successfully.');
     }
 
+    //-------------------Employee Site-------------------//
+    public function employee_postsList()
+    {
+        $data['getPosts'] = Forum::getPosts();
+        return view('employee.forum.list' , $data);
+    }
+
+    public function employee_postsCreate()
+    {
+        return view('employee.forum.create');
+    }
+
+    public function employee_postsCreatePost(Request $request)
+    {
+//        dd($request->all());
+
+        $posts = request()->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        $posts = new Forum;
+
+        $posts->employee_id     =    Auth::user()->id;
+        $posts->title           =    trim($request->title);
+        $posts->description     =    trim($request->description);
+
+        $posts->save();
+
+        return redirect('employee/forum')->with('success', 'Posts created successfully.');
+
+    }
+
+    public function employee_topicView($id, Request $request)
+    {
+        $data['getEmployee'] = User::all();
+        $data['getRecord'] = Forum::find($id);
+        $data['getReply'] = Reply::getForumReply()
+            ->where('forum_id', '=', $id);
+
+        return view('employee.forum.view', $data);
+    }
+
+    public function employee_replyCreate(Request $request)
+    {
+        $reply = request()->validate([
+            'description' => 'required',
+        ]);
+
+        $reply = new Reply;
+
+        $reply ->employee_id    =    Auth::user()->id;
+        $reply ->forum_id       =    trim($request->forum_id);
+        $reply ->title          =    trim($request->title);
+        $reply ->description    =    trim($request->description);
+
+        $reply->save();
+
+        return redirect()->back()->with('success', 'Done Reply');
+
+    }
+
+    public function employee_delete($id)
+    {
+        $recordDelete = Forum::find($id);
+        $recordDelete->delete();
+        return redirect()->back()->with('error', 'Forum Delete Successfully.');
+    }
+
 }

@@ -7,7 +7,7 @@
     $default_dayswork = 22;
 
     $number_of_day_work = ($basic_salary / $default_dayswork) * $getRecord->number_of_day_work;
-    $over_time = ($basic_salary / $default_dayswork / 8) * $getRecord->overtime_hours;
+    $over_time = ($basic_salary / $default_dayswork / 8 * 1.5) * $getRecord->overtime_hours;
     $medical_allowance = $getRecord->medical_allowance;
     $other_allowance = $getRecord->other_allowance;
     $bonus = $getRecord->bonus;
@@ -30,7 +30,7 @@
 
                     <!--Back Button-->
                     <div class="col-sm-6">
-                        <a href="{{ url('admin/payroll') }}" class="btn btn-primary d-print-none">Back</a>
+                        <a href="{{ url('employee/payroll') }}" class="btn btn-primary d-print-none">Back</a>
                     </div>
 
                     <!--Print Button-->
@@ -272,7 +272,7 @@
                                 <td>2% = RM <?php echo number_format((float)$pcb, 2, '.', '');?></td>
                             </tr>
                             <tr>
-                                <th scope="row">Other Allowance</th>
+                                <th scope="row">Other Allowance (Transport Allowance etc)</th>
                                 <td>RM {{ $getRecord->other_allowance }}</td>
                                 <td></td>
                                 <td></td>
@@ -283,16 +283,6 @@
                                 <td></td>
                                 <td></td>
                             </tr>
-                            {{--                    <tr>--}}
-                            {{--                        <th scope="row">Commission</th>--}}
-                            {{--                        <td>RM--}}
-                            {{--                            @foreach($getEmployee as $value_employee)--}}
-                            {{--                                {{ ($value_employee->id == $getRecord->employee_id) ? ($value_employee->commission) : '' }}--}}
-                            {{--                            @endforeach--}}
-                            {{--                        </td>--}}
-                            {{--                        <td></td>--}}
-                            {{--                        <td></td>--}}
-                            {{--                    </tr>--}}
 
                             <tr class="border-top">
                                 <th scope="row">Total Earning</th>

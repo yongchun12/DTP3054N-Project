@@ -62,36 +62,6 @@
 
                                     </div>
 
-                                    <!--First Name-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">First Name
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="text" value="{{ $getRecord->name }}" name="name"
-                                                   class="form-control" required placeholder="Enter First Name">
-                                        </div>
-
-                                    </div>
-
-                                    <!--Last Name-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Last Name
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <input type="text" value="{{ $getRecord->last_name }}" name="last_name"
-                                                   class="form-control" required placeholder="Enter Last Name">
-                                        </div>
-
-                                    </div>
-
                                     <!--Password-->
                                     <div class="form-group row">
 

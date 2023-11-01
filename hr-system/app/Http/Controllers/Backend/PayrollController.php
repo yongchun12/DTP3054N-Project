@@ -39,24 +39,24 @@ class PayrollController extends Controller
 
     public function create_post(Request $request)
     {
-        dd($request->all());
+//        dd($request->all());
 
-//        $user = new PayrollModel;
-//
-//        $user->employee_id          = trim($request->employee_id);
-//        $user->gross_salary         = trim($request->gross_salary);
-//        $user->number_of_day_work   = trim($request->number_of_day_work);
-//        $user->bonus                = trim($request->bonus);
-//        $user->overtime_hours       = trim($request->overtime_hours);
-//        $user->absent_days          = trim($request->absent_days);
-//        $user->medical_allowance    = trim($request->medical_allowance);
-//        $user->other_allowance      = trim($request->other_allowance);
-//        $user->total_deductions     = trim($request->total_deductions);
-//        $user->payroll_monthly      = trim($request->payroll_monthly);
-//
-//        $user->save();
-//
-//        return redirect('admin/payroll')->with('success', 'Payroll Record has been created successfully!');
+        $user = new PayrollModel;
+
+        $user->employee_id          = trim($request->employee_id);
+        $user->gross_salary         = trim($request->gross_salary);
+        $user->number_of_day_work   = trim($request->number_of_day_work);
+        $user->bonus                = trim($request->bonus);
+        $user->overtime_hours       = trim($request->overtime_hours);
+        $user->absent_days          = trim($request->absent_days);
+        $user->medical_allowance    = trim($request->medical_allowance);
+        $user->other_allowance      = trim($request->other_allowance);
+        $user->total_deductions     = trim($request->total_deductions);
+        $user->payroll_monthly      = trim($request->payroll_monthly);
+
+        $user->save();
+
+        return redirect('admin/payroll')->with('success', 'Payroll Record has been created successfully!');
 
     }
 
@@ -139,6 +139,6 @@ class PayrollController extends Controller
     {
         $data['getEmployee'] = User::where('is_role', '=', 0)->get();
         $data['getRecord'] = PayrollModel::find($id);
-        return view('admin.payroll.salaryview', $data);
+        return view('employee.payroll.salaryview', $data);
     }
 }

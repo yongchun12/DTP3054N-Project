@@ -9,7 +9,7 @@
     $number_of_day_work = ($basic_salary / $default_dayswork) * $getRecord->number_of_day_work;
 
     //Default Value
-    $over_time = ($basic_salary / $default_dayswork / 8) * $getRecord->overtime_hours;
+    $over_time = ($basic_salary / $default_dayswork / 8 * 1.5) * $getRecord->overtime_hours;
 
     //Rm500 per year
     $medical_allowance = $getRecord->medical_allowance;
@@ -276,7 +276,7 @@
                         <td>2% = RM <?php echo number_format((float)$pcb, 2, '.', '');?></td>
                     </tr>
                     <tr>
-                        <th scope="row">Other Allowance</th>
+                        <th scope="row">Other Allowance (Transport Allowance etc)</th>
                         <td>RM {{ $getRecord->other_allowance }}</td>
                         <td></td>
                         <td></td>
@@ -287,16 +287,6 @@
                         <td></td>
                         <td></td>
                     </tr>
-{{--                    <tr>--}}
-{{--                        <th scope="row">Commission</th>--}}
-{{--                        <td>RM--}}
-{{--                            @foreach($getEmployee as $value_employee)--}}
-{{--                                {{ ($value_employee->id == $getRecord->employee_id) ? ($value_employee->commission) : '' }}--}}
-{{--                            @endforeach--}}
-{{--                        </td>--}}
-{{--                        <td></td>--}}
-{{--                        <td></td>--}}
-{{--                    </tr>--}}
 
                     <tr class="border-top">
                         <th scope="row">Total Earning</th>

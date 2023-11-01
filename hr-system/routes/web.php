@@ -157,6 +157,24 @@ Route::group(['middleware' => 'employee'], function (){
 
     #Update My Account
     Route::post('employee/my_account/update', [MyAccountController::class, 'update_employee_myAccount']);
+
+    //-------------------Forum-------------------//
+    #Forum List
+    Route::get('employee/forum', [ForumController::class, 'employee_postsList']);
+
+    #Forum Create / Post Create
+    Route::get('employee/forum/posts/create', [ForumController::class, 'employee_postsCreate']);
+    Route::post('employee/forum/posts/create', [ForumController::class, 'employee_postsCreatePost']);
+
+    #View Topic
+    Route::get('employee/forum/view/{id}', [ForumController::class, 'employee_topicView']);
+
+    #Reply Create
+    Route::post('employee/forum/view/{id}', [ForumController::class, 'employee_replyCreate']);
+
+    #Forum Delete
+    Route::get('employee/forum/delete/{id}', [ForumController::class, 'employee_delete']);
+
 });
 
 //-------------------Logout-------------------//

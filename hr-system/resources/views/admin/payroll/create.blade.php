@@ -70,7 +70,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('gross_salary') }}" name="gross_salary"
+                                            <input type="number" value="0" name="gross_salary"
                                                    class="form-control" required placeholder="Enter Gross Salary" id="gross_salary" oninput="calculateDeduction(); calculateAllowance();">
                                         </div>
 
@@ -115,7 +115,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('overtime_hours') }}" name="overtime_hours"
+                                            <input type="number" value="0" name="overtime_hours"
                                                    class="form-control" required placeholder="Enter Overtime" id="overtime" oninput="calculateAllowance()">
                                         </div>
 
@@ -130,7 +130,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('bonus') }}" name="bonus"
+                                            <input type="number" value="0" name="bonus"
                                                    class="form-control" required placeholder="Enter Bonus" id="bonus" oninput="calculateAllowance()">
                                         </div>
 
@@ -145,8 +145,8 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('medical_allowance') }}" name="medical_allowance"
-                                                   class="form-control" required placeholder="Enter Medicare Allowance" id="medical_allowance">
+                                            <input type="number" value="0" name="medical_allowance"
+                                                   class="form-control" required placeholder="Enter Medicare Allowance" id="medical_allowance" oninput="calculateAllowance()">
                                         </div>
 
                                     </div>
@@ -160,8 +160,8 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('other_allowance') }}" name="other_allowance"
-                                                   class="form-control" required placeholder="Enter Other Allowance" id="other_allowance">
+                                            <input type="number" value="0" name="other_allowance"
+                                                   class="form-control" required placeholder="Enter Other Allowance" id="other_allowance" oninput="calculateAllowance()">
                                         </div>
 
                                     </div>
@@ -169,13 +169,13 @@
                                     <!--Total Allowance-->
                                     <div class="form-group row">
 
-                                        <label class="col-sm-2 col-form-label">Total Allowance
+                                        <label class="col-sm-2 col-form-label">Total Salary
                                             <!--Required-->
                                             <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" class="form-control" id="total_allowance" placeholder="Total Allowance" readonly>
+                                            <input type="number" class="form-control" id="total_allowance" placeholder="Total Salary" readonly>
                                         </div>
 
                                     </div>
@@ -244,6 +244,18 @@
 
                                             var gross_salary = document.getElementById('gross_salary').value;
 
+                                            //Calculate EPF
+                                            let epf_rate = 0.11;
+                                            var epf = gross_salary * epf_rate;
+
+                                            document.getElementById('epf').value = epf.toFixed(2);
+
+                                            //Calculate PCB
+                                            let pcb_rate = 0.02;
+                                            var pcb = gross_salary * pcb_rate;
+
+                                            document.getElementById('pcb').value = pcb.toFixed(2);
+
                                             //Calculate Days Work and Leave
                                             let default_dayswork = 22;
 
@@ -251,49 +263,36 @@
 
                                             document.getElementById('num_work').value = default_dayswork - absent_days;
 
-                                            //Calculate EPF
-                                            let epf_rate = 0.11;
-                                            var epf = gross_salary * epf_rate;
-
-                                            document.getElementById('epf').value = "RM " + epf.toFixed(2);
-
-                                            //Calculate PCB
-                                            let pcb_rate = 0.02;
-                                            var pcb = gross_salary * pcb_rate;
-
-                                            document.getElementById('pcb').value = "RM " + pcb.toFixed(2);
-
                                             //Calculate Total Deduction
                                             var total_deduction = epf + pcb + (gross_salary / default_dayswork) * absent_days;
                                             document.getElementById('total_deductions').value = total_deduction.toFixed(2);
                                         }
 
                                         function calculateAllowance() {
-
                                             let default_dayswork = 22;
-                                            var gross_salary = document.getElementById('gross_salary').value;
+                                            var gross_salary = parseFloat(document.getElementById('gross_salary').value);
 
-                                            var bonus = document.getElementById('bonus').value;
-                                            var medicare_allowance = document.getElementById('medical_allowance').value;
-                                            var other_allowance = document.getElementById('other_allowance').value;
+                                            var bonus = parseFloat(document.getElementById('bonus').value);
+                                            var medicare_allowance = parseFloat(document.getElementById('medical_allowance').value);
+                                            var other_allowance = parseFloat(document.getElementById('other_allowance').value);
 
-                                            //Calculate Overtime Hours
-                                            var total_overtime = ((gross_salary / default_dayswork / 8) * document.getElementById('overtime').value);
+                                            // Calculate Overtime Hours
+                                            var total_overtime = ((gross_salary / default_dayswork / 8 * 1.5) * parseFloat(document.getElementById('overtime').value));
 
-                                            //How many days did the employee work
-                                            var days_salary = (gross_salary / default_dayswork) * document.getElementById('num_work').value;
+                                            // How many days did the employee work
+                                            var days_salary = (gross_salary / default_dayswork) * parseFloat(document.getElementById('num_work').value);
 
-                                            //Calculate Total Earning
-                                            var total_earning = total_overtime + days_salary + bonus + medicare_allowance + other_allowance;
+                                            // Calculate Total Earning
+                                            var total_earning = bonus + medicare_allowance + other_allowance + total_overtime + days_salary;
 
-                                            document.getElementById('total_allowance').value = total_earning.toFixed(2);
-                                        }
+                                            // Make sure 'total_allowance' element exists in your HTML
+                                            var totalAllowance = document.getElementById('total_allowance');
 
-                                        function TotalSalary() {
-                                            //Calculate Payroll Monthly
-                                            var payroll_monthly = total_earning - total_deduction;
+                                                totalAllowance.value = total_earning.toFixed(2);
 
-                                            document.getElementById('payroll_monthly').value = payroll_monthly.toFixed(2);
+                                            var net_pay = total_earning - parseFloat(document.getElementById('total_deductions').value);
+
+                                            document.getElementById('payroll_monthly').value = net_pay.toFixed(2);
                                         }
 
                                     </script>

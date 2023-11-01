@@ -77,6 +77,7 @@ class EmployeesController extends Controller
 
         //Employee Details
         $user->phone_number         = trim($request->phone_number);
+        $user->address              = trim($request->address);
         $user->hire_date            = trim($request->hire_date);
         $user->job_id               = trim($request->job_id);
         $user->manager_id           = trim($request->manager_id);
@@ -85,7 +86,7 @@ class EmployeesController extends Controller
         //New Column
         $user->category_employee    = trim($request->category_employee);
         $user->bank_acc             = trim($request->bank_acc);
-        $user->bank_name            = trim($request->bank_name);
+        $user->bank_name            = trim('Maybank');
         $user->epf_no               = trim($request->epf_no);
         $user->pcb_no               = trim($request->pcb_no);
         $user->ic_no                = trim($request->ic_no);
@@ -160,6 +161,7 @@ class EmployeesController extends Controller
 
         //Employee Details
         $user->phone_number         = trim($request->phone_number);
+        $user->address              = trim($request->address);
         $user->hire_date            = trim($request->hire_date);
         $user->job_id               = trim($request->job_id);
         $user->manager_id           = trim($request->manager_id);
@@ -168,7 +170,7 @@ class EmployeesController extends Controller
         //New Column
         $user->category_employee    = trim($request->category_employee);
         $user->bank_acc             = trim($request->bank_acc);
-        $user->bank_name            = trim($request->bank_name);
+        $user->bank_name            = trim('Maybank');
         $user->epf_no               = trim($request->epf_no);
         $user->pcb_no               = trim($request->pcb_no);
         $user->ic_no                = trim($request->ic_no);
