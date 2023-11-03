@@ -151,13 +151,6 @@ Route::group(['middleware' => 'employee'], function (){
     Route::get('employee/leave/create', [LeaveController::class, 'create_employeeSite']);
     Route::post('employee/leave/create', [LeaveController::class, 'create_post_employeeSite']);
 
-    //-------------------My Account-------------------//
-    #My Account
-    Route::get('employee/my_account', [MyAccountController::class, 'employee_myAccount']);
-
-    #Update My Account
-    Route::post('employee/my_account/update', [MyAccountController::class, 'update_employee_myAccount']);
-
     //-------------------Forum-------------------//
     #Forum List
     Route::get('employee/forum', [ForumController::class, 'employee_postsList']);
@@ -174,6 +167,13 @@ Route::group(['middleware' => 'employee'], function (){
 
     #Forum Delete
     Route::get('employee/forum/delete/{id}', [ForumController::class, 'employee_delete']);
+
+    //-------------------My Account-------------------//
+    #My Account
+    Route::get('employee/my_account', [MyAccountController::class, 'employee_myAccount']);
+
+    #Update My Account
+    Route::post('employee/my_account/update', [MyAccountController::class, 'update_employee_myAccount']);
 
 });
 

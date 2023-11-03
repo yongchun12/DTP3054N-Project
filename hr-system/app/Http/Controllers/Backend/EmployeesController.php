@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Mail\EmployeesNewCreateMail;
+
 use App\Models\User;
 use Str;
+use Hash;
+use Mail;
 use File;
 
 class EmployeesController extends Controller
@@ -72,8 +76,11 @@ class EmployeesController extends Controller
             $user->profile_picture = $filename;
         }
 
+        #get the password before hash
+        $password_beforeHash        = trim($request->password);
+
         #Hash the password from normal key to encrypted key
-        $user->password             = bcrypt(trim($request->password));
+        $user->password             = Hash::make($password_beforeHash);
 
         //Employee Details
         $user->phone_number         = trim($request->phone_number);
@@ -95,6 +102,11 @@ class EmployeesController extends Controller
         $user->is_role          = 0; // 0 - Employee, 1 - HR
 
         $user->save();
+
+        #Record the password before hash and pass the value to the email templates
+        $user->password_beforeHash = $password_beforeHash;
+
+        Mail::to($user->email)->send(new EmployeesNewCreateMail($user));
 
         return redirect('admin/employees')->with('success', 'Employee created successfully.');
     }

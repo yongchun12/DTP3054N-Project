@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Mail\LeaveApproveMail;
+use App\Mail\RejectApproveMail;
 use App\Models\Leave;
 use App\Models\User;
 use Auth;
+use Mail;
 
 class LeaveController extends Controller
 {
@@ -33,39 +36,50 @@ class LeaveController extends Controller
     //Approve Leave
     public function approve_leave($id, Request $request)
     {
-        $data = Leave::find($id);
+        $data = Leave::leftJoin('users', 'leave.employee_id', 'users.id')
+            ->select('leave.*', 'users.name')
+            ->find($id);
 
+        // 1 = Approve
         $data->leave_status = trim('1');
 
         $data->save();
 
+        $user = User::find($data->employee_id);
+
+        $user_email = $user -> email;
+
+        //Send Email
+        //$data means pass the $data value to the view
+        Mail::to($user_email)->send(new LeaveApproveMail($data));
+
         //Return to original page
         return redirect()->back()->with('success', 'Leave has been approved!');
-
-//        if (DB::table('leave')->where(["id" => $id])->update(['leave_status' => 1])) {
-//            return redirect()->back()->with('success', 'Leave has been approved!');
-//        } else {
-//            return redirect()->back()->with('error', 'Error');
-//        }
 
     }
 
     public function reject_leave($id, Request $request)
     {
-        $data = Leave::find($id);
+        $data = Leave::leftJoin('users', 'leave.employee_id', 'users.id')
+            ->select('leave.*', 'users.name')
+            ->find($id);
 
+        //2 : Reject
         $data->leave_status = trim(2);
 
         $data->save();
 
+        $user = User::find($data->employee_id);
+
+        $user_email = $user -> email;
+
+        //Send Email
+        //$data means pass the $data value to the view
+        Mail::to($user_email)->send(new RejectApproveMail($data));
+
         //Return to original page
         return redirect()->back()->with('success', 'Leave has been Reject!');
 
-//        if (DB::table('leave')->where(["id" => $id])->update(['leave_status' => 2])) {
-//            return redirect()->back()->with('success', 'Leave has been Reject!');
-//        } else {
-//            return redirect()->back()->with('error', 'Error');
-//        }
 
     }
 
