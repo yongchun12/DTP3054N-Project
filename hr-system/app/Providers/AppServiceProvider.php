@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        //Fix Paginator Problem
         Paginator::useBootstrap();
         //Fix Table Problem
         Schema::defaultStringLength(191);

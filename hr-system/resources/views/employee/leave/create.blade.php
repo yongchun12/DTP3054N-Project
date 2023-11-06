@@ -77,12 +77,6 @@
                                     </div>
 
                                     <!--Button Submit-->
-{{--                                    <div class="form-group row">--}}
-{{--                                        <label style="visibility:hidden;" for="button" class="col-sm-2 col-form-label">button</label>--}}
-{{--                                        <div class="col-sm-10">--}}
-{{--                                            <input class="btn btn-primary col-md-2 col-sm-12" value="Submit" id="button" type="submit">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
 
                                     <div class="card-footer">
                                         <a href=" {{ url('employee/leave') }} " class="btn btn-default">Cancel</a>
