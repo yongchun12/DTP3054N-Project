@@ -13,7 +13,7 @@
                         <h1>Topic View</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6" style="text-align: right">
-
+                        <a href=" {{ url('employee/forum') }} " class="btn btn-primary">Back</a>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
