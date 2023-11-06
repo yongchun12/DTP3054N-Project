@@ -115,11 +115,23 @@ Route::group(['middleware' => 'admin'], function (){
     #View Topic
     Route::get('admin/forum/view/{id}', [ForumController::class, 'admin_topicView']);
 
-    #Reply Create
-    Route::post('admin/forum/view/{id}', [ForumController::class, 'reply_create']);
+    #Edit Topic
+    Route::get('admin/forum/edit/{id}', [ForumController::class, 'admin_edit']);
+    Route::post('admin/forum/edit/{id}', [ForumController::class, 'admin_editPost']);
 
     #Forum Delete
-    Route::get('admin/forum/delete/{id}', [ForumController::class, 'delete']);
+    Route::get('admin/forum/delete/{id}', [ForumController::class, 'admin_postDelete']);
+
+    //-----Reply-----//
+    #Reply Create
+    Route::post('admin/forum/view/{id}', [ForumController::class, 'admin_replyCreate']);
+
+    #Reply Edit
+    Route::get('admin/forum/reply/edit/{id}', [ForumController::class, 'admin_replyEdit']);
+    Route::post('admin/forum/reply/edit/{id}', [ForumController::class, 'admin_replyEditPost']);
+
+    #Reply Delete
+    Route::get('admin/forum/reply/delete/{id}', [ForumController::class, 'admin_replyDelete']);
 
     //-------------------My Account-------------------//
     #My Account
@@ -162,11 +174,23 @@ Route::group(['middleware' => 'employee'], function (){
     #View Topic
     Route::get('employee/forum/view/{id}', [ForumController::class, 'employee_topicView']);
 
-    #Reply Create
-    Route::post('employee/forum/view/{id}', [ForumController::class, 'employee_replyCreate']);
+    #Edit Topic
+    Route::get('employee/forum/edit/{id}', [ForumController::class, 'employee_edit']);
+    Route::post('employee/forum/edit/{id}', [ForumController::class, 'employee_editPost']);
 
     #Forum Delete
     Route::get('employee/forum/delete/{id}', [ForumController::class, 'employee_delete']);
+
+    //-----Reply-----//
+    #Reply Create
+    Route::post('employee/forum/view/{id}', [ForumController::class, 'employee_replyCreate']);
+
+    #Reply Edit
+    Route::get('employee/forum/reply/edit/{id}', [ForumController::class, 'employee_replyEdit']);
+    Route::post('employee/forum/reply/edit/{id}', [ForumController::class, 'employee_replyEditPost']);
+
+    #Reply Delete
+    Route::get('employee/forum/reply/delete/{id}', [ForumController::class, 'employee_replyDelete']);
 
     //-------------------My Account-------------------//
     #My Account

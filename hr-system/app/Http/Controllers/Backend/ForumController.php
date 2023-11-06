@@ -48,13 +48,46 @@ class ForumController extends Controller
     {
         $data['getEmployee'] = User::all();
         $data['getRecord'] = Forum::find($id);
+
+        //get Reply Data
         $data['getReply'] = Reply::getForumReply()
                     ->where('forum_id', '=', $id);
 
         return view('admin.forum.view', $data);
     }
 
-    public function reply_create(Request $request)
+    public function admin_edit($id)
+    {
+        $data['getForum'] = Forum::find($id);
+        return view('admin.forum.edit', $data);
+    }
+
+    public function admin_editPost($id, Request $request)
+    {
+        $posts = request()->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        $posts = Forum::find($id);
+
+        $posts->title           =    trim($request->title);
+        $posts->description     =    trim($request->description);
+
+        $posts->save();
+
+        return redirect('admin/forum')->with('success', 'Topic Edit Complete');
+    }
+
+    public function admin_postDelete($id)
+    {
+        $recordDelete = Forum::find($id);
+        $recordDelete->delete();
+        return redirect()->back()->with('error', 'Forum Delete Successfully.');
+    }
+
+    //---------------Reply-----------------
+    public function admin_replyCreate(Request $request)
     {
         $reply = request()->validate([
             'description' => 'required',
@@ -73,11 +106,33 @@ class ForumController extends Controller
 
     }
 
-    public function delete($id)
+    public function admin_replyEdit($id)
     {
-        $recordDelete = Forum::find($id);
-        $recordDelete->delete();
-        return redirect()->back()->with('error', 'Forum Delete Successfully.');
+        $data['getReply'] = Reply::find($id);
+        return view('admin.forum.edit_reply', $data);
+    }
+
+    public function admin_replyEditPost($id, Request $request)
+    {
+        $reply = request()->validate([
+            'description' => 'required',
+        ]);
+
+        $reply = Reply::find($id);
+
+        $reply ->title          =    trim($request->title);
+        $reply ->description    =    trim($request->description);
+
+        $reply->save();
+
+        return redirect('admin/forum/view/'.$reply->forum_id)->with('success', 'Update Reply Done');
+    }
+
+    public function admin_replyDelete($id)
+    {
+        $replyDelete = Reply::find($id);
+        $replyDelete->delete();
+        return redirect()->back()->with('error', 'Reply Delete Successfully.');
     }
 
     //-------------------Employee Site-------------------//
@@ -123,6 +178,37 @@ class ForumController extends Controller
         return view('employee.forum.view', $data);
     }
 
+    public function employee_edit($id)
+    {
+        $data['getForum'] = Forum::find($id);
+        return view('employee.forum.edit', $data);
+    }
+
+    public function employee_editPost($id, Request $request)
+    {
+        $posts = request()->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        $posts = Forum::find($id);
+
+        $posts->title           =    trim($request->title);
+        $posts->description     =    trim($request->description);
+
+        $posts->save();
+
+        return redirect('employee/forum')->with('success', 'Topic Edit Complete');
+    }
+
+    public function employee_delete($id)
+    {
+        $recordDelete = Forum::find($id);
+        $recordDelete->delete();
+        return redirect()->back()->with('error', 'Forum Delete Successfully.');
+    }
+
+    //-----------Reply-----------
     public function employee_replyCreate(Request $request)
     {
         $reply = request()->validate([
@@ -142,11 +228,33 @@ class ForumController extends Controller
 
     }
 
-    public function employee_delete($id)
+    public function employee_replyEdit($id)
     {
-        $recordDelete = Forum::find($id);
-        $recordDelete->delete();
-        return redirect()->back()->with('error', 'Forum Delete Successfully.');
+        $data['getReply'] = Reply::find($id);
+        return view('employee.forum.edit_reply', $data);
+    }
+
+    public function employee_replyEditPost($id, Request $request)
+    {
+        $reply = request()->validate([
+            'description' => 'required',
+        ]);
+
+        $reply = Reply::find($id);
+
+        $reply ->title          =    trim($request->title);
+        $reply ->description    =    trim($request->description);
+
+        $reply->save();
+
+        return redirect('employee/forum/view/'.$reply->forum_id)->with('success', 'Update Reply Done');
+    }
+
+    public function employee_replyDelete($id)
+    {
+        $replyDelete = Reply::find($id);
+        $replyDelete->delete();
+        return redirect()->back()->with('error', 'Reply Delete Successfully.');
     }
 
 }

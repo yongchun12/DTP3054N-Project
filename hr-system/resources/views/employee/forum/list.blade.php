@@ -43,7 +43,19 @@
                                     <strong>{{ $data->title }}</strong>
                                     <p class="card-text">{{$data->description}}</p>
 
-                                    <a style="margin-left:10px;" class="btn btn-danger float-right" onclick="return confirm('Are you sure want to delete?')" href="{{ url('employee/forum/delete/'.$data->id) }}">Delete</a>
+                                    <!--Delete function for detect the user-->
+                                    @if($data->employee_id == Auth::user()->id)
+                                        <a style="margin-left:10px;" class="btn btn-danger float-right" onclick="return confirm('Are you sure want to delete?')" href="{{ url('employee/forum/delete/'.$data->id) }}">Delete</a>
+                                    @else
+                                        <a style="margin-left:10px;" class="btn btn-danger float-right" onclick="alert('You are not allow to delete')">Delete</a>
+                                    @endif
+
+                                    @if($data->employee_id == Auth::user()->id)
+                                        <a style="margin-left:10px;" class="btn btn-primary float-right" href="{{ url('employee/forum/edit/'.$data->id) }}">Edit</a>
+                                    @else
+                                        <a style="margin-left:10px;" class="btn btn-primary float-right" onclick="(alert('You are not allow to edit'))">Edit</a>
+                                    @endif
+
                                     <a class="btn btn-primary float-right" href="{{ url('employee/forum/view/'.$data->id) }}">View</a>
 
                                 </div>
