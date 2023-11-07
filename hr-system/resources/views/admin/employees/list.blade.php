@@ -27,6 +27,9 @@
                 <div class="row">
                     <section class="col-lg-12">
 
+                        <!--Alert Message-->
+                        @include('layouts.alert_message')
+
                         <div class="card">
                             <div class="card-header">
 
@@ -60,7 +63,7 @@
                                         <!--Last Name-->
                                         <div class="form-group col-md-3">
                                             <label>Email</label>
-                                            <input type="email" value="{{ Request()->email }}" name="email" class="form-control" placeholder="Email">
+                                            <input type="text" value="{{ Request()->email }}" name="email" class="form-control" placeholder="Email">
                                         </div>
 
                                         <!--Search Button-->
@@ -78,9 +81,6 @@
                             </form>
 
                         </div>
-
-                        <!--Alert Message-->
-                        @include('layouts.alert_message')
 
                         <div class="card">
                             <!--Title-->
@@ -128,8 +128,20 @@
                                             <td style="vertical-align: middle;">
                                                 <!--The Dot is for the link to check which id-->
                                                 <a href="{{ url('admin/employees/view/' .$value->id) }}" class="btn btn-primary">View</a>
-                                                <a href="{{ url('admin/employees/edit/' .$value->id) }}" class="btn btn-secondary">Edit</a>
-                                                <a href="{{ url('admin/employees/delete/' .$value->id) }}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-danger">Delete</a>
+
+                                                <!--If the user is admin/HR is not allow to edit-->
+                                                @if($value->is_role == 1)
+                                                    <a class="btn btn-secondary" onclick="alert('Not allowed to edit Global Admin Details')">Edit</a>
+                                                @else
+                                                    <a href="{{ url('admin/employees/edit/' .$value->id) }}" class="btn btn-secondary">Edit</a>
+                                                @endif
+
+                                                @if($value->is_role == 1)
+                                                    <a onclick="alert('Not allow to delete Global Admin Details')" class="btn btn-danger">Delete</a>
+                                                @else
+                                                    <a href="{{ url('admin/employees/delete/' .$value->id) }}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-danger">Delete</a>
+                                                @endif
+
                                             </td>
                                         </tr>
                                     @empty

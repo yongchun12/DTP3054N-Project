@@ -52,8 +52,8 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="employee_id">
-                                                <option value="">Select Employee Name</option>
+                                            <select class="form-control" name="employee_id" required>
+                                                <option disabled selected value="">Select Employee Name</option>
                                                 @foreach($getEmployee as $value_employee)
                                                     <option {{ ($value_employee->id == $getRecord->employee_id) ? 'selected' : '' }} value="{{ $value_employee->id }}">
                                                         {{ $value_employee->name }}
@@ -283,11 +283,8 @@
                                             // Calculate Overtime Hours
                                             var total_overtime = ((gross_salary / default_dayswork / 8 * 1.5) * parseFloat(document.getElementById('overtime').value));
 
-                                            // How many days did the employee work
-                                            var days_salary = (gross_salary / default_dayswork) * parseFloat(document.getElementById('num_work').value);
-
                                             // Calculate Total Earning
-                                            var total_earning = bonus + medicare_allowance + other_allowance + total_overtime + days_salary;
+                                            var total_earning = bonus + medicare_allowance + other_allowance + total_overtime + gross_salary;
 
                                             // Make sure 'total_allowance' element exists in your HTML
                                             var totalAllowance = document.getElementById('total_allowance');

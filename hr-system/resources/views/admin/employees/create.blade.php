@@ -42,6 +42,17 @@
                                 <!-- If want add column then copy this-->
                                 <!-- "name" should put the table column name-->
 
+                                <!--Profile Picture-->
+                                <div class="form-group row">
+
+                                    <label class="col-sm-2 col-form-label">Profile Picture</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="file" name="profile_picture" class="form-control">
+                                    </div>
+
+                                </div>
+
                                 <!--Staff ID-->
                                 <div class="form-group row">
 
@@ -68,6 +79,7 @@
                                     <div class="col-sm-10">
                                         <!--value: old is validation for check the type of the input-->
                                     <input type="text" value="{{ old('name') }}" name="name" class="form-control" required placeholder="Enter First Name">
+
                                     </div>
 
                                 </div>
@@ -75,7 +87,10 @@
                                 <!--Last Name-->
                                 <div class="form-group row">
 
-                                    <label class="col-sm-2 col-form-label">Last Name</label>
+                                    <label class="col-sm-2 col-form-label">Last Name
+                                        <!--Required-->
+                                        <span style="color: red">*</span>
+                                    </label>
 
                                     <div class="col-sm-10">
                                         <input type="text" value="{{ old('last_name') }}" name="last_name" class="form-control" placeholder="Enter Last Name">
@@ -119,7 +134,10 @@
                                 <!--Phone Number-->
                                 <div class="form-group row">
 
-                                    <label class="col-sm-2 col-form-label">Phone Number</label>
+                                    <label class="col-sm-2 col-form-label">Phone Number
+                                        <!--Required-->
+                                        <span style="color: red">*</span>
+                                    </label>
 
                                     <div class="col-sm-10">
                                         <input type="number" value="{{ old('phone_number') }}" name="phone_number" class="form-control" placeholder="Enter Phone Number">
@@ -144,17 +162,6 @@
 
                                 </div>
 
-                                <!--Profile Picture-->
-                                <div class="form-group row">
-
-                                    <label class="col-sm-2 col-form-label">Profile Picture</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="file" name="profile_picture" class="form-control">
-                                    </div>
-
-                                </div>
-
                                 <!--Hire Date-->
                                 <div class="form-group row">
 
@@ -172,7 +179,10 @@
                                 <!--Job ID / Position-->
                                 <div class="form-group row">
 
-                                    <label class="col-sm-2 col-form-label">Position</label>
+                                    <label class="col-sm-2 col-form-label">Position
+                                        <!--Required-->
+                                        <span style="color: red">*</span>
+                                    </label>
 
                                     <div class="col-sm-10">
                                         <select class="form-control" name="job_id">
@@ -272,6 +282,24 @@
 
                                 </div>
 
+                                <!--IC Number-->
+                                <div class="form-group row">
+
+                                    <label class="col-sm-2 col-form-label">IC Number
+                                        <!--Required-->
+                                        <span style="color: red">*</span>
+                                    </label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" value="{{ old('ic_no') }}" name="ic_no" class="form-control" placeholder="Enter IC Number" required>
+                                        <span style="color: red">
+                                            <!--Validation that if got same phone number-->
+                                            {{ $errors->first('ic_no') }}
+                                        </span>
+                                    </div>
+
+                                </div>
+
                                 <!--EPF Number-->
                                 <div class="form-group row">
 
@@ -299,28 +327,10 @@
                                     </label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" value="{{ old('pcb_no') }}" name="pcb_no" class="form-control" placeholder="Enter EPF Number" required>
+                                        <input type="text" value="{{ old('pcb_no') }}" name="pcb_no" class="form-control" placeholder="Enter PCB Number" required>
                                         <span style="color: red">
                                             <!--Validation that if got same phone number-->
                                             {{ $errors->first('pcb_no') }}
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                                <!--IC Number-->
-                                <div class="form-group row">
-
-                                    <label class="col-sm-2 col-form-label">IC Number
-                                        <!--Required-->
-                                        <span style="color: red">*</span>
-                                    </label>
-
-                                    <div class="col-sm-10">
-                                        <input type="text" value="{{ old('ic_no') }}" name="ic_no" class="form-control" placeholder="Enter EPF Number" required>
-                                        <span style="color: red">
-                                            <!--Validation that if got same phone number-->
-                                            {{ $errors->first('ic_no') }}
                                         </span>
                                     </div>
 

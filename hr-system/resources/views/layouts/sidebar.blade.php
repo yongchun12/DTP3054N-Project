@@ -76,6 +76,10 @@
                     </a>
                 </li>
 
+                <!--Employee-->
+
+                <li class="nav-header">EMPLOYEE</li>
+
                 <li class="nav-item">
                     <a href=" {{ url('admin/employees') }} " class="nav-link
                     @if(Request::segment(2) == 'employees') active @endif">
@@ -86,6 +90,10 @@
                     </a>
                 </li>
 
+                <!--Payroll-->
+
+                    <li class="nav-header">PAYROLL</li>
+
                 <li class="nav-item">
                     <a href=" {{ url('admin/payroll') }} " class="nav-link
                     @if(Request::segment(2) == 'payroll') active @endif">
@@ -95,6 +103,10 @@
                         </p>
                     </a>
                 </li>
+
+                    <!--Leave-->
+
+                    <li class="nav-header">LEAVE</li>
 
                     <li class="nav-item">
                         <a href=" {{ url('admin/leave/pending') }} " class="nav-link
@@ -109,12 +121,16 @@
                     <li class="nav-item">
                         <a href=" {{ url('admin/leave/history') }} " class="nav-link
                            @if(Request::segment(3) == 'history') active @endif">
-                            <i class="nav-icon fa fa-calendar-alt"></i>
+                            <i class="nav-icon fa fa-user-clock"></i>
                             <p>
                                 Leave History
                             </p>
                         </a>
                     </li>
+
+                    <!--Forum-->
+
+                    <li class="nav-header">FORUM</li>
 
                     <li class="nav-item">
                         <a href=" {{ url('admin/forum') }} " class="nav-link
@@ -126,6 +142,10 @@
                         </a>
                     </li>
 
+                    <!--Forum-->
+
+                    <li class="nav-header">SETTINGS</li>
+
                     <li class="nav-item">
                         <a href=" {{ url('admin/my_account') }} " class="nav-link
                     @if(Request::segment(2) == 'my_account') active @endif">
@@ -135,42 +155,6 @@
                             </p>
                         </a>
                     </li>
-
-{{--                <li class="nav-item">--}}
-{{--                    <a href=" {{ url('admin/departments') }} " class="nav-link">--}}
-{{--                        <i class="nav-icon fa fa-building"></i>--}}
-{{--                        <p>--}}
-{{--                            Department--}}
-{{--                        </p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-
-{{--                <li class="nav-item">--}}
-{{--                    <a href=" {{ url('admin/countries') }} " class="nav-link">--}}
-{{--                        <i class="nav-icon fa fa-flag"></i>--}}
-{{--                        <p>--}}
-{{--                            Countries--}}
-{{--                        </p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-
-{{--                <li class="nav-item">--}}
-{{--                    <a href=" {{ url('admin/locations') }} " class="nav-link">--}}
-{{--                        <i class="nav-icon fa fa-map-marked-alt"></i>--}}
-{{--                        <p>--}}
-{{--                            Locations--}}
-{{--                        </p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-
-{{--                <li class="nav-item">--}}
-{{--                    <a href=" {{ url('admin/regions') }} " class="nav-link">--}}
-{{--                        <i class="nav-icon fa fa-asterisk"></i>--}}
-{{--                        <p>--}}
-{{--                            Regions--}}
-{{--                        </p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
 
                 @endif
 

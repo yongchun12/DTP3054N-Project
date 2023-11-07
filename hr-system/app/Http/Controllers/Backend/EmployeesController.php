@@ -40,6 +40,7 @@ class EmployeesController extends Controller
         $user = request()->validate([
             'staff_id' => 'required|unique:users',
             'name' => 'required',
+            'last_name' => 'required',
             'email' => 'required|unique:users',
             'phone_number' => 'required|unique:users',
             'password' => 'required',

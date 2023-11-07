@@ -6,8 +6,6 @@
     $basic_salary = $getRecord->gross_salary;
     $default_dayswork = 22;
 
-    $number_of_day_work = ($basic_salary / $default_dayswork) * $getRecord->number_of_day_work;
-
     //Default Value
     $over_time = ($basic_salary / $default_dayswork / 8 * 1.5) * $getRecord->overtime_hours;
 
@@ -16,7 +14,7 @@
     $other_allowance = $getRecord->other_allowance;
     $bonus = $getRecord->bonus;
 
-    $total_earning = $number_of_day_work + $over_time + $medical_allowance + $other_allowance + $bonus;
+    $total_earning = $basic_salary + $over_time + $medical_allowance + $other_allowance + $bonus;
 
     $epf = $getRecord->gross_salary * 0.11;
     $pcb = $getRecord->gross_salary * 0.02;

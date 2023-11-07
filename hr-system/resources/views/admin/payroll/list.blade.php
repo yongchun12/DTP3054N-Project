@@ -32,6 +32,9 @@
                 <div class="row">
                     <section class="col-md-12">
 
+                        <!--Alert Message-->
+                        @include('layouts.alert_message')
+
                         <!--Search Function-->
                         <div class="card">
                             <div class="card-header">
@@ -74,9 +77,6 @@
                             </form>
                         </div>
 
-                            <!--Alert Message-->
-                            @include('layouts.alert_message')
-
                             <div class="card">
                                 <!--Title-->
                                 <div class="card-header">
@@ -107,7 +107,7 @@
                                             $totalOvertime = 0;
                                         @endphp
 
-                                        @foreach($payrolls as $value)
+                                        @forelse($payrolls as $value)
                                             @php
                                                 $totalNumberofDayWork = $totalNumberofDayWork+$value->number_of_day_work;
                                                 $totalBonus = $totalBonus+$value->bonus;
@@ -134,25 +134,31 @@
                                                     <a href="{{ url('admin/payroll/pdf/'.$value->id) }}" class="btn btn-primary">Export PDF</a>
                                                 </td>
                                             </tr>
-                                        @endforeach
 
-                                        <tr>
-                                            <th>Total All</th>
-                                            <td>
+                                            <tr>
+                                                <th>Total All</th>
+                                                <td>
 
-                                            </td>
-                                            <td>
-                                                {{ $totalNumberofDayWork }}
-                                            </td>
-                                            <td>
-                                                {{ $totalBonus }}
-                                            </td>
-                                            <td>
-                                                {{ $totalOvertime }}
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
+                                                </td>
+                                                <td>
+                                                    {{ $totalNumberofDayWork }}
+                                                </td>
+                                                <td>
+                                                    {{ $totalBonus }}
+                                                </td>
+                                                <td>
+                                                    {{ $totalOvertime }}
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                            @empty
+                                            <tr>
+                                                <td colspan="100%" style="text-align: center">No Record Found</td>
+                                            </tr>
+
+                                        @endforelse
 
                                         </tbody>
 

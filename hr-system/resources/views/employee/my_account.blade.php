@@ -80,7 +80,7 @@
 
                                     <!--Card Footer-->
                                     <div class="card-footer">
-                                        <a href=" {{ url('admin/my_account') }} " class="btn btn-default">Back</a>
+                                        <a href=" {{ url('employee/dashboard') }} " class="btn btn-default">Back</a>
                                         <button type="submit" class="btn btn-primary float-right">Update</button>
                                     </div>
 
