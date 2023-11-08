@@ -18,11 +18,7 @@ class PayrollController extends Controller
     {
         $data['getRecord'] = PayrollModel::getRecord();
 
-        $payrolls = PayrollModel::leftJoin('users', 'payroll.employee_id', 'users.id')
-            ->select('payroll.*', 'users.name')
-            ->get();
-
-        return view('admin.payroll.list', $data, compact('payrolls'));
+        return view('admin.payroll.list', $data);
     }
 
     public function payroll_export(Request $request)

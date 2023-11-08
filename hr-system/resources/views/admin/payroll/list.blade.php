@@ -107,7 +107,7 @@
                                             $totalOvertime = 0;
                                         @endphp
 
-                                        @forelse($payrolls as $value)
+                                        @forelse($getRecord as $value)
                                             @php
                                                 $totalNumberofDayWork = $totalNumberofDayWork+$value->number_of_day_work;
                                                 $totalBonus = $totalBonus+$value->bonus;
@@ -115,13 +115,13 @@
                                             @endphp
 
                                             <tr>
-                                                <td>{{ $value->id }}</td>
-                                                <td>{{ !empty($value->name) ? $value->name : '' }}</td>
-                                                <td>{{ $value->number_of_day_work }}</td>
-                                                <td>{{ $value->bonus }}</td>
-                                                <td>{{ $value->overtime_hours }}</td>
-                                                <td>{{ date('F Y', strtotime($value->created_at)) }}</td>
-                                                <td>
+                                                <td style="vertical-align: middle;">{{ $value->id }}</td>
+                                                <td style="vertical-align: middle;">{{ !empty($value->name) ? $value->name : '' }}</td>
+                                                <td style="vertical-align: middle;">{{ $value->number_of_day_work }}</td>
+                                                <td style="vertical-align: middle;">{{ $value->bonus }}</td>
+                                                <td style="vertical-align: middle;">{{ $value->overtime_hours }}</td>
+                                                <td style="vertical-align: middle;">{{ date('F Y', strtotime($value->created_at)) }}</td>
+                                                <td style="vertical-align: middle;">
                                                     <a href="{{ url('admin/payroll/view/'.$value->id) }}"
                                                        class="btn btn-primary">View</a>
 
@@ -134,31 +134,30 @@
                                                     <a href="{{ url('admin/payroll/pdf/'.$value->id) }}" class="btn btn-primary">Export PDF</a>
                                                 </td>
                                             </tr>
-
-                                            <tr>
-                                                <th>Total All</th>
-                                                <td>
-
-                                                </td>
-                                                <td>
-                                                    {{ $totalNumberofDayWork }}
-                                                </td>
-                                                <td>
-                                                    {{ $totalBonus }}
-                                                </td>
-                                                <td>
-                                                    {{ $totalOvertime }}
-                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-
                                             @empty
                                             <tr>
                                                 <td colspan="100%" style="text-align: center">No Record Found</td>
                                             </tr>
 
                                         @endforelse
+
+                                        <tr>
+                                            <th>Total All</th>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                {{ $totalNumberofDayWork }}
+                                            </td>
+                                            <td>
+                                                {{ $totalBonus }}
+                                            </td>
+                                            <td>
+                                                {{ $totalOvertime }}
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
 
                                         </tbody>
 

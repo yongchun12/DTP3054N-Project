@@ -15,11 +15,6 @@ class PayrollModel extends Model
 
     static public function getRecord()
     {
-//        $return = self::select('payroll.*')
-//            ->orderBy('id', 'desc')
-//            ->paginate(10);
-//
-//        return $return;
 
         $return = self::select('payroll.*', 'users.name')
             #Join the table from users ID and Payroll Table (employee ID)

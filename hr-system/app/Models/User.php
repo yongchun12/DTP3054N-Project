@@ -46,12 +46,6 @@ class User extends Authenticatable
     ];
 
     static public function getRecord() {
-//        $return = self::select('users.*')
-//            ->orderBy('id', 'desc')
-//            #show one page list how many data
-//            ->paginate(10);
-//
-//        return $return;
 
         #Search Function
         $return = self::select('users.*');
