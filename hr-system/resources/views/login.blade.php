@@ -17,7 +17,11 @@
     <!--Boostrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!--External CSS File-->
     <link rel="stylesheet" href="../css/app.css">
+
+    <!--Title-->
     <title>HR System | Login</title>
 </head>
 
@@ -43,8 +47,18 @@
                         <div class="col-md-6 col-lg-7 d-flex">
                             <div class="card-body p-3 p-lg-5 text-black">
 
-                                <!--Redirect from alert_message.blade.php-->
-                                @include('layouts.alert_message')
+                                <!--Alert Message-->
+                                @if(!empty(session('success')))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                                @if(!empty(session('error')))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
 
                                 <!--Action in this form section-->
                                 <form action="{{  url('login_post') }}" method="post">
