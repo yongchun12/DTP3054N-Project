@@ -24,6 +24,9 @@
                 <div class="row">
                     <section class="col-lg-12">
 
+                        <!--Alert Message-->
+                        @include('layouts.alert_message')
+
                         <div class="card">
                             <!--Title-->
                             <div class="card-header">
@@ -44,17 +47,30 @@
                                         <th>Status</th>
                                         <th>Created At</th>
                                         <th>Updated At</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
                                     @forelse($getHistory as $data)
                                         <tr>
-                                            <td>{{ $data->id }}</td>
-                                            <td>{{ $data->name }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($data->from_leaveDate)) }}</td>
-                                            <td>{{ date('d-m-Y', strtotime($data->to_leaveDate)) }}</td>
-                                            <td>
+                                            <td style="vertical-align: middle;">
+                                                {{ $data->id }}
+                                            </td>
+
+                                            <td style="vertical-align: middle;">
+                                                {{ $data->name }}
+                                            </td>
+
+                                            <td style="vertical-align: middle;">
+                                                {{ date('d-m-Y', strtotime($data->from_leaveDate)) }}
+                                            </td>
+
+                                            <td style="vertical-align: middle;">
+                                                {{ date('d-m-Y', strtotime($data->to_leaveDate)) }}
+                                            </td>
+
+                                            <td style="vertical-align: middle;">
                                                 @if($data->type_of_leave == 0)
                                                     Unpaid Leave
                                                 @elseif($data->type_of_leave == 1)
@@ -63,7 +79,8 @@
                                                     Medical Leave
                                                 @endif
                                             </td>
-                                            <td>
+
+                                            <td style="vertical-align: middle;">
                                                 @if($data->leave_status == 0)
                                                     Pending
                                                 @elseif($data->leave_status == 1)
@@ -72,8 +89,19 @@
                                                     Rejected
                                                 @endif
                                             </td>
-                                            <td>{{ date('d-F-Y h:i A', strtotime($data->created_at)) }}</td>
-                                            <td>{{ date('d-F-Y h:i A', strtotime($data->updated_at)) }}</td>
+
+                                            <td style="vertical-align: middle;">
+                                                {{ date('d-F-Y h:i A', strtotime($data->created_at)) }}
+                                            </td>
+
+                                            <td style="vertical-align: middle;">
+                                                {{ date('d-F-Y h:i A', strtotime($data->updated_at)) }}
+                                            </td>
+
+                                            <td style="vertical-align: middle;">
+                                                <a href="{{ url('admin/leave/history/view/' .$data->id) }}" class="btn btn-primary">View</a>
+                                                <a href="{{ url('admin/leave/history/delete/' .$data->id) }}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-danger">Delete</a>
+                                            </td>
                                         </tr>
                                     @empty
                                         <tr>
@@ -84,6 +112,7 @@
 
                                 </table>
 
+                                <!--Pagination-->
                                 <div style="padding: 10px; float: right;">
                                     {!! $getHistory->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
                                 </div>

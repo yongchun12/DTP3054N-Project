@@ -95,14 +95,20 @@ Route::group(['middleware' => 'admin'], function (){
     #Pending Request
     Route::get('admin/leave/pending', [LeaveController::class, 'dashboard_Admin']);
 
-    #Leave History for all Employees
-    Route::get('admin/leave/history', [LeaveController::class, 'admin_leaveHistory']);
-
     #Leave Request Approve
     Route::get('admin/leave/approve/{id}', [LeaveController::class, 'approve_leave']);
 
     #Leave Request Reject
     Route::get('admin/leave/reject/{id}', [LeaveController::class, 'reject_leave']);
+
+    #Leave History for all Employees
+    Route::get('admin/leave/history', [LeaveController::class, 'admin_leaveHistory']);
+
+    #Leave History View
+    Route::get('admin/leave/history/view/{id}', [LeaveController::class, 'admin_leaveHistoryView']);
+
+    #Leave History Delete
+    Route::get('admin/leave/history/delete/{id}', [LeaveController::class, 'admin_leaveHistoryDelete']);
 
     //-------------------Forum-------------------//
     #Forum List

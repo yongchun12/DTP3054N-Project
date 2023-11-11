@@ -27,12 +27,6 @@ class LeaveController extends Controller
 
     }
 
-    public function admin_leaveHistory(Request $request)
-    {
-        $data['getHistory'] = Leave::adminGetHistory();
-        return view('admin.leave.history', $data);
-    }
-
     //Approve Leave
     public function approve_leave($id, Request $request)
     {
@@ -80,7 +74,29 @@ class LeaveController extends Controller
         //Return to original page
         return redirect()->back()->with('success', 'Leave has been Reject!');
 
+    }
 
+    public function admin_leaveHistory(Request $request)
+    {
+        $data['getHistory'] = Leave::adminGetHistory();
+        return view('admin.leave.history', $data);
+    }
+
+    public function admin_leaveHistoryView($id, Request $request)
+    {
+        $data['getRecord'] = Leave::leftJoin('users', 'leave.employee_id', 'users.id')
+            ->select('leave.*', 'users.name')
+            ->find($id);
+
+        return view('admin.leave.history_view', $data);
+    }
+
+    public function admin_leaveHistoryDelete($id)
+    {
+        $data = Leave::find($id);
+        $data->delete();
+
+        return redirect()->back()->with('success', 'Leave Record has been deleted!');
     }
 
     //-------------------For Employee Site-------------------//
