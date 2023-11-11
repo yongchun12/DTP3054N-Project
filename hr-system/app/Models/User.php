@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Request;
-use function Webmozart\Assert\Tests\StaticAnalysis\email;
 
 class User extends Authenticatable
 {

@@ -47,7 +47,7 @@
                                             <select class="form-control" name = "type_of_leave" id="type_of_leave" aria-label="Default select example" required>
                                                 <option selected disabled>Select a leave type</option>
                                                 <option value="0">Unpaid Leave</option>
-                                                <option value="1">Normal Leave</option>
+                                                <option value="1">Annual Leave</option>
                                                 <option value="2">Medical Leave</option>
                                             </select>
                                         </div>
@@ -58,7 +58,7 @@
                                         <label for="description" class="col-sm-2 col-form-label">Description</label>
                                         <div class="col-sm-10">
 
-                                            <textarea class="form-control" name="description" id="description" placeholder="Enter the description" oninput="dateDifference()" required></textarea>
+                                            <textarea class="form-control" name="description" id="description" placeholder="Enter the description" required></textarea>
 
                                         </div>
                                     </div>
@@ -67,7 +67,7 @@
                                     <div class="form-group row">
                                         <label for="date_of_leave" class="col-sm-2 col-form-label">From Date</label>
                                         <div class="col-sm-3">
-                                            <input type="date" value="{{ old('from_leaveDate') }}" class="form-control" id="from_leaveDate" name="from_leaveDate" required>
+                                            <input type="date" value="{{ old('from_leaveDate') }}" class="form-control" id="from_leaveDate" name="from_leaveDate" oninput="dateDifference(); updateToDateMin();" required>
                                         </div>
 
                                         <!--Difference Date-->
@@ -77,7 +77,7 @@
 
                                         <label for="date_of_leave" class="col-sm-2 col-form-label" style="text-align: center">To Date: </label>
                                         <div class="col-sm-3">
-                                            <input type="date" value="{{ old('to_leaveDate') }}" class="form-control" id="to_leaveDate" name="to_leaveDate" oninput="dateDifference()" required>
+                                            <input type="date" value="{{ old('to_leaveDate') }}" class="form-control" id="to_leaveDate" name="to_leaveDate" oninput="dateDifference(); updateToDateMax();" required>
                                         </div>
                                     </div>
 
@@ -99,23 +99,5 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
-    <!--JavaScript-->
-    <script>
-        function dateDifference() {
-            const firstDate = document.getElementById('from_leaveDate').value;
-            const secondDate = document.getElementById('to_leaveDate').value;
-
-            const startTimestamp = Date.parse(firstDate);
-            const endTimestamp = Date.parse(secondDate);
-
-            const difference = endTimestamp - startTimestamp;
-
-            const daysDifference = Math.round(difference / (1000 * 60 * 60 * 24));
-
-            const dayCountComponent = document.getElementById('dayCount');
-            dayCountComponent.innerHTML = daysDifference + " Days";
-        }
-    </script>
 
 @endsection

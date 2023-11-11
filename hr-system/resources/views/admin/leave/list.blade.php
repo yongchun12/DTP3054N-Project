@@ -52,7 +52,7 @@
                                                 @if($data->type_of_leave == 0)
                                                     Unpaid Leave
                                                 @elseif($data->type_of_leave == 1)
-                                                    Normal Leave
+                                                    Annual Leave
                                                 @elseif($data->type_of_leave == 2)
                                                     Medical Leave
                                                 @endif
