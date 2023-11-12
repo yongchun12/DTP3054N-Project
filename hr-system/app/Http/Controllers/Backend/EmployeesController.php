@@ -66,10 +66,10 @@ class EmployeesController extends Controller
 
         $user = new User;
 
-        $user->staff_id             = trim('EMP-'.$request->staff_id);
+        $user->staff_id             = trim($request->staff_id);
         $user->name                 = trim($request->name);
         $user->last_name            = trim($request->last_name);
-        $user->email                = trim($request->email.'@hr-system.com');
+        $user->email                = trim($request->email);
 
         #Profile Picture
         if(!empty($request->file('profile_picture'))){

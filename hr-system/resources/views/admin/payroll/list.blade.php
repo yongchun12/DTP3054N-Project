@@ -143,9 +143,7 @@
 
                                         <tr>
                                             <th>Total All</th>
-                                            <td>
-
-                                            </td>
+                                            <td></td>
                                             <td>
                                                 {{ $totalNumberofDayWork }}
                                             </td>

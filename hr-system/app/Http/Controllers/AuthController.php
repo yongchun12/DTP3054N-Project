@@ -30,6 +30,8 @@ class AuthController extends Controller
 
         #Validation (Check their email is exist or not based on their ID)
         $count = User::where('email', '=', $request->email)->count();
+
+        // count is used to count the number of data in the database
         if($count > 0) {
             $user = User::where('email', '=', $request->email)->first();
 

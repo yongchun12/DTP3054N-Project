@@ -63,12 +63,15 @@
 
                                     <div class="col-sm-10">
                                         <!--value: old is validation for check the type of the input-->
-                                        <input type="number" value="{{ old('staff_id') }}" name="staff_id" class="form-control" required placeholder="Enter Staff ID" max="9999">
+                                        <input type="number" value="{{ old('suffix_staffID') }}" name="suffix_staffID" id="suffix_staffID" class="form-control" required placeholder="Enter Staff ID" max="9999" oninput="passStaffID()">
                                         <span style="color: red">
                                             <!--Validation that if got same staff id-->
                                             {{ $errors->first('staff_id') }}
                                         </span>
                                     </div>
+
+                                    <!--Get EMP- Value from JavaScript and pass this value to Controller-->
+                                    <input type="hidden" value="{{ old('staff_id') }}" name="staff_id" id="staff_id">
 
                                 </div>
 
@@ -111,8 +114,16 @@
                                     </label>
 
                                     <div class="col-sm-10 input-group">
-                                        <input type="text" value="{{ old('email') }}" name="email" class="form-control" aria-describedby="domain" placeholder="Enter Username" pattern="[a-zA-Z0-9]+" required>
+                                        <input type="text" value="{{ old('prefix_email') }}" name="prefix_email" id="prefix_email" oninput="passEmail()" class="form-control" aria-describedby="domain" placeholder="Enter Username" pattern="[a-zA-Z0-9]+" required>
                                         <span class="input-group-text" id="domain" >@hr-system.com</span>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <!--Get the suffix Value from JavaScript and pass this value to Controller-->
+                                        <input type="hidden" value="{{ old('email') }}" name="email" id="email">
+                                    </div>
+
+                                    <div class="col-sm-10">
                                         <span style="color: red">
                                             <!--Validation that if got same email-->
                                             {{ $errors->first('email') }}

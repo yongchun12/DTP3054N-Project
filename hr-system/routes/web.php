@@ -173,6 +173,12 @@ Route::group(['middleware' => 'employee'], function (){
     Route::get('employee/leave/create', [LeaveController::class, 'create_employeeSite']);
     Route::post('employee/leave/create', [LeaveController::class, 'create_post_employeeSite']);
 
+    #View Leave Record
+    Route::get('employee/leave/view/{id}', [LeaveController::class, 'view_employeeSite']);
+
+    #Delete Leave Record
+    Route::get('employee/leave/delete/{id}', [LeaveController::class, 'delete_employeeSite']);
+
     //-------------------Forum-------------------//
     #Forum List
     Route::get('employee/forum', [ForumController::class, 'employee_postsList']);

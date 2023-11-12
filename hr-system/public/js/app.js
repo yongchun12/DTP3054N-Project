@@ -26,3 +26,20 @@ function updateToDateMax() {
     document.getElementById('from_leaveDate').max = toDate;
 }
 
+//Add EMP- Prefix to Staff ID
+function passStaffID() {
+    let suffix = document.getElementById('suffix_staffID').value;
+
+    let fullID = "EMP-" + suffix;
+
+    document.getElementById('staff_id').value = fullID;
+}
+
+function passEmail() {
+    let prefix = document.getElementById('prefix_email').value;
+
+    let fullEmail = prefix + "@hr-system.com";
+
+    document.getElementById('email').value = fullEmail;
+}
+

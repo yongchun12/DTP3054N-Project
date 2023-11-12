@@ -146,4 +146,21 @@ class LeaveController extends Controller
 
         return redirect('employee/leave')->with('success', 'Done Request!');
     }
+
+    public function view_employeeSite($id)
+    {
+        $data['getRecord'] = Leave::leftJoin('users', 'leave.employee_id', 'users.id')
+            ->select('leave.*', 'users.name')
+            ->find($id);
+
+        return view('employee.leave.view', $data);
+    }
+
+    public function delete_employeeSite($id)
+    {
+        $data = Leave::find($id);
+        $data->delete();
+
+        return redirect()->back()->with('success', 'Leave Record has been deleted!');
+    }
 }

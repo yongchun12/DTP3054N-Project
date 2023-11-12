@@ -28,7 +28,7 @@ class PayrollController extends Controller
 
     public function create(Request $request)
     {
-        #redirect to create page by using the name 'getEmployee'
+        #redirect to create page by using the value called 'getEmployee'
         $data['getEmployee'] = User::where('is_role', '=', 0)->get();
         return view('admin.payroll.create', $data);
     }
