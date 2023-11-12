@@ -59,7 +59,7 @@
                                             </h5>
                                             <p class="card-text">{{$data->description}}</p>
 
-                                            <a style="margin-left:10px;" class="btn btn-danger float-right" href="{{ url('admin/leave/reject/'.$data->id) }}">Decline</a>
+                                            <a style="margin-left:10px;" class="btn btn-danger float-right" href="{{ url('admin/leave/reject_reason/'.$data->id) }}">Decline</a>
                                             <a class="btn btn-primary float-right" href="{{ url('admin/leave/approve/'.$data->id) }}">Accept</a>
 
                                         </div>

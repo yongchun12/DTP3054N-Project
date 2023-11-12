@@ -67,6 +67,9 @@ Route::group(['middleware' => 'admin'], function (){
     #Delete Employee
     Route::get('admin/employees/delete/{id}', [EmployeesController::class, 'delete']);
 
+    #Excel Export
+    Route::get('admin/employee_export', [EmployeesController::class, 'employee_export']);
+
     //-------------------Payroll-------------------//
     #Payroll List
     Route::get('admin/payroll', [PayrollController::class, 'index']);
@@ -99,7 +102,8 @@ Route::group(['middleware' => 'admin'], function (){
     Route::get('admin/leave/approve/{id}', [LeaveController::class, 'approve_leave']);
 
     #Leave Request Reject
-    Route::get('admin/leave/reject/{id}', [LeaveController::class, 'reject_leave']);
+    Route::get('admin/leave/reject_reason/{id}', [LeaveController::class, 'rejectLeave_reason']);
+    Route::post('admin/leave/reject/{id}', [LeaveController::class, 'reject_leave']);
 
     #Leave History for all Employees
     Route::get('admin/leave/history', [LeaveController::class, 'admin_leaveHistory']);

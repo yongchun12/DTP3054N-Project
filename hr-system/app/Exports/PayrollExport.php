@@ -15,6 +15,7 @@ class PayrollExport implements FromCollection, WithHeadings, WithMapping, Should
      */
     public function collection()
     {
+        //How to get the data from the database
         $payrolls = PayrollModel::leftJoin('users', 'payroll.employee_id', 'users.id')
             ->select('payroll.*', 'users.name as employee_name')
             ->get();
@@ -24,23 +25,23 @@ class PayrollExport implements FromCollection, WithHeadings, WithMapping, Should
 
     protected $index = 0;
 
-    public function map($user): array
+    public function map($data): array
     {
-        $created_at = \Carbon\Carbon::parse($user->created_at)->format('d-F-Y h:i A');
-        $updated_at = \Carbon\Carbon::parse($user->updated_at)->format('d-F-Y h:i A');
+        $created_at = \Carbon\Carbon::parse($data->created_at)->format('d-F-Y h:i A');
+        $updated_at = \Carbon\Carbon::parse($data->updated_at)->format('d-F-Y h:i A');
 
         return [
             ++$this->index,
-            $user->id,
-            $user->employee_name,
-            $user->gross_salary,
-            $user->number_of_day_work,
-            $user->bonus,
-            $user->overtime_hours,
-            $user->absent_days,
-            $user->medical_allowance,
-            $user->total_deductions,
-            $user->payroll_monthly,
+            $data->id,
+            $data->employee_name,
+            $data->gross_salary,
+            $data->number_of_day_work,
+            $data->bonus,
+            $data->overtime_hours,
+            $data->absent_days,
+            $data->medical_allowance,
+            $data->total_deductions,
+            $data->payroll_monthly,
             $created_at,
             $updated_at,
         ];

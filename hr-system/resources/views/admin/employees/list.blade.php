@@ -13,6 +13,10 @@
                         <h1>Employees</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6" style="text-align: right">
+                        <!--Excel Export-->
+                        <a href="{{ url('admin/employee_export') }}" class="btn btn-success">Excel Export</a>
+
+                        <!--Create Employee-->
                         <a href=" {{ url('admin/employees/create') }} " class="btn btn-primary"> Add Employees</a>
                     </div><!-- /.col -->
                 </div><!-- /.row -->

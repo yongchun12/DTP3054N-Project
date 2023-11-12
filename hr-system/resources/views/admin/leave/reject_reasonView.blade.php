@@ -10,13 +10,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">View Leave Record</h1>
+                        <h1 class="m-0">Reason</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('admin/leave/history') }}">Leave History</a></li>
                             <!--Edit Breadcrumb Name-->
-                            <li class="breadcrumb-item active"><a href="#">View</a></li>
+                            <li class="breadcrumb-item active"><a href="#">Reason</a></li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -36,7 +36,9 @@
                                 <h3 class="card-title">View Leave Record</h3>
                             </div>
 
-                            <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                            <form class="form-horizontal" method="post" action="{{ url('admin/leave/reject/' .$getRecord->id) }}" enctype="multipart/form-data">
+
+                                {{ csrf_field() }}
 
                                 <div class="card-body">
 
@@ -127,17 +129,6 @@
                                         </div>
                                     </div>
 
-                                    <!--Reject Reason-->
-                                    @if(!empty($getRecord->reject_reason))
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Reject Reason</label>
-
-                                            <div class="col-sm-10 col-form-label">
-                                                {{ $getRecord->reject_reason }}
-                                            </div>
-                                        </div>
-                                    @endif
-
                                     <!--Created At-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Created At</label>
@@ -147,12 +138,12 @@
                                         </div>
                                     </div>
 
-                                    <!--Updated At-->
+                                    <!--Reason-->
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Updated At</label>
+                                        <label class="col-sm-2 col-form-label">Reject Reason</label>
 
-                                        <div class="col-sm-10 col-form-label">
-                                            {{ date('d-F-Y h:i A', strtotime($getRecord->updated_at)) }}
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" name="reject_reason" placeholder="Enter reject reason" required>{{ old('reject_reason') }}</textarea>
                                         </div>
                                     </div>
 
@@ -162,6 +153,9 @@
                                 <!--Card Footer-->
                                 <div class="card-footer">
                                     <a href=" {{ url('admin/leave/history') }} " class="btn btn-default">Back</a>
+
+                                    <!--Reject Button-->
+                                    <button type="submit" class="btn btn-primary float-right">Reject</button>
                                 </div>
 
                             </form>

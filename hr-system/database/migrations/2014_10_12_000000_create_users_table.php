@@ -51,8 +51,8 @@ return new class extends Migration
             $table->string('category_employee')->comment('0:Full Time, 1:Part Time, 2:Contract, 3:Temporary');
 
             //Details of Employee
-            $table->string('bank_acc')->unique();
             $table->string('bank_name');
+            $table->string('bank_acc')->unique();
             $table->string('epf_no')->unique();
             $table->string('pcb_no')->unique();
             $table->string('ic_no')->unique();

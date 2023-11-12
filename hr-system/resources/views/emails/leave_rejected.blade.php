@@ -19,6 +19,10 @@ Have been Rejected
 
 <br><br>
 
+Reason: <b>{{ $data->reject_reason }}</b>
+
+<br><br>
+
 Sorry for any inconvenience caused.
 
 <br><br>

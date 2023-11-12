@@ -52,14 +52,25 @@ class LeaveController extends Controller
 
     }
 
+    public function rejectLeave_reason($id, Request $request)
+    {
+        $data['getRecord'] = Leave::leftJoin('users', 'leave.employee_id', 'users.id')
+            ->select('leave.*', 'users.name')
+            ->find($id);
+
+        return view('admin.leave.reject_reasonView', $data);
+    }
+
     public function reject_leave($id, Request $request)
     {
         $data = Leave::leftJoin('users', 'leave.employee_id', 'users.id')
             ->select('leave.*', 'users.name')
             ->find($id);
 
+        $data->reject_reason    = trim($request->reject_reason);
+
         //2 : Reject
-        $data->leave_status = trim(2);
+        $data->leave_status     = trim(2);
 
         $data->save();
 
@@ -72,7 +83,7 @@ class LeaveController extends Controller
         Mail::to($user_email)->send(new RejectApproveMail($data));
 
         //Return to original page
-        return redirect()->back()->with('success', 'Leave has been Reject!');
+        return redirect('admin/leave/pending')->with('success', 'Leave has been Reject!');
 
     }
 

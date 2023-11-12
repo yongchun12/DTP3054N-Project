@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('description', 5000);
             $table->string('leave_status')->comment('0 - Pending, 1 - Approved, 2 - Rejected');
 
+            //HR Provide Reason when Rejected
+            $table->string('reject_reason', 5000)->nullable();
+
             //Edited
             // - Change date_of_leave to from_leave Date
             // - Add column (to_leaveDate)

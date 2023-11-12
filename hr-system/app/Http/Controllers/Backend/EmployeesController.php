@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Mail\EmployeesNewCreateMail;
 
 use App\Models\User;
+use App\Exports\EmployeeExport;
 use Str;
 use Hash;
 use Mail;
 use File;
+
+use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeesController extends Controller
 {
@@ -21,6 +24,11 @@ class EmployeesController extends Controller
     {
         $data['getRecord'] = User::getRecord();
         return view('admin.employees.list', $data);
+    }
+
+    public function employee_export(Request $request)
+    {
+        return Excel::download(new EmployeeExport, 'Employee.xlsx');
     }
 
     /**

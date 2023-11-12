@@ -64,6 +64,10 @@
                                     <div class="col-sm-10">
                                         <!--value: old is validation for check the type of the input-->
                                         <input type="number" value="{{ old('staff_id') }}" name="staff_id" class="form-control" required placeholder="Enter Staff ID" max="9999">
+                                        <span style="color: red">
+                                            <!--Validation that if got same staff id-->
+                                            {{ $errors->first('staff_id') }}
+                                        </span>
                                     </div>
 
                                 </div>
