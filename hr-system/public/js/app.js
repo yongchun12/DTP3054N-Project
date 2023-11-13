@@ -66,31 +66,20 @@ function dateDifference() {
     const firstDate = document.getElementById('from_leaveDate').value;
     const secondDate = document.getElementById('to_leaveDate').value;
 
-    //Convert input values to Date objects
+    // Convert input values to Date objects
     let firstDateObj = new Date(firstDate);
     let secondDateObj = new Date(secondDate);
 
-    //Calculate the difference in milliseconds
-    var totalDays = Math.round((secondDateObj - firstDateObj) / (1000 * 60 * 60 * 24));
+    let days = 0;
 
-    //Calculate the difference in weekdays
-    var wholeWeeks = totalDays / 7 | 0;
-
-    var days = wholeWeeks * 5;
-
-    //Calculate the difference in remaining days
-    if (totalDays % 7) {
-        firstDateObj.setDate(firstDateObj.getDate() + wholeWeeks * 7);
-
-        // Calculate the number of days between the last Sunday and the second date
-        while (firstDateObj < secondDateObj) {
-            firstDateObj.setDate(firstDateObj.getDate() + 1);
-
-            // Check if it's a weekday (Mon-Fri)
-            if (firstDateObj.getDay() !== 0 && firstDateObj.getDay() !== 6) {
-                days++;
-            }
+    // Loop through each day from start to end date
+    while (firstDateObj <= secondDateObj) {
+        // Check if it's a weekday (Mon-Fri)
+        if (firstDateObj.getDay() !== 0 && firstDateObj.getDay() !== 6) {
+            days++;
         }
+        // Move to the next day
+        firstDateObj.setDate(firstDateObj.getDate() + 1);
     }
 
     // Update the day count display

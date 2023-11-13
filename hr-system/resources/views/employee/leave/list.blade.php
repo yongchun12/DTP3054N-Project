@@ -79,7 +79,13 @@
                                             @php
                                                 $from = \Carbon\Carbon::parse($data->from_leaveDate);
                                                 $to = \Carbon\Carbon::parse($data->to_leaveDate);
+                                                // Calculate the duration including the end date
                                                 $duration = $from->diffInWeekdays($to);
+
+                                                // Check if the end date is a weekday to include it in the count
+                                                if ($to->isWeekday()) {
+                                                    $duration += 1;
+                                                }
 
                                                 $totalLeaveDays += $duration;
                                             @endphp
