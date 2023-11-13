@@ -104,7 +104,7 @@
 
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ $getRecord->absent_days }}" name="absent_days"
-                                                   class="form-control" required placeholder="Enter Absent Days" id="absent_days" max="22" oninput="calculateDeduction()">
+                                                   class="form-control" required placeholder="Enter Absent Days" id="absent_days" max="22" oninput="calculateDeduction(); calculateAllowance();">
                                         </div>
 
                                     </div>
@@ -172,13 +172,13 @@
                                     <!--Total Allowance-->
                                     <div class="form-group row">
 
-                                        <label class="col-sm-2 col-form-label">Total Salary
+                                        <label class="col-sm-2 col-form-label">Sub-Total Salary
                                             <!--Required-->
                                             <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->total_allowance }}" class="form-control" id="total_allowance" placeholder="Total Salary" readonly>
+                                            <input type="number" value="{{ $getRecord->total_allowance }}" class="form-control" id="total_allowance" placeholder="Sub-Total Salary" readonly>
                                         </div>
 
                                     </div>
@@ -193,6 +193,20 @@
 
                                         <div class="col-sm-10">
                                             <input type="number" class="form-control" id="epf" placeholder="EPF Rate = 11%" readonly>
+                                        </div>
+
+                                    </div>
+
+                                    <!--SOCSO-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">SOCSO
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" id="socso" placeholder="SOCSO Rate = 0.5%" readonly>
                                         </div>
 
                                     </div>
@@ -221,7 +235,7 @@
 
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ $getRecord->total_deductions }}" name="total_deductions"
-                                                   class="form-control" required placeholder="Enter Total Deductions" id="total_deductions" readonly>
+                                                   class="form-control" required placeholder="Total Deductions" id="total_deductions" readonly>
                                         </div>
 
                                     </div>
@@ -236,67 +250,10 @@
 
                                         <div class="col-sm-10">
                                             <input type="text" value="{{ $getRecord->payroll_monthly }}" name="payroll_monthly"
-                                                   id="payroll_monthly" class="form-control" required placeholder="Enter Total Salary" readonly>
+                                                   id="payroll_monthly" class="form-control" required placeholder="Total Salary" readonly>
                                         </div>
 
                                     </div>
-
-                                    <!--JavaScript-->
-                                    <script>
-
-                                        function calculateDeduction() {
-
-                                            var gross_salary = document.getElementById('gross_salary').value;
-
-                                            //Calculate EPF
-                                            let epf_rate = 0.11;
-                                            var epf = gross_salary * epf_rate;
-
-                                            document.getElementById('epf').value = epf.toFixed(2);
-
-                                            //Calculate PCB
-                                            let pcb_rate = 0.02;
-                                            var pcb = gross_salary * pcb_rate;
-
-                                            document.getElementById('pcb').value = pcb.toFixed(2);
-
-                                            //Calculate Days Work and Leave
-                                            let default_dayswork = 22;
-
-                                            absent_days = document.getElementById('absent_days').value;
-
-                                            document.getElementById('num_work').value = default_dayswork - absent_days;
-
-                                            //Calculate Total Deduction
-                                            var total_deduction = epf + pcb + (gross_salary / default_dayswork) * absent_days;
-                                            document.getElementById('total_deductions').value = total_deduction.toFixed(2);
-                                        }
-
-                                        function calculateAllowance() {
-                                            let default_dayswork = 22;
-                                            var gross_salary = parseFloat(document.getElementById('gross_salary').value);
-
-                                            var bonus = parseFloat(document.getElementById('bonus').value);
-                                            var medicare_allowance = parseFloat(document.getElementById('medical_allowance').value);
-                                            var other_allowance = parseFloat(document.getElementById('other_allowance').value);
-
-                                            // Calculate Overtime Hours
-                                            var total_overtime = ((gross_salary / default_dayswork / 8 * 1.5) * parseFloat(document.getElementById('overtime').value));
-
-                                            // Calculate Total Earning
-                                            var total_earning = bonus + medicare_allowance + other_allowance + total_overtime + gross_salary;
-
-                                            // Make sure 'total_allowance' element exists in your HTML
-                                            var totalAllowance = document.getElementById('total_allowance');
-
-                                            totalAllowance.value = total_earning.toFixed(2);
-
-                                            var net_pay = total_earning - parseFloat(document.getElementById('total_deductions').value);
-
-                                            document.getElementById('payroll_monthly').value = net_pay.toFixed(2);
-                                        }
-
-                                    </script>
 
                                     <!--Card Footer-->
                                     <div class="card-footer">

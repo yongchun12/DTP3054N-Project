@@ -79,7 +79,7 @@
                                             @php
                                                 $from = \Carbon\Carbon::parse($data->from_leaveDate);
                                                 $to = \Carbon\Carbon::parse($data->to_leaveDate);
-                                                $duration = $from->diffInDays($to);
+                                                $duration = $from->diffInWeekdays($to);
 
                                                 $totalLeaveDays += $duration;
                                             @endphp

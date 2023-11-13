@@ -118,6 +118,7 @@
                                         <span class="input-group-text" id="domain" >@hr-system.com</span>
                                     </div>
 
+                                    <!--Hidden Row-->
                                     <div class="col-sm-2">
                                         <!--Get the suffix Value from JavaScript and pass this value to Controller-->
                                         <input type="hidden" value="{{ old('email') }}" name="email" id="email">

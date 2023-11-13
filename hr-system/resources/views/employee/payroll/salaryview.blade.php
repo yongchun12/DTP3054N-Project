@@ -6,19 +6,21 @@
     $basic_salary = $getRecord->gross_salary;
     $default_dayswork = 22;
 
-    $number_of_day_work = ($basic_salary / $default_dayswork) * $getRecord->number_of_day_work;
+    //Default Value
     $over_time = ($basic_salary / $default_dayswork / 8 * 1.5) * $getRecord->overtime_hours;
+
     $medical_allowance = $getRecord->medical_allowance;
     $other_allowance = $getRecord->other_allowance;
     $bonus = $getRecord->bonus;
 
-    $total_earning = $number_of_day_work + $over_time + $medical_allowance + $other_allowance + $bonus;
+    $total_earning = $basic_salary + $over_time + $medical_allowance + $other_allowance + $bonus;
 
     $epf = $getRecord->gross_salary * 0.11;
+    $socso = $getRecord->gross_salary * 0.005;
     $pcb = $getRecord->gross_salary * 0.02;
     $unpaid_leave = $getRecord->absent_days;
 
-    $total_deduction = $epf + $pcb + ($basic_salary / $default_dayswork * $unpaid_leave);
+    $total_deduction = $epf + $socso + $pcb + ($basic_salary / $default_dayswork * $unpaid_leave);
 
     $net_pay = $total_earning - $total_deduction;
     ?>
@@ -268,14 +270,14 @@
                             <tr>
                                 <th scope="row">Medical Allowance</th>
                                 <td>RM {{ $getRecord->medical_allowance }}</td>
-                                <td>PCB Tax</td>
-                                <td>2% = RM <?php echo number_format((float)$pcb, 2, '.', '');?></td>
+                                <td>SOCSO</td>
+                                <td>0.50 % = RM <?php echo number_format((float)$socso, 2, '.', '');?> </td>
                             </tr>
                             <tr>
                                 <th scope="row">Other Allowance (Transport Allowance etc)</th>
                                 <td>RM {{ $getRecord->other_allowance }}</td>
-                                <td></td>
-                                <td></td>
+                                <td>PCB Tax</td>
+                                <td>2% = RM <?php echo number_format((float)$pcb, 2, '.', '');?></td>
                             </tr>
                             <tr>
                                 <th scope="row">Bonus</th>

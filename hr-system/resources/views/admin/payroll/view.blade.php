@@ -67,7 +67,7 @@
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->gross_salary }}
+                                            RM {{ $getRecord->gross_salary }}
                                         </div>
                                     </div>
 
@@ -78,29 +78,7 @@
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->number_of_day_work }}
-                                        </div>
-                                    </div>
-
-                                    <!--Bonus-->
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Bonus
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->bonus }}
-                                        </div>
-                                    </div>
-
-                                    <!--Overtime-->
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Overtime Hours
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->overtime_hours }}
+                                            {{ $getRecord->number_of_day_work }} Days
                                         </div>
                                     </div>
 
@@ -111,7 +89,29 @@
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->absent_days }}
+                                            {{ $getRecord->absent_days }} Days
+                                        </div>
+                                    </div>
+
+                                    <!--Overtime-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Overtime Hours
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            {{ $getRecord->overtime_hours }} Hours
+                                        </div>
+                                    </div>
+
+                                    <!--Bonus-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Bonus
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            RM {{ $getRecord->bonus }}
                                         </div>
                                     </div>
 
@@ -122,7 +122,82 @@
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->medical_allowance }}
+                                            RM {{ $getRecord->medical_allowance }}
+                                        </div>
+                                    </div>
+
+                                    <!--Medical Allowance-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Other Allowance
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            RM {{ $getRecord->other_allowance }}
+                                        </div>
+                                    </div>
+
+                                    <!--Sub-Total Salary-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Sub-Total Salary
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            @php
+                                                $total_overtime = ($getRecord->gross_salary / 22 / 8 * 1.5) * $getRecord->overtime_hours;
+
+                                                $sub_total = $getRecord->gross_salary + $getRecord->bonus +
+                                                             $getRecord->medical_allowance + $getRecord->other_allowance +
+                                                             $total_overtime;
+
+                                                echo "RM ", number_format((float)$sub_total, 2, '.', '');
+                                            @endphp
+                                        </div>
+                                    </div>
+
+                                    <!--EPF-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">EPF
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            @php
+                                                $epf = $getRecord->gross_salary * 0.11;
+
+                                                echo "RM ", $epf;
+                                            @endphp
+                                        </div>
+                                    </div>
+
+                                    <!--SOCSO-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">SOCSO
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            @php
+                                                $socso = $getRecord->gross_salary * 0.005;
+
+                                                echo "RM ", $socso;
+                                            @endphp
+                                        </div>
+                                    </div>
+
+                                    <!--PCB Tax-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">PCB Tax
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            @php
+                                                $pcb = $getRecord->gross_salary * 0.02;
+
+                                                echo "RM ", $pcb;
+                                            @endphp
                                         </div>
                                     </div>
 
@@ -133,7 +208,7 @@
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->total_deductions }}
+                                            RM {{ $getRecord->total_deductions }}
                                         </div>
                                     </div>
 
@@ -144,7 +219,7 @@
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            {{ $getRecord->payroll_monthly }}
+                                            RM {{ $getRecord->payroll_monthly }}
                                         </div>
                                     </div>
 
