@@ -28,6 +28,56 @@
                         @include('layouts.alert_message')
 
                         <div class="card">
+                            <div class="card-header">
+
+                                <h3 class="card-title">Search Leave Record</h3>
+
+                            </div>
+
+                            <form method="get" action="">
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <!--ID-->
+                                        <div class="form-group col-md-1">
+                                            <label>ID</label>
+                                            <input type="text" name="id" class="form-control" placeholder="Enter ID" value="{{ Request()->id }}">
+                                        </div>
+
+                                        <!--Employee Name-->
+                                        <div class="form-group col-md-3">
+                                            <label>Employee Name</label>
+                                            <input type="text" name="name" class="form-control" placeholder="Enter Employee Name" value="{{ Request()->employee_id }}">
+                                        </div>
+
+                                        <!--From-->
+                                        <div class="form-group col-md-2">
+                                            <label>From Date</label>
+                                            <input type="date" name="from_leaveDate" class="form-control" placeholder="Enter Number of Day Work" value="{{ Request()->from_leaveDate }}">
+                                        </div>
+
+                                        <!--To-->
+                                        <div class="form-group col-md-2">
+                                            <label>To Date</label>
+                                            <input type="date" name="to_leaveDate" class="form-control" placeholder="Enter Number of Day Work" value="{{ Request()->to_leaveDate }}">
+                                        </div>
+
+                                        <!--Button-->
+                                        <div class="form-group col-md-2" style="margin-top: 32px">
+                                            <!--Search Button-->
+                                            <button class="btn btn-primary" type="submit">Search</button>
+
+                                            <!--Reset Button-->
+                                            <a href="{{ url('admin/leave/history') }}" class="btn btn-secondary">Reset</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <div class="card">
                             <!--Title-->
                             <div class="card-header">
                                 <h3 class="card-title">Leave Record</h3>
@@ -43,15 +93,20 @@
                                         <th>Name</th>
                                         <th>From</th>
                                         <th>To</th>
+                                        <th>Duration</th>
                                         <th>Leave Category</th>
                                         <th>Status</th>
-                                        <th>Created At</th>
-                                        <th>Updated At</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
+
+                                    <!--Calculate that Employee take how many Leave already-->
+                                    @php
+                                        $totalLeaveDays = 0;
+                                    @endphp
+
                                     @forelse($getHistory as $data)
                                         <tr>
                                             <td style="vertical-align: middle;">
@@ -71,6 +126,24 @@
                                             </td>
 
                                             <td style="vertical-align: middle;">
+                                                @php
+                                                    $from = \Carbon\Carbon::parse($data->from_leaveDate);
+                                                    $to = \Carbon\Carbon::parse($data->to_leaveDate);
+                                                    // Calculate the duration including the end date
+                                                    $duration = $from->diffInWeekdays($to);
+
+                                                    // Check if the end date is a weekday to include it in the count
+                                                    if ($to->isWeekday()) {
+                                                        $duration += 1;
+                                                    }
+
+                                                    $totalLeaveDays += $duration;
+
+                                                    echo $duration, " Days";
+                                                @endphp
+                                            </td>
+
+                                            <td style="vertical-align: middle;">
                                                 @if($data->type_of_leave == 0)
                                                     Unpaid Leave
                                                 @elseif($data->type_of_leave == 1)
@@ -82,20 +155,18 @@
 
                                             <td style="vertical-align: middle;">
                                                 @if($data->leave_status == 0)
-                                                    Pending
+                                                    <span class="badge bg-primary" style="font-size: 16px">
+                                                        Pending
+                                                    </span>
                                                 @elseif($data->leave_status == 1)
-                                                    Approved
+                                                    <span class="badge bg-success" style="font-size: 16px">
+                                                        Approved
+                                                    </span>
                                                 @elseif($data->leave_status == 2)
-                                                    Rejected
+                                                    <span class="badge bg-danger" style="font-size: 16px">
+                                                        Rejected
+                                                    </span>
                                                 @endif
-                                            </td>
-
-                                            <td style="vertical-align: middle;">
-                                                {{ date('d-F-Y h:i A', strtotime($data->created_at)) }}
-                                            </td>
-
-                                            <td style="vertical-align: middle;">
-                                                {{ date('d-F-Y h:i A', strtotime($data->updated_at)) }}
                                             </td>
 
                                             <td style="vertical-align: middle;">
@@ -108,6 +179,18 @@
                                             <td colspan="100%" style="text-align: center">No Record Found</td>
                                         </tr>
                                     @endforelse
+
+                                    <tr>
+                                        <th>Total</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{ $totalLeaveDays }} Days</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
                                     </tbody>
 
                                 </table>

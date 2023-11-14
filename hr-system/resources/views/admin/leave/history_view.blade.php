@@ -98,17 +98,19 @@
                                         <div class="col-sm-10 col-form-label" id="duration">
 
                                             @php
-                                                $fromDate = date_create($getRecord->from_leaveDate);
-                                                $toDate = date_create($getRecord->to_leaveDate);
+                                                $from = \Carbon\Carbon::parse($getRecord->from_leaveDate);
+                                                $to = \Carbon\Carbon::parse($getRecord->to_leaveDate);
+                                                // Calculate the duration including the end date
+                                                $duration = $from->diffInWeekdays($to);
 
-                                                //Calculate the Difference between Two Dates
-                                                $diff = date_diff($fromDate,$toDate);
+                                                // Check if the end date is a weekday to include it in the count
+                                                if ($to->isWeekday()) {
+                                                    $duration += 1;
+                                                }
 
-                                                //Show Number of the Difference Days
-                                                $duration = $diff->format("%a");
-
-                                                echo $duration , " Days";
+                                                echo $duration, " Days"
                                             @endphp
+
                                         </div>
                                     </div>
 
@@ -118,11 +120,17 @@
 
                                         <div class="col-sm-10 col-form-label">
                                             @if($getRecord->leave_status == 0)
-                                                Pending
+                                                <span class="badge bg-primary" style="font-size: 16px">
+                                                    Pending
+                                                </span>
                                             @elseif($getRecord->leave_status == 1)
-                                                Approved
+                                                <span class="badge bg-success" style="font-size: 16px">
+                                                    Approved
+                                                </span>
                                             @elseif($getRecord->leave_status == 2)
-                                                Rejected
+                                                <span class="badge bg-danger" style="font-size: 16px">
+                                                    Rejected
+                                                </span>
                                             @endif
                                         </div>
                                     </div>

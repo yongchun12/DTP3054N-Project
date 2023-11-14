@@ -63,6 +63,7 @@
                                         </div>
                                     </div>
 
+                                        <!--If want apply for one day leave, just put the same day, if want two days or above then put two different days-->
                                     <!--Durations of Leave-->
                                     <div class="form-group row">
                                         <label for="date_of_leave" class="col-sm-2 col-form-label">From Date</label>

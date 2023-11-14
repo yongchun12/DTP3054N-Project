@@ -1,3 +1,7 @@
+//---------------------------Dashboard--------------------------------//
+
+//---------------------------Employee--------------------------------//
+
 //----------------------------Payroll--------------------------------//
 
 //Calculate Total Deduction (Payroll Create/Edit Page)
@@ -73,6 +77,7 @@ function dateDifference() {
     let days = 0;
 
     // Loop through each day from start to end date
+    // Note that setDate() automatically increments the day value
     while (firstDateObj <= secondDateObj) {
         // Check if it's a weekday (Mon-Fri)
         if (firstDateObj.getDay() !== 0 && firstDateObj.getDay() !== 6) {

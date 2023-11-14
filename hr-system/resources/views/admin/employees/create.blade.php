@@ -48,7 +48,7 @@
                                     <label class="col-sm-2 col-form-label">Profile Picture</label>
 
                                     <div class="col-sm-10">
-                                        <input type="file" name="profile_picture" class="form-control">
+                                            <input type="file" class="col-form-label" name="profile_picture">
                                     </div>
 
                                 </div>
@@ -61,17 +61,26 @@
                                         <span style="color: red">*</span>
                                     </label>
 
+                                    <div class="col-sm-10 input-group">
+
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">EMP-</span>
+                                        </div>
+
+                                        <input type="text" value="{{ old('suffix_staffID') }}" name="suffix_staffID" id="suffix_staffID" class="form-control" aria-describedby="domain" placeholder="Enter Staff ID" oninput="passStaffID()" max="9999" required>
+                                    </div>
+
+                                    <!--Hidden Row / Get EMP- Value from JavaScript and pass this value to Controller-->
+                                    <div class="col-sm-2">
+                                        <input type="hidden" value="{{ old('staff_id') }}" name="staff_id" id="staff_id">
+                                    </div>
+
                                     <div class="col-sm-10">
-                                        <!--value: old is validation for check the type of the input-->
-                                        <input type="number" value="{{ old('suffix_staffID') }}" name="suffix_staffID" id="suffix_staffID" class="form-control" required placeholder="Enter Staff ID" max="9999" oninput="passStaffID()">
                                         <span style="color: red">
-                                            <!--Validation that if got same staff id-->
+                                            <!--Validation that if got same email-->
                                             {{ $errors->first('staff_id') }}
                                         </span>
                                     </div>
-
-                                    <!--Get EMP- Value from JavaScript and pass this value to Controller-->
-                                    <input type="hidden" value="{{ old('staff_id') }}" name="staff_id" id="staff_id">
 
                                 </div>
 
@@ -114,8 +123,11 @@
                                     </label>
 
                                     <div class="col-sm-10 input-group">
-                                        <input type="text" value="{{ old('prefix_email') }}" name="prefix_email" id="prefix_email" oninput="passEmail()" class="form-control" aria-describedby="domain" placeholder="Enter Username" pattern="[a-zA-Z0-9]+" required>
-                                        <span class="input-group-text" id="domain" >@hr-system.com</span>
+                                        <input type="text" value="{{ old('prefix_email') }}" name="prefix_email" id="prefix_email" oninput="passEmail()" class="form-control" placeholder="Enter Username" pattern="[a-zA-Z0-9]+" required>
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">@hr-system.com</span>
+                                        </div>
                                     </div>
 
                                     <!--Hidden Row-->
@@ -370,9 +382,5 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
-    <script>
-
-    </script>
 
 @endsection
