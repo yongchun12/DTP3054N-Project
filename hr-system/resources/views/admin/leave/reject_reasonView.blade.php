@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Reason</h1>
+                        <h1 class="m-0">Reject Reason</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -29,11 +29,14 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        <div class="card card-info">
+                        <div class="card card-danger">
 
                             <!--Card Header-->
                             <div class="card-header">
-                                <h3 class="card-title">View Leave Record</h3>
+                                <h3 class="card-title">
+                                    <i class="fa-solid fa-xmark mr-1"></i>
+                                    Provide Reject Reason
+                                </h3>
                             </div>
 
                             <form class="form-horizontal" method="post" action="{{ url('admin/leave/reject/' .$getRecord->id) }}" enctype="multipart/form-data">
@@ -100,16 +103,17 @@
                                         <div class="col-sm-10 col-form-label" id="duration">
 
                                             @php
-                                                $fromDate = date_create($getRecord->from_leaveDate);
-                                                $toDate = date_create($getRecord->to_leaveDate);
+                                                $from = \Carbon\Carbon::parse($getRecord->from_leaveDate);
+                                                    $to = \Carbon\Carbon::parse($getRecord->to_leaveDate);
+                                                    // Calculate the duration including the end date
+                                                    $duration = $from->diffInWeekdays($to);
 
-                                                //Calculate the Difference between Two Dates
-                                                $diff = date_diff($fromDate,$toDate);
+                                                    // Check if the end date is a weekday to include it in the count
+                                                    if ($to->isWeekday()) {
+                                                        $duration += 1;
+                                                    }
 
-                                                //Show Number of the Difference Days
-                                                $duration = $diff->format("%a");
-
-                                                echo $duration , " Days";
+                                                    echo $duration, " Days";
                                             @endphp
                                         </div>
                                     </div>
@@ -120,11 +124,17 @@
 
                                         <div class="col-sm-10 col-form-label">
                                             @if($getRecord->leave_status == 0)
-                                                Pending
+                                                <span class="badge bg-primary" style="font-size: 16px">
+                                                    Pending
+                                                </span>
                                             @elseif($getRecord->leave_status == 1)
-                                                Approved
+                                                <span class="badge bg-success" style="font-size: 16px">
+                                                    Approved
+                                                </span>
                                             @elseif($getRecord->leave_status == 2)
-                                                Rejected
+                                                <span class="badge bg-danger" style="font-size: 16px">
+                                                    Rejected
+                                                </span>
                                             @endif
                                         </div>
                                     </div>
@@ -152,10 +162,10 @@
 
                                 <!--Card Footer-->
                                 <div class="card-footer">
-                                    <a href=" {{ url('admin/leave/history') }} " class="btn btn-default">Back</a>
+                                    <a href=" {{ url('admin/leave/history') }} " class="btn btn-default"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
 
                                     <!--Reject Button-->
-                                    <button type="submit" class="btn btn-primary float-right">Reject</button>
+                                    <button type="submit" class="btn btn-danger float-right"><i class="fa-solid fa-xmark mr-1"></i>Reject</button>
                                 </div>
 
                             </form>

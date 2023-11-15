@@ -13,9 +13,9 @@ class Reply extends Model
 
     static public function getForumReply()
     {
-        $return = self::select('reply.*', 'users.name')
+        $return = self::select('reply.*', 'users.name', 'users.profile_picture')
             ->join('users', 'users.id', '=', 'reply.employee_id')
-            ->orderBy('reply.id', 'desc')
+            ->orderBy('reply.created_at', 'desc')
             ->paginate(10);
 
         return $return;

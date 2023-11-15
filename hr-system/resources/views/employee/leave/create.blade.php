@@ -27,7 +27,7 @@
                 <div class="row">
                     <section class="col-md-12">
 
-                        <div class="card card-info">
+                        <div class="card card-primary">
 
                             <!--Header-->
                             <div class="card-header">

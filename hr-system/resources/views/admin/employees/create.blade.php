@@ -10,7 +10,9 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Employees</h1>
+                        <h1 class="m-0">
+                            Create Employees
+                        </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -28,9 +30,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-info">
+                        <div class="card card-primary">
                             <div class="card-header">
-                            <h3 class="card-title">Create Employees</h3>
+                            <h3 class="card-title">
+                                <i class="fa-solid fa-plus mr-1"></i>
+                                Create Employees
+                            </h3>
                         </div>
 
                         <form class="form-horizontal" method="post" accept="{{ url('admin/employees/create') }}}" enctype="multipart/form-data">
@@ -167,10 +172,21 @@
                                         <span style="color: red">*</span>
                                     </label>
 
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-10 input-group">
+
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
+                                        </div>
+
                                         <input type="number" value="{{ old('phone_number') }}" name="phone_number" class="form-control" placeholder="Enter Phone Number">
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                    </div>
+
+                                    <div class="col-sm-10">
                                         <span style="color: red">
-                                            <!--Validation that if got same phone number-->
+                                            <!--Validation that if got same email-->
                                             {{ $errors->first('phone_number') }}
                                         </span>
                                     </div>
@@ -214,7 +230,7 @@
 
                                     <div class="col-sm-10">
                                         <select class="form-control" name="job_id">
-                                            <option value="">Select Job Title</option>
+                                            <option value="" disabled>Select Job Title</option>
                                                 <option value="1">Web Developer</option>
                                                 <option value="2">Accountant</option>
                                         </select>
@@ -232,7 +248,7 @@
 
                                     <div class="col-sm-10">
                                         <select class="form-control" name="manager_id">
-                                            <option value="">Select Manager Name</option>
+                                            <option value="" disabled>Select Manager Name</option>
                                             <option value="1">Yong Chun</option>
                                             <option value="2">Chee Yi</option>
                                         </select>
@@ -250,7 +266,7 @@
 
                                     <div class="col-sm-10">
                                         <select class="form-control" name="department_id">
-                                            <option value="">Select Department</option>
+                                            <option value="" disabled>Select Department</option>
                                             <option value="1">Project Department</option>
                                             <option value="2">Finance Department</option>
                                         </select>
@@ -268,7 +284,7 @@
 
                                     <div class="col-sm-10">
                                         <select class="form-control" name="category_employee">
-                                            <option value="">Select Category</option>
+                                            <option value="" disabled>Select Category</option>
                                             <option value="0">Full Time</option>
                                             <option value="1">Part Time</option>
                                             <option value="2">Contract</option>
@@ -366,8 +382,8 @@
 
                                 <!--Card Footer-->
                                 <div class="card-footer">
-                                    <a href=" {{ url('admin/employees') }} " class="btn btn-default">Cancel</a>
-                                    <button type="submit" class="btn btn-primary float-right">Create Employee</button>
+                                    <a href=" {{ url('admin/employees') }} " class="btn btn-default"><i class="fa-solid fa-xmark mr-1"></i>Cancel</a>
+                                    <button type="submit" class="btn btn-primary float-right"><i class="fa-solid fa-plus mr-1"></i>Create Employee</button>
                                 </div>
 
                             </div>

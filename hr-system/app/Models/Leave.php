@@ -17,7 +17,7 @@ class Leave extends Model
 
     static public function getPendingLeaveRecord()
     {
-        $return = self::select('leave.*', 'users.name')
+        $return = self::select('leave.*', 'users.name', 'users.last_name')
             #Join the table from users ID and Leave Table (employee ID)
             ->join('users', 'users.id', '=', 'leave.employee_id')
             //because this column is varchar so need to put ''

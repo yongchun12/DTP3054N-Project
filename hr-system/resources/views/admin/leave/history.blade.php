@@ -27,10 +27,13 @@
                         <!--Alert Message-->
                         @include('layouts.alert_message')
 
-                        <div class="card">
+                        <div class="card card-outline card-primary">
                             <div class="card-header">
 
-                                <h3 class="card-title">Search Leave Record</h3>
+                                <h3 class="card-title">
+                                    <i class="fa-solid fa-magnifying-glass mr-1"></i>
+                                    Search Leave Record
+                                </h3>
 
                             </div>
 
@@ -51,24 +54,32 @@
                                         </div>
 
                                         <!--From-->
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-3">
                                             <label>From Date</label>
                                             <input type="date" name="from_leaveDate" class="form-control" placeholder="Enter Number of Day Work" value="{{ Request()->from_leaveDate }}">
                                         </div>
 
                                         <!--To-->
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-3">
                                             <label>To Date</label>
                                             <input type="date" name="to_leaveDate" class="form-control" placeholder="Enter Number of Day Work" value="{{ Request()->to_leaveDate }}">
                                         </div>
 
                                         <!--Button-->
-                                        <div class="form-group col-md-2" style="margin-top: 32px">
+                                        <div class="form-group col-md-2">
                                             <!--Search Button-->
-                                            <button class="btn btn-primary" type="submit">Search</button>
+                                            <button class="btn btn-primary" type="submit" style="margin-top: 32px">
+                                                <i class="fa-solid fa-magnifying-glass mr-1"></i>
+                                                Search
+                                            </button>
 
                                             <!--Reset Button-->
-                                            <a href="{{ url('admin/leave/history') }}" class="btn btn-secondary">Reset</a>
+                                            <a href="{{ url('admin/leave/history') }}">
+                                                <button class="btn btn-secondary" style="margin-top: 32px; margin-left: 5px;">
+                                                    <i class="fa-solid fa-rotate"></i>
+                                                    Reset
+                                                </button>
+                                            </a>
                                         </div>
 
                                     </div>
@@ -80,7 +91,10 @@
                         <div class="card">
                             <!--Title-->
                             <div class="card-header">
-                                <h3 class="card-title">Leave Record</h3>
+                                <h3 class="card-title">
+                                    <i class="fa-solid fa-list mr-1"></i>
+                                    Leave Record
+                                </h3>
                             </div>
 
                             <div class="card-body p-0">
@@ -89,14 +103,14 @@
                                     <thead>
                                     <!--tr is Table Row-->
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>From</th>
-                                        <th>To</th>
-                                        <th>Duration</th>
-                                        <th>Leave Category</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th style="text-align: center">ID</th>
+                                        <th style="text-align: center">Name</th>
+                                        <th style="text-align: center">From</th>
+                                        <th style="text-align: center">To</th>
+                                        <th style="text-align: center">Duration</th>
+                                        <th style="text-align: center">Leave Category</th>
+                                        <th style="text-align: center">Status</th>
+                                        <th style="text-align: center">Action</th>
                                     </tr>
                                     </thead>
 
@@ -108,7 +122,7 @@
                                     @endphp
 
                                     @forelse($getHistory as $data)
-                                        <tr>
+                                        <tr style="vertical-align: middle; text-align: center;">
                                             <td style="vertical-align: middle;">
                                                 {{ $data->id }}
                                             </td>
@@ -155,23 +169,33 @@
 
                                             <td style="vertical-align: middle;">
                                                 @if($data->leave_status == 0)
-                                                    <span class="badge bg-primary" style="font-size: 16px">
+                                                    <span class="badge bg-primary" style="font-size: 14px">
                                                         Pending
                                                     </span>
                                                 @elseif($data->leave_status == 1)
-                                                    <span class="badge bg-success" style="font-size: 16px">
+                                                    <span class="badge bg-success" style="font-size: 14px">
                                                         Approved
                                                     </span>
                                                 @elseif($data->leave_status == 2)
-                                                    <span class="badge bg-danger" style="font-size: 16px">
+                                                    <span class="badge bg-danger" style="font-size: 14px">
                                                         Rejected
                                                     </span>
                                                 @endif
                                             </td>
 
                                             <td style="vertical-align: middle;">
-                                                <a href="{{ url('admin/leave/history/view/' .$data->id) }}" class="btn btn-primary">View</a>
-                                                <a href="{{ url('admin/leave/history/delete/' .$data->id) }}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-danger">Delete</a>
+
+                                                <!--View Button-->
+                                                <a href="{{ url('admin/leave/history/view/' .$data->id) }}" class="btn btn-outline-primary">
+                                                    <i class="fa-regular fa-file-lines mr-1"></i>
+                                                    View
+                                                </a>
+
+                                                <!--Delete Button-->
+                                                <a href="{{ url('admin/leave/history/delete/' .$data->id) }}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-outline-danger" style="margin-left: 10px;">
+                                                    <i class="fa-regular fa-trash-can mr-1"></i>
+                                                    Delete
+                                                </a>
                                             </td>
                                         </tr>
                                     @empty
@@ -180,8 +204,8 @@
                                         </tr>
                                     @endforelse
 
-                                    <tr>
-                                        <th>Total</th>
+                                    <tr style="text-align: center">
+                                        <th style="text-align: center">Total</th>
                                         <td></td>
                                         <td></td>
                                         <td></td>

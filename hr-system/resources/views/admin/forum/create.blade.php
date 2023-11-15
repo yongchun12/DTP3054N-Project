@@ -27,11 +27,14 @@
                 <div class="row">
                     <section class="col-md-12">
 
-                        <div class="card card-info">
+                        <div class="card card-primary">
 
                             <!--Card Header-->
                             <div class="card-header">
-                                <h3 class="card-title">Create Posts</h3>
+                                <h3 class="card-title">
+                                    <i class="fa-solid fa-plus mr-1"></i>
+                                    Create Posts
+                                </h3>
                             </div>
 
                             <form class="form-horizontal" method="post" accept="{{ url('admin/forum/posts/create') }}}" enctype="multipart/form-data">
@@ -72,8 +75,8 @@
 
                                     <!--Card Footer-->
                                     <div class="card-footer">
-                                        <a href=" {{ url('admin/forum') }} " class="btn btn-default">Back</a>
-                                        <button type="submit" class="btn btn-primary float-right">Create Posts</button>
+                                        <a href=" {{ url('admin/forum') }} " class="btn btn-default"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
+                                        <button type="submit" class="btn btn-primary float-right"><i class="fa-solid fa-plus mr-1"></i>Create Posts</button>
                                     </div>
 
                                 </div>

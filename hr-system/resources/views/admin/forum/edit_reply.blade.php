@@ -27,11 +27,14 @@
                 <div class="row">
                     <section class="col-md-12">
 
-                        <div class="card card-info">
+                        <div class="card card-primary">
 
                             <!--Card Header-->
                             <div class="card-header">
-                                <h3 class="card-title">Edit Reply</h3>
+                                <h3 class="card-title">
+                                    <i class="fa-regular fa-pen-to-square mr-1"></i>
+                                    Edit Reply
+                                </h3>
                             </div>
 
                             <form class="form-horizontal" method="post" accept="{{ url('admin/forum/reply/edit/'.$getReply->id) }}}" enctype="multipart/form-data">
@@ -40,21 +43,6 @@
 
                                 <!--Card Info-->
                                 <div class="card-body">
-
-                                    <!--Title-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Title
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <!--value: old is validation for check the type of the input-->
-                                            <input type="text" value="{{ $getReply->title }}" name="title" class="form-control" placeholder="Enter Title" required>
-                                        </div>
-
-                                    </div>
 
                                     <!--Description-->
                                     <div class="form-group row">
@@ -72,8 +60,8 @@
 
                                     <!--Card Footer-->
                                     <div class="card-footer">
-                                        <a href=" {{ url('admin/forum/view/'.$getReply->forum_id) }} " class="btn btn-default">Back</a>
-                                        <button type="submit" class="btn btn-primary float-right">Update Edit</button>
+                                        <a href=" {{ url('admin/forum/view/'.$getReply->forum_id) }} " class="btn btn-default"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
+                                        <button type="submit" class="btn btn-primary float-right"><i class="fa-regular fa-pen-to-square mr-1"></i>Update Edit</button>
                                     </div>
 
                                 </div>

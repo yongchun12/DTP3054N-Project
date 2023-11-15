@@ -13,9 +13,9 @@ class Forum extends Model
 
     static public function getPosts()
     {
-        $return = self::select('forum.*', 'users.name')
+        $return = self::select('forum.*', 'users.name', 'users.profile_picture')
             ->join('users', 'users.id', '=', 'forum.employee_id')
-            ->orderBy('forum.id', 'desc')
+            ->orderBy('forum.created_at', 'desc')
             ->paginate(10);
 
         return $return;

@@ -30,10 +30,10 @@
                         <!--Alert Message-->
                         @include('layouts.alert_message')
 
-                        <div class="card card-info">
+                        <div class="card card-primary">
 
                             <div class="card-header">
-                                <h3 class="card-title">My Account</h3>
+                                <h3 class="card-title"><i class="fa-solid fa-gear mr-2"></i>My Account</h3>
                             </div>
 
                             <form class='form-horizontal' method="post" action="{{ url('admin/my_account/update') }}" enctype="multipart/form-data">
@@ -110,8 +110,8 @@
 
                                     <!--Card Footer-->
                                     <div class="card-footer">
-                                        <a href=" {{ url('admin/my_account') }} " class="btn btn-default">Back</a>
-                                        <button type="submit" class="btn btn-primary float-right">Update</button>
+                                        <a href=" {{ url('admin/dashboard') }} " class="btn btn-default"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
+                                        <button type="submit" class="btn btn-primary float-right"><i class="fa-regular fa-pen-to-square mr-2"></i>Update</button>
                                     </div>
 
                                 </div>

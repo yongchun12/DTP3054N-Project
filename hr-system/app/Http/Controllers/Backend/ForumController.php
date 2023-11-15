@@ -14,7 +14,24 @@ class ForumController extends Controller
     //-------------------Admin Site-------------------//
     public function admin_postsList()
     {
-        $data['getPosts'] = Forum::getPosts();
+        $topics = Forum::getPosts();
+
+        // Create an array to store topic IDs and their corresponding reply counts
+        $topicReplyCounts = [];
+
+        // Loop through each topic and count the replies for that topic
+        foreach ($topics as $topic) {
+            $forumId = $topic->id; // Assuming 'id' is the primary key for your Forum model
+            $replyCount = Reply::where('forum_id', $forumId)->count();
+            $topicReplyCounts[$forumId] = $replyCount;
+        }
+
+        $data = [
+            //This is the array name you will use in your view
+            'getPosts' => $topics,
+            'getTopicReplyCount' => $topicReplyCounts,
+        ];
+
         return view('admin.forum.list' , $data);
     }
 
@@ -48,6 +65,9 @@ class ForumController extends Controller
     {
         $data['getEmployee'] = User::all();
         $data['getRecord'] = Forum::find($id);
+
+        //get this topic got how many Reply Count
+        $data['getTopicReplyCount'] = Reply::where('forum_id', '=', $id)->count();
 
         //get Reply Data
         $data['getReply'] = Reply::getForumReply()
@@ -86,7 +106,7 @@ class ForumController extends Controller
         return redirect()->back()->with('error', 'Forum Delete Successfully.');
     }
 
-    //---------------Reply-----------------
+    //---------------Reply-----------------//
     public function admin_replyCreate(Request $request)
     {
         $reply = request()->validate([
@@ -97,7 +117,6 @@ class ForumController extends Controller
 
         $reply ->employee_id    =    Auth::user()->id;
         $reply ->forum_id       =    trim($request->forum_id);
-        $reply ->title          =    trim($request->title);
         $reply ->description    =    trim($request->description);
 
         $reply->save();
@@ -120,7 +139,6 @@ class ForumController extends Controller
 
         $reply = Reply::find($id);
 
-        $reply ->title          =    trim($request->title);
         $reply ->description    =    trim($request->description);
 
         $reply->save();
@@ -138,7 +156,24 @@ class ForumController extends Controller
     //-------------------Employee Site-------------------//
     public function employee_postsList()
     {
-        $data['getPosts'] = Forum::getPosts();
+        $topics = Forum::getPosts();
+
+        // Create an array to store topic IDs and their corresponding reply counts
+        $topicReplyCounts = [];
+
+        // Loop through each topic and count the replies for that topic
+        foreach ($topics as $topic) {
+            $forumId = $topic->id; // Assuming 'id' is the primary key for your Forum model
+            $replyCount = Reply::where('forum_id', $forumId)->count();
+            $topicReplyCounts[$forumId] = $replyCount;
+        }
+
+        $data = [
+            //This is the array name you will use in your view
+            'getPosts' => $topics,
+            'getTopicReplyCount' => $topicReplyCounts,
+        ];
+
         return view('employee.forum.list' , $data);
     }
 
@@ -172,6 +207,11 @@ class ForumController extends Controller
     {
         $data['getEmployee'] = User::all();
         $data['getRecord'] = Forum::find($id);
+
+        //get this topic got how many Reply Count
+        $data['getTopicReplyCount'] = Reply::where('forum_id', '=', $id)->count();
+
+        //get Reply Data
         $data['getReply'] = Reply::getForumReply()
             ->where('forum_id', '=', $id);
 
@@ -219,7 +259,6 @@ class ForumController extends Controller
 
         $reply ->employee_id    =    Auth::user()->id;
         $reply ->forum_id       =    trim($request->forum_id);
-        $reply ->title          =    trim($request->title);
         $reply ->description    =    trim($request->description);
 
         $reply->save();
@@ -242,7 +281,6 @@ class ForumController extends Controller
 
         $reply = Reply::find($id);
 
-        $reply ->title          =    trim($request->title);
         $reply ->description    =    trim($request->description);
 
         $reply->save();

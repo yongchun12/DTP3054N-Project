@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Payroll</h1>
+                        <h1><i class="fa-solid fa-landmark mr-1"></i>Payroll</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -30,7 +30,7 @@
                         <div class="card">
                             <!--Title-->
                             <div class="card-header">
-                                <h3 class="card-title">Payroll List</h3>
+                                <h3 class="card-title"><i class="fa-solid fa-list mr-1"></i>Payroll List</h3>
                             </div>
 
                             <div class="card-body p-0">
@@ -38,7 +38,7 @@
 
                                     <thead>
                                     <!--tr is Table Row-->
-                                    <tr>
+                                    <tr style="text-align: center">
                                         <th>Month / Year</th>
                                         <th>Number of Day Work</th>
                                         <th>Bonus</th>
@@ -51,15 +51,21 @@
                                     <tbody>
                                     @forelse($payrolls as $value)
                                         <tr>
-                                            <td>{{ date('F Y', strtotime($value->created_at)) }}</td>
-                                            <td>{{ $value->number_of_day_work }}</td>
-                                            <td>{{ $value->bonus }}</td>
-                                            <td>{{ $value->overtime_hours }}</td>
-                                            <td>
+                                            <td style="vertical-align: middle; text-align: center;">{{ date('F Y', strtotime($value->created_at)) }}</td>
+                                            <td style="vertical-align: middle; text-align: center;">{{ $value->number_of_day_work }} Days</td>
+                                            <td style="vertical-align: middle; text-align: center;">RM {{ $value->bonus }}</td>
+                                            <td style="vertical-align: middle; text-align: center;">{{ $value->overtime_hours }} hours</td>
+                                            <td style="vertical-align: middle; text-align: center;">
                                                 <a href="{{ url('employee/payroll/view/'.$value->id) }}"
-                                                   class="btn btn-primary">View</a>
+                                                   class="btn btn-outline-primary">
+                                                    <i class="fa-regular fa-file-lines mr-1"></i>
+                                                    View
+                                                </a>
 
-                                                <a href="{{ url('employee/payroll/pdf/'.$value->id) }}" class="btn btn-primary">Export PDF</a>
+                                                <a href="{{ url('employee/payroll/pdf/'.$value->id) }}" class="btn btn-outline-primary" style="margin-left: 5px;">
+                                                    <i class="fa-regular fa-file-pdf mr-1"></i>
+                                                    Export PDF
+                                                </a>
                                             </td>
                                         </tr>
 

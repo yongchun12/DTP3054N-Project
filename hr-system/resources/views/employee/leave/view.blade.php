@@ -10,11 +10,14 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">View Leave Record</h1>
+                        <h1 class="m-0">
+                            <i class="fa-regular fa-file-lines mr-2"></i>
+                            View Leave Record
+                        </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('employee/history') }}">Leave History</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('employee/leave') }}">Leave History</a></li>
                             <!--Edit Breadcrumb Name-->
                             <li class="breadcrumb-item active"><a href="#">View</a></li>
                         </ol>
@@ -29,11 +32,14 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        <div class="card card-info">
+                        <div class="card card-primary">
 
                             <!--Card Header-->
                             <div class="card-header">
-                                <h3 class="card-title">View Leave Record</h3>
+                                <h3 class="card-title">
+                                    <i class="fa-regular fa-file-lines mr-1"></i>
+                                    View Leave Record
+                                </h3>
                             </div>
 
                             <form class="form-horizontal" method="post" enctype="multipart/form-data">
@@ -110,6 +116,7 @@
 
                                                 echo $duration, " Days"
                                             @endphp
+
                                         </div>
                                     </div>
 
@@ -119,11 +126,17 @@
 
                                         <div class="col-sm-10 col-form-label">
                                             @if($getRecord->leave_status == 0)
-                                                Pending
+                                                <span class="badge bg-primary" style="font-size: 14px">
+                                                    Pending
+                                                </span>
                                             @elseif($getRecord->leave_status == 1)
-                                                Approved
+                                                <span class="badge bg-success" style="font-size: 14px">
+                                                    Approved
+                                                </span>
                                             @elseif($getRecord->leave_status == 2)
-                                                Rejected
+                                                <span class="badge bg-danger" style="font-size: 14px">
+                                                    Rejected
+                                                </span>
                                             @endif
                                         </div>
                                     </div>
@@ -162,7 +175,7 @@
 
                                 <!--Card Footer-->
                                 <div class="card-footer">
-                                    <a href=" {{ url('employee/leave') }} " class="btn btn-default">Back</a>
+                                    <a href=" {{ url('employee/leave') }} " class="btn btn-default"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
                                 </div>
 
                             </form>

@@ -13,7 +13,10 @@
                         <h1>Forum</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6" style="text-align: right">
-                        <a href=" {{ url('admin/forum/posts/create') }} " class="btn btn-primary"> Create Posts</a>
+                        <a href=" {{ url('admin/forum/posts/create') }} " class="btn btn-primary">
+                            <i class="fa-solid fa-plus mr-1"></i>
+                            Create Posts
+                        </a>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -32,53 +35,115 @@
 
                         <!--Data-->
                         @forelse($getPosts as $data)
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <strong>
-                                        {{ $data->name }}
-                                    </strong>
-                                    <i class="float-right">Created on : {{ date('h:i A d-F-Y', strtotime($data->created_at)) }}</i>
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body" style="padding-bottom: 0.5em">
+                                        <div class="tab-content">
+                                            <div class="active tab-pane">
+
+                                                <div class="post">
+                                                    <div class="user-block">
+                                                        <!--Profile Picture-->
+                                                        @if(!empty($data->profile_picture))
+                                                            @if(file_exists(public_path('img/profile_picture/'.$data->profile_picture)))
+                                                                <img src="{{ asset('img/profile_picture/'.$data->profile_picture) }}" class="img-circle img-bordered-sm">
+                                                            @endif
+                                                        @endif
+
+                                                        <!--Name-->
+                                                        <span class="username">
+                                                            <a>{{ $data->name }}</a>
+                                                        </span>
+
+                                                        <span class="description">
+                                                            {{ $data->created_at->diffForHumans() }}
+                                                        </span>
+                                                    </div>
+
+                                                    <p>
+                                                        <strong style="font-size: 16px">Topic: {{ $data->title }}</strong>
+                                                        <br>
+                                                        {{ $data->description }}
+                                                    </p>
+
+                                                    <!--Action-->
+                                                    <p>
+
+                                                        <!--Edit-->
+                                                        @if($data->employee_id == Auth::user()->id)
+                                                            <a href="{{ url('admin/forum/edit/'.$data->id) }}">
+                                                                <button type="button" class="btn btn-default btn-sm">
+                                                                    <i class="fa-regular fa-pen-to-square" style="margin-right: 5px;"></i>
+                                                                        Edit
+                                                                </button>
+                                                            </a>
+                                                        @else
+                                                            <a onclick="(alert('You are not allow to edit'))">
+                                                                <button type="button" class="btn btn-default btn-sm">
+                                                                    <i class="fa-regular fa-pen-to-square" style="margin-right: 5px;"></i>
+                                                                    Edit
+                                                                </button>
+                                                            </a>
+                                                        @endif
+
+                                                        <!--Delete-->
+                                                        @if($data->employee_id == Auth::user()->id)
+                                                            <a href="{{ url('admin/forum/delete/'.$data->id) }}" onclick="return confirm('Are you sure want to delete?')">
+                                                                <button style="margin-left: 5px;" type="button" class="btn btn-default btn-sm">
+                                                                    <i class="fa-solid fa-trash" style="margin-right: 5px;"></i>
+                                                                        Delete
+                                                                </button>
+                                                            </a>
+                                                        @else
+                                                            <a onclick="(alert('You are not allow to delete'))">
+                                                                <button style="margin-left:5px;" type="button" class="btn btn-default btn-sm">
+                                                                    <i class="fa-solid fa-trash" style="margin-right: 5px;"></i>
+                                                                        Delete
+                                                                </button>
+                                                            </a>
+                                                        @endif
+
+                                                        <span class="float-right">
+
+                                                            <!--Show Comments-->
+                                                            <a href="{{ url('admin/forum/view/'.$data->id) }}">
+                                                                <button style="margin-left:5px;" type="button" class="btn btn-default btn-sm">
+                                                                    <i class="far fa-comments" style="margin-right: 5px;"></i>
+                                                                        Comments ({{ $getTopicReplyCount[$data->id] }})
+                                                                </button>
+                                                            </a>
+                                                        </span>
+
+                                                    </p>
+                                                </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div class="card-body">
-                                    <strong>{{ $data->title }}</strong>
-                                    <p class="card-text">{{$data->description}}</p>
 
-                                    <!--Delete function for detect the user-->
-                                    @if($data->employee_id == Auth::user()->id)
-                                        <a style="margin-left:10px;" class="btn btn-danger float-right" onclick="return confirm('Are you sure want to delete?')" href="{{ url('admin/forum/delete/'.$data->id) }}">Delete</a>
-                                    @else
-                                        <a style="margin-left:10px;" class="btn btn-danger float-right" onclick="alert('You are not allow to delete')">Delete</a>
-                                    @endif
-
-                                    @if($data->employee_id == Auth::user()->id)
-                                        <a style="margin-left:10px;" class="btn btn-primary float-right" href="{{ url('admin/forum/edit/'.$data->id) }}">Edit</a>
-                                    @else
-                                        <a style="margin-left:10px;" class="btn btn-primary float-right" onclick="(alert('You are not allow to edit'))">Edit</a>
-                                    @endif
-
-                                    <a class="btn btn-primary float-right" href="{{ url('admin/forum/view/'.$data->id) }}">View</a>
-
+                            @empty
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        <strong>
+                                            No Topic yet. Be the first to create one!
+                                        </strong>
+                                    </div>
                                 </div>
-                            </div>
 
-                        @empty
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <strong>
-                                        No Topic yet. Be the first to create one!
-                                    </strong>
-                                </div>
-                            </div>
+                            @endforelse
 
-                        @endforelse
+                        </section>
+                    </div>
 
-                    </section>
                 </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
 
-            </div>
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-
-@endsection
+    @endsection

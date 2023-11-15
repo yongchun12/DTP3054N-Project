@@ -1,4 +1,4 @@
-<!--Create Employees-->
+<!--Create Payroll Record-->
 @extends('layouts.plugins')
 
 @section('content')
@@ -10,13 +10,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Payroll</h1>
+                        <h1 class="m-0">Create Payroll Record</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('admin/payroll') }}">Payroll</a></li>
                             <!--Edit Breadcrumb Name-->
-                            <li class="breadcrumb-item active"><a href="#">Create Payroll Record</a></li>
+                            <li class="breadcrumb-item active">Create Payroll Record</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -28,11 +28,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-info">
+                        <div class="card card-primary">
 
                             <!--Header-->
                             <div class="card-header">
-                                <h3 class="card-title">Create Payroll Record</h3>
+                                <h3 class="card-title">
+                                    <i class="fa-solid fa-plus mr-1"></i>
+                                    Create Payroll Record
+                                </h3>
                             </div>
 
                             <!--Form-->
@@ -69,7 +72,11 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">RM</span>
+                                            </div>
+
                                             <input type="number" value="0" name="gross_salary"
                                                    class="form-control" required placeholder="Enter Gross Salary" id="gross_salary" oninput="calculateDeduction(); calculateAllowance();">
                                         </div>
@@ -84,9 +91,13 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
-                                                <input type="number" value="{{ old('number_of_day_work') }}" name="number_of_day_work"
-                                                       class="form-control" required placeholder="Default 22 Days" id="num_work" readonly>
+                                        <div class="col-sm-10 input-group">
+                                            <input type="number" value="{{ old('number_of_day_work') }}" name="number_of_day_work"
+                                                   class="form-control" required placeholder="Default 22 Days" id="num_work" readonly>
+
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Days</span>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -99,9 +110,13 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
                                             <input type="number" value="{{ old('absent_days') }}" name="absent_days"
                                                    class="form-control" required placeholder="Enter Absent Days" id="absent_days" max="22" oninput="calculateDeduction(); calculateAllowance();">
+
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Days</span>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -114,9 +129,13 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
                                             <input type="number" value="0" name="overtime_hours"
                                                    class="form-control" required placeholder="Enter Overtime" id="overtime" oninput="calculateAllowance()">
+
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Hours</span>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -129,7 +148,11 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">RM</span>
+                                            </div>
+
                                             <input type="number" value="0" name="bonus"
                                                    class="form-control" required placeholder="Enter Bonus" id="bonus" oninput="calculateAllowance()">
                                         </div>
@@ -144,7 +167,11 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">RM</span>
+                                            </div>
+
                                             <input type="number" value="0" name="medical_allowance"
                                                    class="form-control" required placeholder="Enter Medicare Allowance" id="medical_allowance" oninput="calculateAllowance()">
                                         </div>
@@ -159,7 +186,11 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">RM</span>
+                                            </div>
+
                                             <input type="number" value="0" name="other_allowance"
                                                    class="form-control" required placeholder="Enter Other Allowance" id="other_allowance" oninput="calculateAllowance()">
                                         </div>
@@ -174,7 +205,11 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">RM</span>
+                                            </div>
+
                                             <input type="number" class="form-control" id="total_allowance" placeholder="Sub-Total Salary" readonly>
                                         </div>
 
@@ -188,7 +223,11 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">RM</span>
+                                            </div>
+
                                             <input type="number" class="form-control" id="epf" placeholder="EPF Rate = 11%" readonly>
                                         </div>
 
@@ -202,7 +241,11 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">RM</span>
+                                            </div>
+
                                             <input type="number" class="form-control" id="socso" placeholder="SOCSO Rate = 0.5%" readonly>
                                         </div>
 
@@ -216,7 +259,11 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">RM</span>
+                                            </div>
+
                                             <input type="number" class="form-control" id="pcb" placeholder="PCB Rate = 2%" readonly>
                                         </div>
 
@@ -230,7 +277,11 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">RM</span>
+                                            </div>
+
                                             <input type="number" value="{{ old('total_deductions') }}" name="total_deductions"
                                                    class="form-control" required placeholder="Enter Total Deductions" id="total_deductions" readonly>
                                         </div>
@@ -245,7 +296,11 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">RM</span>
+                                            </div>
+
                                             <input type="text" value="{{ old('payroll_monthly') }}" name="payroll_monthly"
                                                    id="payroll_monthly" class="form-control" required placeholder="Enter Total Salary" readonly>
                                         </div>
@@ -254,8 +309,8 @@
 
                                     <!--Card Footer-->
                                     <div class="card-footer">
-                                        <a href=" {{ url('admin/payroll') }} " class="btn btn-default">Cancel</a>
-                                        <button type="submit" class="btn btn-primary float-right">Create Payroll Record</button>
+                                        <a href=" {{ url('admin/payroll') }} " class="btn btn-default"><i class="fa-solid fa-xmark mr-1"></i>Cancel</a>
+                                        <button type="submit" class="btn btn-primary float-right"><i class="fa-solid fa-plus mr-1"></i>Create Payroll Record</button>
                                     </div>
 
                                 </div>

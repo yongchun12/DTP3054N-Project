@@ -19,7 +19,6 @@ return new class extends Migration
 
             //Check from users table
             $table->integer('employee_id');
-            $table->string('title');
             $table->string('description', 5000);
 
             $table->timestamps();

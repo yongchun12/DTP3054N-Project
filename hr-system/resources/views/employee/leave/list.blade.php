@@ -15,7 +15,10 @@
                     <div class="col-sm-6" style="text-align: right">
 
                         <!--Add Leave Request-->
-                        <a href=" {{ url('employee/leave/create') }} " class="btn btn-primary"> Add Leave Request</a>
+                        <a href=" {{ url('employee/leave/create') }} " class="btn btn-primary">
+                            <i class="fa-solid fa-plus mr-1"></i>
+                            Add Leave Request
+                        </a>
 
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -45,7 +48,7 @@
 
                                     <thead>
                                     <!--tr is Table Row-->
-                                    <tr>
+                                    <tr style="text-align: center">
                                         <th>From</th>
                                         <th>To</th>
                                         <th>Duration</th>
@@ -66,12 +69,12 @@
 
 
                                     @forelse($getOwnLeaveRecord as $data)
-                                        <tr>
-                                            <td style="vertical-align: middle;">
+                                        <tr style="vertical-align: middle; text-align: center;">
+                                            <td style="vertical-align: middle; text-align: center;">
                                                 {{ date('d-m-Y', strtotime($data->from_leaveDate)) }}
                                             </td>
 
-                                            <td style="vertical-align: middle;">
+                                            <td style="vertical-align: middle; text-align: center;">
                                                 {{ date('d-m-Y', strtotime($data->to_leaveDate)) }}
                                             </td>
 
@@ -90,11 +93,11 @@
                                                 $totalLeaveDays += $duration;
                                             @endphp
 
-                                            <td style="vertical-align: middle;">
+                                            <td style="vertical-align: middle; text-align: center;">
                                                 {{ $duration }} Days
                                             </td>
 
-                                            <td style="vertical-align: middle;">
+                                            <td style="vertical-align: middle; text-align: center;">
                                                 @if($data->type_of_leave == 0)
                                                     Unpaid Leave
                                                 @elseif($data->type_of_leave == 1)
@@ -104,25 +107,31 @@
                                                 @endif
                                             </td>
 
-                                            <td style="vertical-align: middle;">
+                                            <td style="vertical-align: middle; text-align: center;">
                                                 @if($data->leave_status == 0)
-                                                    Pending
+                                                    <span class="badge bg-primary" style="font-size: 14px">
+                                                        Pending
+                                                    </span>
                                                 @elseif($data->leave_status == 1)
-                                                    Approved
+                                                    <span class="badge bg-success" style="font-size: 14px">
+                                                        Approved
+                                                    </span>
                                                 @elseif($data->leave_status == 2)
-                                                    Rejected
+                                                    <span class="badge bg-danger" style="font-size: 14px">
+                                                        Rejected
+                                                    </span>
                                                 @endif
                                             </td>
 
-                                            <td style="vertical-align: middle;">
+                                            <td style="vertical-align: middle; text-align: center;">
                                                 {{ date('d-F-Y h:i A', strtotime($data->created_at)) }}
                                             </td>
 
-                                            <td style="vertical-align: middle;">
+                                            <td style="vertical-align: middle; text-align: center;">
                                                 {{ date('d-F-Y h:i A', strtotime($data->updated_at)) }}
                                             </td>
 
-                                            <td style="vertical-align: middle;">
+                                            <td style="vertical-align: middle; text-align: center;">
                                                 @if(!empty($data->reject_reason))
                                                     <i class="fa fa-check"></i>
                                                 @else
@@ -130,9 +139,15 @@
                                                 @endif
                                             </td>
 
-                                            <td style="vertical-align: middle;">
-                                                <a href="{{ url('employee/leave/view/'.$data->id) }}" class="btn btn-primary">View</a>
-                                                <a href="{{ url('employee/leave/delete/'.$data->id) }}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-danger">Delete</a>
+                                            <td style="vertical-align: middle; text-align: center;">
+                                                <a href="{{ url('employee/leave/view/'.$data->id) }}" class="btn btn-outline-primary">
+                                                    <i class="fa-regular fa-file-lines mr-1"></i>
+                                                    View
+                                                </a>
+                                                <a href="{{ url('employee/leave/delete/'.$data->id) }}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-outline-danger" style="margin-left: 10px;">
+                                                    <i class="fa-regular fa-trash-can mr-1"></i>
+                                                    Delete
+                                                </a>
                                             </td>
 
                                         </tr>
@@ -143,9 +158,9 @@
                                     @endforelse
 
                                     <tr>
-                                        <th>Total</th>
+                                        <th style="vertical-align: middle; text-align: center;">Total</th>
                                         <td></td>
-                                        <td>{{ $totalLeaveDays }} Days</td>
+                                        <td style="vertical-align: middle; text-align: center;">{{ $totalLeaveDays }} Days</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>

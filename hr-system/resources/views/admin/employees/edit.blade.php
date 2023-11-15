@@ -10,13 +10,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Employees</h1>
+                        <h1 class="m-0"><i class="fa-regular fa-pen-to-square mr-2"></i>Edit Employees</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('admin/employees') }}">Employees</a></li>
                             <!--Edit Breadcrumb Name-->
-                            <li class="breadcrumb-item active"><a href="#">Create Employees</a></li>
+                            <li class="breadcrumb-item active">Edit Employees Details</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -28,9 +28,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-info">
+                        <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Create Employees</h3>
+                                <h3 class="card-title">
+                                    <i class="fa-regular fa-pen-to-square mr-1"></i>
+                                    Edit Employees Details
+                                </h3>
                             </div>
 
                             <form class="form-horizontal" method="post" action="{{ url('admin/employees/edit/' .$getRecord->id) }}" enctype="multipart/form-data">
@@ -322,10 +325,10 @@
                                     <!--Card Footer-->
                                     <div class="card-footer">
                                         <!--Back to List Button-->
-                                        <a href=" {{ url('admin/employees') }} " class="btn btn-default">Cancel</a>
+                                        <a href=" {{ url('admin/employees') }} " class="btn btn-default"><i class="fa-solid fa-xmark mr-1"></i>Cancel</a>
 
                                         <!--Update Button-->
-                                        <button type="submit" class="btn btn-primary float-right">Update</button>
+                                        <button type="submit" class="btn btn-primary float-right"><i class="fa-regular fa-pen-to-square mr-2"></i>Update</button>
                                     </div>
 
                                 </div>

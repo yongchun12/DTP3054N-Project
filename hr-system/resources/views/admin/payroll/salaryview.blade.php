@@ -32,18 +32,18 @@
 
                 <!--Back Button-->
                 <div class="col-sm-6">
-                    <a href="{{ url('admin/payroll') }}" class="btn btn-primary d-print-none">Back</a>
+                    <a href="{{ url('admin/payroll') }}" class="btn btn-primary d-print-none"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
                 </div>
 
                 <!--Print Button-->
                 <div class="col-sm-6" style="text-align: right">
-                    <div class="btn btn-secondary" onclick="window.print()">Print</div>
-                    <a class="btn btn-secondary" id="download">Download PDF</a>
+                    <div class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print mr-1"></i>Print</div>
+                    <a class="btn btn-secondary" id="download" style="margin-left: 6px;"><i class="fa-solid fa-download mr-1"></i>Download PDF</a>
                 </div>
 
                 <!--Line-->
                 <div class="col-md-12">
-                    <hr style="border: 0.1px solid black">
+                    <hr class="my-3" style="border-width: 2px;">
                 </div>
 
             </div>

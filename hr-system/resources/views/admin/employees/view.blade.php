@@ -10,13 +10,16 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">View Employees</h1>
+                        <h1 class="m-0">
+                            <i class="fa-regular fa-file-lines mr-2"></i>
+                            View Employees Record
+                        </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('admin/employees') }}">Employees</a></li>
                             <!--Edit Breadcrumb Name-->
-                            <li class="breadcrumb-item active"><a href="#">View</a></li>
+                            <li class="breadcrumb-item active">View Record</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -28,9 +31,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-info">
+                        <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">View Employees</h3>
+                                <h3 class="card-title">
+                                    <i class="fa-regular fa-file-lines mr-1"></i>
+                                    View Employees
+                                </h3>
                             </div>
 
                             <form class="form-horizontal" method="post" enctype="multipart/form-data">
@@ -262,7 +268,10 @@
 
                                 <!--Card Footer-->
                                 <div class="card-footer">
-                                    <a href=" {{ url('admin/employees') }} " class="btn btn-default">Back</a>
+                                    <a href=" {{ url('admin/employees') }} " class="btn btn-default">
+                                        <i class="fa-solid fa-arrow-left mr-1"></i>
+                                            Back
+                                    </a>
                                 </div>
 
                         </form>

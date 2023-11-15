@@ -13,7 +13,7 @@
                         <h1>Topic View</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6" style="text-align: right">
-                        <a href=" {{ url('employee/forum') }} " class="btn btn-primary">Back</a>
+                        <a href=" {{ url('admin/forum') }} " class="btn btn-primary"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -30,132 +30,168 @@
                         <!--Alert Message-->
                         @include('layouts.alert_message')
 
-                        <!--View Topic Data-->
-                        <div class="card mb-3">
+                        <div class="card card-widget">
                             <div class="card-header">
-                                <strong>
+
+                                <!--Profile Picture-->
+                                <div class="user-block">
                                     @foreach($getEmployee as $data_employee)
-                                        {{ ($data_employee->id == $getRecord->employee_id) ? ($data_employee->name) : '' }}
+                                        @if($data_employee->id == $getRecord->employee_id)
+                                            @if(!empty($data_employee->profile_picture))
+                                                @if(file_exists(public_path('img/profile_picture/'.$data_employee->profile_picture)))
+                                                    <img src="{{ asset('img/profile_picture/'.$data_employee->profile_picture) }}" class="img-circle img-bordered-sm">
+                                                @endif
+                                            @endif
+                                        @endif
                                     @endforeach
-                                </strong>
-                                <i class="float-right">Created on : {{ date('h:i A d-F-Y', strtotime($getRecord->created_at)) }}</i>
+
+                                    <!--Name-->
+                                    <span class="username">
+                                        <a>
+                                          @foreach($getEmployee as $data_employee)
+                                                {{ ($data_employee->id == $getRecord->employee_id) ? ($data_employee->name) : '' }}
+                                            @endforeach
+                                        </a>
+                                    </span>
+
+                                    <span class="description">
+                                        {{ $getRecord->created_at->diffForHumans() }}
+                                    </span>
+                                </div>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+
                             </div>
+
                             <div class="card-body">
+
+                                <!--Title-->
                                 <strong>{{ $getRecord->title }}</strong>
-                                <p class="card-text">{{$getRecord->description}}</p>
 
-                            </div>
-                        </div>
+                                <!--Description-->
+                                <p>{{ $getRecord->description }}</p>
 
-                        <!--Space-->
-                        <div class="row col-md-12"><br></div>
-
-                        <!--Reply-->
-                        <div class="content-header">
-                            <div class="row mb-2">
-                                <div class="col-sm-6">
-                                    <h1>Reply</h1>
-                                </div><!-- /.col -->
-                            </div>
-                        </div>
-
-                        <!--View Reply-->
-                        @forelse($getReply as $data)
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <strong>
-                                        @foreach($getEmployee as $data_employee)
-                                            {{ ($data_employee->id == $data->employee_id) ? ($data_employee->name) : '' }}
-                                        @endforeach
-                                    </strong>
-                                    <i class="float-right">Created on : {{ date('h:i A d-F-Y', strtotime($data->created_at)) }}</i>
-                                </div>
-                                <div class="card-body">
-                                    <strong>{{ $data->title }}</strong>
-                                    <p class="card-text">{{$data->description}}</p>
-
-                                    <!--Delete function for detect the user-->
-                                    @if($data->employee_id == Auth::user()->id)
-                                        <a style="margin-left:10px;" class="btn btn-danger float-right" onclick="return confirm('Are you sure want to delete?')" href="{{ url('admin/forum/reply/delete/'.$data->id) }}">Delete</a>
-                                    @else
-                                        <a style="margin-left:10px;" class="btn btn-danger float-right" onclick="alert('You are not allow to delete')">Delete</a>
-                                    @endif
-
-                                    @if($data->employee_id == Auth::user()->id)
-                                        <a style="margin-left:10px;" class="btn btn-primary float-right" href="{{ url('admin/forum/reply/edit/'.$data->id) }}">Edit</a>
-                                    @else
-                                        <a style="margin-left:10px;" class="btn btn-primary float-right" onclick="(alert('You are not allow to edit'))">Edit</a>
-                                    @endif
-
-                                </div>
+                                <span class="float-right text-muted">{{ $getTopicReplyCount }} Comments</span>
                             </div>
 
-                        @empty
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <strong>
-                                        No Reply Yet. Be the first to reply!
-                                    </strong>
-                                </div>
-                            </div>
+                            <!--Comment-->
+                            <div class="card-footer card-comments">
 
-                        @endforelse
+                                @forelse($getReply as $data)
 
-                        <!--Create Reply-->
-                        <div class="card card-info">
+                                        <div class="card-comment">
 
-                            <!--Card Header-->
-                            <div class="card-header">
-                                <h3 class="card-title">Reply</h3>
-                            </div>
+                                            <!--Profile Picture-->
+                                            @if(!empty($data->profile_picture))
+                                                @if(file_exists(public_path('img/profile_picture/'.$data->profile_picture)))
+                                                    <img src="{{ asset('img/profile_picture/'.$data->profile_picture) }}" class="img-circle img-sm">
+                                                @endif
+                                            @endif
 
-                            <form class="form-horizontal" method="post" accept="{{ url('admin/forum/view/'.$getRecord->id) }}}" enctype="multipart/form-data">
+                                        <div class="comment-text">
 
-                                {{ csrf_field() }}
+                                            <span class="username">
+                                                @foreach($getEmployee as $data_employee)
+                                                    {{ ($data_employee->id == $data->employee_id) ? ($data_employee->name) : '' }}
+                                                @endforeach
 
-                                <!--Get Current Forum ID-->
-                                <input type="hidden" value="{{$getRecord->id}}" name="forum_id">
+                                                <span class="text-muted float-right">
+                                                    {{ $data->created_at->diffForHumans() }}
+                                                </span>
+                                            </span>
 
-                                <!--Card Info-->
-                                <div class="card-body">
-
-                                    <!--Title-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Title
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <!--value: old is validation for check the type of the input-->
-                                            <input type="text" value="{{ old('title') }}" name="title" class="form-control" placeholder="Enter Title">
+                                                {{ $data->description }}
                                         </div>
 
+                                            <!--Delete function for detect the user-->
+                                            @if($data->employee_id == Auth::user()->id)
+                                                <span class="float-right" style="margin-left: 10px;">
+                                                    <a onclick="return confirm('Are you sure want to delete?')" href="{{ url('admin/forum/reply/delete/'.$data->id) }}">
+                                                        <button type="button" class="btn btn-default btn-sm">
+                                                            <i class="fa-solid fa-trash" style="margin-right: 5px;"></i>
+                                                                Delete
+                                                        </button>
+                                                    </a>
+                                                </span>
+                                            @else
+                                                <span class="float-right" style="margin-left: 10px;">
+                                                    <a onclick="(alert('You are not allow to delete'))">
+                                                        <button type="button" class="btn btn-default btn-sm">
+                                                            <i class="fa-solid fa-trash" style="margin-right: 5px;"></i>
+                                                            Delete
+                                                        </button>
+                                                    </a>
+                                                </span>
+                                            @endif
+
+                                            <!--Edit function for detect the user-->
+                                            @if($data->employee_id == Auth::user()->id)
+                                                <a href="{{ url('admin/forum/reply/edit/'.$data->id) }}">
+                                                    <span class="float-right">
+                                                        <button type="button" class="btn btn-default btn-sm">
+                                                            <i class="fa-regular fa-pen-to-square" style="margin-right: 5px;"></i>
+                                                            Edit
+                                                        </button>
+                                                    </span>
+                                                </a>
+                                            @else
+                                                <span class="float-right">
+                                                    <a onclick="(alert('You are not allow to edit'))">
+                                                        <button type="button" class="btn btn-default btn-sm">
+                                                            <i class="fa-regular fa-pen-to-square" style="margin-right: 5px;"></i>
+                                                            Edit
+                                                        </button>
+                                                    </a>
+                                                </span>
+                                            @endif
+
                                     </div>
 
-                                    <!--Description-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Description
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <textarea class="form-control" name="description" placeholder="Enter Description" required></textarea>
+                                @empty
+                                    <div class="card-comment" style="text-align: center;">
+                                        <div class="comment-text">
+                                            No Reply Yet. Be the first to reply!
                                         </div>
-
                                     </div>
+                                @endforelse
 
-                                    <!--Card Footer-->
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary float-right">Create Reply</button>
-                                    </div>
+                            </div>
 
-                                </div>
+                            <!--Reply-->
+                            <div class="card-footer">
 
-                            </form>
+                                    <form method="post" accept="{{ url('admin/forum/view/'.$getRecord->id) }}}" enctype="multipart/form-data">
+
+                                        {{ csrf_field() }}
+
+                                        <!--Get Current Forum ID-->
+                                        <input type="hidden" value="{{$getRecord->id}}" name="forum_id">
+
+                                        <!--Current User Profile Picture-->
+                                        @if(file_exists(public_path('img/profile_picture/'.Auth::user()->profile_picture)))
+                                            <img src="{{ asset('img/profile_picture/'.Auth::user()->profile_picture) }}" class="img-fluid img-circle img-sm" alt="User Image">
+                                        @endif
+
+                                            <div class="img-push">
+                                                <div class="input-group input-group-sm mb-0">
+                                                    <input type="text" name="description" placeholder="Type Message ..." class="form-control form-control-sm">
+
+                                                    <span class="input-group-append">
+                                                        <button type="submit" class="btn btn-primary">
+                                                            <i class="fa-regular fa-paper-plane mr-1"></i>
+                                                            Send
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                    </form>
+
+                            </div>
 
                         </div>
 
