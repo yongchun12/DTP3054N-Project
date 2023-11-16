@@ -53,7 +53,10 @@
                                     <label class="col-sm-2 col-form-label">Profile Picture</label>
 
                                     <div class="col-sm-10">
-                                            <input type="file" class="col-form-label" name="profile_picture">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="customFile" name="profile_picture">
+                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -398,5 +401,12 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    <!--Custom File Input-->
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+
+    <script>
+        bsCustomFileInput.init();
+    </script>
 
 @endsection

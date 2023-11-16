@@ -18,9 +18,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <!--External CSS File-->
-    <link rel="stylesheet" href="../css/app.css">
-
     <!--Title-->
     <title>HR System | Login</title>
 </head>
@@ -66,10 +63,21 @@
                                     <!--Cross Site Request Forgery (CSRF) Protection-->
                                     {{ csrf_field() }}
 
-                                    <!--Logo-->
-                                    <div class="mb-4">
-                                        <img src="../img/Project%20Logo.png" alt="Logo" width="100" height="100">
-                                    </div>
+                                        <div class="container text-center">
+                                            <div class="row align-items-center">
+
+                                                <!--Logo-->
+                                                <div class="col-2 mb-4">
+                                                    <img src="../img/Project%20Logo.png" alt="Logo" width="100" height="100">
+                                                </div>
+
+                                                <div class="col-8" style="margin-bottom: 14px;">
+                                                    <h2>Potato HR System</h2>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
 
                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your
                                         account</h5>

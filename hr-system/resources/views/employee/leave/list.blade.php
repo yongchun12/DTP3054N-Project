@@ -37,10 +37,13 @@
                         @include('layouts.alert_message')
 
                         <!--Table-->
-                        <div class="card">
+                        <div class="card card-outline card-primary">
                             <!--Title-->
                             <div class="card-header">
-                                <h3 class="card-title">Leave Record</h3>
+                                <h3 class="card-title">
+                                    <i class="nav-icon fa fa-calendar-alt mr-1"></i>
+                                    Leave Record
+                                </h3>
                             </div>
 
                             <div class="card-body p-0">

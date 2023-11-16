@@ -60,6 +60,19 @@
                                         </div>
                                     </div>
 
+                                    <!--Profile Picture-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Profile Picture</label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            @if(!empty($getRecord->profile_picture))
+                                                @if(file_exists(public_path('img/profile_picture/'.$getRecord->profile_picture)))
+                                                    <img src="{{ asset('img/profile_picture/'.$getRecord->profile_picture) }}" width="50px" height="50px" style="vertical-align: middle;">
+                                                @endif
+                                            @endif
+                                        </div>
+                                    </div>
+
                                     <!--First Name-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">First Name</label>

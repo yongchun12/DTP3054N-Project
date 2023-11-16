@@ -226,7 +226,7 @@
 
                             <div class="card-footer clearfix">
                                 <a href="{{ url('admin/forum/posts/create') }}" class="btn btn-sm btn-info float-left"><i class="fa-solid fa-plus mr-1"></i>Topic Create</a>
-                                <a href="{{ url('admin/employee') }}" class="btn btn-sm btn-secondary float-right"><i class="fa-solid fa-table mr-1"></i>View All Topic</a>
+                                <a href="{{ url('admin/forum') }}" class="btn btn-sm btn-secondary float-right"><i class="fa-solid fa-table mr-1"></i>View All Topic</a>
                             </div>
 
                         </div>

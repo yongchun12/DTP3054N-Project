@@ -66,7 +66,7 @@
                             <div class="inner">
                                 <h3>{{ !empty($getEmployeeTotalLeaveCount) ? $getEmployeeTotalLeaveCount : '0' }}</h3>
 
-                                <p>Total Leave Approval</p>
+                                <p>Total Leave Request</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-calendar-alt"></i>

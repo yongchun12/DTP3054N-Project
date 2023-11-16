@@ -18,9 +18,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <!--External CSS File-->
-    <link rel="stylesheet" href="../css/app.css">
-
     <!--Title-->
     <title>HR System | Login</title>
 </head>
@@ -66,9 +63,19 @@
 
                                     {{ csrf_field() }}
 
-                                    <!--Logo-->
-                                    <div class="mb-4">
-                                        <img src="../img/Project%20Logo.png" alt="Logo" width="100" height="100">
+                                    <div class="container text-center">
+                                        <div class="row align-items-center">
+
+                                            <!--Logo-->
+                                            <div class="col-2 mb-4">
+                                                <img src="../img/Project%20Logo.png" alt="Logo" width="100" height="100">
+                                            </div>
+
+                                            <div class="col-8" style="margin-bottom: 14px;">
+                                                <h2>Potato HR System</h2>
+                                            </div>
+
+                                        </div>
                                     </div>
 
                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Forget Password</h5>
@@ -77,11 +84,6 @@
                                         <label class="form-label">Email address</label>
                                         <input type="email" name="email" class="form-control form-control-lg"/>
                                     </div>
-
-                                    <!--                                    <div class="form-outline mb-4">-->
-                                    <!--                                        <label class="form-label">Password</label>-->
-                                    <!--                                        <input type="password" name="password" class="form-control form-control-lg"/>-->
-                                    <!--                                    </div>-->
 
                                     <!--Need to type:submit to submit this form to server-->
                                     <div class="pt-1 mb-3 d-grid">

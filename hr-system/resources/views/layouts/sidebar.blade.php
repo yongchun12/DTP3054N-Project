@@ -36,18 +36,24 @@
             <!---Admin Site-->
             @if(Auth::user()->is_role == '1')
                 <a href="{{ url('admin/dashboard') }}" class="brand-link">
+                    <!--Logo-->
+                    <!--Remember Change to white-->
+                    <img src="{{ asset('img/Project Logo.png') }}" alt="HR System Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8">
+                    <span class="brand-text font-weight-light">HR System</span>
+                </a>
             @endif
 
                     <!--Employee Site-->
-                    @if(Auth::user()->is_role == '0')
+            @if(Auth::user()->is_role == '0')
                 <a href="{{ url('employee/dashboard') }}" class="brand-link">
-                    @endif
+                    <!--Logo-->
+                    <!--Remember Change to white-->
+                    <img src="{{ asset('img/Project Logo.png') }}" alt="HR System Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8">
+                    <span class="brand-text font-weight-light">HR System</span>
+                </a>
+             @endif
 
-            <!--Logo-->
-            <!--Remember Change to white-->
-            <img src="{{ asset('img/Project Logo.png') }}" alt="HR System Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8">
-            <span class="brand-text font-weight-light">HR System</span>
-    </a>
+
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -182,6 +188,8 @@
                         </a>
                     </li>
 
+                    <li class="nav-header">PAYROLL</li>
+
                     <li class="nav-item">
                         <a href=" {{ url('employee/payroll') }} " class="nav-link
                     @if(Request::segment(2) == 'payroll') active @endif">
@@ -191,6 +199,8 @@
                             </p>
                         </a>
                     </li>
+
+                    <li class="nav-header">LEAVE</li>
 
                     <li class="nav-item">
                         <a href=" {{ url('employee/leave') }} " class="nav-link
@@ -202,6 +212,8 @@
                         </a>
                     </li>
 
+                    <li class="nav-header">FORUM</li>
+
                     <li class="nav-item">
                         <a href=" {{ url('employee/forum') }} " class="nav-link
                            @if(Request::segment(2) == 'forum') active @endif">
@@ -211,6 +223,8 @@
                             </p>
                         </a>
                     </li>
+
+                    <li class="nav-header">SETTINGS</li>
 
                     <li class="nav-item">
                         <a href=" {{ url('employee/my_account') }} " class="nav-link

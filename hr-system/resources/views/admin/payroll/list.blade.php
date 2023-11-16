@@ -118,6 +118,7 @@
                                                 <th style="text-align: center">Number of Day Work</th>
                                                 <th style="text-align: center">Bonus</th>
                                                 <th style="text-align: center">Overtime</th>
+                                                <th style="text-align: center">Net Pay</th>
                                                 <th style="text-align: center">Month / Year</th>
                                                 <th style="text-align: center">Action</th>
                                             </tr>
@@ -129,13 +130,15 @@
                                             $totalNumberofDayWork = 0;
                                             $totalBonus = 0;
                                             $totalOvertime = 0;
+                                            $totalNetPay = 0;
                                         @endphp
 
                                         @forelse($getRecord as $value)
                                             @php
                                                 $totalNumberofDayWork = $totalNumberofDayWork+$value->number_of_day_work;
                                                 $totalBonus = $totalBonus+$value->bonus;
-                                                $totalOvertime = $totalOvertime+$value->overtime_hours
+                                                $totalOvertime = $totalOvertime+$value->overtime_hours;
+                                                $totalNetPay = $totalNetPay+$value->payroll_monthly;
                                             @endphp
 
                                             <tr>
@@ -144,6 +147,7 @@
                                                 <td style="vertical-align: middle; text-align: center;">{{ $value->number_of_day_work }} Days</td>
                                                 <td style="vertical-align: middle; text-align: center;">RM {{ $value->bonus }}</td>
                                                 <td style="vertical-align: middle; text-align: center;">{{ $value->overtime_hours }} hours</td>
+                                                <td style="vertical-align: middle; text-align: center;">RM {{ $value->payroll_monthly }}</td>
                                                 <td style="vertical-align: middle; text-align: center;">{{ date('F Y', strtotime($value->created_at)) }}</td>
                                                 <td style="vertical-align: middle; text-align: center;">
 
@@ -193,7 +197,9 @@
                                             <td style="vertical-align: middle; text-align: center;">
                                                 {{ $totalOvertime }} hours
                                             </td>
-                                            <td></td>
+                                            <td style="vertical-align: middle; text-align: center;">
+                                                RM {{ $totalNetPay }}
+                                            </td>
                                             <td></td>
                                         </tr>
 

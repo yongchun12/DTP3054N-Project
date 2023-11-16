@@ -85,7 +85,6 @@
 <!--HTML to PDF-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
 
-
 <!--/----------------UnLink Yet----------------/-->
 {{--<!-- jQuery UI 1.11.4 -->--}}
 {{--<script src="{{ asset('backend/plugins/jquery-ui/jquery-ui.min.js') }}'"></script>--}}
