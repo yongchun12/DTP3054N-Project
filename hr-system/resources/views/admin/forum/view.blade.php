@@ -1,6 +1,8 @@
 <!--Leave Request-->
 @extends('layouts.plugins')
 
+@section('title', 'View Topic')
+
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->
@@ -164,7 +166,7 @@
                             <!--Reply-->
                             <div class="card-footer">
 
-                                    <form method="post" accept="{{ url('admin/forum/view/'.$getRecord->id) }}}" enctype="multipart/form-data">
+                                    <form method="post" accept="{{ url('admin/forum/view/'.$getRecord->id) }}" enctype="multipart/form-data">
 
                                         {{ csrf_field() }}
 

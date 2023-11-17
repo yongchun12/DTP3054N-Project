@@ -1,6 +1,8 @@
 <!--Leave Request-->
 @extends('layouts.plugins')
 
+@section('title', 'Leave Application')
+
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->

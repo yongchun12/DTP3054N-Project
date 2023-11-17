@@ -158,16 +158,16 @@
                         </a>
                     </li>
 
-                    <!--Forum-->
+                    <!--Settings-->
 
                     <li class="nav-header">SETTINGS</li>
 
                     <li class="nav-item">
-                        <a href=" {{ url('admin/my_account') }} " class="nav-link
-                    @if(Request::segment(2) == 'my_account') active @endif">
+                        <a href=" {{ url('admin/change_details') }} " class="nav-link
+                    @if(Request::segment(2) == 'change_details') active @endif">
                             <i class="nav-icon fa fa-cog"></i>
                             <p>
-                                My Account
+                                Change Details
                             </p>
                         </a>
                     </li>
@@ -227,11 +227,11 @@
                     <li class="nav-header">SETTINGS</li>
 
                     <li class="nav-item">
-                        <a href=" {{ url('employee/my_account') }} " class="nav-link
-                    @if(Request::segment(2) == 'my_account') active @endif">
+                        <a href=" {{ url('employee/change_details') }} " class="nav-link
+                            @if(Request::segment(2) == 'change_details') active @endif">
                             <i class="nav-icon fa fa-cog"></i>
                             <p>
-                                My Account
+                                Change Details
                             </p>
                         </a>
                     </li>

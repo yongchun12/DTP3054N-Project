@@ -1,6 +1,8 @@
 <!--Leave Request-->
 @extends('layouts.plugins')
 
+@section('title', 'View Topic')
+
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->

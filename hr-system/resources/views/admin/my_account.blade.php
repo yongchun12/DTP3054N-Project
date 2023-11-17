@@ -1,6 +1,8 @@
 <!--Create Employees-->
 @extends('layouts.plugins')
 
+@section('title', 'Change Password')
+
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->
@@ -36,7 +38,7 @@
                                 <h3 class="card-title"><i class="fa-solid fa-gear mr-2"></i>My Account</h3>
                             </div>
 
-                            <form class='form-horizontal' method="post" action="{{ url('admin/my_account/update') }}" enctype="multipart/form-data">
+                            <form class='form-horizontal' method="post" action="{{ url('admin/change_details/update') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
 
                                 <div class="card-body">

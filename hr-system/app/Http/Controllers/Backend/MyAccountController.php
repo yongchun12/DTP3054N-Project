@@ -11,13 +11,13 @@ use Str;
 class MyAccountController extends Controller
 {
     //-------------------Admin Site-------------------//
-    public function admin_myAccount(Request $request)
+    public function admin_changeDetails(Request $request)
     {
         $data['getRecord'] = User::find(Auth::user()->id);
         return view('admin.my_account', $data);
     }
 
-    public function update_admin_myAccount(Request $request)
+    public function update_admin_details(Request $request)
     {
 //        dd($request->all());
 
@@ -55,14 +55,14 @@ class MyAccountController extends Controller
     }
 
     //-------------------Employee Site-------------------//
-    public function employee_myAccount(Request $request)
+    public function employee_changeDetails(Request $request)
     {
         $data['getRecord'] = User::find(Auth::user()->id);
         //Pass with the $data field to the view with the function call getRecord
         return view('employee.my_account', $data);
     }
 
-    public function update_employee_myAccount(Request $request)
+    public function update_employee_details(Request $request)
     {
 //        dd($request->all());
 

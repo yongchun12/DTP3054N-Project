@@ -1,5 +1,7 @@
 @extends('layouts.plugins')
 
+@section('title', 'PDF Payslip')
+
 @section('content')
 
     <?php

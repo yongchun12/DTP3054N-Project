@@ -1,6 +1,8 @@
 <!--Table List Employees-->
 @extends('layouts.plugins')
 
+@section('title', 'Employees List')
+
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->

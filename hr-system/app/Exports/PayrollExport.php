@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\PayrollModel;
+use App\Models\Payroll;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -16,7 +16,7 @@ class PayrollExport implements FromCollection, WithHeadings, WithMapping, Should
     public function collection()
     {
         //How to get the data from the database
-        $payrolls = PayrollModel::leftJoin('users', 'payroll.employee_id', 'users.id')
+        $payrolls = Payroll::leftJoin('users', 'payroll.employee_id', 'users.id')
             ->select('payroll.*', 'users.name as employee_name')
             ->get();
 

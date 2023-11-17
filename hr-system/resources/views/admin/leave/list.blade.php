@@ -1,6 +1,8 @@
 <!--Leave Request-->
 @extends('layouts.plugins')
 
+@section('title', 'Pending Leave Request')
+
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->

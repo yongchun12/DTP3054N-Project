@@ -1,6 +1,8 @@
 <!--Create Employees-->
 @extends('layouts.plugins')
 
+@section('title', 'Change Password')
+
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->
@@ -36,7 +38,8 @@
                                 <h3 class="card-title"><i class="fa-solid fa-gear mr-2"></i>My Account</h3>
                             </div>
 
-                            <form class='form-horizontal' method="post" action="{{ url('employee/my_account/update') }}" enctype="multipart/form-data">
+                            <form class='form-horizontal' method="post" action="{{ url('employee/change_details/update') }}" enctype="multipart/form-data">
+
                                 {{ csrf_field() }}
 
                                 <div class="card-body">
@@ -103,11 +106,12 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <!--Custom File Input-->
-    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+    <!--Need to add this then just can use the external js file in plugins.blade.php-->
 
-    <script>
-        bsCustomFileInput.init();
-    </script>
+    @section('script')
+        <script>
+            bsCustomFileInput.init();
+        </script>
+    @endsection
 
 @endsection

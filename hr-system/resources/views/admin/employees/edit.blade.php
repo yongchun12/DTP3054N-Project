@@ -1,6 +1,8 @@
 <!--Create Employees-->
 @extends('layouts.plugins')
 
+@section('title', 'Edit Employees')
+
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->

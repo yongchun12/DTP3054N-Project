@@ -1,6 +1,8 @@
 <!--Create Payroll Record-->
 @extends('layouts.plugins')
 
+@section('title', 'Create Payroll Record')
+
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->

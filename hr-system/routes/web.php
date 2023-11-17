@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployeesController;
 use App\Http\Controllers\Backend\ForumController;
+use App\Http\Controllers\Backend\AttendanceController;
 use App\Http\Controllers\Backend\LeaveController;
 use App\Http\Controllers\Backend\MyAccountController;
 use App\Http\Controllers\Backend\PayrollController;
@@ -144,18 +145,18 @@ Route::group(['middleware' => 'admin'], function (){
     Route::get('admin/forum/reply/delete/{id}', [ForumController::class, 'admin_replyDelete']);
 
     //-------------------My Account-------------------//
-    #My Account
-    Route::get('admin/my_account', [MyAccountController::class, 'admin_myAccount']);
+    #Change Details (Change name / password / profile picture)
+    Route::get('admin/change_details', [MyAccountController::class, 'admin_changeDetails']);
 
-    #Update My Account
-    Route::post('admin/my_account/update', [MyAccountController::class, 'update_admin_myAccount']);
+    #Update Details
+    Route::post('admin/change_details/update', [MyAccountController::class, 'update_admin_details']);
 });
 
 //-------------------For Employee Site-------------------//
 Route::group(['middleware' => 'employee'], function (){
     Route::get('employee/dashboard', [DashboardController::class, 'dashboard']);
 
-    //-------------------Employee Payroll-------------------//
+    //-------------------Payroll-------------------//
     #Employee Payroll List
     Route::get('employee/payroll', [PayrollController::class, 'index_employeeSite']);
 
@@ -165,7 +166,17 @@ Route::group(['middleware' => 'employee'], function (){
     #PDF Export
     Route::get('employee/payroll/pdf/{id}', [PayrollController::class, 'salary_pdf_employeeSite']);
 
-    //-------------------Employee Leave-------------------//
+    //-------------------Attendance-------------------//
+    #Punch In
+    Route::post('employee/attendance/punch_in', [AttendanceController::class, 'employee_punchIn']);
+
+    #Punch Out
+    Route::post('employee/attendance/punch_out', [AttendanceController::class, 'employee_punchOut']);
+
+    #Attendance List
+    Route::get('employee/attendance', [AttendanceController::class, 'index_employeeSite']);
+
+    //-------------------Leave-------------------//
     #Employee Leave List
     Route::get('employee/leave', [LeaveController::class, 'index_employeeSite']);
 
@@ -209,11 +220,11 @@ Route::group(['middleware' => 'employee'], function (){
     Route::get('employee/forum/reply/delete/{id}', [ForumController::class, 'employee_replyDelete']);
 
     //-------------------My Account-------------------//
-    #My Account
-    Route::get('employee/my_account', [MyAccountController::class, 'employee_myAccount']);
+    #Change Details (Password / Profile Picture)
+    Route::get('employee/change_details', [MyAccountController::class, 'employee_changeDetails']);
 
-    #Update My Account
-    Route::post('employee/my_account/update', [MyAccountController::class, 'update_employee_myAccount']);
+    #Update Details
+    Route::post('employee/change_details/update', [MyAccountController::class, 'update_employee_details']);
 
 });
 

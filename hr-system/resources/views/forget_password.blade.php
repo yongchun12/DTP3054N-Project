@@ -19,7 +19,7 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!--Title-->
-    <title>HR System | Login</title>
+    <title>HR System | Forget Password</title>
 </head>
 
 <!--Body-->

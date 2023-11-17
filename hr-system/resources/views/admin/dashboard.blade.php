@@ -1,5 +1,7 @@
 @extends('layouts.plugins')
 
+@section('title', 'Dashboard')
+
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->
@@ -103,7 +105,7 @@
                     <!--Recent Created Forum Topic-->
 
                     <section class="col-lg-5 connectedSortable">
-                        <div class="card">
+                        <div class="card card-outline card-primary">
                             <div class="card-header border-transparent">
                                 <h3 class="card-title">
                                     <i class="fa-regular fa-clone mr-1"></i>
@@ -225,7 +227,7 @@
                             </div>
 
                             <div class="card-footer clearfix">
-                                <a href="{{ url('admin/forum/posts/create') }}" class="btn btn-sm btn-info float-left"><i class="fa-solid fa-plus mr-1"></i>Topic Create</a>
+                                <a href="{{ url('admin/forum/posts/create') }}" class="btn btn-sm btn-primary float-left"><i class="fa-solid fa-plus mr-1"></i>Topic Create</a>
                                 <a href="{{ url('admin/forum') }}" class="btn btn-sm btn-secondary float-right"><i class="fa-solid fa-table mr-1"></i>View All Topic</a>
                             </div>
 
@@ -234,7 +236,7 @@
 
                     <!--Recent Created Employees-->
                     <section class="col-lg-7 connectedSortable">
-                        <div class="card">
+                        <div class="card card-outline card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">
                                     <i class="fa-solid fa-clock-rotate-left mr-1"></i>

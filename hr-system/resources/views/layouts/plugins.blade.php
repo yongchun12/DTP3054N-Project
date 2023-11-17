@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--Title-->
-    <title>HR System | Dashboard</title>
+    <title>HR System | @yield('title')</title>
 
     <!--Website Icon-->
     <link rel="icon" href="{{ asset('img/Project Logo.png/') }}">
@@ -33,6 +33,17 @@
 <div class="wrapper">
 
     <!-- Navbar -->
+    <!--@ include is
+        - a blade directive that includes a partial view.
+        - More on using at header, small UI, footer, etc.
+        - Cannot use @ section and @ yield
+    -->
+
+    <!--@ extends
+        - is a blade to contain all of the files inside the files
+        - Something like template file
+        - When there is got a yield section, it will be replaced by the content of the file that extends it
+    -->
     @include('layouts.sidebar')
 
     <!--Content-->
@@ -66,8 +77,12 @@
 <!--HTML to PDF-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
 
+<!--Custom File Input-->
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+
 <!--/----------------UnLink Yet----------------/-->
 
+<!--JavaScript-->
 @yield('script')
 
 </body>

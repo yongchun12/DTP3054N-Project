@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Request;
 use function Laravel\Prompts\select;
 
-class PayrollModel extends Model
+class Payroll extends Model
 {
     use HasFactory;
 

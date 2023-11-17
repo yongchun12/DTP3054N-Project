@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Exports\PayrollExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\PayrollModel;
+use App\Models\Payroll;
 use App\Models\User;
 use Auth;
 
@@ -16,7 +16,7 @@ class PayrollController extends Controller
 {
     public function index(Request $request)
     {
-        $data['getRecord'] = PayrollModel::getRecord();
+        $data['getRecord'] = Payroll::getRecord();
 
         return view('admin.payroll.list', $data);
     }
@@ -37,7 +37,7 @@ class PayrollController extends Controller
     {
 //        dd($request->all());
 
-        $user = new PayrollModel;
+        $user = new Payroll;
 
         $user->employee_id          = trim($request->employee_id);
         $user->gross_salary         = trim($request->gross_salary);
@@ -59,7 +59,7 @@ class PayrollController extends Controller
     public function view($id)
     {
         #get the record by id
-        $data['getRecord'] = PayrollModel::find($id);
+        $data['getRecord'] = Payroll::find($id);
         return view('admin.payroll.view', $data);
     }
 
@@ -71,7 +71,7 @@ class PayrollController extends Controller
         #Or if want to get all the record include HR and employees can use this
 //        $data['getEmployee'] = User::select('users.*')->get();
 
-        $data['getRecord'] = PayrollModel::find($id);
+        $data['getRecord'] = Payroll::find($id);
         return view('admin.payroll.edit', $data);
     }
 
@@ -80,7 +80,7 @@ class PayrollController extends Controller
         //Show the details / preview of the form
 //        dd($request->all());
 
-        $user = PayrollModel::find($id);
+        $user = Payroll::find($id);
 
         $user->employee_id          = trim($request->employee_id);
         $user->gross_salary         = trim($request->gross_salary);
@@ -100,7 +100,7 @@ class PayrollController extends Controller
 
     public function delete($id)
     {
-        $recordDelete = PayrollModel::find($id);
+        $recordDelete = Payroll::find($id);
         $recordDelete->delete();
         return redirect()->back()->with('error', 'Payroll Record has been deleted successfully!');
     }
@@ -108,16 +108,16 @@ class PayrollController extends Controller
     public function salary_pdf($id, Request $request)
     {
         $data['getEmployee'] = User::where('is_role', '=', 0)->get();
-        $data['getRecord'] = PayrollModel::find($id);
+        $data['getRecord'] = Payroll::find($id);
         return view('admin.payroll.salaryview', $data);
     }
 
     public function index_employeeSite(Request $request)
     {
-        $data['getRecord'] = PayrollModel::getRecord();
+        $data['getRecord'] = Payroll::getRecord();
 
         #Auth::user()->id is check for the current section of the user
-        $payrolls = PayrollModel::where('employee_id', '=', Auth::user()->id)
+        $payrolls = Payroll::where('employee_id', '=', Auth::user()->id)
             ->select('payroll.*')
             //If got paginate, then no need to use get() to get the data
             ->paginate(10);
@@ -127,14 +127,14 @@ class PayrollController extends Controller
 
     public function view_employeeSite($id){
         #get the record by id
-        $data['getRecord'] = PayrollModel::find($id);
+        $data['getRecord'] = Payroll::find($id);
         return view('employee.payroll.view', $data);
     }
 
     public function salary_pdf_employeeSite($id, Request $request)
     {
         $data['getEmployee'] = User::where('is_role', '=', 0)->get();
-        $data['getRecord'] = PayrollModel::find($id);
+        $data['getRecord'] = Payroll::find($id);
         return view('employee.payroll.salaryview', $data);
     }
 }
