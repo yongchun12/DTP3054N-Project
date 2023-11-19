@@ -120,6 +120,20 @@
                     </a>
                 </li>
 
+                    <!--Attendance-->
+
+                    <li class="nav-header">ATTENDANCE</li>
+
+                    <li class="nav-item">
+                        <a href=" {{ url('admin/attendance') }} " class="nav-link
+                    @if(Request::segment(2) == 'attendance') active @endif">
+                            <i class=" nav-icon fa-solid fa-user-clock"></i>
+                            <p>
+                                Attendance
+                            </p>
+                        </a>
+                    </li>
+
                     <!--Leave-->
 
                     <li class="nav-header">LEAVE</li>
@@ -196,6 +210,20 @@
                             <i class="nav-icon fa fa-money-bill"></i>
                             <p>
                                 Payroll
+                            </p>
+                        </a>
+                    </li>
+
+                    <!--Attendance-->
+
+                    <li class="nav-header">ATTENDANCE</li>
+
+                    <li class="nav-item">
+                        <a href=" {{ url('employee/attendance') }} " class="nav-link
+                    @if(Request::segment(2) == 'attendance') active @endif">
+                            <i class=" nav-icon fa-solid fa-user-clock"></i>
+                            <p>
+                                Attendance
                             </p>
                         </a>
                     </li>

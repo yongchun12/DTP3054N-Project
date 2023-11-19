@@ -1,6 +1,63 @@
 //---------------------------Dashboard--------------------------------//
 
 //---------------------------Employee--------------------------------//
+//Add EMP- Prefix to Staff ID (Employee Create Page)
+function passStaffID() {
+    let suffix = document.getElementById('suffix_staffID').value;
+
+    let fullID = "EMP-" + suffix;
+
+    document.getElementById('staff_id').value = fullID;
+}
+
+//Add email domain as a suffix (Employee Create Page)
+function passEmail() {
+    let prefix = document.getElementById('prefix_email').value;
+
+    let fullEmail = prefix + "@hr-system.com";
+
+    document.getElementById('email').value = fullEmail;
+}
+
+
+
+//---------------------------Attendance--------------------------------//
+function calculateTimes() {
+    var timeIn = document.getElementById('time_in').value;
+    var timeOut = document.getElementById('time_out').value;
+    var totalTime;
+
+    // Check if times are valid
+    if (!timeIn || !timeOut) {
+        document.getElementById('timesCount').textContent = "0 Hours 0 Minutes";
+    }
+
+    //substring detect the first 2 characters start from 0
+    var timeInHour = parseInt(timeIn.substring(0, 2));
+    var timeInMinute = parseInt(timeIn.substring(3, 5));
+    var timeOutHour = parseInt(timeOut.substring(0, 2));
+    var timeOutMinute = parseInt(timeOut.substring(3, 5));
+
+    // Convert times (include hours) to minutes since midnight
+    var inMinutes = timeInHour * 60 + timeInMinute;
+    var outMinutes = timeOutHour * 60 + timeOutMinute;
+
+    // Handle crossing over midnight
+    if (outMinutes < inMinutes) {
+        outMinutes += 24 * 60; // Add 24 hours worth of minutes
+    }
+
+    var durationMinutes = outMinutes - inMinutes;
+    // Use floor to round down to nearest hour
+    var totalHours = Math.floor(durationMinutes / 60);
+    // Use modulus operator to get minutes from remainder
+    var totalMinutes = durationMinutes % 60;
+
+    totalTime = totalHours + " Hours " + totalMinutes + " Minutes";
+    //textContent is the correct property, not value, since this is not an input element
+    document.getElementById('timesCount').textContent = totalTime; // Set textContent instead of value
+
+}
 
 //----------------------------Payroll--------------------------------//
 
@@ -107,20 +164,3 @@ function updateToDateMax() {
     document.getElementById('from_leaveDate').max = toDate;
 }
 
-//Add EMP- Prefix to Staff ID (Employee Create Page)
-function passStaffID() {
-    let suffix = document.getElementById('suffix_staffID').value;
-
-    let fullID = "EMP-" + suffix;
-
-    document.getElementById('staff_id').value = fullID;
-}
-
-//Add email domain as a suffix (Employee Create Page)
-function passEmail() {
-    let prefix = document.getElementById('prefix_email').value;
-
-    let fullEmail = prefix + "@hr-system.com";
-
-    document.getElementById('email').value = fullEmail;
-}

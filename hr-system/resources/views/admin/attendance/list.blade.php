@@ -1,4 +1,4 @@
-<!--Leave Request-->
+<!--Table List Employees-->
 @extends('layouts.plugins')
 
 @section('title', 'Attendance List')
@@ -12,16 +12,31 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Attendance List</h1>
+                        <h1>
+                            <i class="nav-icon fa-solid fa-user-clock mr-2"></i>
+                            Attendance List
+                        </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6" style="text-align: right">
+
+                        <!--Excel Export-->
+                        <a href="{{ url('') }}" class="btn btn-success">
+                            <i class="fa-regular fa-file-excel mr-1"></i>
+                            Excel Export
+                        </a>
+
+                        <!--Add Payroll Record-->
+                        <a href=" {{ url('admin/attendance/create') }} " class="btn btn-primary" style="margin-left: 5px;">
+                            <i class="fa-solid fa-plus mr-1"></i>
+                            Add Attendance Record
+                        </a>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
 
-        <!--Leave Request List-->
+        <!--Payroll List-->
         <section class="content">
             <div class="container-fluid">
 
@@ -36,8 +51,8 @@
                             <!--Title-->
                             <div class="card-header">
                                 <h3 class="card-title">
-                                    <i class=" nav-icon fa-solid fa-user-clock"></i>
-                                    History Attendance List
+                                    <i class=" nav-icon fa-solid fa-user-clock mr-1"></i>
+                                    Attendance List
                                 </h3>
                             </div>
 
@@ -46,13 +61,15 @@
 
                                     <thead>
                                     <!--HEADER-->
-                                        <tr style="text-align: center">
-                                            <th>ID</th>
-                                            <th>Attendance Date</th>
-                                            <th>Punch In</th>
-                                            <th>Punch Out</th>
-                                            <th>Duration</th>
-                                        </tr>
+                                    <tr style="text-align: center">
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Attendance Date</th>
+                                        <th>Punch In</th>
+                                        <th>Punch Out</th>
+                                        <th>Duration</th>
+                                        <th>Action</th>
+                                    </tr>
                                     </thead>
 
                                     <!--Data-->
@@ -60,9 +77,9 @@
                                     @forelse($attendanceList as $data)
                                         <tr>
                                             <td>{{ $data->id }}</td>
+                                            <td>{{ $data->name }}</td>
                                             <td>{{ date('d-M-Y', strtotime($data->date)) }}</td>
                                             <td>{{ date('h:i:s A', strtotime($data->time_in)) }}</td>
-
                                             <!--Time Out / Punch Out-->
                                             @if(!empty($data->time_out))
                                                 <td>{{ date('h:i:s A', strtotime($data->time_out)) }}</td>
@@ -70,6 +87,7 @@
                                                 <td>Didn't Punch Out Yet</td>
                                             @endif
 
+                                            <!--Duration-->
                                             <td>
                                                 @php
                                                     $time1 = new DateTime($data->time_in);
@@ -78,6 +96,28 @@
                                                 @endphp
 
                                                 {{ $interval->format('%h')." Hours ".$interval->format('%i')." Minutes" }}
+                                            </td>
+
+                                            <!--Action Button-->
+                                            <td>
+                                                <!--View Button-->
+                                                <a href="{{ url('admin/attendance/view/'.$data->id) }}" class="btn btn-outline-primary">
+                                                    <i class="fa-regular fa-file-lines mr-1"></i>
+                                                    View
+                                                </a>
+
+                                                <!--Edit Button-->
+                                                <a href="{{ url('admin/attendance/edit/'.$data->id) }}" class="btn btn-outline-secondary" style="margin-left: 5px;">
+                                                    <i class="fa-regular fa-pen-to-square mr-1"></i>
+                                                    Edit
+                                                </a>
+
+                                                <!--Delete Button-->
+                                                <a href="{{ url('admin/attendance/delete/'.$data->id) }}" onclick="return confirm('Are you sure want to delete?')"
+                                                   class="btn btn-outline-danger" style="margin-left: 5px;">
+                                                    <i class="fa-regular fa-trash-can mr-1"></i>
+                                                    Delete
+                                                </a>
                                             </td>
                                         </tr>
 

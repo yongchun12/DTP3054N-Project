@@ -14,6 +14,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PayrollController extends Controller
 {
+    //-------------------------Admin Site-------------------------//
     public function index(Request $request)
     {
         $data['getRecord'] = Payroll::getRecord();
@@ -112,6 +113,8 @@ class PayrollController extends Controller
         return view('admin.payroll.salaryview', $data);
     }
 
+
+    //-------------------------Employee Site-------------------------//
     public function index_employeeSite(Request $request)
     {
         $data['getRecord'] = Payroll::getRecord();

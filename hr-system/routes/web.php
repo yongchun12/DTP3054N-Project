@@ -95,6 +95,24 @@ Route::group(['middleware' => 'admin'], function (){
     #PDF Export
     Route::get('admin/payroll/pdf/{id}', [PayrollController::class, 'salary_pdf']);
 
+    //-------------------Attendance-------------------//
+    #Attendance List
+    Route::get('admin/attendance', [AttendanceController::class, 'list_adminSite']);
+
+    #Create Attendance Record
+    Route::get('admin/attendance/create', [AttendanceController::class, 'create']);
+    Route::post('admin/attendance/create', [AttendanceController::class, 'create_post']);
+
+    #View Attendance Record
+    Route::get('admin/attendance/view/{id}', [AttendanceController::class, 'view']);
+
+    #Edit Attendance Record
+    Route::get('admin/attendance/edit/{id}', [AttendanceController::class, 'edit']);
+    Route::post('admin/attendance/edit/{id}', [AttendanceController::class, 'edit_update']);
+
+    #Delete Attendance Record
+    Route::get('admin/attendance/delete/{id}', [AttendanceController::class, 'delete']);
+
     //-------------------Leave-------------------//
     #Pending Request
     Route::get('admin/leave/pending', [LeaveController::class, 'dashboard_Admin']);
@@ -174,7 +192,7 @@ Route::group(['middleware' => 'employee'], function (){
     Route::post('employee/attendance/punch_out', [AttendanceController::class, 'employee_punchOut']);
 
     #Attendance List
-    Route::get('employee/attendance', [AttendanceController::class, 'index_employeeSite']);
+    Route::get('employee/attendance', [AttendanceController::class, 'list_employeeSite']);
 
     //-------------------Leave-------------------//
     #Employee Leave List
