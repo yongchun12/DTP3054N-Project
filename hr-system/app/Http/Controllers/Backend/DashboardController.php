@@ -41,17 +41,17 @@ class DashboardController extends Controller {
                 ->where('forum.employee_id', Auth::user()->id)
                 ->orderBy('forum.created_at', 'desc')
                 ->paginate(2);
-//
+
             // Create an array to store topic IDs and their corresponding reply counts
             $topicReplyCounts = [];
-//
+
             // Loop through each topic and count the replies for that topic
             foreach ($topics as $topic) {
                 $forumId = $topic->id; // Assuming 'id' is the primary key for your Forum model
                 $replyCount = Reply::where('forum_id', $forumId)->count();
                 $topicReplyCounts[$forumId] = $replyCount;
             }
-//
+
             $data['getPosts'] = $topics;
 
             $data['getTopicReplyCount'] = $topicReplyCounts;
@@ -61,14 +61,9 @@ class DashboardController extends Controller {
 
         } else if (Auth::user()->is_role == 0) /*Employee Dashboard*/ {
 
+            //count() is used to count the number of records / data
             //Total Employee
             $data['getEmployeeDeptCount'] = User::where('department_id', Auth::user()->department_id)->count();
-
-            //Total Pending Leave Application
-            $data['getEmployeePendingLeaveCount'] = Leave::where('leave_status', '0')->where('employee_id', Auth::user()->id)->count();
-
-            //Total Leave Application
-            $data['getEmployeeTotalLeaveCount'] = Leave::where('employee_id', Auth::user()->id)->count();
 
             //Total Forum Topic by you
             $data['getEmployeeTotalForumCount'] = Forum::where('employee_id', Auth::user()->id)->count();

@@ -48,14 +48,14 @@
                         </div>
                     </div>
 
-                    <!--Total Pending Leave Application-->
+                    <!--Balance Annual Leave Days-->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>{{ !empty($getEmployeePendingLeaveCount) ? $getEmployeePendingLeaveCount : '0' }}</h3>
+                                <h3>{{ Auth::user()->annual_leaveDays }}</h3>
 
-                                <p>Pending Leave</p>
+                                <p>Balance Annual Leave</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-calendar-alt"></i>
@@ -64,14 +64,14 @@
                         </div>
                     </div>
 
-                    <!--Total Leave Application-->
+                    <!--Balance Medical Leave Days-->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>{{ !empty($getEmployeeTotalLeaveCount) ? $getEmployeeTotalLeaveCount : '0' }}</h3>
+                                <h3>{{ Auth::user()->medical_leaveDays }}</h3>
 
-                                <p>Total Leave Request</p>
+                                <p>Balance Medical Leave</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-calendar-alt"></i>

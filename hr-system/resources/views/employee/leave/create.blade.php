@@ -26,6 +26,9 @@
         <section class="content">
             <div class="container-fluid">
 
+                <!--Alert Message-->
+                @include('layouts.alert_message')
+
                 <div class="row">
                     <section class="col-md-12">
 

@@ -53,6 +53,7 @@ class LeaveController extends Controller
 
                 //If user annual leave days more than leave duration
                 if ($user->annual_leaveDays >= $duration) {
+                    //Deduct the leave days
                     $user->annual_leaveDays -= $duration;
                 } else {
                     return redirect()->back()->with('error', 'Not enough annual leave days.');
@@ -63,6 +64,7 @@ class LeaveController extends Controller
 
                 //If user medical leave days more than leave duration
                 if ($user->medical_leaveDays >= $duration) {
+                    //Deduct the leave days
                     $user->medical_leaveDays -= $duration;
                 } else {
                     return redirect()->back()->with('error', 'Not enough medical leave days.');
@@ -79,6 +81,7 @@ class LeaveController extends Controller
         //Save the leave Data
         $leave->save();
 
+        //Save balance leave days to user table
         $user->save();
 
         $user_email = $user -> email;
@@ -182,9 +185,42 @@ class LeaveController extends Controller
         $leave->from_leaveDate  = trim($request->from_leaveDate);
         $leave->to_leaveDate    = trim($request->to_leaveDate);
 
-        $leave->save();
+        $from = Carbon::parse($leave->from_leaveDate);
+        $to = Carbon::parse($leave->to_leaveDate);
+        // Calculate the duration including the end date
+        $duration = $from->diffInWeekdays($to);
 
-        return redirect('employee/leave')->with('success', 'Done Request!');
+        // Check if the end date is a weekday to include it in the count
+        if ($to->isWeekday()) {
+            $duration += 1;
+        }
+
+        //Annual Leave
+        if ($request->type_of_leave == 1) {
+            //If user annual leave days more than leave duration, it able to create request
+            if (Auth::user()->annual_leaveDays >= $duration) {
+                $leave->save();
+
+                return redirect('employee/leave')->with('success', 'Done Request!');
+            } else {
+                return redirect()->back()->with('error', 'Not enough Annual Leave Days. Choose Unpaid Leave.');
+            }
+        } else if ($request->type_of_leave == 2) /*Medical Leave*/ {
+            //If user medical leave days more than leave duration
+            if (Auth::user()->medical_leaveDays >= $duration) {
+                $leave->save();
+
+                return redirect('employee/leave')->with('success', 'Done Request!');
+            } else {
+                return redirect()->back()->with('error', 'Not enough medical leave days. Choose Unpaid Leave / Annual Leave.');
+            }
+        } else {
+            // Handle other leave types, e.g., Unpaid Leave
+            $leave->save();
+
+            return redirect('employee/leave')->with('success', 'Done Request!');
+        }
+
     }
 
     public function view_employeeSite($id)
