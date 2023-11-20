@@ -60,7 +60,7 @@
 </div>
 <!--/wrapper -->
 
-<!--External JavaScript File-->
+<!--JavaScript File-->
 
 <!--JavaScript Resource File-->
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
@@ -79,8 +79,6 @@
 
 <!--Custom File Input-->
 <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
-
-<!--/----------------UnLink Yet----------------/-->
 
 <!--JavaScript-->
 @yield('script')
