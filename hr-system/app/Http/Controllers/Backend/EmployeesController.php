@@ -101,6 +101,11 @@ class EmployeesController extends Controller
 
         //New Column
         $user->category_employee    = trim($request->category_employee);
+
+        //Leave Days
+        $user->annual_leaveDays     = trim($request->annual_leaveDays);
+        $user->medical_leaveDays    = trim($request->medical_leaveDays);
+
         $user->bank_acc             = trim($request->bank_acc);
         $user->bank_name            = trim('Maybank');
         $user->epf_no               = trim($request->epf_no);
@@ -190,6 +195,11 @@ class EmployeesController extends Controller
 
         //New Column
         $user->category_employee    = trim($request->category_employee);
+
+        //Leave Days
+        $user->annual_leaveDays     = trim($request->annual_leaveDays);
+        $user->medical_leaveDays    = trim($request->medical_leaveDays);
+
         $user->bank_acc             = trim($request->bank_acc);
         $user->bank_name            = trim('Maybank');
         $user->epf_no               = trim($request->epf_no);
