@@ -134,11 +134,10 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <!--Custom File Input-->
-    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
-
-    <script>
-        bsCustomFileInput.init();
-    </script>
+    @section('script')
+        <script>
+            bsCustomFileInput.init();
+        </script>
+    @endsection
 
 @endsection
