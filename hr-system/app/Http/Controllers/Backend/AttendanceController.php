@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Exports\AttendanceExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Attendance;
 use Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AttendanceController extends Controller
 {
@@ -18,6 +20,11 @@ class AttendanceController extends Controller
         $data['attendanceList'] = Attendance::getAttendanceList_Admin();
 
         return view('admin.attendance.list', $data);
+    }
+
+    public function attendance_export(Request $request)
+    {
+        return Excel::download(new AttendanceExport, 'Attendance_Record.xlsx');
     }
 
     public function create()

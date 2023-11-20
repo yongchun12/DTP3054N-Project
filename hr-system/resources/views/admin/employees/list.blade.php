@@ -94,7 +94,7 @@
 
                                             <!--Reset Button-->
                                             <a href="{{ url('admin/employees') }}">
-                                                <button class="btn btn-secondary" style="margin-top: 32px; margin-left: 5px;">
+                                                <button class="btn btn-secondary" style="margin-top: 32px; margin-left: 5px;" type="button">
                                                     <i class="fa-solid fa-rotate"></i>
                                                     Reset
                                                 </button>

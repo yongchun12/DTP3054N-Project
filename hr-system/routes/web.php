@@ -99,6 +99,9 @@ Route::group(['middleware' => 'admin'], function (){
     #Attendance List
     Route::get('admin/attendance', [AttendanceController::class, 'list_adminSite']);
 
+    #Excel Export
+    Route::get('admin/attendance_export', [AttendanceController::class, 'attendance_export']);
+
     #Create Attendance Record
     Route::get('admin/attendance/create', [AttendanceController::class, 'create']);
     Route::post('admin/attendance/create', [AttendanceController::class, 'create_post']);

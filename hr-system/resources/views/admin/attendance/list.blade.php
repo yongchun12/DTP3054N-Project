@@ -20,7 +20,7 @@
                     <div class="col-sm-6" style="text-align: right">
 
                         <!--Excel Export-->
-                        <a href="{{ url('') }}" class="btn btn-success">
+                        <a href="{{ url('admin/attendance_export') }}" class="btn btn-success">
                             <i class="fa-regular fa-file-excel mr-1"></i>
                             Excel Export
                         </a>
@@ -45,6 +45,60 @@
 
                         <!--Alert Message-->
                         @include('layouts.alert_message')
+
+                        <!--Search Function-->
+                        <div class="card card-outline card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="fa-solid fa-magnifying-glass mr-1"></i>
+                                    Search Attendance Record
+                                </h3>
+                            </div>
+
+                            <form method="get" action="">
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <!--ID-->
+                                        <div class="form-group col-md-3">
+                                            <label>ID</label>
+                                            <input type="text" name="id" class="form-control" placeholder="Enter ID" value="{{ Request()->id }}">
+                                        </div>
+
+                                        <!--Employee Name-->
+                                        <div class="form-group col-md-3">
+                                            <label>Employee Name</label>
+                                            <input type="text" name="employee_id" class="form-control" placeholder="Enter Employee Name" value="{{ Request()->employee_id }}">
+                                        </div>
+
+                                        <!--Number of Day Work-->
+                                        <div class="form-group col-md-3">
+                                            <label>Date</label>
+                                            <input type="date" name="date" class="form-control" placeholder="Select Date" value="{{ Request()->date }}">
+                                        </div>
+
+                                        <!--Button-->
+                                        <div class="form-group col-md-3">
+                                            <!--Search Button-->
+                                            <button class="btn btn-primary" type="submit" style="margin-top: 32px">
+                                                <i class="fa-solid fa-magnifying-glass mr-1"></i>
+                                                Search
+                                            </button>
+
+                                            <!--Reset Button-->
+                                            <a href="{{ url('admin/attendance') }}">
+                                                <button class="btn btn-secondary" style="margin-top: 32px; margin-left: 5px;" type="button">
+                                                    <i class="fa-solid fa-rotate"></i>
+                                                    Reset
+                                                </button>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
 
                         <!--Table-->
                         <div class="card card-outline card-primary">

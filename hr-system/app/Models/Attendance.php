@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Auth;
+use Request;
 
 class Attendance extends Model
 {
@@ -34,8 +35,27 @@ class Attendance extends Model
     {
         $return = self::select('attendance.*', 'users.name')
             ->join('users', 'users.id', '=', 'attendance.employee_id')
-            ->orderBy('attendance.created_at', 'desc')
-            ->paginate(10);
+            ->orderBy('attendance.created_at', 'desc');
+
+             //search function start
+            if(!empty(Request::get('id')))
+            {
+                $return = $return->where('attendance.id', '=', Request::get('id'));
+            }
+
+            //Check Name
+            if(!empty(Request::get('employee_id')))
+            {
+                $return = $return->where('users.name', 'like', '%'.Request::get('employee_id').'%');
+            }
+
+            if(!empty(Request::get('date')))
+            {
+                $return = $return->where('attendance.date', Request::get('date'));
+            }
+            //search function end
+
+            $return = $return -> paginate(10);
 
         //Return the data to the controller
         return $return;
