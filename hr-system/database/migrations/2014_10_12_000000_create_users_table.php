@@ -49,6 +49,8 @@ return new class extends Migration
             $table->string('address', 1000);
 
             $table->string('category_employee')->comment('0:Full Time, 1:Part Time, 2:Contract, 3:Temporary');
+            $table->integer('annual_leaveDays')->default(8);
+            $table->integer('medical_leaveDays')->default(14);
 
             //Details of Employee
             $table->string('bank_name');

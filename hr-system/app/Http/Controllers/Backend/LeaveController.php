@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Mail\LeaveApproveMail;
 use App\Mail\RejectApproveMail;
@@ -30,22 +31,61 @@ class LeaveController extends Controller
     //Approve Leave
     public function approve_leave($id, Request $request)
     {
-        $data = Leave::leftJoin('users', 'leave.employee_id', 'users.id')
+        $leave = Leave::leftJoin('users', 'leave.employee_id', 'users.id')
             ->select('leave.*', 'users.name')
             ->find($id);
 
-        // 1 = Approve
-        $data->leave_status = trim('1');
+        //Find User Details
+        $user = User::find($leave->employee_id);
 
-        $data->save();
+        $from = Carbon::parse($leave->from_leaveDate);
+        $to = Carbon::parse($leave->to_leaveDate);
+        // Calculate the duration including the end date
+        $duration = $from->diffInWeekdays($to);
 
-        $user = User::find($data->employee_id);
+        // Check if the end date is a weekday to include it in the count
+        if ($to->isWeekday()) {
+            $duration += 1;
+        }
+
+        switch ($leave->type_of_leave) {
+            case 1: // Annual Leave
+
+                //If user annual leave days more than leave duration
+                if ($user->annual_leaveDays >= $duration) {
+                    $user->annual_leaveDays -= $duration;
+                } else {
+                    return redirect()->back()->with('error', 'Not enough annual leave days.');
+                }
+                break;
+
+            case 2: // Medical Leave
+
+                //If user medical leave days more than leave duration
+                if ($user->medical_leaveDays >= $duration) {
+                    $user->medical_leaveDays -= $duration;
+                } else {
+                    return redirect()->back()->with('error', 'Not enough medical leave days.');
+                }
+                break;
+
+            default:
+                // Handle other leave types, e.g., Unpaid Leave
+                break;
+        }
+
+        $leave->leave_status = trim('1'); // 1 = Approve
+
+        //Save the leave Data
+        $leave->save();
+
+        $user->save();
 
         $user_email = $user -> email;
 
         //Send Email
         //$data means pass the $data value to the view
-        Mail::to($user_email)->send(new LeaveApproveMail($data));
+        Mail::to($user_email)->send(new LeaveApproveMail($leave));
 
         //Return to original page
         return redirect()->back()->with('success', 'Leave has been approved!');

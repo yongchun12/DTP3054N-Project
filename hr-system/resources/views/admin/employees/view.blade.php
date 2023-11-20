@@ -171,7 +171,6 @@
                                         <label class="col-sm-2 col-form-label">Department</label>
 
                                         <div class="col-sm-10 col-form-label">
-{{--                                            {{ $getRecord->department_id }}--}}
                                             @if($getRecord->department_id == 1)
                                                 Project Department
                                             @elseif($getRecord->department_id == 2)
@@ -195,6 +194,26 @@
                                             @elseif($getRecord->category_employee == 3)
                                                 Temporary
                                             @endif
+                                        </div>
+
+                                    </div>
+
+                                    <!--Balance Annual Leave Days-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Balance Annual Leave Days</label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            {{ $getRecord->annual_leaveDays }}
+                                        </div>
+
+                                    </div>
+
+                                    <!--Balance Medical Leave Days-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Balance Medical Leave Days</label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            {{ $getRecord->medical_leaveDays }}
                                         </div>
 
                                     </div>

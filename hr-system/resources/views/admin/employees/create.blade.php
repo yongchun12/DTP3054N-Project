@@ -315,6 +315,34 @@
 
                                     </div>
 
+                                    <!--Annual Leave Days-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Annual Leave Days
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" value="{{ old('annual_leaveDays') }}" name="annual_leaveDays" class="form-control" placeholder="Default: 8 Days">
+                                        </div>
+
+                                    </div>
+
+                                    <!--Medical Leave Days-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Medical Leave Days
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" value="{{ old('medical_leaveDays') }}" name="medical_leaveDays" class="form-control" placeholder="Default: 14 Days">
+                                        </div>
+
+                                    </div>
+
                                     <!--Bank Name-->
                                     <div class="form-group row">
 
