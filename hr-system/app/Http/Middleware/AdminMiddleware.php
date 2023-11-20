@@ -13,6 +13,7 @@ class AdminMiddleware {
             if (Auth::user()->is_role == '1') {
 
                 #If user is admin then redirect to admin dashboard (Based on web.php)
+                //Route::group(['middleware' => 'admin'], function (){
                 return $next($request);
 
             } else {

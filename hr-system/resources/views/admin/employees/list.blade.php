@@ -152,7 +152,20 @@
                                             <td style="vertical-align: middle; text-align: center;">{{ $value->email }}</td>
 
                                             <!--If is_role is not empty, define is HR or Employee-->
-                                            <td style="vertical-align: middle; text-align: center;">{{ !empty($value->is_role) ? 'HR' : 'Employee' }}</td>
+                                            <!--Global Admin allow to do anything, but not edit own details, if want to edit own details, need to be edit in database-->
+                                            <!--Note:
+                                                - For HR, admin account and their own hr account is not same, since for security purpose
+                                            -->
+
+                                            <td style="vertical-align: middle; text-align: center;">
+                                                @if(!empty($value->is_role) && $value->email == "admin@hr-system.com")
+                                                    Global Admin
+                                                @elseif(!empty($value->is_role))
+                                                    HR
+                                                @else
+                                                    Employee
+                                                @endif
+                                            </td>
 
                                             <td style="vertical-align: middle; text-align: center;">
 
@@ -164,8 +177,11 @@
                                                 </a>
 
                                                 <!--If the user is admin/HR is not allow to edit-->
-                                                @if($value->is_role == 1)
-                                                    <a class="btn btn-outline-secondary" onclick="alert('Not allowed to edit Global Admin Details')" style="margin-left: 5px;">
+                                                <!--If the user is global admin (Detect by the email) or Current Login user is same with the id that display,
+                                                that is not allowed to do anything-->
+
+                                                @if(Auth::user()->id == $value->id || $value->email == "admin@hr-system.com")
+                                                    <a class="btn btn-outline-secondary" onclick="alert('Not allowed to edit Global Admin / Own Admin Details')" style="margin-left: 5px;">
                                                         <i class="fa-regular fa-pen-to-square mr-1"></i>
                                                         Edit
                                                     </a>
@@ -177,8 +193,8 @@
                                                     </a>
                                                 @endif
 
-                                                @if($value->is_role == 1)
-                                                    <a onclick="alert('Not allow to delete Global Admin Details')" class="btn btn-outline-danger" style="margin-left: 5px;">
+                                                @if(Auth::user()->id == $value->id || $value->email == "admin@hr-system.com")
+                                                    <a onclick="alert('Not allow to delete Global Admin / Own Admin Details')" class="btn btn-outline-danger" style="margin-left: 5px;">
                                                         <i class="fa-regular fa-trash-can mr-1"></i>
                                                         Delete
                                                     </a>

@@ -102,7 +102,9 @@
             <!-- Main content -->
             <div class="row">
 
+                <!--Left Column-->
                 <section class="col-lg-5 connectedSortable">
+                    <!--Recent Posts-->
                     <div class="card card-outline card-primary">
                         <div class="card-header border-transparent">
                             <h3 class="card-title">
@@ -230,10 +232,56 @@
                         </div>
 
                     </div>
+
+                    <!--Punch In / Punch Out-->
+                    <div class="card card-outline card-primary">
+                        <div class="card-header border-transparent">
+                            <h3 class="card-title">
+                                <i class="fa-regular fa-clone mr-1"></i>
+                                Quick Action
+                            </h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card-body pt-0">
+                            <!--
+                                - the action attributes in the form tag are the url that will be redirected to
+                                - However, accept attribute is used for file, it only accept certain files.
+                                    - For example, accept="image/*" will only accept image files
+                            -->
+
+                            <!--Punch In-->
+                            <form class="form-horizontal" action="{{ url('employee/attendance/punch_in') }}" method="post" enctype="multipart/form-data">
+
+                                {{ csrf_field() }}
+
+                                <button class="btn btn-block btn-outline-primary" type="submit">Punch In</button>
+                            </form>
+
+                            <br>
+
+                            <!--Punch Out-->
+                            <form class="form-horizontal" action="{{ url('employee/attendance/punch_out') }}" method="post" enctype="multipart/form-data">
+
+                                {{ csrf_field() }}
+
+                                <button class="btn btn-block btn-outline-primary" type="submit">Punch Out</button>
+                            </form>
+                        </div>
+
+                    </div>
                 </section>
 
-                <!--Left Column-->
+                <!--Right Column-->
                 <section class="col-lg-7 connectedSortable">
+                    <!--Same Department Table-->
                     <div class="card card-outline card-primary">
                         <div class="card-header">
                             <h3 class="card-title">
@@ -282,52 +330,6 @@
                                 </table>
                             </div>
 
-                        </div>
-
-                    </div>
-                </section>
-
-                <section class="col-lg-5 connectedSortable">
-                    <div class="card card-outline card-primary">
-                        <div class="card-header border-transparent">
-                            <h3 class="card-title">
-                                <i class="fa-regular fa-clone mr-1"></i>
-                                Quick Action
-                            </h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                                    <i class="fas fa-expand"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="card-body pt-0">
-                            <!--
-                                - the action attributes in the form tag are the url that will be redirected to
-                                - However, accept attribute is used for file, it only accept certain files.
-                                    - For example, accept="image/*" will only accept image files
-                            -->
-
-                            <!--Punch In-->
-                            <form class="form-horizontal" action="{{ url('employee/attendance/punch_in') }}" method="post" enctype="multipart/form-data">
-
-                                {{ csrf_field() }}
-
-                                <button class="btn btn-block btn-outline-primary" type="submit">Punch In</button>
-                            </form>
-
-                            <br>
-
-                            <!--Punch Out-->
-                            <form class="form-horizontal" action="{{ url('employee/attendance/punch_out') }}" method="post" enctype="multipart/form-data">
-
-                                {{ csrf_field() }}
-
-                                <button class="btn btn-block btn-outline-primary" type="submit">Punch Out</button>
-                            </form>
                         </div>
 
                     </div>

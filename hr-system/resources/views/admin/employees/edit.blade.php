@@ -164,6 +164,21 @@
 
                                     </div>
 
+                                    <!--Role-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Role</label>
+
+                                        <div class="col-sm-10">
+                                            <select class="form-control" name="is_role">
+                                                <option value="" disabled>Select Role / Permission</option>
+                                                <option value="0">Employee</option>
+                                                <option value="1">HR Admin</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
                                     <!--Hire Date-->
                                     <div class="form-group row">
 
@@ -348,11 +363,10 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <!--Custom File Input-->
-    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
-
-    <script>
-        bsCustomFileInput.init();
-    </script>
+    @section('script')
+        <script>
+            bsCustomFileInput.init();
+        </script>
+    @endsection
 
 @endsection

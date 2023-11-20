@@ -197,7 +197,7 @@ class EmployeesController extends Controller
         $user->ic_no                = trim($request->ic_no);
 
         //Default Value (Role)
-        $user->is_role              = 0; // 0 - Employee, 1 - HR
+        $user->is_role              = trim($request->is_role); // 0 - Employee, 1 - HR
 
         $user->save();
 
