@@ -19,8 +19,6 @@ function passEmail() {
     document.getElementById('email').value = fullEmail;
 }
 
-
-
 //---------------------------Attendance--------------------------------//
 function calculateTimes() {
     var timeIn = document.getElementById('time_in').value;

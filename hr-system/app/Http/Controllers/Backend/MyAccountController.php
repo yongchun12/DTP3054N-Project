@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Forum;
+use App\Models\Reply;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
@@ -11,23 +13,34 @@ use Str;
 class MyAccountController extends Controller
 {
     //-------------------Admin Site-------------------//
-    public function admin_changeDetails(Request $request)
+    public function admin_password(Request $request)
     {
-        $data['getRecord'] = User::find(Auth::user()->id);
-        return view('admin.my_account', $data);
+        return view('admin.my_account.password');
     }
 
-    public function update_admin_details(Request $request)
+    //Update Password
+    public function update_password(Request $request)
     {
-//        dd($request->all());
-
+        //Find the user
         $user               = User::find(Auth::user()->id);
-        $user->name         = trim($request->name);
-        $user->last_name    = trim($request->last_name);
 
-        if(!empty($request->password)){
-            $user->password     = bcrypt(trim($request->password));
-        }
+        $user->password     = bcrypt(trim($request->password));
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Your password has been updated successfully!');
+
+    }
+
+    //Change Profile Picture
+    public function admin_profilePicture(Request $request)
+    {
+        return view('admin.my_account.profile_picture');
+    }
+
+    public function update_profilePicture(Request $request)
+    {
+        $user               = User::find(Auth::user()->id);
 
         #Profile Picture
         if(!empty($request->file('profile_picture'))){
@@ -50,28 +63,65 @@ class MyAccountController extends Controller
 
         $user->save();
 
-        return redirect()->back()->with('success', 'Your account has been updated successfully!');
+        return redirect()->back()->with('success', 'Your Profile Picture has been updated successfully!');
+    }
 
+    public function admin_profile()
+    {
+        $topics = Forum::select('forum.*', 'users.name', 'users.profile_picture')
+            ->join('users', 'users.id', '=', 'forum.employee_id')
+            ->where('forum.employee_id', Auth::user()->id)
+            ->orderBy('forum.created_at', 'desc')
+            ->paginate(2);
+
+        // Create an array to store topic IDs and their corresponding reply counts
+        $topicReplyCounts = [];
+
+        // Loop through each topic and count the replies for that topic
+        foreach ($topics as $topic) {
+            $forumId = $topic->id; // Assuming 'id' is the primary key for your Forum model
+            $replyCount = Reply::where('forum_id', $forumId)->count();
+            $topicReplyCounts[$forumId] = $replyCount;
+        }
+
+        $data = [
+            //This is the array name you will use in your view
+            'getPosts' => $topics,
+            'getTopicReplyCount' => $topicReplyCounts,
+        ];
+
+        return view('admin.my_account.profile', $data);
     }
 
     //-------------------Employee Site-------------------//
-    public function employee_changeDetails(Request $request)
+    public function employee_password(Request $request)
     {
-        $data['getRecord'] = User::find(Auth::user()->id);
-        //Pass with the $data field to the view with the function call getRecord
-        return view('employee.my_account', $data);
+        return view('employee.my_account.password');
     }
 
-    public function update_employee_details(Request $request)
+    //Update Password
+    public function employee_update_password(Request $request)
     {
-//        dd($request->all());
-
+        //Find the user
         $user               = User::find(Auth::user()->id);
 
-        #Password
-        if(!empty($request->password)){
-            $user->password     = bcrypt(trim($request->password));
-        }
+        $user->password     = bcrypt(trim($request->password));
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Your password has been updated successfully!');
+
+    }
+
+    //Change Profile Picture
+    public function employee_profilePicture(Request $request)
+    {
+        return view('employee.my_account.profile_picture');
+    }
+
+    public function employee_update_profilePicture(Request $request)
+    {
+        $user               = User::find(Auth::user()->id);
 
         #Profile Picture
         if(!empty($request->file('profile_picture'))){
@@ -94,7 +144,33 @@ class MyAccountController extends Controller
 
         $user->save();
 
-        return redirect()->back()->with('success', 'Your account has been updated successfully!');
+        return redirect()->back()->with('success', 'Your Profile Picture has been updated successfully!');
+    }
 
+    public function employee_profile()
+    {
+        $topics = Forum::select('forum.*', 'users.name', 'users.profile_picture')
+            ->join('users', 'users.id', '=', 'forum.employee_id')
+            ->where('forum.employee_id', Auth::user()->id)
+            ->orderBy('forum.created_at', 'desc')
+            ->paginate(2);
+
+        // Create an array to store topic IDs and their corresponding reply counts
+        $topicReplyCounts = [];
+
+        // Loop through each topic and count the replies for that topic
+        foreach ($topics as $topic) {
+            $forumId = $topic->id; // Assuming 'id' is the primary key for your Forum model
+            $replyCount = Reply::where('forum_id', $forumId)->count();
+            $topicReplyCounts[$forumId] = $replyCount;
+        }
+
+        $data = [
+            //This is the array name you will use in your view
+            'getPosts' => $topics,
+            'getTopicReplyCount' => $topicReplyCounts,
+        ];
+
+        return view('employee.my_account.profile', $data);
     }
 }

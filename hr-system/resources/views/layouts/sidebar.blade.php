@@ -177,11 +177,31 @@
                     <li class="nav-header">SETTINGS</li>
 
                     <li class="nav-item">
-                        <a href=" {{ url('admin/change_details') }} " class="nav-link
-                    @if(Request::segment(2) == 'change_details') active @endif">
+                        <a href=" {{ url('admin/profile') }} " class="nav-link
+                    @if(Request::segment(2) == 'profile') active @endif">
+                            <i class="nav-icon fa-regular fa-id-card"></i>
+                            <p>
+                                Profile
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href=" {{ url('admin/change_password') }} " class="nav-link
+                    @if(Request::segment(2) == 'change_password') active @endif">
                             <i class="nav-icon fa fa-cog"></i>
                             <p>
-                                Change Details
+                                Change Password
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href=" {{ url('admin/change_profile_picture') }} " class="nav-link
+                    @if(Request::segment(2) == 'change_profile_picture') active @endif">
+                            <i class="nav-icon fa-regular fa-id-badge"></i>
+                            <p>
+                                Change Profile Picture
                             </p>
                         </a>
                     </li>
@@ -255,11 +275,31 @@
                     <li class="nav-header">SETTINGS</li>
 
                     <li class="nav-item">
-                        <a href=" {{ url('employee/change_details') }} " class="nav-link
-                            @if(Request::segment(2) == 'change_details') active @endif">
+                        <a href=" {{ url('employee/profile') }} " class="nav-link
+                    @if(Request::segment(2) == 'profile') active @endif">
+                            <i class="nav-icon fa-regular fa-id-card"></i>
+                            <p>
+                                Profile
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href=" {{ url('employee/change_password') }} " class="nav-link
+                    @if(Request::segment(2) == 'change_password') active @endif">
                             <i class="nav-icon fa fa-cog"></i>
                             <p>
-                                Change Details
+                                Change Password
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href=" {{ url('employee/change_profile_picture') }} " class="nav-link
+                    @if(Request::segment(2) == 'change_profile_picture') active @endif">
+                            <i class="nav-icon fa-regular fa-id-badge"></i>
+                            <p>
+                                Change Profile Picture
                             </p>
                         </a>
                     </li>

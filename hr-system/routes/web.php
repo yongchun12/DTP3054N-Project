@@ -166,11 +166,17 @@ Route::group(['middleware' => 'admin'], function (){
     Route::get('admin/forum/reply/delete/{id}', [ForumController::class, 'admin_replyDelete']);
 
     //-------------------My Account-------------------//
-    #Change Details (Change name / password / profile picture)
-    Route::get('admin/change_details', [MyAccountController::class, 'admin_changeDetails']);
+    #Profile
+    Route::get('admin/profile', [MyAccountController::class, 'admin_profile']);
 
-    #Update Details
-    Route::post('admin/change_details/update', [MyAccountController::class, 'update_admin_details']);
+    #Change Password
+    Route::get('admin/change_password', [MyAccountController::class, 'admin_password']);
+    Route::post('admin/change_password/update', [MyAccountController::class, 'update_password']);
+
+    #Change Profile Picture
+    Route::get('admin/change_profile_picture', [MyAccountController::class, 'admin_profilePicture']);
+    Route::post('admin/change_profile_picture/update', [MyAccountController::class, 'update_profilePicture']);
+
 });
 
 //-------------------For Employee Site-------------------//
@@ -246,6 +252,17 @@ Route::group(['middleware' => 'employee'], function (){
 
     #Update Details
     Route::post('employee/change_details/update', [MyAccountController::class, 'update_employee_details']);
+
+    #Profile
+    Route::get('employee/profile', [MyAccountController::class, 'employee_profile']);
+
+    #Change Password
+    Route::get('employee/change_password', [MyAccountController::class, 'employee_password']);
+    Route::post('employee/change_password/update', [MyAccountController::class, 'employee_update_password']);
+
+    #Change Profile Picture
+    Route::get('employee/change_profile_picture', [MyAccountController::class, 'employee_profilePicture']);
+    Route::post('employee/change_profile_picture/update', [MyAccountController::class, 'employee_update_profilePicture']);
 
 });
 
