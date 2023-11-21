@@ -40,6 +40,65 @@
                         <!--Alert Message-->
                         @include('layouts.alert_message')
 
+                        <!--Search Position-->
+                        <div class="card card-outline card-primary">
+                            <div class="card-header">
+
+                                <h3 class="card-title">
+                                    <i class="fa-solid fa-magnifying-glass mr-1"></i>
+                                    Search Department
+                                </h3>
+
+                            </div>
+
+                            <form method="get" action="">
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <!--Search-->
+                                        <!--ID-->
+                                        <div class="form-group col-md-2">
+                                            <label>ID</label>
+                                            <input type="text" value="{{ Request()->id }}" name="id" class="form-control" placeholder="ID">
+                                        </div>
+
+                                        <!--Department Name-->
+                                        <div class="form-group col-md-4">
+                                            <label>Position Name</label>
+                                            <input type="text" value="{{ Request()->position_name }}" name="position_name" class="form-control" placeholder="Position Name">
+                                        </div>
+
+                                        <!--Manager Name-->
+                                        <div class="form-group col-md-4">
+                                            <label>Manager Name</label>
+                                            <input type="text" value="{{ Request()->department_id }}" name="department_id" class="form-control" placeholder="Department Name">
+                                        </div>
+
+                                        <!--Search Button-->
+                                        <div class="form-group col-md-2">
+
+                                            <!--Search Button-->
+                                            <button class="btn btn-primary" type="submit" style="margin-top: 32px">
+                                                <i class="fa-solid fa-magnifying-glass mr-1"></i>
+                                                Search
+                                            </button>
+
+                                            <!--Reset Button-->
+                                            <a href="{{ url('admin/position') }}">
+                                                <button class="btn btn-secondary" style="margin-top: 32px; margin-left: 5px;" type="button">
+                                                    <i class="fa-solid fa-rotate"></i>
+                                                    Reset
+                                                </button>
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
                             <div class="card card-outline card-primary">
                                 <!--Title-->
                                 <div class="card-header">
