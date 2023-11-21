@@ -84,7 +84,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="department_id" required>
+                                            <select class="form-control" name="department_id">
                                                 <option disabled selected value="">Select Department</option>
                                                 @foreach($getDepartment as $getDept)
                                                         <option value="{{ $getDept->id }}">{{ $getDept->department_name }}</option>

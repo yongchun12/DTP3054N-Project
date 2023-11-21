@@ -217,7 +217,7 @@
                                         <label class="col-sm-2 col-form-label">Role</label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="is_role">
+                                            <select class="form-control" name="is_role" required>
                                                 <option value="" disabled>Select Role / Permission</option>
                                                 <option value="0">Employee</option>
                                                 <option value="1">HR Admin</option>
@@ -250,7 +250,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="department_id">
+                                            <select class="form-control" name="department_id" required>
                                                 <option value="" disabled>Select Department</option>
                                                 @foreach($getDepartment as $department)
                                                     <option value="{{ $department->id }}">{{ $department->department_name }}</option>
@@ -269,7 +269,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="position_id">
+                                            <select class="form-control" name="position_id" required>
                                                 <option value="" disabled>Select Position</option>
                                                 @foreach($getPosition as $position)
                                                     <option value="{{ $position->id }}">{{ $position->position_name }}</option>
@@ -288,12 +288,10 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="manager_id">
+                                            <select class="form-control" name="manager_id" required>
                                                 <option value="" disabled>Select Manager Name</option>
                                                 @foreach($getManager as $manager)
-                                                    @if(!($manager->email == "admin@hr-system.com"))
                                                         <option value="{{ $manager->id }}">{{ $manager->name }}</option>
-                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -309,7 +307,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="category_employee">
+                                            <select class="form-control" name="category_employee" required>
                                                 <option value="" disabled>Select Category</option>
                                                 <option value="0">Full Time</option>
                                                 <option value="1">Part Time</option>
@@ -329,7 +327,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('annual_leaveDays') }}" name="annual_leaveDays" class="form-control" placeholder="Default: 8 Days">
+                                            <input type="number" value="{{ old('annual_leaveDays') }}" name="annual_leaveDays" class="form-control" placeholder="Default: 8 Days" required>
                                         </div>
 
                                     </div>
@@ -343,7 +341,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('medical_leaveDays') }}" name="medical_leaveDays" class="form-control" placeholder="Default: 14 Days">
+                                            <input type="number" value="{{ old('medical_leaveDays') }}" name="medical_leaveDays" class="form-control" placeholder="Default: 14 Days" required>
                                         </div>
 
                                     </div>

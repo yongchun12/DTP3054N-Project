@@ -84,7 +84,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="manager_id" required>
+                                            <select class="form-control" name="manager_id">
                                                 <option disabled selected value="">Select Manager Name</option>
                                                 @foreach($getEmployee as $getUser)
                                                     @if(!($getUser->email == "admin@hr-system.com"))

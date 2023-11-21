@@ -122,20 +122,6 @@
 
                                     </div>
 
-{{--                                    <!--Password-->--}}
-{{--                                    <div class="form-group row">--}}
-
-{{--                                        <label class="col-sm-2 col-form-label">Password--}}
-{{--                                            <!--Required-->--}}
-{{--                                            <span style="color: red">*</span>--}}
-{{--                                        </label>--}}
-
-{{--                                        <div class="col-sm-10">--}}
-{{--                                            <input type="password" value="{{ $getRecord->password }}" name="password" class="form-control" placeholder="Enter Password" required>--}}
-{{--                                        </div>--}}
-
-{{--                                    </div>--}}
-
                                     <!--Phone Number-->
                                     <div class="form-group row">
 
@@ -202,7 +188,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="department_id">
+                                            <select class="form-control" name="department_id" required>
                                                 <option value="" disabled>Select Department</option>
                                                 @foreach($getDepartment as $department)
                                                     <option {{ ($getRecord->department_id == $department->id) ? 'selected' : '' }} value="{{ $department->id }}">{{ $department->department_name }}</option>
@@ -218,7 +204,7 @@
                                         <label class="col-sm-2 col-form-label">Position</label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="position_id">
+                                            <select class="form-control" name="position_id" required>
                                                 <option value="" disabled>Select Position</option>
                                                 @foreach($getPosition as $position)
                                                     <option {{ ($getRecord->position_id == $position->id) ? 'selected' : '' }} value="{{ $position->id }}">{{ $position->position_name }}</option>
@@ -237,10 +223,10 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="manager_id">
+                                            <select class="form-control" name="manager_id" required>
                                                 <option value="" disabled>Select Manager Name</option>
                                                 @foreach($getManager as $manager)
-                                                    @if(!($manager->email == "admin@hr-system.com") && !($manager->id == $getRecord->id))
+                                                    @if(!($manager->id == $getRecord->id))
                                                         <option {{ ($getRecord->manager_id == $manager->id) ? 'selected' : '' }} value="{{ $manager->id }}">{{ $manager->name }}</option>
                                                     @endif
                                                 @endforeach
@@ -258,8 +244,8 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="category_employee">
-                                                <option value="">Select Category</option>
+                                            <select class="form-control" name="category_employee" required>
+                                                <option value="" disabled>Select Category</option>
                                                 <option {{ ($getRecord->category_employee == 0) ? 'selected' : '' }} value="0">
                                                     Full Time
                                                 </option>
@@ -286,7 +272,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->annual_leaveDays }}" name="annual_leaveDays" class="form-control" placeholder="Default: 8 Days">
+                                            <input type="number" value="{{ $getRecord->annual_leaveDays }}" name="annual_leaveDays" class="form-control" placeholder="Default: 8 Days" required>
                                         </div>
 
                                     </div>
@@ -300,7 +286,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->medical_leaveDays }}" name="medical_leaveDays" class="form-control" placeholder="Default: 14 Days">
+                                            <input type="number" value="{{ $getRecord->medical_leaveDays }}" name="medical_leaveDays" class="form-control" placeholder="Default: 14 Days" required>
                                         </div>
 
                                     </div>
