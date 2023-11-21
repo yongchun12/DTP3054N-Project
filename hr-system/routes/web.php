@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EmployeesController;
+use App\Http\Controllers\Backend\DepartmentController;
+use App\Http\Controllers\Backend\PositionController;
 use App\Http\Controllers\Backend\ForumController;
 use App\Http\Controllers\Backend\AttendanceController;
 use App\Http\Controllers\Backend\LeaveController;
@@ -70,6 +72,42 @@ Route::group(['middleware' => 'admin'], function (){
 
     #Excel Export
     Route::get('admin/employee_export', [EmployeesController::class, 'employee_export']);
+
+    //-------------------Department-------------------//
+    #Department List
+    Route::get('admin/department', [DepartmentController::class, 'list']);
+
+    #Create Department
+    Route::get('admin/department/create', [DepartmentController::class, 'create']);
+    Route::post('admin/department/create', [DepartmentController::class, 'create_post']);
+
+    #View Department
+    Route::get('admin/department/view/{id}', [DepartmentController::class, 'view']);
+
+    #Edit Department
+    Route::get('admin/department/edit/{id}', [DepartmentController::class, 'edit']);
+    Route::post('admin/department/edit/{id}', [DepartmentController::class, 'edit_post']);
+
+    #Delete Department
+    Route::get('admin/department/delete/{id}', [DepartmentController::class, 'delete']);
+
+    //-------------------Position-------------------//
+    #Position List
+    Route::get('admin/position', [PositionController::class, 'list']);
+
+    #Create Position
+    Route::get('admin/position/create', [PositionController::class, 'create']);
+    Route::post('admin/position/create', [PositionController::class, 'create_post']);
+
+    #View Position
+    Route::get('admin/position/view/{id}', [PositionController::class, 'view']);
+
+    #Edit Position
+    Route::get('admin/position/edit/{id}', [PositionController::class, 'edit']);
+    Route::post('admin/position/edit/{id}', [PositionController::class, 'edit_post']);
+
+    #Delete Position
+    Route::get('admin/position/delete/{id}', [PositionController::class, 'delete']);
 
     //-------------------Payroll-------------------//
     #Payroll List

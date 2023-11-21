@@ -59,7 +59,9 @@
                                             <select class="form-control" name="employee_id" required>
                                                 <option disabled selected value="">Select Employee Name</option>
                                                 @foreach($getEmployee as $getE)
-                                                    <option value="{{ $getE->id }}">{{ $getE->name }}</option>
+                                                    @if(!($getE->email == "admin@hr-system.com") && !($getE->id == Auth::user()->id))
+                                                        <option value="{{ $getE->id }}">{{ $getE->name }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>

@@ -87,11 +87,11 @@
                                     Department
                                 </strong>
                                 <p class="text-muted">
-                                    @if(Auth::user()->department_id == 1)
-                                        Project Department
-                                    @elseif(Auth::user()->department_id == 2)
-                                        Finance Department
-                                    @endif
+                                    @foreach($getDepartment as $data)
+                                        @if(Auth::user()->department_id == $data->id)
+                                            {{ $data->department_name }}
+                                        @endif
+                                    @endforeach
                                 </p>
 
                                 <hr>
@@ -99,11 +99,11 @@
                                 <!--Position-->
                                 <strong><i class="fa-solid fa-briefcase mr-1"></i> Position</strong>
                                 <p class="text-muted">
-                                    @if(Auth::user()->job_id == 1)
-                                        Web Developer
-                                    @elseif(Auth::user()->job_id == 2)
-                                        Accountant
-                                    @endif
+                                    @foreach($getPosition as $data)
+                                        @if(Auth::user()->position_id == $data->id)
+                                            {{ $data->position_name }}
+                                        @endif
+                                    @endforeach
                                 </p>
 
                                 <hr>
@@ -111,11 +111,11 @@
                                 <!--Manager-->
                                 <strong><i class="fa-solid fa-person mr-1"></i> Manager</strong>
                                 <p class="text-muted">
-                                    @if(Auth::user()->manager_id == 1)
-                                        Yong Chun
-                                    @elseif(Auth::user()->manager_id == 2)
-                                        Chee Yi
-                                    @endif
+                                    @foreach($getManager as $data)
+                                        @if(Auth::user()->manager_id == $data->id)
+                                            {{ $data->name }} {{ $data->last_name }}
+                                        @endif
+                                    @endforeach
                                 </p>
 
                             </div>

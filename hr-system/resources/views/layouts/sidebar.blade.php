@@ -106,6 +106,31 @@
                     </a>
                 </li>
 
+
+                <!--Department-->
+
+                    <li class="nav-item">
+                        <a href=" {{ url('admin/department') }} " class="nav-link
+                    @if(Request::segment(2) == 'department') active @endif">
+                            <i class="nav-icon fa-regular fa-building"></i>
+                            <p>
+                                Department
+                            </p>
+                        </a>
+                    </li>
+
+                    <!--Position-->
+
+                    <li class="nav-item">
+                        <a href=" {{ url('admin/position') }} " class="nav-link
+                    @if(Request::segment(2) == 'position') active @endif">
+                            <i class="nav-icon fa-solid fa-user-plus"></i>
+                            <p>
+                                Position
+                            </p>
+                        </a>
+                    </li>
+
                 <!--Payroll-->
 
                     <li class="nav-header">PAYROLL</li>

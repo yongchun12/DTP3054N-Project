@@ -193,16 +193,36 @@
 
                                     </div>
 
+                                    <!--Department ID-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Department
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <select class="form-control" name="department_id">
+                                                <option value="" disabled>Select Department</option>
+                                                @foreach($getDepartment as $department)
+                                                    <option {{ ($getRecord->department_id == $department->id) ? 'selected' : '' }} value="{{ $department->id }}">{{ $department->department_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                    </div>
+
                                     <!--Position-->
                                     <div class="form-group row">
 
                                         <label class="col-sm-2 col-form-label">Position</label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="job_id">
-                                                <option value="">Select Job Title</option>
-                                                <option {{ ($getRecord->job_id == 1) ? 'selected' : '' }} value="1">Web Developer</option>
-                                                <option {{ ($getRecord->job_id == 2) ? 'selected' : '' }} value="2">Accountant</option>
+                                            <select class="form-control" name="position_id">
+                                                <option value="" disabled>Select Position</option>
+                                                @foreach($getPosition as $position)
+                                                    <option {{ ($getRecord->position_id == $position->id) ? 'selected' : '' }} value="{{ $position->id }}">{{ $position->position_name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
@@ -218,27 +238,12 @@
 
                                         <div class="col-sm-10">
                                             <select class="form-control" name="manager_id">
-                                                <option value="">Select Manager Name</option>
-                                                <option {{ ($getRecord->manager_id == 1) ? 'selected' : '' }} value="1">Yong Chun</option>
-                                                <option {{ ($getRecord->manager_id == 2) ? 'selected' : '' }} value="2">Chee Yi</option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                    <!--Department ID-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Department
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <select class="form-control" name="department_id">
-                                                <option value="">Select Department</option>
-                                                <option {{ ($getRecord->department_id == 1) ? 'selected' : '' }} value="1">Project Department</option>
-                                                <option {{ ($getRecord->department_id == 2) ? 'selected' : '' }} value="2">Finance Department</option>
+                                                <option value="" disabled>Select Manager Name</option>
+                                                @foreach($getManager as $manager)
+                                                    @if(!($manager->email == "admin@hr-system.com") && !($manager->id == $getRecord->id))
+                                                        <option {{ ($getRecord->manager_id == $manager->id) ? 'selected' : '' }} value="{{ $manager->id }}">{{ $manager->name }}</option>
+                                                    @endif
+                                                @endforeach
                                             </select>
                                         </div>
 

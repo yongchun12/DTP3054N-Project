@@ -37,7 +37,7 @@ return new class extends Migration
             $table->date('hire_date');
 
             //Job ID (Position ID)
-            $table->string('job_id');
+            $table->string('position_id');
 
             //Manager ID
             $table->integer('manager_id');

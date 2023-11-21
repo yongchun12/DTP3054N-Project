@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Forum;
 use App\Models\Reply;
-use Illuminate\Http\Request;
+use App\Models\Department;
+use App\Models\Position;
 use App\Models\User;
+
+use Illuminate\Http\Request;
 use Auth;
 use Str;
 
@@ -90,6 +93,15 @@ class MyAccountController extends Controller
             'getTopicReplyCount' => $topicReplyCounts,
         ];
 
+        //Department
+        $data['getDepartment'] = Department::getRecord();
+
+        //Position
+        $data['getPosition'] = Position::getRecord();
+
+        //Manager
+        $data['getManager'] = User::get();
+
         return view('admin.my_account.profile', $data);
     }
 
@@ -170,6 +182,15 @@ class MyAccountController extends Controller
             'getPosts' => $topics,
             'getTopicReplyCount' => $topicReplyCounts,
         ];
+
+        //Department
+        $data['getDepartment'] = Department::getRecord();
+
+        //Position
+        $data['getPosition'] = Position::getRecord();
+
+        //Manager
+        $data['getManager'] = User::get();
 
         return view('employee.my_account.profile', $data);
     }

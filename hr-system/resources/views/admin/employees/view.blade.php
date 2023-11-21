@@ -136,18 +136,30 @@
 
                                     </div>
 
+                                    <!--Department ID / Department Name-->
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Department</label>
+
+                                        <div class="col-sm-10 col-form-label">
+                                            @foreach($getDepartment as $department)
+                                                @if($getRecord->department_id == $department->id)
+                                                    {{ $department->department_name }}
+                                                @endif
+                                            @endforeach
+                                        </div>
+
+                                    </div>
+
                                     <!--Position / Job ID-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Position</label>
 
                                         <div class="col-sm-10 col-form-label">
-{{--                                            {{ $getRecord->job_id }}--}}
-                                            <!--If job id = 1 then will show what-->
-                                            @if($getRecord->job_id == 1)
-                                                Web Developer
-                                            @elseif($getRecord->job_id == 2)
-                                                Accountant
-                                            @endif
+                                            @foreach($getPosition as $position)
+                                                @if($getRecord->position_id == $position->id)
+                                                    {{ $position->position_name }}
+                                                @endif
+                                            @endforeach
                                         </div>
 
                                     </div>
@@ -157,25 +169,11 @@
                                         <label class="col-sm-2 col-form-label">Manager Name</label>
 
                                         <div class="col-sm-10 col-form-label">
-                                            @if($getRecord->manager_id == 1)
-                                                Yong Chun
-                                            @elseif($getRecord->manager_id == 2)
-                                                Chee Yi
-                                            @endif
-                                        </div>
-
-                                    </div>
-
-                                    <!--Department ID / Department Name-->
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Department</label>
-
-                                        <div class="col-sm-10 col-form-label">
-                                            @if($getRecord->department_id == 1)
-                                                Project Department
-                                            @elseif($getRecord->department_id == 2)
-                                                Finance Department
-                                            @endif
+                                            @foreach($getManager as $manager)
+                                                @if($getRecord->manager_id == $manager->id)
+                                                    {{ $manager->name }}
+                                                @endif
+                                            @endforeach
                                         </div>
 
                                     </div>

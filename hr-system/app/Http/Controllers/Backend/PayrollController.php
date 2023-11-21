@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Exports\PayrollExport;
 use App\Http\Controllers\Controller;
+use App\Models\Department;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use App\Models\Payroll;
 use App\Models\User;
@@ -30,7 +32,7 @@ class PayrollController extends Controller
     public function create(Request $request)
     {
         #redirect to create page by using the value called 'getEmployee'
-        $data['getEmployee'] = User::where('is_role', '=', 0)->get();
+        $data['getEmployee'] = User::get();
         return view('admin.payroll.create', $data);
     }
 
@@ -67,7 +69,7 @@ class PayrollController extends Controller
     public function edit($id, Request $request)
     {
         #If that is belongs to employee role
-        $data['getEmployee'] = User::where('is_role', '=', 0)->get();
+        $data['getEmployee'] = User::get();
 
         #Or if want to get all the record include HR and employees can use this
 //        $data['getEmployee'] = User::select('users.*')->get();
@@ -108,8 +110,14 @@ class PayrollController extends Controller
 
     public function salary_pdf($id, Request $request)
     {
-        $data['getEmployee'] = User::where('is_role', '=', 0)->get();
+        $data['getEmployee'] = User::get();
         $data['getRecord'] = Payroll::find($id);
+        //Department
+        $data['getDepartment'] = Department::getRecord();
+
+        //Position
+        $data['getPosition'] = Position::getRecord();
+
         return view('admin.payroll.salaryview', $data);
     }
 
@@ -136,8 +144,15 @@ class PayrollController extends Controller
 
     public function salary_pdf_employeeSite($id, Request $request)
     {
-        $data['getEmployee'] = User::where('is_role', '=', 0)->get();
+        $data['getEmployee'] = User::get();
         $data['getRecord'] = Payroll::find($id);
+
+        //Department
+        $data['getDepartment'] = Department::getRecord();
+
+        //Position
+        $data['getPosition'] = Position::getRecord();
+
         return view('employee.payroll.salaryview', $data);
     }
 }

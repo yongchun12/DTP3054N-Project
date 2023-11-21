@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Mail\EmployeesNewCreateMail;
 
 use App\Models\User;
+use App\Models\Department;
+use App\Models\Position;
 use App\Exports\EmployeeExport;
 use Str;
 use Hash;
@@ -36,7 +38,16 @@ class EmployeesController extends Controller
      */
     public function create(Request $request)
     {
-        return view('admin.employees.create');
+        //Department
+        $data['getDepartment'] = Department::getRecord();
+
+        //Position
+        $data['getPosition'] = Position::getRecord();
+
+        //Manager
+        $data['getManager'] = User::get();
+
+        return view('admin.employees.create', $data);
     }
 
     public function create_post(Request $request)
@@ -53,7 +64,7 @@ class EmployeesController extends Controller
             'phone_number' => 'required|unique:users',
             'password' => 'required',
             'hire_date' => 'required',
-            'job_id' => 'required',
+            'position_id' => 'required',
             'manager_id' => 'required',
             'department_id' => 'required',
             'category_employee' => 'required',
@@ -95,7 +106,7 @@ class EmployeesController extends Controller
         $user->phone_number         = trim($request->phone_number);
         $user->address              = trim($request->address);
         $user->hire_date            = trim($request->hire_date);
-        $user->job_id               = trim($request->job_id);
+        $user->position_id           = trim($request->position_id);
         $user->manager_id           = trim($request->manager_id);
         $user->department_id        = trim($request->department_id);
 
@@ -128,6 +139,14 @@ class EmployeesController extends Controller
     public function view($id)
     {
         $data['getRecord'] = User::find($id);
+        //Department
+        $data['getDepartment'] = Department::getRecord();
+
+        //Position
+        $data['getPosition'] = Position::getRecord();
+
+        //Manager
+        $data['getManager'] = User::get();
         return view('admin.employees.view', $data);
     }
 
@@ -137,6 +156,15 @@ class EmployeesController extends Controller
     public function edit($id)
     {
         $data['getRecord'] = User::find($id);
+
+        //Department
+        $data['getDepartment'] = Department::getRecord();
+
+        //Position
+        $data['getPosition'] = Position::getRecord();
+
+        //Manager
+        $data['getManager'] = User::get();
         return view('admin.employees.edit', $data);
     }
 
@@ -189,7 +217,7 @@ class EmployeesController extends Controller
         $user->phone_number         = trim($request->phone_number);
         $user->address              = trim($request->address);
         $user->hire_date            = trim($request->hire_date);
-        $user->job_id               = trim($request->job_id);
+        $user->position_id          = trim($request->position_id);
         $user->manager_id           = trim($request->manager_id);
         $user->department_id        = trim($request->department_id);
 

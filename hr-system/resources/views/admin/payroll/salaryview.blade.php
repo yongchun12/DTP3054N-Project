@@ -119,11 +119,11 @@
                                 <span class="fw-bolder">Position:
                                     @foreach($getEmployee as $value_employee)
                                         @if($value_employee->id == $getRecord->employee_id)
-                                            @if($value_employee->job_id == 1)
-                                                Web Developer
-                                            @elseif($value_employee->job_id == 2)
-                                                Accountant
-                                            @endif
+                                            @foreach($getPosition as $value_position)
+                                                @if($value_position->id == $value_employee->position_id)
+                                                    {{ $value_position->position_name }}
+                                                @endif
+                                            @endforeach
                                         @endif
                                     @endforeach
                                 </span>
@@ -136,11 +136,11 @@
                                 <span class="fw-bolder">Department:
                                     @foreach($getEmployee as $value_employee)
                                         @if($value_employee->id == $getRecord->employee_id)
-                                            @if($value_employee->department_id == 1)
-                                                Project Department
-                                            @elseif($value_employee->department_id == 2)
-                                                Finance Department
-                                            @endif
+                                            @foreach($getDepartment as $value_department)
+                                                @if($value_department->id == $value_employee->department_id)
+                                                    {{ $value_department->department_name }}
+                                                @endif
+                                            @endforeach
                                         @endif
                                     @endforeach
                                 </span>

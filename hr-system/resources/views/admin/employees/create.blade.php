@@ -40,7 +40,7 @@
                                 </h3>
                             </div>
 
-                            <form class="form-horizontal" method="post" accept="{{ url('admin/employees/create') }}}" enctype="multipart/form-data">
+                            <form class="form-horizontal" method="post" accept="{{ url('admin/employees/create') }}" enctype="multipart/form-data">
 
                                 {{ csrf_field() }}
 
@@ -241,7 +241,26 @@
 
                                     </div>
 
-                                    <!--Job ID / Position-->
+                                    <!--Department ID / Department Name-->
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-2 col-form-label">Department
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <select class="form-control" name="department_id">
+                                                <option value="" disabled>Select Department</option>
+                                                @foreach($getDepartment as $department)
+                                                    <option value="{{ $department->id }}">{{ $department->department_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Position Id-->
                                     <div class="form-group row">
 
                                         <label class="col-sm-2 col-form-label">Position
@@ -250,10 +269,11 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="job_id">
-                                                <option value="" disabled>Select Job Title</option>
-                                                <option value="1">Web Developer</option>
-                                                <option value="2">Accountant</option>
+                                            <select class="form-control" name="position_id">
+                                                <option value="" disabled>Select Position</option>
+                                                @foreach($getPosition as $position)
+                                                    <option value="{{ $position->id }}">{{ $position->position_name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
@@ -270,26 +290,11 @@
                                         <div class="col-sm-10">
                                             <select class="form-control" name="manager_id">
                                                 <option value="" disabled>Select Manager Name</option>
-                                                <option value="1">Yong Chun</option>
-                                                <option value="2">Chee Yi</option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                    <!--Department ID / Department Name-->
-                                    <div class="form-group row">
-
-                                        <label class="col-sm-2 col-form-label">Department
-                                            <!--Required-->
-                                            <span style="color: red">*</span>
-                                        </label>
-
-                                        <div class="col-sm-10">
-                                            <select class="form-control" name="department_id">
-                                                <option value="" disabled>Select Department</option>
-                                                <option value="1">Project Department</option>
-                                                <option value="2">Finance Department</option>
+                                                @foreach($getManager as $manager)
+                                                    @if(!($manager->email == "admin@hr-system.com"))
+                                                        <option value="{{ $manager->id }}">{{ $manager->name }}</option>
+                                                    @endif
+                                                @endforeach
                                             </select>
                                         </div>
 
