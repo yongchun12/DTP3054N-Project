@@ -10,6 +10,7 @@ class AdminMiddleware {
 
         if(Auth::check()){
 
+            //HR = 1
             if (Auth::user()->is_role == '1') {
 
                 #If user is admin then redirect to admin dashboard (Based on web.php)

@@ -79,4 +79,20 @@ class User extends Authenticatable
 
         return $return;
     }
+
+    // Link data by using foreign key
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'position_id', 'id');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Position::class, 'department_id', 'id');
+    }
+
+    public function manager()
+    {
+        return $this->belongsTo(User::class, 'manager_id', 'id');
+    }
 }

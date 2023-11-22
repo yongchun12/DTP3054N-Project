@@ -170,10 +170,6 @@ class EmployeesController extends Controller
 
     public function edit_update($id, Request $request)
     {
-//        $user = request()->validate([
-//           'email' => 'required|unique:users,email,'.$id,
-//            'phone_number' => 'required|unique:users,phone_number,'.$id,
-//        ]);
 
         //Valiadation
         $user = request()->validate([

@@ -42,7 +42,7 @@
                 <a href="{{ url('admin/dashboard') }}" class="brand-link">
                     <!--Logo-->
                     <!--Remember Change to white-->
-                    <img src="{{ asset('img/Project Logo.png') }}" alt="HR System Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8">
+                    <img src="{{ asset('img/Project Logo - White.png') }}" alt="HR System Logo" class="brand-image img-circle elevation-3" style="opacity: 1;">
                     <span class="brand-text font-weight-light">HR System</span>
                 </a>
             @endif
@@ -52,7 +52,7 @@
                 <a href="{{ url('employee/dashboard') }}" class="brand-link">
                     <!--Logo-->
                     <!--Remember Change to white-->
-                    <img src="{{ asset('img/Project Logo.png') }}" alt="HR System Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8">
+                    <img src="{{ asset('img/Project Logo - White.png') }}" alt="HR System Logo" class="brand-image img-circle elevation-3" style="opacity: 1">
                     <span class="brand-text font-weight-light">HR System</span>
                 </a>
              @endif

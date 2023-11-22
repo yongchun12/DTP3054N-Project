@@ -16,10 +16,12 @@ class EmployeeExport implements FromCollection, WithHeadings, WithMapping, Shoul
     public function collection()
     {
         //How to get the data from the database
-        $data = User::select('users.*')
-            ->get();
+//        $data['getEmployee'] = User::select('users.*', 'department.department_name', 'position.position_name')
+//            ->join('department', 'users.department_id', '=', 'department.id')
+//            ->join('position', 'users.position_id', '=', 'position.id')
+//            ->get();
 
-        return $data;
+        return User::with(['department', 'position', 'manager'])->get();
     }
 
     protected $index = 0;
@@ -29,27 +31,6 @@ class EmployeeExport implements FromCollection, WithHeadings, WithMapping, Shoul
         $hire_date = \Carbon\Carbon::parse($data->hire_date)->format('d-F-Y');
         $created_at = \Carbon\Carbon::parse($data->created_at)->format('d-F-Y h:i A');
         $updated_at = \Carbon\Carbon::parse($data->updated_at)->format('d-F-Y h:i A');
-
-        //Position
-        if ($data->job_id == 1) {
-            $position = "Web Developer";
-        } else if ($data->job_id == 2) {
-            $position = "Accountant";
-        }
-
-        //Manager
-        if ($data->manager_id == 1) {
-            $manager = "Yong Chun";
-        } else if ($data->manager_id == 2) {
-            $manager = "Chee Yi";
-        }
-
-        //Department
-        if ($data->department_id == 1) {
-            $department = "Project Department";
-        } else if ($data->department_id == 2) {
-            $department = "Finance Department";
-        }
 
         //Employee Category
         if ($data->category_employee == 0) {
@@ -66,7 +47,7 @@ class EmployeeExport implements FromCollection, WithHeadings, WithMapping, Shoul
         if ($data->is_role == 0) {
             $is_role = "Employee";
         } else if ($data->is_role == 1) {
-            $is_role = "HR";
+            $is_role = "HR Admin";
         }
 
         return [
@@ -79,9 +60,9 @@ class EmployeeExport implements FromCollection, WithHeadings, WithMapping, Shoul
             $data->phone_number,
             $data->address,
             $hire_date,
-            $position,
-            $manager,
-            $department,
+            $data->position->position_name ?? 'N/A',
+            $data->manager->name ?? 'N/A',
+            $data->department->department_name ?? 'N/A',
             $category_employee,
             $data->annual_leaveDays,
             $data->medical_leaveDays,
