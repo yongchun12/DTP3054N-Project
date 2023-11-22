@@ -314,23 +314,23 @@
     </div>
 
     <!--PDF Button-->
-    <script>
-        window.onload = function () {
-            document.getElementById("download")
-                .addEventListener("click", () => {
-                    const payslip = this.document.getElementById("payslip");
-                    console.log(payslip);
-                    console.log(window);
-                    var opt = {
-                        margin:       1,
-                        filename:     'payslip.pdf',
-                        image:        { type: 'jpeg', quality: 0.98 },
-                        html2canvas:  { scale: 2 },
-                        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-                    };
-                    html2pdf().from(payslip).set(opt).save();
-                })
-        }
-    </script>
+        <script>
+            window.onload = function () {
+                document.getElementById("download")
+                    .addEventListener("click", () => {
+                        const payslip = this.document.getElementById("payslip");
+                        console.log(payslip);
+                        console.log(window);
+                        var opt = {
+                            margin:       1,
+                            filename:     'payslip.pdf',
+                            image:        { type: 'jpeg', quality: 0.98 },
+                            html2canvas:  { scale: 2 },
+                            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                        };
+                        html2pdf().from(payslip).set(opt).save();
+                    })
+            }
+        </script>
 
 @endsection

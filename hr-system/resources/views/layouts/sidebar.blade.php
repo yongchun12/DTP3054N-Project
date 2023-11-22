@@ -11,7 +11,11 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="" class="nav-link">Home</a>
+            @if(Auth::user()->is_role == '1')
+                <a href="{{ url('admin/dashboard') }}" class="nav-link">Home</a>
+            @elseif(Auth::user()->is_role == '0')
+                <a href="{{ url('employee/dashboard') }}" class="nav-link">Home</a>
+            @endif
         </li>
     </ul>
 
