@@ -11,4 +11,3 @@ Your New Password: - <b>{{ $user->random_pass }}</b>
 Thank You, <br>
 
 DTP3054N HR System
-<!--{{ config('app.name') }}-->
