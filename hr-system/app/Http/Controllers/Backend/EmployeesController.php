@@ -106,7 +106,7 @@ class EmployeesController extends Controller
         $user->phone_number         = trim($request->phone_number);
         $user->address              = trim($request->address);
         $user->hire_date            = trim($request->hire_date);
-        $user->position_id           = trim($request->position_id);
+        $user->position_id          = trim($request->position_id);
         $user->manager_id           = trim($request->manager_id);
         $user->department_id        = trim($request->department_id);
 
@@ -172,6 +172,7 @@ class EmployeesController extends Controller
     {
 
         //Valiadation
+        //If the email is same with the current email, it will skip the unique validation
         $user = request()->validate([
            'email' => 'required|unique:users,email,'.$id,
             'phone_number' => 'required|unique:users,phone_number,'.$id,
@@ -186,9 +187,6 @@ class EmployeesController extends Controller
         $user->name                 = trim($request->name);
         $user->last_name            = trim($request->last_name);
         $user->email                = trim($request->email);
-
-//        #Hash the password from normal key to encrypted key
-//        $user->password             = bcrypt(trim($request->password));
 
         #Profile Picture
         if(!empty($request->file('profile_picture'))){

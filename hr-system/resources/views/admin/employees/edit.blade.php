@@ -88,7 +88,7 @@
 
                                         <div class="col-sm-10">
                                             <!--value: old is validation for check the type of the input-->
-                                            <input type="text" value="{{ $getRecord->name }}" name="name" class="form-control" required placeholder="Enter First Name">
+                                            <input type="text" value="{{ $getRecord->name }}" name="name" class="form-control" placeholder="Enter First Name" required>
                                         </div>
 
                                     </div>
@@ -99,7 +99,7 @@
                                         <label class="col-sm-2 col-form-label">Last Name</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ $getRecord->last_name }}" name="last_name" class="form-control" placeholder="Enter Last Name">
+                                            <input type="text" value="{{ $getRecord->last_name }}" name="last_name" class="form-control" placeholder="Enter Last Name" required>
                                         </div>
 
                                     </div>
@@ -128,7 +128,7 @@
                                         <label class="col-sm-2 col-form-label">Phone Number</label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->phone_number }}" name="phone_number" class="form-control" placeholder="Enter Phone Number">
+                                            <input type="number" value="{{ $getRecord->phone_number }}" name="phone_number" class="form-control" placeholder="Enter Phone Number" required>
                                             <span style="color: red">
                                             <!--Validation that if got same phone number-->
                                             {{ $errors->first('phone_number') }}
@@ -156,7 +156,7 @@
                                         <label class="col-sm-2 col-form-label">Role</label>
 
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="is_role">
+                                            <select class="form-control" name="is_role" required>
                                                 <option value="" disabled>Select Role / Permission</option>
                                                 <option value="0">Employee</option>
                                                 <option value="1">HR Admin</option>
