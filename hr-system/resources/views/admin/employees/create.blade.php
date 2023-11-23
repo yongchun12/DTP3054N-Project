@@ -77,7 +77,7 @@
                                                 <span class="input-group-text">EMP-</span>
                                             </div>
 
-                                            <input type="text" value="{{ old('suffix_staffID') }}" name="suffix_staffID" id="suffix_staffID" class="form-control" aria-describedby="domain" placeholder="Enter Staff ID" oninput="passStaffID()" maxlength="4" required>
+                                            <input type="text" value="{{ old('suffix_staffID') }}" name="suffix_staffID" id="suffix_staffID" class="form-control" aria-describedby="domain" placeholder="Enter Staff ID" oninput="passStaffID()" minlength="4" maxlength="4" required>
                                         </div>
 
                                         <!--Hidden Row / Get EMP- Value from JavaScript and pass this value to Controller-->
