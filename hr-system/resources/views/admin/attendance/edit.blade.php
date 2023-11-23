@@ -110,7 +110,7 @@
                                     <!--Card Footer-->
                                     <div class="card-footer">
                                         <a href=" {{ url('admin/attendance') }} " class="btn btn-default"><i class="fa-solid fa-xmark mr-1"></i>Cancel</a>
-                                        <button type="submit" class="btn btn-primary float-right"><i class="fa-solid fa-plus mr-1"></i>Create Payroll Record</button>
+                                        <button type="submit" class="btn btn-primary float-right"><i class="fa-solid fa-plus mr-1"></i>Update Attendance Record</button>
                                     </div>
 
                                 </div>

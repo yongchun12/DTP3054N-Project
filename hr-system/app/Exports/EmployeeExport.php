@@ -15,12 +15,7 @@ class EmployeeExport implements FromCollection, WithHeadings, WithMapping, Shoul
      */
     public function collection()
     {
-        //How to get the data from the database
-//        $data['getEmployee'] = User::select('users.*', 'department.department_name', 'position.position_name')
-//            ->join('department', 'users.department_id', '=', 'department.id')
-//            ->join('position', 'users.position_id', '=', 'position.id')
-//            ->get();
-
+        //Retrieve the function from the model
         return User::with(['department', 'position', 'manager'])->get();
     }
 

@@ -28,10 +28,11 @@ class AuthController extends Controller
 
     public function forget_password_post (Request $request){
 
-        #Validation (Check their email is exist or not based on their ID)
+        #Validation (Check their email is exist or not based on their email and count)
         $count = User::where('email', '=', $request->email)->count();
 
         // count is used to count the number of data in the database
+        // If the data is exist, it will return 1
         if($count > 0) {
             $user = User::where('email', '=', $request->email)->first();
 
