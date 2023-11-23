@@ -85,7 +85,7 @@
 
                                         <div class="col-sm-10">
                                             <select class="form-control" name="manager_id">
-                                                <option disabled selected value="">Select Manager Name</option>
+                                                <option disabled value="">Select Manager Name</option>
                                                 @foreach($getEmployee as $getUser)
                                                         <option value="{{ $getUser->id }}">{{ $getUser->name }}</option>
                                                 @endforeach
