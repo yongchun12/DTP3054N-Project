@@ -87,9 +87,7 @@
                                             <select class="form-control" name="manager_id">
                                                 <option disabled selected value="">Select Manager Name</option>
                                                 @foreach($getEmployee as $getUser)
-                                                    @if(!($getUser->email == "admin@hr-system.com"))
                                                         <option value="{{ $getUser->id }}">{{ $getUser->name }}</option>
-                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
