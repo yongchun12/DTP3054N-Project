@@ -56,7 +56,7 @@
 
                                         <div class="col-sm-10">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="customFile" name="profile_picture">
+                                                <input type="file" class="custom-file-input" id="customFile" name="profile_picture" accept="image/*">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                             </div>
                                         </div>
@@ -77,7 +77,7 @@
                                                 <span class="input-group-text">EMP-</span>
                                             </div>
 
-                                            <input type="text" value="{{ old('suffix_staffID') }}" name="suffix_staffID" id="suffix_staffID" class="form-control" aria-describedby="domain" placeholder="Enter Staff ID" oninput="passStaffID()" max="9999" required>
+                                            <input type="text" value="{{ old('suffix_staffID') }}" name="suffix_staffID" id="suffix_staffID" class="form-control" aria-describedby="domain" placeholder="Enter Staff ID" oninput="passStaffID()" maxlength="4" required>
                                         </div>
 
                                         <!--Hidden Row / Get EMP- Value from JavaScript and pass this value to Controller-->
@@ -183,7 +183,7 @@
                                                 <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                             </div>
 
-                                            <input type="number" value="{{ old('phone_number') }}" name="phone_number" class="form-control" placeholder="Enter Phone Number">
+                                            <input type="tel" value="{{ old('phone_number') }}" name="phone_number" class="form-control" placeholder="Enter Phone Number">
                                         </div>
 
                                         <div class="col-sm-2">
@@ -369,7 +369,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ old('bank_acc') }}" name="bank_acc" class="form-control" placeholder="Enter Bank Account" required>
+                                            <input type="number" value="{{ old('bank_acc') }}" name="bank_acc" class="form-control" placeholder="Enter Bank Account" required>
                                             <span style="color: red">
                                             <!--Validation that if got same phone number-->
                                             {{ $errors->first('bank_acc') }}
@@ -387,7 +387,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ old('ic_no') }}" name="ic_no" class="form-control" placeholder="Enter IC Number" required>
+                                            <input type="number" value="{{ old('ic_no') }}" name="ic_no" class="form-control" placeholder="Enter IC Number. Example: 030101070125" required>
                                             <span style="color: red">
                                             <!--Validation that if got same phone number-->
                                             {{ $errors->first('ic_no') }}
@@ -405,7 +405,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ old('epf_no') }}" name="epf_no" class="form-control" placeholder="Enter EPF Number" required>
+                                            <input type="number" value="{{ old('epf_no') }}" name="epf_no" class="form-control" placeholder="Enter EPF Number" required>
                                             <span style="color: red">
                                             <!--Validation that if got same phone number-->
                                             {{ $errors->first('epf_no') }}
@@ -423,7 +423,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ old('pcb_no') }}" name="pcb_no" class="form-control" placeholder="Enter PCB Number" required>
+                                            <input type="number" value="{{ old('pcb_no') }}" name="pcb_no" class="form-control" placeholder="Enter PCB Number" required>
                                             <span style="color: red">
                                             <!--Validation that if got same phone number-->
                                             {{ $errors->first('pcb_no') }}
