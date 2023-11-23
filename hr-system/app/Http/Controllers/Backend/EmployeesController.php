@@ -174,7 +174,6 @@ class EmployeesController extends Controller
         //Valiadation
         //If the email is same with the current email, it will skip the unique validation
         $user = request()->validate([
-           'email' => 'required|unique:users,email,'.$id,
             'phone_number' => 'required|unique:users,phone_number,'.$id,
             'bank_acc' => 'required|unique:users,bank_acc,'.$id,
             'epf_no' => 'required|unique:users,epf_no,'.$id,
@@ -186,7 +185,6 @@ class EmployeesController extends Controller
 
         $user->name                 = trim($request->name);
         $user->last_name            = trim($request->last_name);
-        $user->email                = trim($request->email);
 
         #Profile Picture
         if(!empty($request->file('profile_picture'))){

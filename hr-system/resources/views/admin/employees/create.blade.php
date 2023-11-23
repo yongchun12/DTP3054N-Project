@@ -87,7 +87,7 @@
 
                                         <div class="col-sm-10">
                                         <span style="color: red">
-                                            <!--Validation that if got same email-->
+                                            <!--Validation that if got same staff id-->
                                             {{ $errors->first('staff_id') }}
                                         </span>
                                         </div>
@@ -191,7 +191,7 @@
 
                                         <div class="col-sm-10">
                                         <span style="color: red">
-                                            <!--Validation that if got same email-->
+                                            <!--Validation that if got same phone_number-->
                                             {{ $errors->first('phone_number') }}
                                         </span>
                                         </div>
@@ -371,7 +371,7 @@
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ old('bank_acc') }}" name="bank_acc" class="form-control" placeholder="Enter Bank Account" required>
                                             <span style="color: red">
-                                            <!--Validation that if got same phone number-->
+                                            <!--Validation that if got same bank_acc-->
                                             {{ $errors->first('bank_acc') }}
                                         </span>
                                         </div>
@@ -389,7 +389,7 @@
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ old('ic_no') }}" name="ic_no" class="form-control" placeholder="Enter IC Number. Example: 030101070125" required>
                                             <span style="color: red">
-                                            <!--Validation that if got same phone number-->
+                                            <!--Validation that if got same ic_no-->
                                             {{ $errors->first('ic_no') }}
                                         </span>
                                         </div>
@@ -407,7 +407,7 @@
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ old('epf_no') }}" name="epf_no" class="form-control" placeholder="Enter EPF Number" required>
                                             <span style="color: red">
-                                            <!--Validation that if got same phone number-->
+                                            <!--Validation that if got same epf_no-->
                                             {{ $errors->first('epf_no') }}
                                         </span>
                                         </div>
@@ -425,7 +425,7 @@
                                         <div class="col-sm-10">
                                             <input type="number" value="{{ old('pcb_no') }}" name="pcb_no" class="form-control" placeholder="Enter PCB Number" required>
                                             <span style="color: red">
-                                            <!--Validation that if got same phone number-->
+                                            <!--Validation that if got same pcb_no-->
                                             {{ $errors->first('pcb_no') }}
                                         </span>
                                         </div>
