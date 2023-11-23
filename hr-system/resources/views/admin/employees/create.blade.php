@@ -183,7 +183,7 @@
                                                 <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                             </div>
 
-                                            <input type="tel" value="{{ old('phone_number') }}" name="phone_number" class="form-control" placeholder="Enter Phone Number">
+                                            <input type="number" value="{{ old('phone_number') }}" name="phone_number" class="form-control" placeholder="Enter Phone Number">
                                         </div>
 
                                         <div class="col-sm-2">
