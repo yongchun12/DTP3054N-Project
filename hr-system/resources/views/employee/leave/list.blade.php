@@ -113,19 +113,26 @@
                                             </td>
 
                                             <td style="vertical-align: middle; text-align: center;">
+
+                                                    <!--Pending-->
                                                 @if($data->leave_status == 0)
                                                     <span class="badge bg-primary" style="font-size: 14px">
                                                         Pending
                                                     </span>
+
+                                                    <!--Approved-->
                                                 @elseif($data->leave_status == 1)
                                                     <span class="badge bg-success" style="font-size: 14px">
                                                         Approved
                                                     </span>
+
+                                                    <!--Rejected-->
                                                 @elseif($data->leave_status == 2)
                                                     <span class="badge bg-danger" style="font-size: 14px">
                                                         Rejected
                                                     </span>
                                                 @endif
+
                                             </td>
 
                                             <td style="vertical-align: middle; text-align: center;">
@@ -149,10 +156,19 @@
                                                     <i class="fa-regular fa-file-lines mr-1"></i>
                                                     View
                                                 </a>
-                                                <a href="{{ url('employee/leave/delete/'.$data->id) }}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-outline-danger" style="margin-left: 10px;">
-                                                    <i class="fa-regular fa-trash-can mr-1"></i>
-                                                    Delete
-                                                </a>
+
+                                                <!--If the leave status is Approved or Rejected, the delete button will be disabled-->
+                                                @if($data->leave_status == 1 || $data->leave_status == 2)
+                                                    <a onclick="return alert('You are not allowed to delete Approved / Rejected Application.')" class="btn btn-outline-danger" style="margin-left: 10px;">
+                                                        <i class="fa-regular fa-trash-can mr-1"></i>
+                                                        Delete
+                                                    </a>
+                                                @else
+                                                    <a href="{{ url('employee/leave/delete/'.$data->id) }}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-outline-danger" style="margin-left: 10px;">
+                                                        <i class="fa-regular fa-trash-can mr-1"></i>
+                                                        Delete
+                                                    </a>
+                                                @endif
                                             </td>
 
                                         </tr>
