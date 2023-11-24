@@ -50,7 +50,7 @@
                                         <label for="type_of_leave" class="col-sm-2 col-form-label">Type of Leave</label>
                                         <div class="col-sm-10">
                                             <select class="form-control" name = "type_of_leave" id="type_of_leave" aria-label="Default select example" required>
-                                                <option selected disabled>Select a leave type</option>
+                                                <option disabled>Select a leave type</option>
                                                 <option value="0">Unpaid Leave</option>
                                                 <option value="1">Annual Leave</option>
                                                 <option value="2">Medical Leave</option>
