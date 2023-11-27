@@ -1,4 +1,4 @@
-<!--Create Employees-->
+<!--View Leave Request-->
 @extends('layouts.plugins')
 
 @section('title', 'View Leave Record')

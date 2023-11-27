@@ -1,4 +1,4 @@
-<!--Create Employees-->
+<!--View Attendance Reocrd-->
 @extends('layouts.plugins')
 
 @section('title', 'View Attendance Record')

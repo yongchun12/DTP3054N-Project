@@ -23,6 +23,7 @@
     <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
         <li class="nav-item">
+            <!--Logout-->
             <a class="nav-link" href=" {{ url('logout') }} ">
                 <i class="fas fa-sign-out-alt"></i>
             </a>

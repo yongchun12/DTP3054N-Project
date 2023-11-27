@@ -1,4 +1,4 @@
-<!--Create Employees-->
+<!--Create Profile Picture-->
 @extends('layouts.plugins')
 
 @section('title', 'Change Profile Picture')

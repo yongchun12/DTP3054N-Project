@@ -1,4 +1,4 @@
-<!--Leave Request-->
+<!--View Forum / Reply-->
 @extends('layouts.plugins')
 
 @section('title', 'View Topic')

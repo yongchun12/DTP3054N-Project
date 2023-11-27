@@ -1,4 +1,4 @@
-<!--Create Employees-->
+<!--View Department-->
 @extends('layouts.plugins')
 
 @section('title', 'View Department Record')
@@ -37,7 +37,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">
                                     <i class="fa-regular fa-file-lines mr-1"></i>
-                                    View Payroll Record
+                                    View Department
                                 </h3>
                             </div>
 

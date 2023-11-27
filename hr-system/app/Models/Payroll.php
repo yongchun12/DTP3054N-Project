@@ -22,12 +22,7 @@ class Payroll extends Model
             ->orderBy('payroll.id', 'desc');
 
         //search function start
-        if(!empty(Request::get('id')))
-        {
-            $return = $return->where('payroll.id', '=', Request::get('id'));
-        }
-
-        if(!empty(Request::get('employee_id')))
+       if(!empty(Request::get('employee_id')))
         {
             $return = $return->where('users.name', 'like', '%'.Request::get('employee_id').'%');
         }

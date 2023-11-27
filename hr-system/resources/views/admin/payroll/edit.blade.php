@@ -1,4 +1,4 @@
-<!--Create Employees-->
+<!--Edit Payroll Record-->
 @extends('layouts.plugins')
 
 @section('title', 'Edit Payroll Record')
@@ -85,7 +85,7 @@
                                             </div>
 
                                             <input type="number" value="{{ $getRecord->gross_salary }}" name="gross_salary"
-                                                   class="form-control" required placeholder="Enter Gross Salary" id="gross_salary" oninput="calculateDeduction(); calculateAllowance();">
+                                                   class="form-control" required placeholder="Enter Gross Salary" id="gross_salary" oninput="calculateDeduction(); calculateAllowance();" min="0">
                                         </div>
 
                                     </div>
@@ -119,7 +119,7 @@
 
                                         <div class="col-sm-10 input-group">
                                             <input type="number" value="{{ $getRecord->absent_days }}" name="absent_days"
-                                                   class="form-control" required placeholder="Enter Absent Days" id="absent_days" max="22" oninput="calculateDeduction(); calculateAllowance();">
+                                                   class="form-control" required placeholder="Enter Absent Days" id="absent_days" min="0" max="22" oninput="calculateDeduction(); calculateAllowance();">
 
                                             <div class="input-group-append">
                                                 <span class="input-group-text">Days</span>
@@ -138,7 +138,7 @@
 
                                         <div class="col-sm-10 input-group">
                                             <input type="number" value="{{ $getRecord->overtime_hours }}" name="overtime_hours"
-                                                   class="form-control" required placeholder="Enter Overtime" id="overtime" oninput="calculateAllowance()">
+                                                   class="form-control" required placeholder="Enter Overtime" id="overtime" min="0" oninput="calculateAllowance()">
 
                                             <div class="input-group-append">
                                                 <span class="input-group-text">Hours</span>
@@ -161,7 +161,7 @@
                                             </div>
 
                                             <input type="number" value={{ $getRecord->bonus }} name="bonus"
-                                                   class="form-control" required placeholder="Enter Bonus" id="bonus" oninput="calculateAllowance()">
+                                                   class="form-control" required placeholder="Enter Bonus" id="bonus" min="0" oninput="calculateAllowance()">
                                         </div>
 
                                     </div>
@@ -180,7 +180,7 @@
                                             </div>
 
                                             <input type="number" value="{{ $getRecord->medical_allowance }}" name="medical_allowance"
-                                                   class="form-control" required placeholder="Enter Medicare Allowance" id="medical_allowance" oninput="calculateAllowance()">
+                                                   class="form-control" required placeholder="Enter Medicare Allowance" id="medical_allowance" min="0" oninput="calculateAllowance()">
                                         </div>
 
                                     </div>
@@ -199,7 +199,7 @@
                                             </div>
 
                                             <input type="number" value="{{ $getRecord->other_allowance }}" name="other_allowance"
-                                                   class="form-control" required placeholder="Enter Other Allowance" id="other_allowance" oninput="calculateAllowance()">
+                                                   class="form-control" required placeholder="Enter Other Allowance" id="other_allowance" min="0" oninput="calculateAllowance()">
                                         </div>
 
                                     </div>

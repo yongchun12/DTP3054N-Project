@@ -1,4 +1,4 @@
-<!--Create Employees-->
+<!--Edit Employees-->
 @extends('layouts.plugins')
 
 @section('title', 'Edit Employees')
@@ -88,7 +88,7 @@
 
                                         <div class="col-sm-10">
                                             <!--value: old is validation for check the type of the input-->
-                                            <input type="text" value="{{ $getRecord->name }}" name="name" class="form-control" placeholder="Enter First Name" required>
+                                            <input type="text" value="{{ $getRecord->name }}" name="name" class="form-control" placeholder="Enter First Name" maxlength="64" required>
                                         </div>
 
                                     </div>
@@ -99,7 +99,7 @@
                                         <label class="col-sm-2 col-form-label">Last Name</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ $getRecord->last_name }}" name="last_name" class="form-control" placeholder="Enter Last Name" required>
+                                            <input type="text" value="{{ $getRecord->last_name }}" name="last_name" class="form-control" placeholder="Enter Last Name" maxlength="64" required>
                                         </div>
 
                                     </div>
@@ -113,7 +113,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="email" value="{{ $getRecord->email }}" name="email" class="form-control" placeholder="Enter Email" pattern="^[a-zA-Z0-9]+@hr-system\.[a-zA-z]+$" readonly >
+                                            <input type="email" value="{{ $getRecord->email }}" name="email" class="form-control" placeholder="Enter Email" readonly >
                                             <span style="color: red">
                                             <!--Validation that if got same email-->
                                             {{ $errors->first('email') }}
@@ -128,7 +128,7 @@
                                         <label class="col-sm-2 col-form-label">Phone Number</label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->phone_number }}" name="phone_number" class="form-control" placeholder="Enter Phone Number" required>
+                                            <input type="number" value="{{ $getRecord->phone_number }}" name="phone_number" class="form-control" placeholder="Enter Phone Number" maxlength="20" required>
                                             <span style="color: red">
                                             <!--Validation that if got same phone number-->
                                             {{ $errors->first('phone_number') }}
@@ -143,7 +143,7 @@
                                         <label class="col-sm-2 col-form-label">Address</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ $getRecord->address }}" name="address" class="form-control" placeholder="Enter Address">
+                                            <input type="text" value="{{ $getRecord->address }}" name="address" class="form-control" placeholder="Enter Address" maxlength="100">
                                             <span style="color: red">
                                         </span>
                                         </div>
@@ -272,7 +272,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->annual_leaveDays }}" name="annual_leaveDays" class="form-control" placeholder="Default: 8 Days" required>
+                                            <input type="number" value="{{ $getRecord->annual_leaveDays }}" name="annual_leaveDays" class="form-control" placeholder="Default: 8 Days" max="24" maxlength="2" required>
                                         </div>
 
                                     </div>
@@ -286,7 +286,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ $getRecord->medical_leaveDays }}" name="medical_leaveDays" class="form-control" placeholder="Default: 14 Days" required>
+                                            <input type="number" value="{{ $getRecord->medical_leaveDays }}" name="medical_leaveDays" class="form-control" placeholder="Default: 14 Days" max="60" maxlength="2" required>
                                         </div>
 
                                     </div>
@@ -314,7 +314,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ $getRecord->bank_acc }}" name="bank_acc" class="form-control" placeholder="Enter Bank Account" required>
+                                            <input type="text" value="{{ $getRecord->bank_acc }}" name="bank_acc" class="form-control" placeholder="Enter Bank Account" maxlength="16" required>
                                         </div>
 
                                     </div>
@@ -328,7 +328,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ $getRecord->epf_no }}" name="epf_no" class="form-control" placeholder="Enter EPF Number" required>
+                                            <input type="text" value="{{ $getRecord->epf_no }}" name="epf_no" class="form-control" placeholder="Enter EPF Number" maxlength="12" required>
                                         </div>
 
                                     </div>
@@ -342,7 +342,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ $getRecord->pcb_no }}" name="pcb_no" class="form-control" placeholder="Enter EPF Number" required>
+                                            <input type="text" value="{{ $getRecord->pcb_no }}" name="pcb_no" class="form-control" placeholder="Enter EPF Number" maxlength="12" required>
                                         </div>
 
                                     </div>
@@ -356,7 +356,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ $getRecord->ic_no }}" name="ic_no" class="form-control" placeholder="Enter EPF Number" required>
+                                            <input type="text" value="{{ $getRecord->ic_no }}" name="ic_no" class="form-control" placeholder="Enter EPF Number" maxlength="14" required>
                                         </div>
 
                                     </div>
@@ -385,6 +385,16 @@
     @section('script')
         <script>
             bsCustomFileInput.init();
+
+            // Make sure the input value (type=number) is not exceed the max length
+            document.querySelectorAll('input[type="number"]').forEach(input =>
+                input.oninput = () => {
+                    // "Replace all commas and dots"
+                    if(input.value.length > input.maxLength) {
+                        input.value = input.value.slice(0, input.maxLength)
+                    }
+                }
+            );
         </script>
     @endsection
 

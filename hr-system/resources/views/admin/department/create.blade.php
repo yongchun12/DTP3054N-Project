@@ -1,4 +1,4 @@
-<!--Create Payroll Record-->
+<!--Create Department-->
 @extends('layouts.plugins')
 
 @section('title', 'Create Department')

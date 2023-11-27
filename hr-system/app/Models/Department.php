@@ -15,16 +15,11 @@ class Department extends Model
     static public function getRecord()
     {
         $return = self::select('department.*', 'users.name')
-            #Join the table from users ID and Department Table (employee ID)
+            #Join the table from users ID and Department Table (manager_id)
             ->join('users', 'users.id', '=', 'department.manager_id')
             ->orderBy('department.created_at', 'desc');
 
         //search function start
-        if(!empty(Request::get('id')))
-        {
-            $return = $return->where('department.id', '=', Request::get('id'));
-        }
-
         if(!empty(Request::get('department_name')))
         {
             $return = $return->where('department.department_name', 'like', '%'.Request::get('department_name').'%');

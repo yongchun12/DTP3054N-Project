@@ -1,4 +1,4 @@
-<!--Table List Employees-->
+<!--Department List-->
 @extends('layouts.plugins')
 
 @section('title', 'Department List')
@@ -56,12 +56,6 @@
                                     <div class="row">
 
                                         <!--Search-->
-                                        <!--ID-->
-                                        <div class="form-group col-md-2">
-                                            <label>ID</label>
-                                            <input type="text" value="{{ Request()->id }}" name="id" class="form-control" placeholder="ID">
-                                        </div>
-
                                         <!--Department Name-->
                                         <div class="form-group col-md-4">
                                             <label>Department Name</label>

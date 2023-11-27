@@ -1,4 +1,4 @@
-<!--Table List Employees-->
+<!--Leave Application History-->
 @extends('layouts.plugins')
 
 @section('title', 'Leave History')
@@ -42,12 +42,6 @@
                             <form method="get" action="">
                                 <div class="card-body">
                                     <div class="row">
-
-                                        <!--ID-->
-                                        <div class="form-group col-md-1">
-                                            <label>ID</label>
-                                            <input type="text" name="id" class="form-control" placeholder="Enter ID" value="{{ Request()->id }}">
-                                        </div>
 
                                         <!--Employee Name-->
                                         <div class="form-group col-md-3">

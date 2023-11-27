@@ -1,4 +1,4 @@
-<!--Create Employees-->
+<!--Edit Department-->
 @extends('layouts.plugins')
 
 @section('title', 'Edit Department Record')

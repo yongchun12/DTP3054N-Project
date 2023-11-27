@@ -1,3 +1,4 @@
+<!--Dashboard-->
 @extends('layouts.plugins')
 
 @section('title', 'Dashboard')

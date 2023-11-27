@@ -1,4 +1,4 @@
-<!--Create Employees-->
+<!--Reject Leave Application / Provide Reason-->
 @extends('layouts.plugins')
 
 @section('title', 'Reject Leave')

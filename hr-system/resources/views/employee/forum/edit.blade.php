@@ -1,4 +1,4 @@
-<!--Leave Request-->
+<!--Edit Forum Topic-->
 @extends('layouts.plugins')
 
 @section('title', 'Edit Forum Topic')

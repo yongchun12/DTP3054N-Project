@@ -1,4 +1,4 @@
-<!--Leave Request-->
+<!--Profile-->
 @extends('layouts.plugins')
 
 @section('title', 'Profile')

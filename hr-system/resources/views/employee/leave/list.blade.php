@@ -1,4 +1,4 @@
-<!--Leave Request-->
+<!--Leave Application List-->
 @extends('layouts.plugins')
 
 @section('title', 'Leave Application')

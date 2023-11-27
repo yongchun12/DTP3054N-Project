@@ -38,17 +38,13 @@ class Attendance extends Model
             ->orderBy('attendance.created_at', 'desc');
 
              //search function start
-            if(!empty(Request::get('id')))
-            {
-                $return = $return->where('attendance.id', '=', Request::get('id'));
-            }
-
             //Check Name
             if(!empty(Request::get('employee_id')))
             {
                 $return = $return->where('users.name', 'like', '%'.Request::get('employee_id').'%');
             }
 
+            //Check Date
             if(!empty(Request::get('date')))
             {
                 $return = $return->where('attendance.date', Request::get('date'));

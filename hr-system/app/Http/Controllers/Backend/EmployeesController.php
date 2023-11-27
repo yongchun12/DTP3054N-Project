@@ -52,9 +52,6 @@ class EmployeesController extends Controller
 
     public function create_post(Request $request)
     {
-//        #Show the details of the form
-//        dd($request->all());
-
         //Valiadation
         $user = request()->validate([
             'staff_id' => 'required|unique:users',
@@ -69,7 +66,6 @@ class EmployeesController extends Controller
             'department_id' => 'required',
             'category_employee' => 'required',
             'bank_acc' => 'required|unique:users',
-            'bank_name' => 'required',
             'epf_no' => 'required|unique:users',
             'pcb_no' => 'required|unique:users',
             'ic_no' => 'required|unique:users',
@@ -170,7 +166,6 @@ class EmployeesController extends Controller
 
     public function edit_update($id, Request $request)
     {
-
         //Valiadation
         //If the email is same with the current email, it will skip the unique validation
         $user = request()->validate([

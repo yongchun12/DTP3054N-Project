@@ -1,4 +1,4 @@
-<!--Leave Request-->
+<!--Create Leave Request-->
 @extends('layouts.plugins')
 
 @section('title', 'Create Leave Request')

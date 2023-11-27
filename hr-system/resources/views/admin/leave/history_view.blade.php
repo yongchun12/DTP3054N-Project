@@ -1,4 +1,4 @@
-<!--Create Employees-->
+<!--View Leave Application-->
 @extends('layouts.plugins')
 
 @section('title', 'View Leave History')

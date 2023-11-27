@@ -1,4 +1,4 @@
-<!--Create Payroll Record-->
+<!--Edit Attendance Record-->
 @extends('layouts.plugins')
 
 @section('title', 'Edit Attendance Record')

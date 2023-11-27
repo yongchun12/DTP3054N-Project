@@ -40,7 +40,7 @@
                                 </h3>
                             </div>
 
-                            <form class="form-horizontal" method="post" accept="{{ url('admin/employees/create') }}" enctype="multipart/form-data">
+                            <form class="form-horizontal" method="post" action="{{ url('admin/employees/create') }}" enctype="multipart/form-data">
 
                                 {{ csrf_field() }}
 
@@ -104,7 +104,7 @@
 
                                         <div class="col-sm-10">
                                             <!--value: old is validation for check the type of the input-->
-                                            <input type="text" value="{{ old('name') }}" name="name" class="form-control" required placeholder="Enter First Name">
+                                            <input type="text" value="{{ old('name') }}" name="name" class="form-control" placeholder="Enter First Name" maxlength="64" required>
 
                                         </div>
 
@@ -119,7 +119,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ old('last_name') }}" name="last_name" class="form-control" placeholder="Enter Last Name">
+                                            <input type="text" value="{{ old('last_name') }}" name="last_name" class="form-control" placeholder="Enter Last Name" maxlength="64" required>
                                         </div>
 
                                     </div>
@@ -133,7 +133,10 @@
                                         </label>
 
                                         <div class="col-sm-10 input-group">
-                                            <input type="text" value="{{ old('prefix_email') }}" name="prefix_email" id="prefix_email" oninput="passEmail()" class="form-control" placeholder="Enter Username" pattern="[a-zA-Z0-9]+" required>
+                                            <input type="text" value="{{ old('prefix_email') }}" name="prefix_email" id="prefix_email" oninput="passEmail()" class="form-control" placeholder="Enter Username"
+                                                   pattern="[a-zA-Z0-9]+"
+                                                   maxlength="50"
+                                                   required>
 
                                             <div class="input-group-append">
                                                 <span class="input-group-text">@hr-system.com</span>
@@ -163,8 +166,19 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
-                                            <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                                        <div class="col-sm-10 input-group">
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password"
+                                                   pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&]).{8,}"
+                                                   oninput="this.setCustomValidity('')"
+                                                   oninvalid="this.setCustomValidity('Please use the format with 1 Uppercase, 1 Lowercase, 1 Number and 1 Special Character.')"
+                                                   required>
+
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" onclick="password_show_hide()" style="cursor: pointer">
+                                                    <i class="fa-solid fa-eye-slash" id="hide_eye"></i>
+                                                    <i class="fa-solid fa-eye d-none" id="show_eye"></i>
+                                                </span>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -183,7 +197,7 @@
                                                 <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                             </div>
 
-                                            <input type="number" value="{{ old('phone_number') }}" name="phone_number" class="form-control" placeholder="Enter Phone Number">
+                                            <input type="number" value="{{ old('phone_number') }}" name="phone_number" class="form-control" placeholder="Enter Phone Number" maxlength="20" required>
                                         </div>
 
                                         <div class="col-sm-2">
@@ -204,7 +218,7 @@
                                         <label class="col-sm-2 col-form-label">Address</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ old('address') }}" name="address" class="form-control" placeholder="Enter Address">
+                                            <input type="text" value="{{ old('address') }}" name="address" class="form-control" placeholder="Enter Address" maxlength="100" required>
                                             <span style="color: red">
                                         </span>
                                         </div>
@@ -327,7 +341,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('annual_leaveDays') }}" name="annual_leaveDays" class="form-control" placeholder="Default: 8 Days" required>
+                                            <input type="number" value="{{ old('annual_leaveDays') }}" name="annual_leaveDays" class="form-control" placeholder="Default: 8 Days" max="24" maxlength="2" required>
                                         </div>
 
                                     </div>
@@ -341,7 +355,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('medical_leaveDays') }}" name="medical_leaveDays" class="form-control" placeholder="Default: 14 Days" required>
+                                            <input type="number" value="{{ old('medical_leaveDays') }}" name="medical_leaveDays" class="form-control" placeholder="Default: 14 Days" max="60" maxlength="2" required>
                                         </div>
 
                                     </div>
@@ -369,7 +383,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('bank_acc') }}" name="bank_acc" class="form-control" placeholder="Enter Bank Account" required>
+                                            <input type="number" value="{{ old('bank_acc') }}" name="bank_acc" class="form-control" placeholder="Enter Bank Account" maxlength="16" required>
                                             <span style="color: red">
                                             <!--Validation that if got same bank_acc-->
                                             {{ $errors->first('bank_acc') }}
@@ -387,7 +401,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('ic_no') }}" name="ic_no" class="form-control" placeholder="Enter IC Number. Example: 030101070125" required>
+                                            <input type="number" value="{{ old('ic_no') }}" name="ic_no" class="form-control" placeholder="Enter IC Number. Example: 030101070125" maxlength="12" required>
                                             <span style="color: red">
                                             <!--Validation that if got same ic_no-->
                                             {{ $errors->first('ic_no') }}
@@ -405,7 +419,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('epf_no') }}" name="epf_no" class="form-control" placeholder="Enter EPF Number" required>
+                                            <input type="number" value="{{ old('epf_no') }}" name="epf_no" class="form-control" placeholder="Enter EPF Number" maxlength="12" required>
                                             <span style="color: red">
                                             <!--Validation that if got same epf_no-->
                                             {{ $errors->first('epf_no') }}
@@ -423,7 +437,7 @@
                                         </label>
 
                                         <div class="col-sm-10">
-                                            <input type="number" value="{{ old('pcb_no') }}" name="pcb_no" class="form-control" placeholder="Enter PCB Number" required>
+                                            <input type="number" value="{{ old('pcb_no') }}" name="pcb_no" class="form-control" placeholder="Enter PCB Number" maxlength="14" required>
                                             <span style="color: red">
                                             <!--Validation that if got same pcb_no-->
                                             {{ $errors->first('pcb_no') }}
@@ -455,6 +469,16 @@
 
         <script>
             bsCustomFileInput.init();
+
+            // Make sure the input value (type=number) is not exceed the max length
+            document.querySelectorAll('input[type="number"]').forEach(input =>
+                input.oninput = () => {
+                    // "Replace all commas and dots"
+                    if(input.value.length > input.maxLength) {
+                        input.value = input.value.slice(0, input.maxLength)
+                    }
+                }
+            );
         </script>
 
     @endsection

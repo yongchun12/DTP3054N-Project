@@ -1,3 +1,4 @@
+<!--PDF Export Payroll Record-->
 @extends('layouts.plugins')
 
 @section('title', 'PDF Payslip')
@@ -27,6 +28,7 @@
     $net_pay = $total_earning - $total_deduction;
     ?>
 
+    <!--Button-->
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">

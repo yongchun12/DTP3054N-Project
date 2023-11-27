@@ -38,6 +38,7 @@ class DashboardController extends Controller {
             //Forum Posts
             $topics = Forum::select('forum.*', 'users.name', 'users.profile_picture')
                 ->join('users', 'users.id', '=', 'forum.employee_id')
+                //only show the topic of the current user user post
                 ->where('forum.employee_id', Auth::user()->id)
                 ->orderBy('forum.created_at', 'desc')
                 ->paginate(2);
@@ -48,7 +49,11 @@ class DashboardController extends Controller {
             // Loop through each topic and count the replies for that topic
             foreach ($topics as $topic) {
                 $forumId = $topic->id; // Assuming 'id' is the primary key for your Forum model
+
+                //to detect whether the forum_id is exist in the reply table
                 $replyCount = Reply::where('forum_id', $forumId)->count();
+
+                //store the forum_id and the reply count into the array
                 $topicReplyCounts[$forumId] = $replyCount;
             }
 

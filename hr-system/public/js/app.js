@@ -1,4 +1,36 @@
-//---------------------------Dashboard--------------------------------//
+//---------------------------Password--------------------------------//
+function password_show_hide() {
+    var x = document.getElementById("password");
+    var hide_eye = document.getElementById("hide_eye");
+    var show_eye = document.getElementById("show_eye");
+    show_eye.classList.remove("d-none");
+    if (x.type === "password") {
+        x.type = "text";
+        hide_eye.style.display = "none";
+        show_eye.style.display = "block";
+    } else {
+        x.type = "password";
+        hide_eye.style.display = "block";
+        show_eye.style.display = "none";
+    }
+}
+
+//Change Password Page
+function confirm_password_show_hide() {
+    var x = document.getElementById("confirm_password");
+    var hide_eye = document.getElementById("hide_eye");
+    var show_eye = document.getElementById("show_eye");
+    show_eye.classList.remove("d-none");
+    if (x.type === "password") {
+        x.type = "text";
+        hide_eye.style.display = "none";
+        show_eye.style.display = "block";
+    } else {
+        x.type = "password";
+        hide_eye.style.display = "block";
+        show_eye.style.display = "none";
+    }
+}
 
 //---------------------------Employee--------------------------------//
 //Add EMP- Prefix to Staff ID (Employee Create Page)
@@ -150,7 +182,20 @@ function dateDifference() {
 
 //----------------------------Leave--------------------------------//
 
-//Min Date for Leave Request (From Date) - (Leave Request - Employee Page)
+function setMinDate() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("from_leaveDate").setAttribute("min", today);
+}
+
+// Set the minimum date when the script loads
+setMinDate();
+
+//Set Min Date for Leave Request (From Date) - (Leave Request - Employee Page)
 function updateToDateMin() {
     var fromDate = document.getElementById('from_leaveDate').value;
     document.getElementById('to_leaveDate').min = fromDate;

@@ -1,4 +1,4 @@
-<!--Leave Request-->
+<!--Edit Reply-->
 @extends('layouts.plugins')
 
 @section('title', 'Edit Reply')

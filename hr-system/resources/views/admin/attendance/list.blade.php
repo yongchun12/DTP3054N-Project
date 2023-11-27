@@ -25,7 +25,7 @@
                             Excel Export
                         </a>
 
-                        <!--Add Payroll Record-->
+                        <!--Add Attendance Record-->
                         <a href=" {{ url('admin/attendance/create') }} " class="btn btn-primary" style="margin-left: 5px;">
                             <i class="fa-solid fa-plus mr-1"></i>
                             Add Attendance Record
@@ -58,13 +58,7 @@
                             <form method="get" action="">
                                 <div class="card-body">
                                     <div class="row">
-
-                                        <!--ID-->
-                                        <div class="form-group col-md-3">
-                                            <label>ID</label>
-                                            <input type="text" name="id" class="form-control" placeholder="Enter ID" value="{{ Request()->id }}">
-                                        </div>
-
+                                        
                                         <!--Employee Name-->
                                         <div class="form-group col-md-3">
                                             <label>Employee Name</label>

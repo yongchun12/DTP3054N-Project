@@ -1,4 +1,4 @@
-<!--Create Employees-->
+<!--Change Password-->
 @extends('layouts.plugins')
 
 @section('title', 'Change Password')
@@ -50,9 +50,18 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
                                             <input type="password" value="{{ old('password') }}" name="password" id="password"
-                                                   class="form-control" placeholder="Enter Password">
+                                                   class="form-control" placeholder="Enter Password" required
+                                                   pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&]).{8,}"
+                                                   oninvalid="toastr.error('Please use the format with 1 Uppercase, 1 Lowercase, 1 Number and 1 Special Character.')">
+
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" onclick="password_show_hide()" style="cursor: pointer">
+                                                    <i class="fa-solid fa-eye-slash" id="hide_eye"></i>
+                                                    <i class="fa-solid fa-eye d-none" id="show_eye"></i>
+                                                </span>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -65,9 +74,16 @@
                                             <span style="color: red">*</span>
                                         </label>
 
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10 input-group">
                                             <input type="password" id="confirm_password"
                                                    class="form-control" placeholder="Confirm Password">
+
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" onclick="confirm_password_show_hide()" style="cursor: pointer">
+                                                    <i class="fa-solid fa-eye-slash" id="hide_eye"></i>
+                                                    <i class="fa-solid fa-eye d-none" id="show_eye"></i>
+                                                </span>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -109,7 +125,6 @@
                 $('#pic_form').on('submit', function (event) {
                     if ($('#password').val() != $('#confirm_password').val()) {
                         event.preventDefault(); // Prevent form submission
-                        // alert('Passwords do not match.'); // Alert or any other feedback
 
                         toastr.error('Passwords do not match.');
 

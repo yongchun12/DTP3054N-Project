@@ -1,4 +1,4 @@
-<!--Create Payroll Record-->
+<!--Create Position-->
 @extends('layouts.plugins')
 
 @section('title', 'Create Position')

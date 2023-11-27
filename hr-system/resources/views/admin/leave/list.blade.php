@@ -1,4 +1,4 @@
-<!--Leave Request-->
+<!--Pending Leave Request-->
 @extends('layouts.plugins')
 
 @section('title', 'Pending Leave Request')

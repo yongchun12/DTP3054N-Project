@@ -1,4 +1,4 @@
-<!--Leave Request-->
+<!--Forum List-->
 @extends('layouts.plugins')
 
 @section('title', 'Forum')

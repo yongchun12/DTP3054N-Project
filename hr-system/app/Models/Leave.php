@@ -34,11 +34,6 @@ class Leave extends Model
             ->join('users', 'users.id', '=', 'leave.employee_id');
 
             //search function start
-        if(!empty(Request::get('id')))
-        {
-            $return = $return->where('leave.id', '=', Request::get('id'));
-        }
-
         if(!empty(Request::get('name')))
         {
             $return = $return->where('users.name', 'like', '%'.Request::get('name').'%');

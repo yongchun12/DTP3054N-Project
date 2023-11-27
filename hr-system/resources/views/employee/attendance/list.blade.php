@@ -1,4 +1,4 @@
-<!--Leave Request-->
+<!--Attendance list-->
 @extends('layouts.plugins')
 
 @section('title', 'Attendance List')

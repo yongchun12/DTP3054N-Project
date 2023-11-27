@@ -1,4 +1,4 @@
-<!--Create Employees-->
+<!--View Employees-->
 @extends('layouts.plugins')
 
 @section('title', 'View Employee')

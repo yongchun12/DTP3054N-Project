@@ -19,11 +19,6 @@ class Position extends Model
             ->orderBy('position.created_at', 'desc');
 
         //search function start
-        if(!empty(Request::get('id')))
-        {
-            $return = $return->where('position.id', '=', Request::get('id'));
-        }
-
         if(!empty(Request::get('position_name')))
         {
             $return = $return->where('position.position_name', 'like', '%'.Request::get('position_name').'%');
