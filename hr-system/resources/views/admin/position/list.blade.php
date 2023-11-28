@@ -65,7 +65,7 @@
 
                                         <!--Manager Name-->
                                         <div class="form-group col-md-4">
-                                            <label>Manager Name</label>
+                                            <label>Department Name</label>
                                             <input type="text" value="{{ Request()->department_id }}" name="department_id" class="form-control" placeholder="Department Name">
                                         </div>
 
