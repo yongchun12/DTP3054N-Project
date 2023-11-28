@@ -1,7 +1,3 @@
-<!--
-    Template: https://mdbootstrap.com/docs/standard/extended/login/
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +21,7 @@
 <!--Body-->
 <body>
 
-<section class="vh-100" style="background-color: #e9ecef;">
+<section class="vh-100" style="background-color: whitesmoke;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
 
@@ -71,7 +67,7 @@
                                                 <img src="../img/Project%20Logo.png" alt="Logo" width="100" height="100">
                                             </div>
 
-                                            <div class="col-8" style="margin-bottom: 14px;">
+                                            <div class="col-8" style="margin-bottom: 14px; font-family: 'Avenir', Sans-Serif;">
                                                 <h2>Potato HR System</h2>
                                             </div>
 
