@@ -88,11 +88,16 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control form-control-lg"/>
+                                        <input type="password" name="password" id="password" class="form-control form-control-lg"/>
                                     </div>
 
                                     <!--Error message (Password)-->
                                     <span style="color: red">{{ $errors->first('password') }}</span>
+
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="passwordCheck">
+                                        <label class="form-check-label" for="passwordCheck">Show Password</label>
+                                    </div>
 
                                     <!--Need to type:submit to submit this form to server-->
                                     <div class="pt-1 mb-3 d-grid">
@@ -117,6 +122,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
+<script>
+    //Show Password
+    document.getElementById('passwordCheck').addEventListener('click', function(e) {
+        var passwordInput = document.getElementById('password');
+        if (this.checked) {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    });
+</script>
 
 </body>
 
