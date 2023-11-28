@@ -90,7 +90,7 @@
 
                                     <!--Card Footer-->
                                     <div class="card-footer">
-                                        <a href=" {{ url('admin/dashboard') }} " class="btn btn-default"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
+                                        <a href=" {{ url('employee/dashboard') }} " class="btn btn-default"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
                                         <button type="submit" class="btn btn-primary float-right"><i class="fa-regular fa-pen-to-square mr-2"></i>Update</button>
                                     </div>
 
