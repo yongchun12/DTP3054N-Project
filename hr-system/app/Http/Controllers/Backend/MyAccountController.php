@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Forum;
 use App\Models\Reply;
 use App\Models\Department;
@@ -50,6 +51,8 @@ class MyAccountController extends Controller
 
             if (!empty($user->profile_picture) && file_exists(public_path('img/profile_picture/'.$user->profile_picture))) {
                 unlink(public_path('img/profile_picture/'.$user->profile_picture));
+
+                Storage::delete($user->profile_picture);
             }
 
             //Get the file from the form with the name
@@ -140,6 +143,8 @@ class MyAccountController extends Controller
 
             if (!empty($user->profile_picture) && file_exists(public_path('img/profile_picture/'.$user->profile_picture))) {
                 unlink(public_path('img/profile_picture/'.$user->profile_picture));
+
+                Storage::delete($user->profile_picture);
             }
 
             //Get the file from the form with the name

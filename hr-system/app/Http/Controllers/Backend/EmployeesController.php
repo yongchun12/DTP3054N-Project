@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Mail\EmployeesNewCreateMail;
 
@@ -186,6 +187,8 @@ class EmployeesController extends Controller
 
             if (!empty($user->profile_picture) && file_exists(public_path('img/profile_picture/'.$user->profile_picture))) {
                 unlink(public_path('img/profile_picture/'.$user->profile_picture));
+
+                Storage::delete($user->profile_picture);
             }
 
             //Get the file from the form with the name
