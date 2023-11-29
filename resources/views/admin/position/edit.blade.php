@@ -97,7 +97,7 @@
 
                                     <!--Card Footer-->
                                     <div class="card-footer">
-                                        <a href=" {{ url('admin/department') }} " class="btn btn-default"><i class="fa-solid fa-xmark mr-1"></i>Cancel</a>
+                                        <a href=" {{ url('admin/position') }} " class="btn btn-default"><i class="fa-solid fa-xmark mr-1"></i>Cancel</a>
                                         <button type="submit" class="btn btn-primary float-right"><i class="fa-regular fa-pen-to-square mr-2"></i>Update</button>
                                     </div>
 

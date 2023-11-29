@@ -115,7 +115,7 @@
 
                                 <!--Card Footer-->
                                 <div class="card-footer">
-                                    <a href=" {{ url('admin/department') }} " class="btn btn-default"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
+                                    <a href=" {{ url('admin/position') }} " class="btn btn-default"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
                                 </div>
 
                             </form>
