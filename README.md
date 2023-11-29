@@ -68,25 +68,28 @@ Follow these steps to let this repository run in your localhost:
 ```bash
   git clone https://github.com/yongchun12/DTP3054N-Project.git
 ```
-
+---
 2. Install Dependencies
 
 ```bash
   composer install
 ```
-
+---
 Some of the people may faced the problem that shows **Your php version (8.1.2) does not satisfy that requirement**. May try this command:
 
 ```bash
   composer install --ignore-platform-reqs
 ```
-
+---
 3. Environment Configuration (**.env** file)
 
 ```bash
   cp .env.example .env
 ```
+
 Open the **.env** file and set your database and mail credentails or anyu other environment specific configuration.
+
+---
 
 4. Generate Application Key
 
@@ -94,6 +97,8 @@ Open the **.env** file and set your database and mail credentails or anyu other 
   php artisan key:generate
 ```
 Generate a new application key to securing this application.
+
+---
 
 5. Run Database Migration and Seeders
 
@@ -110,6 +115,8 @@ Optionally, you can migrate the default data and table one of the time by using:
 ```bash
   php artisan migrate --seed
 ```
+
+---
 
 6. Run web application
 This will start the server at **http://localhost:8000**
