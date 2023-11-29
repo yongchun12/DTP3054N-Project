@@ -5,7 +5,6 @@ Human Resource Management System (HRMS) is a software application used to store 
 
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
 - [Features](#features)
 - [Default Admin User](#default-admin-user)
 - [Prerequisites](#prerequisites)
