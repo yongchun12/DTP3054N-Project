@@ -57,7 +57,7 @@ Before start to install this web application, please ensure you have the followi
 - [Jetbrains IntelliJ IDEA](https://www.jetbrains.com/idea/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-> Refercences: [Laravel Installation Guide](https://laravel.com/docs/10.x/installation)
+> Refercence: [Laravel Installation Guide](https://laravel.com/docs/10.x/installation)
 
 ## Installation
 
