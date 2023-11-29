@@ -46,7 +46,7 @@
 
                                 <h3 class="card-title">
                                     <i class="fa-solid fa-magnifying-glass mr-1"></i>
-                                    Search Department
+                                    Search Position
                                 </h3>
 
                             </div>

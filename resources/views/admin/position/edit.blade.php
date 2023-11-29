@@ -36,7 +36,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">
                                     <i class="fa-regular fa-pen-to-square mr-1"></i>
-                                    Edit Department Record
+                                    Edit Position Record
                                 </h3>
                             </div>
 
