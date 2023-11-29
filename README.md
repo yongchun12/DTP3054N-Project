@@ -2,11 +2,21 @@
 # DPT3054N - Human Resource Management System
 
 Human Resource Management System (HRMS) is a software application used to store employee data and perform list of human resource functions, such as department, position, leave, attendance, payroll, etc. 
+
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Features](#features)
+- [Default Admin User](#default-admin-user)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+
 ## Features
 
 - User authentication system with seperated site (Admin / Employee Site)
 - Payroll Management with Automated PDF Export Features
 - Forum (Discussion Platform)
+- Attendance Management
 - Leave Application with Approval Process
 
 **Admin Site**
@@ -23,6 +33,13 @@ Human Resource Management System (HRMS) is a software application used to store 
 - View Attendance Record
 - Apply Leave Application
 - Forum
+
+## Default Admin User
+
+| Email  | Password |
+| ------------- | ------------- |
+| admin@hr-system.com | 123456789 |
+
 ## Prerequisites
 
 Before start to install this web application, please ensure you have the following software or JDK installed on your system.
@@ -39,6 +56,9 @@ Before start to install this web application, please ensure you have the followi
 - [Jetbrains PHPStorm](https://www.jetbrains.com/phpstorm/)
 - [Jetbrains IntelliJ IDEA](https://www.jetbrains.com/idea/)
 - [Visual Studio Code](https://code.visualstudio.com/)
+
+> Refercences: [Laravel Installation Guide](https://laravel.com/docs/10.x/installation)
+
 ## Installation
 
 Follow these steps to let this repository run in your localhost:
@@ -97,10 +117,3 @@ This will start the server at **http://localhost:8000**
 ```bash
   php artisan serve
 ```
-
-
-## Default Admin User
-
-| Email  | Password |
-| ------------- | ------------- |
-| admin@hr-system.com | 123456789 |
