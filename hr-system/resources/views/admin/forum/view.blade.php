@@ -75,7 +75,7 @@
                                 <strong>{{ $getRecord->title }}</strong>
 
                                 <!--Description-->
-                                <p>{{ $getRecord->description }}</p>
+                                <p style="white-space: pre-line">{{ $getRecord->description }}</p>
 
                                 <span class="float-right text-muted">{{ $getTopicReplyCount }} Comments</span>
                             </div>
