@@ -15,13 +15,14 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!--Title-->
-    <title>HR System | Forget Password</title>
+    <title>HR System | Login</title>
 </head>
 
 <!--Body-->
 <body>
 
-<section class="vh-100" style="background-color: whitesmoke;">
+<section class="vh-100" style="background-image: url({{ asset('img/4907157.jpg') }}); background-repeat: no-repeat; background-size: cover;
+    background-attachement: fixed;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
 
@@ -53,43 +54,60 @@
                                     </div>
                                 @endif
 
-
                                 <!--Action in this form section-->
-                                <form action="{{ url('forget-password/post') }}" method="post">
+                                <form action="{{  url('login_post') }}" method="post">
 
+                                    <!--Cross Site Request Forgery (CSRF) Protection-->
                                     {{ csrf_field() }}
 
-                                    <div class="container text-center">
-                                        <div class="row align-items-center">
+                                        <div class="container text-center">
+                                            <div class="row align-items-center">
 
-                                            <!--Logo-->
-                                            <div class="col-2 mb-4">
-                                                <img src="../img/Project%20Logo.png" alt="Logo" width="100" height="100">
+                                                <!--Logo-->
+                                                <div class="col-2 mb-4">
+                                                    <img src="../img/Project%20Logo.png" alt="Logo" width="100" height="100">
+                                                </div>
+
+                                                <div class="col-8" style="margin-bottom: 14px; font-family: 'Avenir', Sans-Serif; ">
+                                                    <h2>Potato HR System</h2>
+                                                </div>
+
                                             </div>
-
-                                            <div class="col-8" style="margin-bottom: 14px; font-family: 'Avenir', Sans-Serif;">
-                                                <h2>Potato HR System</h2>
-                                            </div>
-
                                         </div>
-                                    </div>
 
-                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Forget Password</h5>
+
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your
+                                        account</h5>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label">Email address</label>
                                         <input type="email" name="email" class="form-control form-control-lg"/>
                                     </div>
 
+                                    <!--Error message (Email)-->
+                                    <span style="color: red">{{ $errors->first('email') }}</span>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" name="password" id="password" class="form-control form-control-lg"/>
+                                    </div>
+
+                                    <!--Error message (Password)-->
+                                    <span style="color: red">{{ $errors->first('password') }}</span>
+
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="passwordCheck">
+                                        <label class="form-check-label" for="passwordCheck">Show Password</label>
+                                    </div>
+
                                     <!--Need to type:submit to submit this form to server-->
                                     <div class="pt-1 mb-3 d-grid">
-                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Forgot Password
-                                        </button>
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
                                     </div>
 
                                 </form>
 
-                                <a class="small text-muted" href={{ url('/') }}>Back to Login?</a>
+                                <a class="small text-muted" href={{ url('forget_password') }}>Forgot password?</a>
                                 </form>
 
                             </div>
@@ -105,6 +123,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
+<script>
+    //Show Password
+    document.getElementById('passwordCheck').addEventListener('click', function(e) {
+        var passwordInput = document.getElementById('password');
+        if (this.checked) {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    });
+</script>
 
 </body>
 
