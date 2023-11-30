@@ -43,7 +43,7 @@ Human Resource Management System (HRMS) is a software application used to store 
 
 Before start to install this web application, please ensure you have the following software or JDK installed on your system.
 
-**For Windows User**+
+**For Windows User**
 - [PHP (Version 7.4 or higher)](https://www.php.net/downloads.php)
 - [Composer](https://getcomposer.org/download/)
 - MYSQL (or any other compatible database system)
