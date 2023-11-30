@@ -62,6 +62,7 @@ class AttendanceExport implements FromCollection, WithHeadings, WithMapping, Sho
             "Date",
             "Punch In Time",
             "Punch Out Time",
+            "Duration",
             "Created At",
             "Updated At",
         ];
