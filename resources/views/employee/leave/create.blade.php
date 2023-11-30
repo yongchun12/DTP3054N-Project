@@ -47,7 +47,11 @@
 
                                     <!--Type of Leave-->
                                     <div class="form-group row">
-                                        <label for="type_of_leave" class="col-sm-2 col-form-label">Type of Leave</label>
+                                        <label for="type_of_leave" class="col-sm-2 col-form-label">
+                                            Type of Leave
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
                                         <div class="col-sm-10">
                                             <select class="form-control" name = "type_of_leave" id="type_of_leave" aria-label="Default select example" required>
                                                 <option disabled>Select a leave type</option>
@@ -60,7 +64,11 @@
 
                                     <!--Description-->
                                     <div class="form-group row">
-                                        <label for="description" class="col-sm-2 col-form-label">Description</label>
+                                        <label for="description" class="col-sm-2 col-form-label">
+                                            Description
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
                                         <div class="col-sm-10">
 
                                             <textarea class="form-control" name="description" id="description" placeholder="Enter the description" required></textarea>
@@ -71,7 +79,11 @@
                                         <!--If want apply for one day leave, just put the same day, if want two days or above then put two different days-->
                                     <!--Durations of Leave-->
                                     <div class="form-group row">
-                                        <label for="date_of_leave" class="col-sm-2 col-form-label">From Date</label>
+                                        <label for="date_of_leave" class="col-sm-2 col-form-label">
+                                            From Date
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
                                         <div class="col-sm-3">
                                             <input type="date" value="{{ old('from_leaveDate') }}" class="form-control" id="from_leaveDate" name="from_leaveDate" oninput="dateDifference(); updateToDateMin();" required>
                                         </div>
@@ -81,7 +93,11 @@
                                             0 Days
                                         </div>
 
-                                        <label for="date_of_leave" class="col-sm-2 col-form-label" style="text-align: center">To Date: </label>
+                                        <label for="date_of_leave" class="col-sm-2 col-form-label" style="text-align: center">
+                                            To Date:
+                                            <!--Required-->
+                                            <span style="color: red">*</span>
+                                        </label>
                                         <div class="col-sm-3">
                                             <input type="date" value="{{ old('to_leaveDate') }}" class="form-control" id="to_leaveDate" name="to_leaveDate" oninput="dateDifference(); updateToDateMax();" required>
                                         </div>

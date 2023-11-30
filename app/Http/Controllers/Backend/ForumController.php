@@ -150,7 +150,7 @@ class ForumController extends Controller
     {
         $replyDelete = Reply::find($id);
         $replyDelete->delete();
-        return redirect()->back()->with('error', 'Reply Delete Successfully.');
+        return redirect()->back()->with('success', 'Reply Delete Successfully.');
     }
 
     //-------------------Employee Site-------------------//
@@ -292,7 +292,7 @@ class ForumController extends Controller
     {
         $replyDelete = Reply::find($id);
         $replyDelete->delete();
-        return redirect()->back()->with('error', 'Reply Delete Successfully.');
+        return redirect()->back()->with('success', 'Reply Delete Successfully.');
     }
 
 }
