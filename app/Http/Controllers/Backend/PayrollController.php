@@ -105,7 +105,7 @@ class PayrollController extends Controller
     {
         $recordDelete = Payroll::find($id);
         $recordDelete->delete();
-        return redirect()->back()->with('error', 'Payroll Record has been deleted successfully!');
+        return redirect()->back()->with('success', 'Payroll Record has been deleted successfully!');
     }
 
     public function salary_pdf($id, Request $request)
