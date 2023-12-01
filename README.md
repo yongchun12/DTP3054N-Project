@@ -46,7 +46,7 @@ Before start to install this web application, please ensure you have the followi
 **For Windows User**
 - [PHP (Version 7.4 or higher)](https://www.php.net/downloads.php)
 - [Composer](https://getcomposer.org/download/)
-- MYSQL (or any other compatible database system)
+- MYSQL
 
 **For Mac User**
 - [Herd](https://herd.laravel.com/)
