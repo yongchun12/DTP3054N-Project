@@ -48,7 +48,6 @@
                                     <!--ID-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">ID
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -59,7 +58,6 @@
                                     <!--Employee Name-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Employee Name
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -71,7 +69,6 @@
                                     <!--Gross Salary-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Gross Salary
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -82,7 +79,6 @@
                                     <!--Number of Day Work-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Number of Day Work
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -93,7 +89,6 @@
                                     <!--Absent Days-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Absent Days
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -104,7 +99,6 @@
                                     <!--Overtime-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Overtime Hours
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -115,7 +109,6 @@
                                     <!--Bonus-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Bonus
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -126,7 +119,6 @@
                                     <!--Medical Allowance-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Medical Allowance
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -137,7 +129,6 @@
                                     <!--Medical Allowance-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Other Allowance
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -148,7 +139,6 @@
                                     <!--Sub-Total Salary-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Sub-Total Salary
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -167,7 +157,6 @@
                                     <!--EPF-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">EPF
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -182,7 +171,6 @@
                                     <!--SOCSO-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">SOCSO
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -197,7 +185,6 @@
                                     <!--PCB Tax-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">PCB Tax
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -212,7 +199,6 @@
                                     <!--Total Deduction-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Total Deduction
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">
@@ -223,7 +209,6 @@
                                     <!--Payroll Monthly-->
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Monthly Allowance
-                                            <span style="color: red">*</span>
                                         </label>
 
                                         <div class="col-sm-10 col-form-label">

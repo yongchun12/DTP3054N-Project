@@ -80,8 +80,8 @@
 
                                             <div class="input-group-append">
                                                 <span class="input-group-text" onclick="confirm_password_show_hide()" style="cursor: pointer">
-                                                    <i class="fa-solid fa-eye-slash" id="hide_eye"></i>
-                                                    <i class="fa-solid fa-eye d-none" id="show_eye"></i>
+                                                    <i class="fa-solid fa-eye-slash" id="hide_eye_confirm"></i>
+                                                    <i class="fa-solid fa-eye d-none" id="show_eye_confirm"></i>
                                                 </span>
                                             </div>
                                         </div>
