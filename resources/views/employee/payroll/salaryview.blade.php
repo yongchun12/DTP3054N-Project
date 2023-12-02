@@ -34,7 +34,7 @@
 
                     <!--Back Button-->
                     <div class="col-sm-6">
-                        <a href="{{ url('admin/payroll') }}" class="btn btn-primary d-print-none"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
+                        <a href="{{ url('employee/payroll') }}" class="btn btn-primary d-print-none"><i class="fa-solid fa-arrow-left mr-1"></i>Back</a>
                     </div>
 
                     <!--Print Button-->
