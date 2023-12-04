@@ -1,5 +1,5 @@
 
-# DPT3054N - Human Resource Management System
+# Human Resource Management System
 
 Human Resource Management System (HRMS) is a software application used to store employee data and perform list of human resource functions, such as department, position, leave, attendance, payroll, etc. 
 
@@ -65,7 +65,7 @@ Follow these steps to let this repository run in your localhost:
 1. Clone this repository
 
 ```bash
-  git clone https://github.com/yongchun12/DTP3054N-Project.git
+  git clone https://github.com/yongchun12/HRMS.git
 ```
 ---
 2. Install Dependencies
